@@ -15,6 +15,7 @@ class ValueValidators
     }
   }
 
+
   Either<ValueFailure<String>, String> validatePassword(String input) {
     if (input.length >= minPasswordLength) {
       return Right(input);
