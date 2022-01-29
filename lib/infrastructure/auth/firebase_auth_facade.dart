@@ -8,8 +8,7 @@ import 'package:kantor_tukan/domain/auth/i_auth_facade.dart';
 import 'package:kantor_tukan/domain/auth/value_object.dart';
 
 @prod
-@lazySingleton
-@Injectable(as:IAuthFacade)
+@LazySingleton(as : IAuthFacade)
 class FirebaseAuthFacade implements IAuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
