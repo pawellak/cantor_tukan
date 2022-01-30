@@ -5,8 +5,10 @@ import 'package:kantor_tukan/injection.dart';
 import 'package:kantor_tukan/presentation/core/app_widget.dart';
 
 void main() async {
+  ///The WidgetFlutterBinding is used to interact with the Flutter engine.
+  ///Firebase.initializeApp() needs to call native code to initialize Firebase.
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
   configureInjection(Environment.prod);
+  await Firebase.initializeApp();
   runApp(const AppWidget());
 }

@@ -6,9 +6,30 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Kantor Tukan',
-      home: SignInPage(),
+      home: const SignInPage(),
+      theme: ThemeData.light().copyWith(
+        appBarTheme: buildAppBarTheme(),
+        inputDecorationTheme: buildInputDecorationTheme(),
+      ),
+    );
+  }
+
+  InputDecorationTheme buildInputDecorationTheme() {
+    return InputDecorationTheme(
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+    );
+  }
+
+  AppBarTheme buildAppBarTheme() {
+    return const AppBarTheme(
+      foregroundColor: Colors.black87,
+      backgroundColor: Colors.amber,
+      elevation: 5,
     );
   }
 }

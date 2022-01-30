@@ -20,32 +20,36 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   final IAuthFacade _authFacade;
 
   SignInFormBloc(this._authFacade) : super(SignInFormState.initial()) {
-    on<SignInFormEvent>((event, emit) {
-      event.map(emailChanged: (e) async* {
-        yield state.copyWith(
+    on<SignInFormEvent>((signInEvent, emitEvent) {
+      signInEvent.map(emailChanged: (e) {
+        print('emailChanged');
+
+        emit(state.copyWith(
           emailAddress: EmailAddress(e.emailStr),
           authFailureOrSuccessOption: none(),
-        );
-      }, passwordChanged: (e) async* {
-        yield state.copyWith(
+        ));
+
+
+      }, passwordChanged: (e) {
+        emit(state.copyWith(
           password: Password(e.password),
           authFailureOrSuccessOption: none(),
-        );
-      }, registerWithEmailAndPasswordPressed: (e) async* {
-        yield* _performActionOnAuthFacadeWithEmailAndPassword(
+        ));
+      }, registerWithEmailAndPasswordPressed: (e) {
+        _performActionOnAuthFacadeWithEmailAndPassword(
             _authFacade.registerWithEmailAndPassword);
-      }, signInWithEmailAndPasswordPressed: (e) async* {
-        yield* _performActionOnAuthFacadeWithEmailAndPassword(
+      }, signInWithEmailAndPasswordPressed: (e) {
+        _performActionOnAuthFacadeWithEmailAndPassword(
             _authFacade.signInWithEmailAndPassword);
-      }, signInWithGooglePressed: (e) async* {
-        yield state.copyWith(
+      }, signInWithGooglePressed: (e) async {
+        emit(state.copyWith(
           isSubmitting: true,
           authFailureOrSuccessOption: none(),
-        );
+        ));
         final failureOrSuccess = await _authFacade.signInWithGoogle();
-        yield state.copyWith(
+        emit(state.copyWith(
             isSubmitting: false,
-            authFailureOrSuccessOption: some(failureOrSuccess));
+            authFailureOrSuccessOption: some(failureOrSuccess)));
       });
     });
   }
@@ -63,20 +67,20 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     final isPasswordValid = state.password.isValid();
 
     if (isEmailValid && isPasswordValid) {
-      yield state.copyWith(
+      emit(state.copyWith(
         isSubmitting: true,
         authFailureOrSuccessOption: none(),
-      );
+      ));
 
       failureOrSuccess = await forwardedCall(
         emailAddress: state.emailAddress,
         password: state.password,
       );
     }
-    yield state.copyWith(
+    emit(state.copyWith(
       isSubmitting: false,
       showErrorMessages: true,
       authFailureOrSuccessOption: optionOf(failureOrSuccess),
-    );
+    ));
   }
 }
