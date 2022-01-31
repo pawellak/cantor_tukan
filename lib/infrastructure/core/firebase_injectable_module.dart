@@ -9,7 +9,4 @@ abstract class FirebaseInjectableModule {
 
   @lazySingleton
   FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
-
- // FirebaseFirestore
-
 }

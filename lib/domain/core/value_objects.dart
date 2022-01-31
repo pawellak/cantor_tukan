@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
+import 'package:kantor_tukan/domain/core/core_constants.dart';
 import 'package:kantor_tukan/domain/core/errors.dart';
 import 'package:kantor_tukan/domain/core/failures.dart';
 
@@ -27,5 +28,5 @@ abstract class ValueObject<T> {
   int get hashCode => value.hashCode;
 
   @override
-  String toString() => 'Value($value)';
+  String toString() => '${CoreConstants.value}($value)';
 }

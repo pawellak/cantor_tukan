@@ -3,12 +3,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
+import 'package:kantor_tukan/domain/auth/auth_constants.dart';
 import 'package:kantor_tukan/domain/auth/auth_failure.dart';
 import 'package:kantor_tukan/domain/auth/i_auth_facade.dart';
 import 'package:kantor_tukan/domain/auth/value_object.dart';
 
 @prod
-@LazySingleton(as : IAuthFacade)
+@LazySingleton(as: IAuthFacade)
 class FirebaseAuthFacade implements IAuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
@@ -28,12 +29,14 @@ class FirebaseAuthFacade implements IAuthFacade {
           email: emailAddressStr, password: passwordStr);
 
       return const Right(unit);
-    } on PlatformException catch (e) {
-      if (e.code == 'email-already-in-use') {
+    } on FirebaseAuthException catch (e) {
+      if (e.code == AuthConstants.emailInUse) {
         return const Left(AuthFailure.emailAlreadyInUse());
       } else {
         return const Left(AuthFailure.serverError());
       }
+    } catch (_) {
+      return const Left(AuthFailure.serverError());
     }
   }
 
@@ -50,16 +53,18 @@ class FirebaseAuthFacade implements IAuthFacade {
           email: emailAddressStr, password: passwordStr);
 
       return const Right(unit);
-    } on PlatformException catch (e) {
-      if (e.code == 'invalid-email' || e.code == 'wrong-password') {
+    } on FirebaseAuthException catch (e) {
+      if (e.code == AuthConstants.invalidEmail ||
+          e.code == AuthConstants.wrongPassword ||
+          e.code == AuthConstants.userNotFount) {
         return const Left(AuthFailure.invalidEmailAndPasswordCombination());
       } else {
         return const Left(AuthFailure.serverError());
       }
+    } catch (_) {
+      return const Left(AuthFailure.serverError());
     }
   }
-
-
 
   @override
   Future<Either<AuthFailure, Unit>> signInWithGoogle() async {
@@ -78,9 +83,10 @@ class FirebaseAuthFacade implements IAuthFacade {
 
       await _firebaseAuth.signInWithCredential(authCredential);
       return const Right(unit);
-    } on PlatformException catch (_) {
-
+    } on Exception catch (_) {
       return (const Left(AuthFailure.serverError()));
+    } catch (e) {
+      return const Left(AuthFailure.serverError());
     }
   }
 }

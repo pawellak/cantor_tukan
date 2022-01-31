@@ -21,52 +21,69 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
 
   SignInFormBloc(this._authFacade) : super(SignInFormState.initial()) {
     on<SignInFormEvent>((signInEvent, emitEvent) {
-      signInEvent.map(emailChanged: (e) {
-        print('emailChanged');
-
-        emit(state.copyWith(
-          emailAddress: EmailAddress(e.emailStr),
-          authFailureOrSuccessOption: none(),
-        ));
-
-
-      }, passwordChanged: (e) {
-        emit(state.copyWith(
-          password: Password(e.password),
-          authFailureOrSuccessOption: none(),
-        ));
-      }, registerWithEmailAndPasswordPressed: (e) {
-        _performActionOnAuthFacadeWithEmailAndPassword(
-            _authFacade.registerWithEmailAndPassword);
-      }, signInWithEmailAndPasswordPressed: (e) {
-        _performActionOnAuthFacadeWithEmailAndPassword(
-            _authFacade.signInWithEmailAndPassword);
-      }, signInWithGooglePressed: (e) async {
-        emit(state.copyWith(
-          isSubmitting: true,
-          authFailureOrSuccessOption: none(),
-        ));
-        final failureOrSuccess = await _authFacade.signInWithGoogle();
-        emit(state.copyWith(
-            isSubmitting: false,
-            authFailureOrSuccessOption: some(failureOrSuccess)));
-      });
-    });
+        signInEvent.map(
+            emailChanged: _emailChanged,
+            passwordChanged: _passwordChanged,
+            registerWithEmailAndPasswordPressed: _registerWithEmailAndPassword,
+            signInWithEmailAndPasswordPressed: _signInrWithEmailAndPassword,
+            signInWithGooglePressed: _signInWithGoogle);
+      },
+    );
   }
 
-  Stream<SignInFormState> _performActionOnAuthFacadeWithEmailAndPassword(
+  void _emailChanged(e) {
+    // ignore: invalid_use_of_visible_for_testing_member
+    emit(state.copyWith(
+      emailAddress: EmailAddress(e.emailStr),
+      authFailureOrSuccessOption: none(),
+    ));
+  }
+
+  void _passwordChanged(e) {
+    // ignore: invalid_use_of_visible_for_testing_member
+    emit(state.copyWith(
+      password: Password(e.password),
+      authFailureOrSuccessOption: none(),
+    ));
+  }
+
+  void _registerWithEmailAndPassword(e) {
+    _performActionOnAuthFacadeWithEmailAndPassword(
+        _authFacade.registerWithEmailAndPassword);
+  }
+
+  void _signInrWithEmailAndPassword(e) {
+    _performActionOnAuthFacadeWithEmailAndPassword(
+        _authFacade.signInWithEmailAndPassword);
+  }
+
+  void _signInWithGoogle(e) async {
+    // ignore: invalid_use_of_visible_for_testing_member
+    emit(state.copyWith(
+      isSubmitting: true,
+      authFailureOrSuccessOption: none(),
+    ));
+    final failureOrSuccess = await _authFacade.signInWithGoogle();
+    // ignore: invalid_use_of_visible_for_testing_member
+    emit(state.copyWith(
+        isSubmitting: false,
+        authFailureOrSuccessOption: some(failureOrSuccess)));
+  }
+
+  void _performActionOnAuthFacadeWithEmailAndPassword(
     Future<Either<AuthFailure, Unit>> Function({
       required EmailAddress emailAddress,
       required Password password,
     })
         forwardedCall,
-  ) async* {
+  ) async {
     Either<AuthFailure, Unit>? failureOrSuccess;
 
     final isEmailValid = state.emailAddress.isValid();
     final isPasswordValid = state.password.isValid();
 
     if (isEmailValid && isPasswordValid) {
+      // ignore: invalid_use_of_visible_for_testing_member
       emit(state.copyWith(
         isSubmitting: true,
         authFailureOrSuccessOption: none(),
@@ -77,6 +94,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         password: state.password,
       );
     }
+    // ignore: invalid_use_of_visible_for_testing_member
     emit(state.copyWith(
       isSubmitting: false,
       showErrorMessages: true,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kantor_tukan/presentation/core/pres_const.dart';
 import 'package:kantor_tukan/presentation/sign_in/sign_in_page.dart';
 
 class AppWidget extends StatelessWidget {
@@ -8,7 +9,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Kantor Tukan',
+      title: PresConst.nameOfCantor,
       home: const SignInPage(),
       theme: ThemeData.light().copyWith(
         appBarTheme: buildAppBarTheme(),
@@ -24,6 +25,8 @@ class AppWidget extends StatelessWidget {
       ),
     );
   }
+
+
 
   AppBarTheme buildAppBarTheme() {
     return const AppBarTheme(
