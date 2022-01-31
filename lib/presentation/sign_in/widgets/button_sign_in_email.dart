@@ -11,6 +11,7 @@ class ButtonSignInEmail extends StatelessWidget {
     return OutlinedButton(
       onPressed: () => _onPressed(context),
       child: _buildText(),
+
     );
   }
 

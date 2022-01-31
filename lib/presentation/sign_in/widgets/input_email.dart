@@ -10,16 +10,19 @@ class InputEmail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      decoration: _buildDecorator(),
+      decoration: _buildDecorator(context),
       autocorrect: false,
       onChanged: (value) => _onChanged(context, value),
       validator: (_) => _buildValidator(context),
     );
   }
 
-  InputDecoration _buildDecorator() {
-    return const InputDecoration(
-      prefixIcon: Icon(Icons.email),
+  InputDecoration _buildDecorator(BuildContext context) {
+    return InputDecoration(
+      prefixIcon: Icon(
+        Icons.email,
+        color: Theme.of(context).colorScheme.secondary,
+      ),
       labelText: PresConst.sipEmail,
     );
   }

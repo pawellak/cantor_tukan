@@ -10,18 +10,18 @@ class InputPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      decoration: _buildDecoration(),
+      decoration: _buildDecoration(context),
       obscureText: true,
       autocorrect: false,
       onChanged: (value) => _buildOnChanged(context, value),
-      validator: (_) =>
-          _buildValidator(context),
+      validator: (_) => _buildValidator(context),
     );
   }
 
-  InputDecoration _buildDecoration() {
-    return const InputDecoration(
-      prefixIcon: Icon(Icons.lock),
+  InputDecoration _buildDecoration(BuildContext context) {
+    return InputDecoration(
+      prefixIcon:
+          Icon(Icons.lock, color: Theme.of(context).colorScheme.secondary),
       labelText: PresConst.sipPassword,
     );
   }
@@ -34,16 +34,16 @@ class InputPassword extends StatelessWidget {
 
   String? _buildValidator(BuildContext context) {
     return context.read<SignInFormBloc>().state.password.value.fold(
-              (f) => _buildPasswordNotValid(f),
-              (_) => _buildPasswordValid(),
-            );
+          (f) => _buildPasswordNotValid(f),
+          (_) => _buildPasswordValid(),
+        );
   }
 
   String? _buildPasswordNotValid(ValueFailure<String> f) {
     return f.maybeMap(
-              shortPassword: (_) => PresConst.sipPasswordNotValid,
-              orElse: () => _buildPasswordValid(),
-            );
+      shortPassword: (_) => PresConst.sipPasswordNotValid,
+      orElse: () => _buildPasswordValid(),
+    );
   }
 
   Null _buildPasswordValid() => null;

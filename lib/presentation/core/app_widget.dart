@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kantor_tukan/presentation/core/app_theme.dart';
 import 'package:kantor_tukan/presentation/core/pres_const.dart';
 import 'package:kantor_tukan/presentation/sign_in/sign_in_page.dart';
 
@@ -11,28 +12,7 @@ class AppWidget extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: PresConst.nameOfCantor,
       home: const SignInPage(),
-      theme: ThemeData.light().copyWith(
-        appBarTheme: buildAppBarTheme(),
-        inputDecorationTheme: buildInputDecorationTheme(),
-      ),
-    );
-  }
-
-  InputDecorationTheme buildInputDecorationTheme() {
-    return InputDecorationTheme(
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
-    );
-  }
-
-
-
-  AppBarTheme buildAppBarTheme() {
-    return const AppBarTheme(
-      foregroundColor: Colors.black87,
-      backgroundColor: Colors.amber,
-      elevation: 5,
+      theme: AppTheme().buildLightTheme(),
     );
   }
 }

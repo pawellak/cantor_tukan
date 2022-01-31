@@ -9,9 +9,7 @@ class ButtonRegisterEmail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
-      onPressed: () => _onPressed(context),
-      child: _buildText(),
-    );
+        onPressed: () => _onPressed(context), child: _buildText());
   }
 
   void _onPressed(BuildContext context) {
