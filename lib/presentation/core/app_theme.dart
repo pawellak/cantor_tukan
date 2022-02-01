@@ -35,10 +35,11 @@ AppBarTheme buildAppBarTheme() {
 
 OutlinedButtonThemeData _buildOutlinedButtonDecoration() {
   return OutlinedButtonThemeData(
-      style: ElevatedButton.styleFrom(
-    primary: mainColor[300],
-    onPrimary: secondaryColor,
-  ));
+    style: ElevatedButton.styleFrom(
+      primary: mainColor[300],
+      onPrimary: secondaryColor,
+    ),
+  );
 }
 
 ElevatedButtonThemeData _buildElevatedButtonDecoration() {

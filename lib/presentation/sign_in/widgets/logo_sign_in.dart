@@ -7,7 +7,7 @@ class LogoSignIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SizedBox(
-      height: 120,
+      height: PresConst.sipLogoSpace,
       child: Center(
         child: Text(
           PresConst.sipLogo,

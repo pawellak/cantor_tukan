@@ -5,8 +5,10 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kantor_tukan/domain/auth/auth_constants.dart';
 import 'package:kantor_tukan/domain/auth/auth_failure.dart';
+import 'package:kantor_tukan/domain/auth/custom_user.dart';
 import 'package:kantor_tukan/domain/auth/i_auth_facade.dart';
 import 'package:kantor_tukan/domain/auth/value_object.dart';
+import 'package:kantor_tukan/infrastructure/auth/firebase_user_mapper.dart';
 
 @prod
 @LazySingleton(as: IAuthFacade)
@@ -15,6 +17,12 @@ class FirebaseAuthFacade implements IAuthFacade {
   final GoogleSignIn _googleSignIn;
 
   FirebaseAuthFacade(this._firebaseAuth, this._googleSignIn);
+
+  @override
+  Future<Option<CustomUser>> getSignedInUser() async {
+    var option = optionOf(FirebaseUserDomainX(_firebaseAuth).toDomain());
+    return option;
+  }
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
@@ -83,10 +91,16 @@ class FirebaseAuthFacade implements IAuthFacade {
 
       await _firebaseAuth.signInWithCredential(authCredential);
       return const Right(unit);
-    } on Exception catch (_) {
+    } on PlatformException catch (_) {
       return (const Left(AuthFailure.serverError()));
     } catch (e) {
       return const Left(AuthFailure.serverError());
     }
   }
+
+  @override
+  Future<void> signOut() => Future.wait([
+        _googleSignIn.signOut(),
+        _firebaseAuth.signOut(),
+      ]);
 }

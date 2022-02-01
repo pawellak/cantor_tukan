@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kantor_tukan/domain/core/core_constants.dart';
 import 'package:kantor_tukan/domain/core/errors.dart';
 import 'package:kantor_tukan/domain/core/failures.dart';
+import 'package:uuid/uuid.dart';
 
 @immutable
 abstract class ValueObject<T> {
@@ -30,3 +31,37 @@ abstract class ValueObject<T> {
   @override
   String toString() => '${CoreConstants.value}($value)';
 }
+
+class UniqueId extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  // We cannot let a simple String be passed in. This would allow for possible non-unique IDs.
+  factory UniqueId() {
+    return UniqueId._(
+      right(const Uuid().v1()),
+    );
+  }
+
+  /// Used with strings we trust are unique, such as database IDs.
+  factory UniqueId.fromUniqueString(String uniqueIdStr) {
+    return UniqueId._(
+      right(uniqueIdStr),
+    );
+  }
+
+  const UniqueId._(this.value);
+}
+
+// class StringSingleLine extends ValueObject<String> {
+//   @override
+//   final Either<ValueFailure<String>, String> value;
+//
+//   factory StringSingleLine(String input) {
+//     return StringSingleLine._(
+//       validateSingleLine(input),
+//     );
+//   }
+//
+//   const StringSingleLine._(this.value);
+// }

@@ -44,6 +44,8 @@ dependencies:
   freezed_annotation: ^1.1.0
   injectable_generator: ^1.5.3
   injectable: ^1.5.3
+  another_flushbar: ^1.10.28
+  uuid: ^3.0.5
 
 dev_dependencies:
   flutter_test:
