@@ -6,6 +6,8 @@ import 'package:kantor_tukan/presentation/core/pres_const.dart';
 import 'package:kantor_tukan/presentation/sign_in/widgets/sign_in_form.dart';
 
 class SignInPage extends StatelessWidget {
+  static const routeName = '/sign-in';
+
   const SignInPage({Key? key}) : super(key: key);
 
   @override

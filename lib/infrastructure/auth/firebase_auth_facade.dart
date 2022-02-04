@@ -15,13 +15,15 @@ import 'package:kantor_tukan/infrastructure/auth/firebase_user_mapper.dart';
 class FirebaseAuthFacade implements IAuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
+  final FirebaseUserMapper _firebaseUserMapper;
 
-  FirebaseAuthFacade(this._firebaseAuth, this._googleSignIn);
+  FirebaseAuthFacade(
+      this._firebaseAuth, this._googleSignIn, this._firebaseUserMapper);
 
   @override
   Future<Option<CustomUser>> getSignedInUser() async {
-    var option = optionOf(FirebaseUserDomainX(_firebaseAuth).toDomain());
-    return option;
+    var user = _firebaseAuth.currentUser;
+    return optionOf(_firebaseUserMapper.toDomain(user));
   }
 
   @override
