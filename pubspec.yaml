@@ -14,18 +14,20 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
-  freezed: ^1.1.1
+  freezed: 1.1.0
   mockito: ^5.0.17
   flutter_bloc: ^8.0.1
   firebase_core: ^1.12.0
   firebase_auth: ^3.3.6
   google_sign_in: ^5.2.3
   freezed_annotation: ^1.1.0
-  injectable_generator: ^1.5.3
+  injectable_generator: ^1.5.2
   injectable: ^1.5.3
   another_flushbar: ^1.10.28
   uuid: ^3.0.5
   flutter_native_splash: ^2.0.1+1
+  bloc_test: ^9.0.2
+
 
 dev_dependencies:
   flutter_test:

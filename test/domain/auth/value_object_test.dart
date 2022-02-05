@@ -49,7 +49,9 @@ void main() {
       String result = customObjectOne.toString();
 
       // assert
-      expect(result, 'Value(Right($value))');
+      expect(result, 'Value: (Right($value))');
     },
   );
+
+
 }

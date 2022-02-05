@@ -11,18 +11,15 @@ class SplashPage extends StatelessWidget {
     return BlocListener<AppAuthBloc, AppAuthState>(
       listener: (context, state) {
         state.map(
-            initial: (_) {
-              print('initial');
-            },
-            authenticated: (_) {
-              print('im');
-            },
+            initial: (_) {},
+            authenticated: (_) {},
             unauthenticated: (_) {
               Navigator.of(context).pushNamed(SignInPage.routeName);
             });
       },
-      child: const Scaffold(
-        body: Center(
+      child:  Scaffold(
+        appBar: AppBar(automaticallyImplyLeading:false,title: Text('Loading...',)),
+        body:const Center(
           child: CircularProgressIndicator(),
         ),
       ),

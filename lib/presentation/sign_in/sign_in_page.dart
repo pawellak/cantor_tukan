@@ -14,7 +14,10 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(PresConst.sipSignIn),
+        automaticallyImplyLeading: false,
+        title: const Text(
+          PresConst.sipSignIn,
+        ),
       ),
       body: BlocProvider(
         create: (context) => getIt<SignInFormBloc>(),

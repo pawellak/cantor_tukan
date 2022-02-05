@@ -18,7 +18,7 @@ class AppAuthBloc extends Bloc<AppAuthEvent, AppAuthState> {
       (event, emit) {
         event.map(authCheckRequested: (_) async {
           var userOption = await _authFacade.getSignedInUser();
-          var authOrNotAuth = userOption.fold(
+          AppAuthState authOrNotAuth = userOption.fold(
               () => const AppAuthState.unauthenticated(),
               (_) => const AppAuthState.authenticated());
           emit(authOrNotAuth);
