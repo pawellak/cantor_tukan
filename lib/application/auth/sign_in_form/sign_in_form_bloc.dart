@@ -19,12 +19,13 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   final IAuthFacade _authFacade;
 
   SignInFormBloc(this._authFacade) : super(SignInFormState.initial()) {
-    on<SignInFormEvent>((signInEvent, emitEvent) {
+    on<SignInFormEvent>(
+      (signInEvent, emitEvent) {
         signInEvent.map(
             emailChanged: _emailChanged,
             passwordChanged: _passwordChanged,
             registerWithEmailAndPasswordPressed: _registerWithEmailAndPassword,
-            signInWithEmailAndPasswordPressed: _signInrWithEmailAndPassword,
+            signInWithEmailAndPasswordPressed: _signInWithEmailAndPassword,
             signInWithGooglePressed: _signInWithGoogle);
       },
     );
@@ -51,7 +52,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         _authFacade.registerWithEmailAndPassword);
   }
 
-  void _signInrWithEmailAndPassword(e) {
+  void _signInWithEmailAndPassword(e) {
     _performActionOnAuthFacadeWithEmailAndPassword(
         _authFacade.signInWithEmailAndPassword);
   }
@@ -77,7 +78,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         forwardedCall,
   ) async {
     Either<AuthFailure, Unit>? failureOrSuccess;
-
+    bool _showErrorMessage = true;
 
     final isEmailValid = state.emailAddress.isValid();
     final isPasswordValid = state.password.isValid();
@@ -94,10 +95,17 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         password: state.password,
       );
     }
+
+    if (failureOrSuccess != null) {
+      if (failureOrSuccess.isRight()) {
+        _showErrorMessage = false;
+      }
+    }
+
     // ignore: invalid_use_of_visible_for_testing_member
     emit(state.copyWith(
       isSubmitting: false,
-      showErrorMessages: true,
+      showErrorMessages: _showErrorMessage,
       authFailureOrSuccessOption: optionOf(failureOrSuccess),
     ));
   }

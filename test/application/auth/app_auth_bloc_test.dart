@@ -13,6 +13,7 @@ import '../../domain/auth/i_auth_facade_test.mocks.dart';
 @GenerateMocks([IAuthFacade])
 void main() {
   late MockIAuthFacade mockIAuthFacade;
+
   late CustomUser customUser;
 
   setUp(() {
