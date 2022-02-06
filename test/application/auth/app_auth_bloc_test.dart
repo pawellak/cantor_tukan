@@ -13,23 +13,22 @@ import '../../domain/auth/i_auth_facade_test.mocks.dart';
 @GenerateMocks([IAuthFacade])
 void main() {
   late MockIAuthFacade mockIAuthFacade;
-
-  late CustomUser customUser;
+  late AppAuthBloc appAuthBloc;
+  late CustomUser customUser =
+      CustomUser(id: UniqueId.fromUniqueString('uniqueIdStr'));
 
   setUp(() {
     mockIAuthFacade = MockIAuthFacade();
-    customUser = CustomUser(id: UniqueId.fromUniqueString('uniqueIdStr'));
+    appAuthBloc = AppAuthBloc(mockIAuthFacade);
   });
 
-  group(
-    'user authenticated',
-    () {
+  group('user authentication', () {
       blocTest<AppAuthBloc, AppAuthState>(
-        'should emit user authenticated',
+        'should authCheckRequested emit user authenticated',
         build: () {
           when(mockIAuthFacade.getSignedInUser())
               .thenAnswer((_) async => Future.value(optionOf(customUser)));
-          return AppAuthBloc(mockIAuthFacade);
+          return appAuthBloc;
         },
         act: (bloc) => bloc.add(const AppAuthEvent.authCheckRequested()),
         expect: () => [
@@ -38,33 +37,28 @@ void main() {
       );
 
       blocTest<AppAuthBloc, AppAuthState>(
-        'should emit user unauthenticated',
+        'should authCheckRequested emit user unauthenticated',
         build: () {
           when(mockIAuthFacade.getSignedInUser())
               .thenAnswer((_) async => Future.value(optionOf(null)));
-          return AppAuthBloc(mockIAuthFacade);
+          return appAuthBloc;
         },
         act: (bloc) => bloc.add(const AppAuthEvent.authCheckRequested()),
         expect: () => [
           const AppAuthState.unauthenticated(),
         ],
       );
-    },
-  );
-
-  group(
-    'sign out',
-    () {
+    },);
+  group('sign out',() {
       blocTest<AppAuthBloc, AppAuthState>(
         'should emit user unauthenticated after user sign out',
         build: () {
-          return AppAuthBloc(mockIAuthFacade);
+          return appAuthBloc;
         },
         act: (bloc) => bloc.add(const AppAuthEvent.signedOut()),
         expect: () => [
           const AppAuthState.unauthenticated(),
         ],
       );
-    },
-  );
+    },);
 }
