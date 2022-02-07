@@ -23,7 +23,7 @@ class AppAuthBloc extends Bloc<AppAuthEvent, AppAuthState> {
               (_) => const AppAuthState.authenticated());
           emit(authOrNotAuth);
         }, signedOut: (_) async {
-          await _authFacade.signOut();
+          await _authFacade.signOutGoogleAndFirebase();
           emit(const AppAuthState.unauthenticated());
         });
       },

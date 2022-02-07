@@ -23,7 +23,10 @@ class AppWidget extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: PresConst.nameOfCantor,
         theme: AppTheme().buildLightTheme(),
-        routes: {SignInPage.routeName: (context) => const SignInPage()},
+        routes: {
+          SignInPage.routeName: (context) => const SignInPage(),
+          SplashPage.routeName: (context) => const SplashPage()
+        },
       ),
     );
   }

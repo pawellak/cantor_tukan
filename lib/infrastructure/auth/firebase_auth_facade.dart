@@ -22,7 +22,7 @@ class FirebaseAuthFacade implements IAuthFacade {
 
   @override
   Future<Option<CustomUser>> getSignedInUser() async {
-    var user = _firebaseAuth.currentUser;
+    User? user = _firebaseAuth.currentUser;
     return optionOf(_firebaseUserMapper.toDomain(user));
   }
 
@@ -87,11 +87,12 @@ class FirebaseAuthFacade implements IAuthFacade {
 
       var googleAuthentication = await googleUser.authentication;
 
-      final authCredential = GoogleAuthProvider.credential(
+      final OAuthCredential authCredential = GoogleAuthProvider.credential(
           accessToken: googleAuthentication.accessToken,
           idToken: googleAuthentication.idToken);
 
       await _firebaseAuth.signInWithCredential(authCredential);
+
       return const Right(unit);
     } on PlatformException catch (_) {
       return (const Left(AuthFailure.serverError()));
@@ -101,8 +102,8 @@ class FirebaseAuthFacade implements IAuthFacade {
   }
 
   @override
-  Future<void> signOut() => Future.wait([
-        _googleSignIn.signOut(),
-        _firebaseAuth.signOut(),
-      ]);
+  Future<void> signOutGoogleAndFirebase() async {
+    await _googleSignIn.signOut();
+    await _firebaseAuth.signOut();
+  }
 }

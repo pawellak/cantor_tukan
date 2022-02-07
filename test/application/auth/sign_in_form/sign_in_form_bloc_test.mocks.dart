@@ -64,8 +64,8 @@ class MockIAuthFacade extends _i1.Mock implements _i3.IAuthFacade {
                   _FakeEither_1<_i6.AuthFailure, _i2.Unit>()))
           as _i4.Future<_i2.Either<_i6.AuthFailure, _i2.Unit>>);
   @override
-  _i4.Future<void> signOut() =>
-      (super.noSuchMethod(Invocation.method(#signOut, []),
+  _i4.Future<void> signOutGoogleAndFirebase() =>
+      (super.noSuchMethod(Invocation.method(#signOutGoogleAndFirebase, []),
           returnValue: Future<void>.value(),
           returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
 }
