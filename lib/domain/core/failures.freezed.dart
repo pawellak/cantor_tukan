@@ -17,6 +17,12 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$ValueFailureTearOff {
   const _$ValueFailureTearOff();
 
+  UnknownCurrency<T> unknownCurrency<T>({required T failedValue}) {
+    return UnknownCurrency<T>(
+      failedValue: failedValue,
+    );
+  }
+
   CurrencyTooBig<T> currencyTooBig<T>(
       {required double max, required T failedValue}) {
     return CurrencyTooBig<T>(
@@ -33,14 +39,8 @@ class _$ValueFailureTearOff {
     );
   }
 
-  CurrencyEmpty<T> currencyEmpty<T>({required T failedValue}) {
-    return CurrencyEmpty<T>(
-      failedValue: failedValue,
-    );
-  }
-
-  CurrencyTooMuch<T> currencyTooMuch<T>({required T failedValue}) {
-    return CurrencyTooMuch<T>(
+  InvalidStringToDouble<T> invalidStringToDouble<T>({required T failedValue}) {
+    return InvalidStringToDouble<T>(
       failedValue: failedValue,
     );
   }
@@ -67,30 +67,30 @@ mixin _$ValueFailure<T> {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) unknownCurrency,
     required TResult Function(double max, T failedValue) currencyTooBig,
     required TResult Function(double min, T failedValue) currencyTooSmall,
-    required TResult Function(T failedValue) currencyEmpty,
-    required TResult Function(T failedValue) currencyTooMuch,
+    required TResult Function(T failedValue) invalidStringToDouble,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) shortPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T failedValue)? unknownCurrency,
     TResult Function(double max, T failedValue)? currencyTooBig,
     TResult Function(double min, T failedValue)? currencyTooSmall,
-    TResult Function(T failedValue)? currencyEmpty,
-    TResult Function(T failedValue)? currencyTooMuch,
+    TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? unknownCurrency,
     TResult Function(double max, T failedValue)? currencyTooBig,
     TResult Function(double min, T failedValue)? currencyTooSmall,
-    TResult Function(T failedValue)? currencyEmpty,
-    TResult Function(T failedValue)? currencyTooMuch,
+    TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
     required TResult orElse(),
@@ -98,30 +98,31 @@ mixin _$ValueFailure<T> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(UnknownCurrency<T> value) unknownCurrency,
     required TResult Function(CurrencyTooBig<T> value) currencyTooBig,
     required TResult Function(CurrencyTooSmall<T> value) currencyTooSmall,
-    required TResult Function(CurrencyEmpty<T> value) currencyEmpty,
-    required TResult Function(CurrencyTooMuch<T> value) currencyTooMuch,
+    required TResult Function(InvalidStringToDouble<T> value)
+        invalidStringToDouble,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
     TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
-    TResult Function(CurrencyEmpty<T> value)? currencyEmpty,
-    TResult Function(CurrencyTooMuch<T> value)? currencyTooMuch,
+    TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
     TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
-    TResult Function(CurrencyEmpty<T> value)? currencyEmpty,
-    TResult Function(CurrencyTooMuch<T> value)? currencyTooMuch,
+    TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
     required TResult orElse(),
@@ -161,6 +162,171 @@ class _$ValueFailureCopyWithImpl<T, $Res>
               as T,
     ));
   }
+}
+
+/// @nodoc
+abstract class $UnknownCurrencyCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $UnknownCurrencyCopyWith(
+          UnknownCurrency<T> value, $Res Function(UnknownCurrency<T>) then) =
+      _$UnknownCurrencyCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class _$UnknownCurrencyCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $UnknownCurrencyCopyWith<T, $Res> {
+  _$UnknownCurrencyCopyWithImpl(
+      UnknownCurrency<T> _value, $Res Function(UnknownCurrency<T>) _then)
+      : super(_value, (v) => _then(v as UnknownCurrency<T>));
+
+  @override
+  UnknownCurrency<T> get _value => super._value as UnknownCurrency<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+  }) {
+    return _then(UnknownCurrency<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UnknownCurrency<T> implements UnknownCurrency<T> {
+  const _$UnknownCurrency({required this.failedValue});
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.unknownCurrency(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is UnknownCurrency<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
+
+  @JsonKey(ignore: true)
+  @override
+  $UnknownCurrencyCopyWith<T, UnknownCurrency<T>> get copyWith =>
+      _$UnknownCurrencyCopyWithImpl<T, UnknownCurrency<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) unknownCurrency,
+    required TResult Function(double max, T failedValue) currencyTooBig,
+    required TResult Function(double min, T failedValue) currencyTooSmall,
+    required TResult Function(T failedValue) invalidStringToDouble,
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) shortPassword,
+  }) {
+    return unknownCurrency(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T failedValue)? unknownCurrency,
+    TResult Function(double max, T failedValue)? currencyTooBig,
+    TResult Function(double min, T failedValue)? currencyTooSmall,
+    TResult Function(T failedValue)? invalidStringToDouble,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? shortPassword,
+  }) {
+    return unknownCurrency?.call(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? unknownCurrency,
+    TResult Function(double max, T failedValue)? currencyTooBig,
+    TResult Function(double min, T failedValue)? currencyTooSmall,
+    TResult Function(T failedValue)? invalidStringToDouble,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? shortPassword,
+    required TResult orElse(),
+  }) {
+    if (unknownCurrency != null) {
+      return unknownCurrency(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UnknownCurrency<T> value) unknownCurrency,
+    required TResult Function(CurrencyTooBig<T> value) currencyTooBig,
+    required TResult Function(CurrencyTooSmall<T> value) currencyTooSmall,
+    required TResult Function(InvalidStringToDouble<T> value)
+        invalidStringToDouble,
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortPassword<T> value) shortPassword,
+  }) {
+    return unknownCurrency(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
+    TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
+    TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
+    TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+  }) {
+    return unknownCurrency?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
+    TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
+    TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
+    TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    required TResult orElse(),
+  }) {
+    if (unknownCurrency != null) {
+      return unknownCurrency(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UnknownCurrency<T> implements ValueFailure<T> {
+  const factory UnknownCurrency({required T failedValue}) =
+      _$UnknownCurrency<T>;
+
+  @override
+  T get failedValue;
+  @override
+  @JsonKey(ignore: true)
+  $UnknownCurrencyCopyWith<T, UnknownCurrency<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -241,10 +407,10 @@ class _$CurrencyTooBig<T> implements CurrencyTooBig<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) unknownCurrency,
     required TResult Function(double max, T failedValue) currencyTooBig,
     required TResult Function(double min, T failedValue) currencyTooSmall,
-    required TResult Function(T failedValue) currencyEmpty,
-    required TResult Function(T failedValue) currencyTooMuch,
+    required TResult Function(T failedValue) invalidStringToDouble,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) shortPassword,
   }) {
@@ -254,10 +420,10 @@ class _$CurrencyTooBig<T> implements CurrencyTooBig<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T failedValue)? unknownCurrency,
     TResult Function(double max, T failedValue)? currencyTooBig,
     TResult Function(double min, T failedValue)? currencyTooSmall,
-    TResult Function(T failedValue)? currencyEmpty,
-    TResult Function(T failedValue)? currencyTooMuch,
+    TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
   }) {
@@ -267,10 +433,10 @@ class _$CurrencyTooBig<T> implements CurrencyTooBig<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? unknownCurrency,
     TResult Function(double max, T failedValue)? currencyTooBig,
     TResult Function(double min, T failedValue)? currencyTooSmall,
-    TResult Function(T failedValue)? currencyEmpty,
-    TResult Function(T failedValue)? currencyTooMuch,
+    TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
     required TResult orElse(),
@@ -284,10 +450,11 @@ class _$CurrencyTooBig<T> implements CurrencyTooBig<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(UnknownCurrency<T> value) unknownCurrency,
     required TResult Function(CurrencyTooBig<T> value) currencyTooBig,
     required TResult Function(CurrencyTooSmall<T> value) currencyTooSmall,
-    required TResult Function(CurrencyEmpty<T> value) currencyEmpty,
-    required TResult Function(CurrencyTooMuch<T> value) currencyTooMuch,
+    required TResult Function(InvalidStringToDouble<T> value)
+        invalidStringToDouble,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
   }) {
@@ -297,10 +464,10 @@ class _$CurrencyTooBig<T> implements CurrencyTooBig<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
     TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
-    TResult Function(CurrencyEmpty<T> value)? currencyEmpty,
-    TResult Function(CurrencyTooMuch<T> value)? currencyTooMuch,
+    TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
   }) {
@@ -310,10 +477,10 @@ class _$CurrencyTooBig<T> implements CurrencyTooBig<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
     TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
-    TResult Function(CurrencyEmpty<T> value)? currencyEmpty,
-    TResult Function(CurrencyTooMuch<T> value)? currencyTooMuch,
+    TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
     required TResult orElse(),
@@ -416,10 +583,10 @@ class _$CurrencyTooSmall<T> implements CurrencyTooSmall<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) unknownCurrency,
     required TResult Function(double max, T failedValue) currencyTooBig,
     required TResult Function(double min, T failedValue) currencyTooSmall,
-    required TResult Function(T failedValue) currencyEmpty,
-    required TResult Function(T failedValue) currencyTooMuch,
+    required TResult Function(T failedValue) invalidStringToDouble,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) shortPassword,
   }) {
@@ -429,10 +596,10 @@ class _$CurrencyTooSmall<T> implements CurrencyTooSmall<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T failedValue)? unknownCurrency,
     TResult Function(double max, T failedValue)? currencyTooBig,
     TResult Function(double min, T failedValue)? currencyTooSmall,
-    TResult Function(T failedValue)? currencyEmpty,
-    TResult Function(T failedValue)? currencyTooMuch,
+    TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
   }) {
@@ -442,10 +609,10 @@ class _$CurrencyTooSmall<T> implements CurrencyTooSmall<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? unknownCurrency,
     TResult Function(double max, T failedValue)? currencyTooBig,
     TResult Function(double min, T failedValue)? currencyTooSmall,
-    TResult Function(T failedValue)? currencyEmpty,
-    TResult Function(T failedValue)? currencyTooMuch,
+    TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
     required TResult orElse(),
@@ -459,10 +626,11 @@ class _$CurrencyTooSmall<T> implements CurrencyTooSmall<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(UnknownCurrency<T> value) unknownCurrency,
     required TResult Function(CurrencyTooBig<T> value) currencyTooBig,
     required TResult Function(CurrencyTooSmall<T> value) currencyTooSmall,
-    required TResult Function(CurrencyEmpty<T> value) currencyEmpty,
-    required TResult Function(CurrencyTooMuch<T> value) currencyTooMuch,
+    required TResult Function(InvalidStringToDouble<T> value)
+        invalidStringToDouble,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
   }) {
@@ -472,10 +640,10 @@ class _$CurrencyTooSmall<T> implements CurrencyTooSmall<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
     TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
-    TResult Function(CurrencyEmpty<T> value)? currencyEmpty,
-    TResult Function(CurrencyTooMuch<T> value)? currencyTooMuch,
+    TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
   }) {
@@ -485,10 +653,10 @@ class _$CurrencyTooSmall<T> implements CurrencyTooSmall<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
     TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
-    TResult Function(CurrencyEmpty<T> value)? currencyEmpty,
-    TResult Function(CurrencyTooMuch<T> value)? currencyTooMuch,
+    TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
     required TResult orElse(),
@@ -514,31 +682,32 @@ abstract class CurrencyTooSmall<T> implements ValueFailure<T> {
 }
 
 /// @nodoc
-abstract class $CurrencyEmptyCopyWith<T, $Res>
+abstract class $InvalidStringToDoubleCopyWith<T, $Res>
     implements $ValueFailureCopyWith<T, $Res> {
-  factory $CurrencyEmptyCopyWith(
-          CurrencyEmpty<T> value, $Res Function(CurrencyEmpty<T>) then) =
-      _$CurrencyEmptyCopyWithImpl<T, $Res>;
+  factory $InvalidStringToDoubleCopyWith(InvalidStringToDouble<T> value,
+          $Res Function(InvalidStringToDouble<T>) then) =
+      _$InvalidStringToDoubleCopyWithImpl<T, $Res>;
   @override
   $Res call({T failedValue});
 }
 
 /// @nodoc
-class _$CurrencyEmptyCopyWithImpl<T, $Res>
+class _$InvalidStringToDoubleCopyWithImpl<T, $Res>
     extends _$ValueFailureCopyWithImpl<T, $Res>
-    implements $CurrencyEmptyCopyWith<T, $Res> {
-  _$CurrencyEmptyCopyWithImpl(
-      CurrencyEmpty<T> _value, $Res Function(CurrencyEmpty<T>) _then)
-      : super(_value, (v) => _then(v as CurrencyEmpty<T>));
+    implements $InvalidStringToDoubleCopyWith<T, $Res> {
+  _$InvalidStringToDoubleCopyWithImpl(InvalidStringToDouble<T> _value,
+      $Res Function(InvalidStringToDouble<T>) _then)
+      : super(_value, (v) => _then(v as InvalidStringToDouble<T>));
 
   @override
-  CurrencyEmpty<T> get _value => super._value as CurrencyEmpty<T>;
+  InvalidStringToDouble<T> get _value =>
+      super._value as InvalidStringToDouble<T>;
 
   @override
   $Res call({
     Object? failedValue = freezed,
   }) {
-    return _then(CurrencyEmpty<T>(
+    return _then(InvalidStringToDouble<T>(
       failedValue: failedValue == freezed
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
@@ -549,22 +718,22 @@ class _$CurrencyEmptyCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$CurrencyEmpty<T> implements CurrencyEmpty<T> {
-  const _$CurrencyEmpty({required this.failedValue});
+class _$InvalidStringToDouble<T> implements InvalidStringToDouble<T> {
+  const _$InvalidStringToDouble({required this.failedValue});
 
   @override
   final T failedValue;
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.currencyEmpty(failedValue: $failedValue)';
+    return 'ValueFailure<$T>.invalidStringToDouble(failedValue: $failedValue)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is CurrencyEmpty<T> &&
+            other is InvalidStringToDouble<T> &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue));
   }
@@ -575,48 +744,49 @@ class _$CurrencyEmpty<T> implements CurrencyEmpty<T> {
 
   @JsonKey(ignore: true)
   @override
-  $CurrencyEmptyCopyWith<T, CurrencyEmpty<T>> get copyWith =>
-      _$CurrencyEmptyCopyWithImpl<T, CurrencyEmpty<T>>(this, _$identity);
+  $InvalidStringToDoubleCopyWith<T, InvalidStringToDouble<T>> get copyWith =>
+      _$InvalidStringToDoubleCopyWithImpl<T, InvalidStringToDouble<T>>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) unknownCurrency,
     required TResult Function(double max, T failedValue) currencyTooBig,
     required TResult Function(double min, T failedValue) currencyTooSmall,
-    required TResult Function(T failedValue) currencyEmpty,
-    required TResult Function(T failedValue) currencyTooMuch,
+    required TResult Function(T failedValue) invalidStringToDouble,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) shortPassword,
   }) {
-    return currencyEmpty(failedValue);
+    return invalidStringToDouble(failedValue);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T failedValue)? unknownCurrency,
     TResult Function(double max, T failedValue)? currencyTooBig,
     TResult Function(double min, T failedValue)? currencyTooSmall,
-    TResult Function(T failedValue)? currencyEmpty,
-    TResult Function(T failedValue)? currencyTooMuch,
+    TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
   }) {
-    return currencyEmpty?.call(failedValue);
+    return invalidStringToDouble?.call(failedValue);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? unknownCurrency,
     TResult Function(double max, T failedValue)? currencyTooBig,
     TResult Function(double min, T failedValue)? currencyTooSmall,
-    TResult Function(T failedValue)? currencyEmpty,
-    TResult Function(T failedValue)? currencyTooMuch,
+    TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
     required TResult orElse(),
   }) {
-    if (currencyEmpty != null) {
-      return currencyEmpty(failedValue);
+    if (invalidStringToDouble != null) {
+      return invalidStringToDouble(failedValue);
     }
     return orElse();
   }
@@ -624,219 +794,57 @@ class _$CurrencyEmpty<T> implements CurrencyEmpty<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(UnknownCurrency<T> value) unknownCurrency,
     required TResult Function(CurrencyTooBig<T> value) currencyTooBig,
     required TResult Function(CurrencyTooSmall<T> value) currencyTooSmall,
-    required TResult Function(CurrencyEmpty<T> value) currencyEmpty,
-    required TResult Function(CurrencyTooMuch<T> value) currencyTooMuch,
+    required TResult Function(InvalidStringToDouble<T> value)
+        invalidStringToDouble,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
   }) {
-    return currencyEmpty(this);
+    return invalidStringToDouble(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
     TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
-    TResult Function(CurrencyEmpty<T> value)? currencyEmpty,
-    TResult Function(CurrencyTooMuch<T> value)? currencyTooMuch,
+    TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
   }) {
-    return currencyEmpty?.call(this);
+    return invalidStringToDouble?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
     TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
-    TResult Function(CurrencyEmpty<T> value)? currencyEmpty,
-    TResult Function(CurrencyTooMuch<T> value)? currencyTooMuch,
+    TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
     required TResult orElse(),
   }) {
-    if (currencyEmpty != null) {
-      return currencyEmpty(this);
+    if (invalidStringToDouble != null) {
+      return invalidStringToDouble(this);
     }
     return orElse();
   }
 }
 
-abstract class CurrencyEmpty<T> implements ValueFailure<T> {
-  const factory CurrencyEmpty({required T failedValue}) = _$CurrencyEmpty<T>;
+abstract class InvalidStringToDouble<T> implements ValueFailure<T> {
+  const factory InvalidStringToDouble({required T failedValue}) =
+      _$InvalidStringToDouble<T>;
 
   @override
   T get failedValue;
   @override
   @JsonKey(ignore: true)
-  $CurrencyEmptyCopyWith<T, CurrencyEmpty<T>> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $CurrencyTooMuchCopyWith<T, $Res>
-    implements $ValueFailureCopyWith<T, $Res> {
-  factory $CurrencyTooMuchCopyWith(
-          CurrencyTooMuch<T> value, $Res Function(CurrencyTooMuch<T>) then) =
-      _$CurrencyTooMuchCopyWithImpl<T, $Res>;
-  @override
-  $Res call({T failedValue});
-}
-
-/// @nodoc
-class _$CurrencyTooMuchCopyWithImpl<T, $Res>
-    extends _$ValueFailureCopyWithImpl<T, $Res>
-    implements $CurrencyTooMuchCopyWith<T, $Res> {
-  _$CurrencyTooMuchCopyWithImpl(
-      CurrencyTooMuch<T> _value, $Res Function(CurrencyTooMuch<T>) _then)
-      : super(_value, (v) => _then(v as CurrencyTooMuch<T>));
-
-  @override
-  CurrencyTooMuch<T> get _value => super._value as CurrencyTooMuch<T>;
-
-  @override
-  $Res call({
-    Object? failedValue = freezed,
-  }) {
-    return _then(CurrencyTooMuch<T>(
-      failedValue: failedValue == freezed
-          ? _value.failedValue
-          : failedValue // ignore: cast_nullable_to_non_nullable
-              as T,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$CurrencyTooMuch<T> implements CurrencyTooMuch<T> {
-  const _$CurrencyTooMuch({required this.failedValue});
-
-  @override
-  final T failedValue;
-
-  @override
-  String toString() {
-    return 'ValueFailure<$T>.currencyTooMuch(failedValue: $failedValue)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is CurrencyTooMuch<T> &&
-            const DeepCollectionEquality()
-                .equals(other.failedValue, failedValue));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(failedValue));
-
-  @JsonKey(ignore: true)
-  @override
-  $CurrencyTooMuchCopyWith<T, CurrencyTooMuch<T>> get copyWith =>
-      _$CurrencyTooMuchCopyWithImpl<T, CurrencyTooMuch<T>>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(double max, T failedValue) currencyTooBig,
-    required TResult Function(double min, T failedValue) currencyTooSmall,
-    required TResult Function(T failedValue) currencyEmpty,
-    required TResult Function(T failedValue) currencyTooMuch,
-    required TResult Function(T failedValue) invalidEmail,
-    required TResult Function(T failedValue) shortPassword,
-  }) {
-    return currencyTooMuch(failedValue);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(double max, T failedValue)? currencyTooBig,
-    TResult Function(double min, T failedValue)? currencyTooSmall,
-    TResult Function(T failedValue)? currencyEmpty,
-    TResult Function(T failedValue)? currencyTooMuch,
-    TResult Function(T failedValue)? invalidEmail,
-    TResult Function(T failedValue)? shortPassword,
-  }) {
-    return currencyTooMuch?.call(failedValue);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double max, T failedValue)? currencyTooBig,
-    TResult Function(double min, T failedValue)? currencyTooSmall,
-    TResult Function(T failedValue)? currencyEmpty,
-    TResult Function(T failedValue)? currencyTooMuch,
-    TResult Function(T failedValue)? invalidEmail,
-    TResult Function(T failedValue)? shortPassword,
-    required TResult orElse(),
-  }) {
-    if (currencyTooMuch != null) {
-      return currencyTooMuch(failedValue);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CurrencyTooBig<T> value) currencyTooBig,
-    required TResult Function(CurrencyTooSmall<T> value) currencyTooSmall,
-    required TResult Function(CurrencyEmpty<T> value) currencyEmpty,
-    required TResult Function(CurrencyTooMuch<T> value) currencyTooMuch,
-    required TResult Function(InvalidEmail<T> value) invalidEmail,
-    required TResult Function(ShortPassword<T> value) shortPassword,
-  }) {
-    return currencyTooMuch(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
-    TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
-    TResult Function(CurrencyEmpty<T> value)? currencyEmpty,
-    TResult Function(CurrencyTooMuch<T> value)? currencyTooMuch,
-    TResult Function(InvalidEmail<T> value)? invalidEmail,
-    TResult Function(ShortPassword<T> value)? shortPassword,
-  }) {
-    return currencyTooMuch?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
-    TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
-    TResult Function(CurrencyEmpty<T> value)? currencyEmpty,
-    TResult Function(CurrencyTooMuch<T> value)? currencyTooMuch,
-    TResult Function(InvalidEmail<T> value)? invalidEmail,
-    TResult Function(ShortPassword<T> value)? shortPassword,
-    required TResult orElse(),
-  }) {
-    if (currencyTooMuch != null) {
-      return currencyTooMuch(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class CurrencyTooMuch<T> implements ValueFailure<T> {
-  const factory CurrencyTooMuch({required T failedValue}) =
-      _$CurrencyTooMuch<T>;
-
-  @override
-  T get failedValue;
-  @override
-  @JsonKey(ignore: true)
-  $CurrencyTooMuchCopyWith<T, CurrencyTooMuch<T>> get copyWith =>
+  $InvalidStringToDoubleCopyWith<T, InvalidStringToDouble<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -908,10 +916,10 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) unknownCurrency,
     required TResult Function(double max, T failedValue) currencyTooBig,
     required TResult Function(double min, T failedValue) currencyTooSmall,
-    required TResult Function(T failedValue) currencyEmpty,
-    required TResult Function(T failedValue) currencyTooMuch,
+    required TResult Function(T failedValue) invalidStringToDouble,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) shortPassword,
   }) {
@@ -921,10 +929,10 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T failedValue)? unknownCurrency,
     TResult Function(double max, T failedValue)? currencyTooBig,
     TResult Function(double min, T failedValue)? currencyTooSmall,
-    TResult Function(T failedValue)? currencyEmpty,
-    TResult Function(T failedValue)? currencyTooMuch,
+    TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
   }) {
@@ -934,10 +942,10 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? unknownCurrency,
     TResult Function(double max, T failedValue)? currencyTooBig,
     TResult Function(double min, T failedValue)? currencyTooSmall,
-    TResult Function(T failedValue)? currencyEmpty,
-    TResult Function(T failedValue)? currencyTooMuch,
+    TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
     required TResult orElse(),
@@ -951,10 +959,11 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(UnknownCurrency<T> value) unknownCurrency,
     required TResult Function(CurrencyTooBig<T> value) currencyTooBig,
     required TResult Function(CurrencyTooSmall<T> value) currencyTooSmall,
-    required TResult Function(CurrencyEmpty<T> value) currencyEmpty,
-    required TResult Function(CurrencyTooMuch<T> value) currencyTooMuch,
+    required TResult Function(InvalidStringToDouble<T> value)
+        invalidStringToDouble,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
   }) {
@@ -964,10 +973,10 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
     TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
-    TResult Function(CurrencyEmpty<T> value)? currencyEmpty,
-    TResult Function(CurrencyTooMuch<T> value)? currencyTooMuch,
+    TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
   }) {
@@ -977,10 +986,10 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
     TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
-    TResult Function(CurrencyEmpty<T> value)? currencyEmpty,
-    TResult Function(CurrencyTooMuch<T> value)? currencyTooMuch,
+    TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
     required TResult orElse(),
@@ -1071,10 +1080,10 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) unknownCurrency,
     required TResult Function(double max, T failedValue) currencyTooBig,
     required TResult Function(double min, T failedValue) currencyTooSmall,
-    required TResult Function(T failedValue) currencyEmpty,
-    required TResult Function(T failedValue) currencyTooMuch,
+    required TResult Function(T failedValue) invalidStringToDouble,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) shortPassword,
   }) {
@@ -1084,10 +1093,10 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T failedValue)? unknownCurrency,
     TResult Function(double max, T failedValue)? currencyTooBig,
     TResult Function(double min, T failedValue)? currencyTooSmall,
-    TResult Function(T failedValue)? currencyEmpty,
-    TResult Function(T failedValue)? currencyTooMuch,
+    TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
   }) {
@@ -1097,10 +1106,10 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? unknownCurrency,
     TResult Function(double max, T failedValue)? currencyTooBig,
     TResult Function(double min, T failedValue)? currencyTooSmall,
-    TResult Function(T failedValue)? currencyEmpty,
-    TResult Function(T failedValue)? currencyTooMuch,
+    TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
     required TResult orElse(),
@@ -1114,10 +1123,11 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(UnknownCurrency<T> value) unknownCurrency,
     required TResult Function(CurrencyTooBig<T> value) currencyTooBig,
     required TResult Function(CurrencyTooSmall<T> value) currencyTooSmall,
-    required TResult Function(CurrencyEmpty<T> value) currencyEmpty,
-    required TResult Function(CurrencyTooMuch<T> value) currencyTooMuch,
+    required TResult Function(InvalidStringToDouble<T> value)
+        invalidStringToDouble,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
   }) {
@@ -1127,10 +1137,10 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
     TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
-    TResult Function(CurrencyEmpty<T> value)? currencyEmpty,
-    TResult Function(CurrencyTooMuch<T> value)? currencyTooMuch,
+    TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
   }) {
@@ -1140,10 +1150,10 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
     TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
-    TResult Function(CurrencyEmpty<T> value)? currencyEmpty,
-    TResult Function(CurrencyTooMuch<T> value)? currencyTooMuch,
+    TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
     required TResult orElse(),

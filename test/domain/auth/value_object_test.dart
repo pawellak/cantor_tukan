@@ -1,97 +1,36 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kantor_tukan/domain/core/failures.dart';
-import 'package:kantor_tukan/domain/core/value_objects.dart';
-
-class CustomObjectRight extends ValueObject<String> {
-  @override
-  final Either<ValueFailure<String>, String> value;
-
-  factory CustomObjectRight(String input) {
-    Either<ValueFailure<String>, String> _tValue = Right(input);
-
-    return CustomObjectRight._(_tValue);
-  }
-
-  const CustomObjectRight._(this.value);
-}
-class CustomObjectLeft extends ValueObject<String> {
-  @override
-  final Either<ValueFailure<String>, String> value;
-
-  factory CustomObjectLeft(String input) {
-    Either<ValueFailure<String>, String> _tValue =
-        Left(ValueFailure.invalidEmail(failedValue: input));
-
-    return CustomObjectLeft._(_tValue);
-  }
-
-  const CustomObjectLeft._(this.value);
-}
+import 'package:kantor_tukan/domain/auth/value_object.dart';
 
 void main() {
-  late CustomObjectRight customObjectRightOne;
-  late CustomObjectRight customObjectRightTwo;
-  late CustomObjectLeft customObjectLeftOne;
-  late CustomObjectLeft customObjectLeftTwo;
+  setUp(() {});
 
-  const tValueOne = 'test';
-  const tValueTwoNotEqualToValueOne = 'test2';
+  test('should create instance of email address and check basic functionality',() async {
+      var emailAddress = EmailAddress('test@test.pl');
+      var isEmailCorrect = emailAddress.value.isRight();
+      expect(isEmailCorrect, true);
 
-  setUp(() {
-    customObjectRightOne = CustomObjectRight(tValueOne);
-    customObjectRightTwo = CustomObjectRight(tValueOne);
-    customObjectLeftOne = CustomObjectLeft(tValueOne);
-    customObjectLeftTwo = CustomObjectLeft(tValueOne);
-  });
-
-  test('should two object be equal',() async {
-      expect(customObjectRightOne, customObjectRightTwo);
-      expect(customObjectLeftOne, customObjectLeftTwo);
+      emailAddress = EmailAddress('testtest.pl');
+      var isEmailInCorrect = emailAddress.value.isLeft();
+      expect(isEmailInCorrect, true);
     },);
-  test('should two object be not equal',() async {
-      customObjectRightTwo = CustomObjectRight(tValueTwoNotEqualToValueOne);
-      expect(customObjectRightOne, isNot(customObjectRightTwo));
-      customObjectLeftTwo = CustomObjectLeft(tValueTwoNotEqualToValueOne);
-      expect(customObjectRightOne, isNot(customObjectRightTwo));
-    },);
-  test('should to string return Value: (Right(\$value) when either is right',() async {
-      customObjectRightOne = CustomObjectRight(tValueOne);
-      String result = customObjectRightOne.toString();
-      expect(result, 'Value: (Right($tValueOne))');
-    },);
-  test('should to string work when either is left',() async {
-      customObjectLeftOne = CustomObjectLeft(tValueOne);
-      String result = customObjectLeftOne.toString();
-      expect(result,
-          'Value: (Left(ValueFailure<String>.invalidEmail(failedValue: $tValueOne)))');
-    },);
-  test('should is valid return correct validation',() async {
-      var invalidObject = customObjectLeftTwo.isValid();
-      expect(false, invalidObject);
-      var validObject = customObjectRightOne.isValid();
-      expect(true, validObject);
-    },);
-  test('should crash when object is a left type', () async {
-      bool appCrashed = false;
 
-      try {
-        customObjectLeftTwo.getOrCrash();
-      } catch (e) {
-        appCrashed = true;
-      }
+  test('should create instance of email address and check basic functionality',() async {
+      var emailAddress = EmailAddress('test@test.pl');
+      var isEmailCorrect = emailAddress.value.isRight();
+      expect(isEmailCorrect, true);
 
-      expect(appCrashed, true);
+      emailAddress = EmailAddress('testtest.pl');
+      var isEmailInCorrect = emailAddress.value.isLeft();
+      expect(isEmailInCorrect, true);
     },);
-  test('should not crash when object is a right type',() async {
-      bool appCrashed = false;
 
-      try {
-        customObjectRightOne.getOrCrash();
-      } catch (e) {
-        appCrashed = true;
-      }
+  test('should create instance of password and check basic functionality',() async {
+      var password = Password('123456');
+      var isPasswordCorrect = password.value.isRight();
+      expect(isPasswordCorrect, true);
 
-      expect(appCrashed, false);
+      password = Password('12345');
+      var isPasswordIncorrect = password.value.isLeft();
+      expect(isPasswordIncorrect, true);
     },);
 }

@@ -4,6 +4,14 @@ part 'failures.freezed.dart';
 
 @freezed
 abstract class ValueFailure<T> with _$ValueFailure<T> {
+
+
+
+  const factory ValueFailure.unknownCurrency({
+    required T failedValue,
+  }) = UnknownCurrency<T>;
+
+
   const factory ValueFailure.currencyTooBig({
     required double max,
     required T failedValue,
@@ -14,13 +22,9 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
     required T failedValue,
   }) = CurrencyTooSmall<T>;
 
-  const factory ValueFailure.currencyEmpty({
+  const factory ValueFailure.invalidStringToDouble({
     required T failedValue,
-  }) = CurrencyEmpty<T>;
-
-  const factory ValueFailure.currencyTooMuch({
-    required T failedValue,
-  }) = CurrencyTooMuch<T>;
+  }) = InvalidStringToDouble<T>;
 
   const factory ValueFailure.invalidEmail({
     required T failedValue,

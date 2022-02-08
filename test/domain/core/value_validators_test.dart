@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:kantor_tukan/domain/core/core_constants.dart';
 import 'package:kantor_tukan/domain/core/failures.dart';
 import 'package:kantor_tukan/domain/core/value_validators.dart';
 
@@ -78,6 +79,50 @@ void main() {
 
         // assert
         expect(result, failurePassword);
+      },
+    );
+  });
+  group('currency value validation,', () {
+    test(
+      'should return failure when currency value is too small',
+      () async {
+        double doubleValue = CoreConstants.minValueCurrency - 1;
+        var result = valueValidators.validateCurrencyValue(doubleValue);
+        var failureCurrency = Left(ValueFailure.currencyTooSmall(
+            failedValue: doubleValue, min: CoreConstants.minValueCurrency));
+        expect(result, failureCurrency);
+      },
+    );
+
+    test(
+      'should return failure when currency value is too big',
+      () async {
+        double doubleValue = CoreConstants.maxValueCurrency + 1;
+        var result = valueValidators.validateCurrencyValue(doubleValue);
+        var failureCurrency = Left(ValueFailure.currencyTooBig(
+            failedValue: doubleValue, max: CoreConstants.maxValueCurrency));
+        expect(result, failureCurrency);
+      },
+    );
+
+    test(
+      'should return true when max value - min value is bigger than 1',
+      () async {
+        double difference =
+            CoreConstants.maxValueCurrency - CoreConstants.minValueCurrency;
+        bool differenceResult = difference > 1;
+        expect(differenceResult, true);
+      },
+    );
+
+    test(
+      'should return currency value currency value is correct',
+      () async {
+        double difference =
+            CoreConstants.maxValueCurrency - CoreConstants.minValueCurrency;
+        var result = ValueValidators().validateCurrencyValue(difference);
+        var correctCurrencyValue = Right(difference);
+        expect(result, correctCurrencyValue);
       },
     );
   });
