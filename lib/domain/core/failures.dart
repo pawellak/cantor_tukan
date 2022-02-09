@@ -7,7 +7,7 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
 
 
 
-  const factory ValueFailure.unknownCurrency({
+  const factory ValueFailure.unknownEnum({
     required T failedValue,
   }) = UnknownCurrency<T>;
 

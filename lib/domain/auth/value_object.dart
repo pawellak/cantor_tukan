@@ -21,7 +21,7 @@ class Password extends ValueObject<String> {
   final Either<ValueFailure<String>, String> value;
 
   factory Password(String input) {
-    var eitherFailureOrString = ValueValidators().validatePassword(input);
+    var eitherFailureOrString = ValueValidators().password(input);
 
     return Password._(eitherFailureOrString);
   }

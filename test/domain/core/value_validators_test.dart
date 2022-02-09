@@ -60,7 +60,7 @@ void main() {
         // arrange
         const password = '123456';
         // act
-        final result = valueValidators.validatePassword(password);
+        final result = valueValidators.password(password);
         const correctPassword = Right(password);
 
         // assert
@@ -73,7 +73,7 @@ void main() {
         // arrange
         const password = '12345';
         // act
-        final result = valueValidators.validatePassword(password);
+        final result = valueValidators.password(password);
         const failurePassword =
             Left(ValueFailure<String>.shortPassword(failedValue: password));
 
@@ -87,7 +87,7 @@ void main() {
       'should return failure when currency value is too small',
       () async {
         double doubleValue = CoreConstants.minValueCurrency - 1;
-        var result = valueValidators.validateCurrencyValue(doubleValue);
+        var result = valueValidators.currencyValue(doubleValue);
         var failureCurrency = Left(ValueFailure.currencyTooSmall(
             failedValue: doubleValue, min: CoreConstants.minValueCurrency));
         expect(result, failureCurrency);
@@ -98,7 +98,7 @@ void main() {
       'should return failure when currency value is too big',
       () async {
         double doubleValue = CoreConstants.maxValueCurrency + 1;
-        var result = valueValidators.validateCurrencyValue(doubleValue);
+        var result = valueValidators.currencyValue(doubleValue);
         var failureCurrency = Left(ValueFailure.currencyTooBig(
             failedValue: doubleValue, max: CoreConstants.maxValueCurrency));
         expect(result, failureCurrency);
@@ -120,7 +120,7 @@ void main() {
       () async {
         double difference =
             CoreConstants.maxValueCurrency - CoreConstants.minValueCurrency;
-        var result = ValueValidators().validateCurrencyValue(difference);
+        var result = ValueValidators().currencyValue(difference);
         var correctCurrencyValue = Right(difference);
         expect(result, correctCurrencyValue);
       },
