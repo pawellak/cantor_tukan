@@ -29,4 +29,12 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.shortPassword({
     required T failedValue,
   }) = ShortPassword<T>;
+
+  const factory ValueFailure.invalidDate({
+    required T failedValue,
+  }) = InvalidDate<T>;
+
+  const factory ValueFailure.dateIsUTC({
+    required T failedValue,
+  }) = DateIsUTC<T>;
 }

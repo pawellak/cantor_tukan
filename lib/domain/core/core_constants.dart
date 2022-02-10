@@ -9,4 +9,5 @@ class CoreConstants {
       'Encountered a ValueFailure at an unrecoverable point terminating.';
   static const failureWas = 'Failure was:';
   static const noDate = '---';
+  static const minPossiblyYearData = 2021;
 }

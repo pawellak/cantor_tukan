@@ -17,13 +17,13 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$ValueFailureTearOff {
   const _$ValueFailureTearOff();
 
-  UnknownCurrency<T> unknownCurrency<T>({required T failedValue}) {
+  UnknownCurrency<T> unknownEnum<T>({required T failedValue}) {
     return UnknownCurrency<T>(
       failedValue: failedValue,
     );
   }
 
-  CurrencyTooBig<T> currencyTooBig<T>(
+  CurrencyTooBig<T> currencyValueTooBig<T>(
       {required double max, required T failedValue}) {
     return CurrencyTooBig<T>(
       max: max,
@@ -31,7 +31,7 @@ class _$ValueFailureTearOff {
     );
   }
 
-  CurrencyTooSmall<T> currencyTooSmall<T>(
+  CurrencyTooSmall<T> currencyValueTooSmall<T>(
       {required double min, required T failedValue}) {
     return CurrencyTooSmall<T>(
       min: min,
@@ -56,6 +56,18 @@ class _$ValueFailureTearOff {
       failedValue: failedValue,
     );
   }
+
+  InvalidDate<T> invalidDate<T>({required T failedValue}) {
+    return InvalidDate<T>(
+      failedValue: failedValue,
+    );
+  }
+
+  DateIsUTC<T> dateIsUTC<T>({required T failedValue}) {
+    return DateIsUTC<T>(
+      failedValue: failedValue,
+    );
+  }
 }
 
 /// @nodoc
@@ -67,64 +79,76 @@ mixin _$ValueFailure<T> {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T failedValue) unknownCurrency,
-    required TResult Function(double max, T failedValue) currencyTooBig,
-    required TResult Function(double min, T failedValue) currencyTooSmall,
+    required TResult Function(T failedValue) unknownEnum,
+    required TResult Function(double max, T failedValue) currencyValueTooBig,
+    required TResult Function(double min, T failedValue) currencyValueTooSmall,
     required TResult Function(T failedValue) invalidStringToDouble,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidDate,
+    required TResult Function(T failedValue) dateIsUTC,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T failedValue)? unknownCurrency,
-    TResult Function(double max, T failedValue)? currencyTooBig,
-    TResult Function(double min, T failedValue)? currencyTooSmall,
+    TResult Function(T failedValue)? unknownEnum,
+    TResult Function(double max, T failedValue)? currencyValueTooBig,
+    TResult Function(double min, T failedValue)? currencyValueTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidDate,
+    TResult Function(T failedValue)? dateIsUTC,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T failedValue)? unknownCurrency,
-    TResult Function(double max, T failedValue)? currencyTooBig,
-    TResult Function(double min, T failedValue)? currencyTooSmall,
+    TResult Function(T failedValue)? unknownEnum,
+    TResult Function(double max, T failedValue)? currencyValueTooBig,
+    TResult Function(double min, T failedValue)? currencyValueTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidDate,
+    TResult Function(T failedValue)? dateIsUTC,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(UnknownCurrency<T> value) unknownCurrency,
-    required TResult Function(CurrencyTooBig<T> value) currencyTooBig,
-    required TResult Function(CurrencyTooSmall<T> value) currencyTooSmall,
+    required TResult Function(UnknownCurrency<T> value) unknownEnum,
+    required TResult Function(CurrencyTooBig<T> value) currencyValueTooBig,
+    required TResult Function(CurrencyTooSmall<T> value) currencyValueTooSmall,
     required TResult Function(InvalidStringToDouble<T> value)
         invalidStringToDouble,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(InvalidDate<T> value) invalidDate,
+    required TResult Function(DateIsUTC<T> value) dateIsUTC,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
-    TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
-    TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
+    TResult Function(UnknownCurrency<T> value)? unknownEnum,
+    TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
+    TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidDate<T> value)? invalidDate,
+    TResult Function(DateIsUTC<T> value)? dateIsUTC,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
-    TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
-    TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
+    TResult Function(UnknownCurrency<T> value)? unknownEnum,
+    TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
+    TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidDate<T> value)? invalidDate,
+    TResult Function(DateIsUTC<T> value)? dateIsUTC,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -208,7 +232,7 @@ class _$UnknownCurrency<T> implements UnknownCurrency<T> {
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.unknownCurrency(failedValue: $failedValue)';
+    return 'ValueFailure<$T>.unknownEnum(failedValue: $failedValue)';
   }
 
   @override
@@ -232,42 +256,48 @@ class _$UnknownCurrency<T> implements UnknownCurrency<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T failedValue) unknownCurrency,
-    required TResult Function(double max, T failedValue) currencyTooBig,
-    required TResult Function(double min, T failedValue) currencyTooSmall,
+    required TResult Function(T failedValue) unknownEnum,
+    required TResult Function(double max, T failedValue) currencyValueTooBig,
+    required TResult Function(double min, T failedValue) currencyValueTooSmall,
     required TResult Function(T failedValue) invalidStringToDouble,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidDate,
+    required TResult Function(T failedValue) dateIsUTC,
   }) {
-    return unknownCurrency(failedValue);
+    return unknownEnum(failedValue);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T failedValue)? unknownCurrency,
-    TResult Function(double max, T failedValue)? currencyTooBig,
-    TResult Function(double min, T failedValue)? currencyTooSmall,
+    TResult Function(T failedValue)? unknownEnum,
+    TResult Function(double max, T failedValue)? currencyValueTooBig,
+    TResult Function(double min, T failedValue)? currencyValueTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidDate,
+    TResult Function(T failedValue)? dateIsUTC,
   }) {
-    return unknownCurrency?.call(failedValue);
+    return unknownEnum?.call(failedValue);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T failedValue)? unknownCurrency,
-    TResult Function(double max, T failedValue)? currencyTooBig,
-    TResult Function(double min, T failedValue)? currencyTooSmall,
+    TResult Function(T failedValue)? unknownEnum,
+    TResult Function(double max, T failedValue)? currencyValueTooBig,
+    TResult Function(double min, T failedValue)? currencyValueTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidDate,
+    TResult Function(T failedValue)? dateIsUTC,
     required TResult orElse(),
   }) {
-    if (unknownCurrency != null) {
-      return unknownCurrency(failedValue);
+    if (unknownEnum != null) {
+      return unknownEnum(failedValue);
     }
     return orElse();
   }
@@ -275,43 +305,49 @@ class _$UnknownCurrency<T> implements UnknownCurrency<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(UnknownCurrency<T> value) unknownCurrency,
-    required TResult Function(CurrencyTooBig<T> value) currencyTooBig,
-    required TResult Function(CurrencyTooSmall<T> value) currencyTooSmall,
+    required TResult Function(UnknownCurrency<T> value) unknownEnum,
+    required TResult Function(CurrencyTooBig<T> value) currencyValueTooBig,
+    required TResult Function(CurrencyTooSmall<T> value) currencyValueTooSmall,
     required TResult Function(InvalidStringToDouble<T> value)
         invalidStringToDouble,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(InvalidDate<T> value) invalidDate,
+    required TResult Function(DateIsUTC<T> value) dateIsUTC,
   }) {
-    return unknownCurrency(this);
+    return unknownEnum(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
-    TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
-    TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
+    TResult Function(UnknownCurrency<T> value)? unknownEnum,
+    TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
+    TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidDate<T> value)? invalidDate,
+    TResult Function(DateIsUTC<T> value)? dateIsUTC,
   }) {
-    return unknownCurrency?.call(this);
+    return unknownEnum?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
-    TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
-    TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
+    TResult Function(UnknownCurrency<T> value)? unknownEnum,
+    TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
+    TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidDate<T> value)? invalidDate,
+    TResult Function(DateIsUTC<T> value)? dateIsUTC,
     required TResult orElse(),
   }) {
-    if (unknownCurrency != null) {
-      return unknownCurrency(this);
+    if (unknownEnum != null) {
+      return unknownEnum(this);
     }
     return orElse();
   }
@@ -380,7 +416,7 @@ class _$CurrencyTooBig<T> implements CurrencyTooBig<T> {
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.currencyTooBig(max: $max, failedValue: $failedValue)';
+    return 'ValueFailure<$T>.currencyValueTooBig(max: $max, failedValue: $failedValue)';
   }
 
   @override
@@ -407,42 +443,48 @@ class _$CurrencyTooBig<T> implements CurrencyTooBig<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T failedValue) unknownCurrency,
-    required TResult Function(double max, T failedValue) currencyTooBig,
-    required TResult Function(double min, T failedValue) currencyTooSmall,
+    required TResult Function(T failedValue) unknownEnum,
+    required TResult Function(double max, T failedValue) currencyValueTooBig,
+    required TResult Function(double min, T failedValue) currencyValueTooSmall,
     required TResult Function(T failedValue) invalidStringToDouble,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidDate,
+    required TResult Function(T failedValue) dateIsUTC,
   }) {
-    return currencyTooBig(max, failedValue);
+    return currencyValueTooBig(max, failedValue);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T failedValue)? unknownCurrency,
-    TResult Function(double max, T failedValue)? currencyTooBig,
-    TResult Function(double min, T failedValue)? currencyTooSmall,
+    TResult Function(T failedValue)? unknownEnum,
+    TResult Function(double max, T failedValue)? currencyValueTooBig,
+    TResult Function(double min, T failedValue)? currencyValueTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidDate,
+    TResult Function(T failedValue)? dateIsUTC,
   }) {
-    return currencyTooBig?.call(max, failedValue);
+    return currencyValueTooBig?.call(max, failedValue);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T failedValue)? unknownCurrency,
-    TResult Function(double max, T failedValue)? currencyTooBig,
-    TResult Function(double min, T failedValue)? currencyTooSmall,
+    TResult Function(T failedValue)? unknownEnum,
+    TResult Function(double max, T failedValue)? currencyValueTooBig,
+    TResult Function(double min, T failedValue)? currencyValueTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidDate,
+    TResult Function(T failedValue)? dateIsUTC,
     required TResult orElse(),
   }) {
-    if (currencyTooBig != null) {
-      return currencyTooBig(max, failedValue);
+    if (currencyValueTooBig != null) {
+      return currencyValueTooBig(max, failedValue);
     }
     return orElse();
   }
@@ -450,43 +492,49 @@ class _$CurrencyTooBig<T> implements CurrencyTooBig<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(UnknownCurrency<T> value) unknownCurrency,
-    required TResult Function(CurrencyTooBig<T> value) currencyTooBig,
-    required TResult Function(CurrencyTooSmall<T> value) currencyTooSmall,
+    required TResult Function(UnknownCurrency<T> value) unknownEnum,
+    required TResult Function(CurrencyTooBig<T> value) currencyValueTooBig,
+    required TResult Function(CurrencyTooSmall<T> value) currencyValueTooSmall,
     required TResult Function(InvalidStringToDouble<T> value)
         invalidStringToDouble,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(InvalidDate<T> value) invalidDate,
+    required TResult Function(DateIsUTC<T> value) dateIsUTC,
   }) {
-    return currencyTooBig(this);
+    return currencyValueTooBig(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
-    TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
-    TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
+    TResult Function(UnknownCurrency<T> value)? unknownEnum,
+    TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
+    TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidDate<T> value)? invalidDate,
+    TResult Function(DateIsUTC<T> value)? dateIsUTC,
   }) {
-    return currencyTooBig?.call(this);
+    return currencyValueTooBig?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
-    TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
-    TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
+    TResult Function(UnknownCurrency<T> value)? unknownEnum,
+    TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
+    TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidDate<T> value)? invalidDate,
+    TResult Function(DateIsUTC<T> value)? dateIsUTC,
     required TResult orElse(),
   }) {
-    if (currencyTooBig != null) {
-      return currencyTooBig(this);
+    if (currencyValueTooBig != null) {
+      return currencyValueTooBig(this);
     }
     return orElse();
   }
@@ -556,7 +604,7 @@ class _$CurrencyTooSmall<T> implements CurrencyTooSmall<T> {
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.currencyTooSmall(min: $min, failedValue: $failedValue)';
+    return 'ValueFailure<$T>.currencyValueTooSmall(min: $min, failedValue: $failedValue)';
   }
 
   @override
@@ -583,42 +631,48 @@ class _$CurrencyTooSmall<T> implements CurrencyTooSmall<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T failedValue) unknownCurrency,
-    required TResult Function(double max, T failedValue) currencyTooBig,
-    required TResult Function(double min, T failedValue) currencyTooSmall,
+    required TResult Function(T failedValue) unknownEnum,
+    required TResult Function(double max, T failedValue) currencyValueTooBig,
+    required TResult Function(double min, T failedValue) currencyValueTooSmall,
     required TResult Function(T failedValue) invalidStringToDouble,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidDate,
+    required TResult Function(T failedValue) dateIsUTC,
   }) {
-    return currencyTooSmall(min, failedValue);
+    return currencyValueTooSmall(min, failedValue);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T failedValue)? unknownCurrency,
-    TResult Function(double max, T failedValue)? currencyTooBig,
-    TResult Function(double min, T failedValue)? currencyTooSmall,
+    TResult Function(T failedValue)? unknownEnum,
+    TResult Function(double max, T failedValue)? currencyValueTooBig,
+    TResult Function(double min, T failedValue)? currencyValueTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidDate,
+    TResult Function(T failedValue)? dateIsUTC,
   }) {
-    return currencyTooSmall?.call(min, failedValue);
+    return currencyValueTooSmall?.call(min, failedValue);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T failedValue)? unknownCurrency,
-    TResult Function(double max, T failedValue)? currencyTooBig,
-    TResult Function(double min, T failedValue)? currencyTooSmall,
+    TResult Function(T failedValue)? unknownEnum,
+    TResult Function(double max, T failedValue)? currencyValueTooBig,
+    TResult Function(double min, T failedValue)? currencyValueTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidDate,
+    TResult Function(T failedValue)? dateIsUTC,
     required TResult orElse(),
   }) {
-    if (currencyTooSmall != null) {
-      return currencyTooSmall(min, failedValue);
+    if (currencyValueTooSmall != null) {
+      return currencyValueTooSmall(min, failedValue);
     }
     return orElse();
   }
@@ -626,43 +680,49 @@ class _$CurrencyTooSmall<T> implements CurrencyTooSmall<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(UnknownCurrency<T> value) unknownCurrency,
-    required TResult Function(CurrencyTooBig<T> value) currencyTooBig,
-    required TResult Function(CurrencyTooSmall<T> value) currencyTooSmall,
+    required TResult Function(UnknownCurrency<T> value) unknownEnum,
+    required TResult Function(CurrencyTooBig<T> value) currencyValueTooBig,
+    required TResult Function(CurrencyTooSmall<T> value) currencyValueTooSmall,
     required TResult Function(InvalidStringToDouble<T> value)
         invalidStringToDouble,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(InvalidDate<T> value) invalidDate,
+    required TResult Function(DateIsUTC<T> value) dateIsUTC,
   }) {
-    return currencyTooSmall(this);
+    return currencyValueTooSmall(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
-    TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
-    TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
+    TResult Function(UnknownCurrency<T> value)? unknownEnum,
+    TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
+    TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidDate<T> value)? invalidDate,
+    TResult Function(DateIsUTC<T> value)? dateIsUTC,
   }) {
-    return currencyTooSmall?.call(this);
+    return currencyValueTooSmall?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
-    TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
-    TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
+    TResult Function(UnknownCurrency<T> value)? unknownEnum,
+    TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
+    TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidDate<T> value)? invalidDate,
+    TResult Function(DateIsUTC<T> value)? dateIsUTC,
     required TResult orElse(),
   }) {
-    if (currencyTooSmall != null) {
-      return currencyTooSmall(this);
+    if (currencyValueTooSmall != null) {
+      return currencyValueTooSmall(this);
     }
     return orElse();
   }
@@ -751,12 +811,14 @@ class _$InvalidStringToDouble<T> implements InvalidStringToDouble<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T failedValue) unknownCurrency,
-    required TResult Function(double max, T failedValue) currencyTooBig,
-    required TResult Function(double min, T failedValue) currencyTooSmall,
+    required TResult Function(T failedValue) unknownEnum,
+    required TResult Function(double max, T failedValue) currencyValueTooBig,
+    required TResult Function(double min, T failedValue) currencyValueTooSmall,
     required TResult Function(T failedValue) invalidStringToDouble,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidDate,
+    required TResult Function(T failedValue) dateIsUTC,
   }) {
     return invalidStringToDouble(failedValue);
   }
@@ -764,12 +826,14 @@ class _$InvalidStringToDouble<T> implements InvalidStringToDouble<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T failedValue)? unknownCurrency,
-    TResult Function(double max, T failedValue)? currencyTooBig,
-    TResult Function(double min, T failedValue)? currencyTooSmall,
+    TResult Function(T failedValue)? unknownEnum,
+    TResult Function(double max, T failedValue)? currencyValueTooBig,
+    TResult Function(double min, T failedValue)? currencyValueTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidDate,
+    TResult Function(T failedValue)? dateIsUTC,
   }) {
     return invalidStringToDouble?.call(failedValue);
   }
@@ -777,12 +841,14 @@ class _$InvalidStringToDouble<T> implements InvalidStringToDouble<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T failedValue)? unknownCurrency,
-    TResult Function(double max, T failedValue)? currencyTooBig,
-    TResult Function(double min, T failedValue)? currencyTooSmall,
+    TResult Function(T failedValue)? unknownEnum,
+    TResult Function(double max, T failedValue)? currencyValueTooBig,
+    TResult Function(double min, T failedValue)? currencyValueTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidDate,
+    TResult Function(T failedValue)? dateIsUTC,
     required TResult orElse(),
   }) {
     if (invalidStringToDouble != null) {
@@ -794,13 +860,15 @@ class _$InvalidStringToDouble<T> implements InvalidStringToDouble<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(UnknownCurrency<T> value) unknownCurrency,
-    required TResult Function(CurrencyTooBig<T> value) currencyTooBig,
-    required TResult Function(CurrencyTooSmall<T> value) currencyTooSmall,
+    required TResult Function(UnknownCurrency<T> value) unknownEnum,
+    required TResult Function(CurrencyTooBig<T> value) currencyValueTooBig,
+    required TResult Function(CurrencyTooSmall<T> value) currencyValueTooSmall,
     required TResult Function(InvalidStringToDouble<T> value)
         invalidStringToDouble,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(InvalidDate<T> value) invalidDate,
+    required TResult Function(DateIsUTC<T> value) dateIsUTC,
   }) {
     return invalidStringToDouble(this);
   }
@@ -808,12 +876,14 @@ class _$InvalidStringToDouble<T> implements InvalidStringToDouble<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
-    TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
-    TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
+    TResult Function(UnknownCurrency<T> value)? unknownEnum,
+    TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
+    TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidDate<T> value)? invalidDate,
+    TResult Function(DateIsUTC<T> value)? dateIsUTC,
   }) {
     return invalidStringToDouble?.call(this);
   }
@@ -821,12 +891,14 @@ class _$InvalidStringToDouble<T> implements InvalidStringToDouble<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
-    TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
-    TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
+    TResult Function(UnknownCurrency<T> value)? unknownEnum,
+    TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
+    TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidDate<T> value)? invalidDate,
+    TResult Function(DateIsUTC<T> value)? dateIsUTC,
     required TResult orElse(),
   }) {
     if (invalidStringToDouble != null) {
@@ -916,12 +988,14 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T failedValue) unknownCurrency,
-    required TResult Function(double max, T failedValue) currencyTooBig,
-    required TResult Function(double min, T failedValue) currencyTooSmall,
+    required TResult Function(T failedValue) unknownEnum,
+    required TResult Function(double max, T failedValue) currencyValueTooBig,
+    required TResult Function(double min, T failedValue) currencyValueTooSmall,
     required TResult Function(T failedValue) invalidStringToDouble,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidDate,
+    required TResult Function(T failedValue) dateIsUTC,
   }) {
     return invalidEmail(failedValue);
   }
@@ -929,12 +1003,14 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T failedValue)? unknownCurrency,
-    TResult Function(double max, T failedValue)? currencyTooBig,
-    TResult Function(double min, T failedValue)? currencyTooSmall,
+    TResult Function(T failedValue)? unknownEnum,
+    TResult Function(double max, T failedValue)? currencyValueTooBig,
+    TResult Function(double min, T failedValue)? currencyValueTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidDate,
+    TResult Function(T failedValue)? dateIsUTC,
   }) {
     return invalidEmail?.call(failedValue);
   }
@@ -942,12 +1018,14 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T failedValue)? unknownCurrency,
-    TResult Function(double max, T failedValue)? currencyTooBig,
-    TResult Function(double min, T failedValue)? currencyTooSmall,
+    TResult Function(T failedValue)? unknownEnum,
+    TResult Function(double max, T failedValue)? currencyValueTooBig,
+    TResult Function(double min, T failedValue)? currencyValueTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidDate,
+    TResult Function(T failedValue)? dateIsUTC,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -959,13 +1037,15 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(UnknownCurrency<T> value) unknownCurrency,
-    required TResult Function(CurrencyTooBig<T> value) currencyTooBig,
-    required TResult Function(CurrencyTooSmall<T> value) currencyTooSmall,
+    required TResult Function(UnknownCurrency<T> value) unknownEnum,
+    required TResult Function(CurrencyTooBig<T> value) currencyValueTooBig,
+    required TResult Function(CurrencyTooSmall<T> value) currencyValueTooSmall,
     required TResult Function(InvalidStringToDouble<T> value)
         invalidStringToDouble,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(InvalidDate<T> value) invalidDate,
+    required TResult Function(DateIsUTC<T> value) dateIsUTC,
   }) {
     return invalidEmail(this);
   }
@@ -973,12 +1053,14 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
-    TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
-    TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
+    TResult Function(UnknownCurrency<T> value)? unknownEnum,
+    TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
+    TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidDate<T> value)? invalidDate,
+    TResult Function(DateIsUTC<T> value)? dateIsUTC,
   }) {
     return invalidEmail?.call(this);
   }
@@ -986,12 +1068,14 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
-    TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
-    TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
+    TResult Function(UnknownCurrency<T> value)? unknownEnum,
+    TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
+    TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidDate<T> value)? invalidDate,
+    TResult Function(DateIsUTC<T> value)? dateIsUTC,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -1080,12 +1164,14 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(T failedValue) unknownCurrency,
-    required TResult Function(double max, T failedValue) currencyTooBig,
-    required TResult Function(double min, T failedValue) currencyTooSmall,
+    required TResult Function(T failedValue) unknownEnum,
+    required TResult Function(double max, T failedValue) currencyValueTooBig,
+    required TResult Function(double min, T failedValue) currencyValueTooSmall,
     required TResult Function(T failedValue) invalidStringToDouble,
     required TResult Function(T failedValue) invalidEmail,
     required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidDate,
+    required TResult Function(T failedValue) dateIsUTC,
   }) {
     return shortPassword(failedValue);
   }
@@ -1093,12 +1179,14 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T failedValue)? unknownCurrency,
-    TResult Function(double max, T failedValue)? currencyTooBig,
-    TResult Function(double min, T failedValue)? currencyTooSmall,
+    TResult Function(T failedValue)? unknownEnum,
+    TResult Function(double max, T failedValue)? currencyValueTooBig,
+    TResult Function(double min, T failedValue)? currencyValueTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidDate,
+    TResult Function(T failedValue)? dateIsUTC,
   }) {
     return shortPassword?.call(failedValue);
   }
@@ -1106,12 +1194,14 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(T failedValue)? unknownCurrency,
-    TResult Function(double max, T failedValue)? currencyTooBig,
-    TResult Function(double min, T failedValue)? currencyTooSmall,
+    TResult Function(T failedValue)? unknownEnum,
+    TResult Function(double max, T failedValue)? currencyValueTooBig,
+    TResult Function(double min, T failedValue)? currencyValueTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
     TResult Function(T failedValue)? invalidEmail,
     TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidDate,
+    TResult Function(T failedValue)? dateIsUTC,
     required TResult orElse(),
   }) {
     if (shortPassword != null) {
@@ -1123,13 +1213,15 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(UnknownCurrency<T> value) unknownCurrency,
-    required TResult Function(CurrencyTooBig<T> value) currencyTooBig,
-    required TResult Function(CurrencyTooSmall<T> value) currencyTooSmall,
+    required TResult Function(UnknownCurrency<T> value) unknownEnum,
+    required TResult Function(CurrencyTooBig<T> value) currencyValueTooBig,
+    required TResult Function(CurrencyTooSmall<T> value) currencyValueTooSmall,
     required TResult Function(InvalidStringToDouble<T> value)
         invalidStringToDouble,
     required TResult Function(InvalidEmail<T> value) invalidEmail,
     required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(InvalidDate<T> value) invalidDate,
+    required TResult Function(DateIsUTC<T> value) dateIsUTC,
   }) {
     return shortPassword(this);
   }
@@ -1137,12 +1229,14 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
-    TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
-    TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
+    TResult Function(UnknownCurrency<T> value)? unknownEnum,
+    TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
+    TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidDate<T> value)? invalidDate,
+    TResult Function(DateIsUTC<T> value)? dateIsUTC,
   }) {
     return shortPassword?.call(this);
   }
@@ -1150,12 +1244,14 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(UnknownCurrency<T> value)? unknownCurrency,
-    TResult Function(CurrencyTooBig<T> value)? currencyTooBig,
-    TResult Function(CurrencyTooSmall<T> value)? currencyTooSmall,
+    TResult Function(UnknownCurrency<T> value)? unknownEnum,
+    TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
+    TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
     TResult Function(InvalidEmail<T> value)? invalidEmail,
     TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidDate<T> value)? invalidDate,
+    TResult Function(DateIsUTC<T> value)? dateIsUTC,
     required TResult orElse(),
   }) {
     if (shortPassword != null) {
@@ -1173,5 +1269,357 @@ abstract class ShortPassword<T> implements ValueFailure<T> {
   @override
   @JsonKey(ignore: true)
   $ShortPasswordCopyWith<T, ShortPassword<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $InvalidDateCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $InvalidDateCopyWith(
+          InvalidDate<T> value, $Res Function(InvalidDate<T>) then) =
+      _$InvalidDateCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class _$InvalidDateCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $InvalidDateCopyWith<T, $Res> {
+  _$InvalidDateCopyWithImpl(
+      InvalidDate<T> _value, $Res Function(InvalidDate<T>) _then)
+      : super(_value, (v) => _then(v as InvalidDate<T>));
+
+  @override
+  InvalidDate<T> get _value => super._value as InvalidDate<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+  }) {
+    return _then(InvalidDate<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InvalidDate<T> implements InvalidDate<T> {
+  const _$InvalidDate({required this.failedValue});
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.invalidDate(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is InvalidDate<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
+
+  @JsonKey(ignore: true)
+  @override
+  $InvalidDateCopyWith<T, InvalidDate<T>> get copyWith =>
+      _$InvalidDateCopyWithImpl<T, InvalidDate<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) unknownEnum,
+    required TResult Function(double max, T failedValue) currencyValueTooBig,
+    required TResult Function(double min, T failedValue) currencyValueTooSmall,
+    required TResult Function(T failedValue) invalidStringToDouble,
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidDate,
+    required TResult Function(T failedValue) dateIsUTC,
+  }) {
+    return invalidDate(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T failedValue)? unknownEnum,
+    TResult Function(double max, T failedValue)? currencyValueTooBig,
+    TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? invalidStringToDouble,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidDate,
+    TResult Function(T failedValue)? dateIsUTC,
+  }) {
+    return invalidDate?.call(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? unknownEnum,
+    TResult Function(double max, T failedValue)? currencyValueTooBig,
+    TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? invalidStringToDouble,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidDate,
+    TResult Function(T failedValue)? dateIsUTC,
+    required TResult orElse(),
+  }) {
+    if (invalidDate != null) {
+      return invalidDate(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UnknownCurrency<T> value) unknownEnum,
+    required TResult Function(CurrencyTooBig<T> value) currencyValueTooBig,
+    required TResult Function(CurrencyTooSmall<T> value) currencyValueTooSmall,
+    required TResult Function(InvalidStringToDouble<T> value)
+        invalidStringToDouble,
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(InvalidDate<T> value) invalidDate,
+    required TResult Function(DateIsUTC<T> value) dateIsUTC,
+  }) {
+    return invalidDate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(UnknownCurrency<T> value)? unknownEnum,
+    TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
+    TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidDate<T> value)? invalidDate,
+    TResult Function(DateIsUTC<T> value)? dateIsUTC,
+  }) {
+    return invalidDate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UnknownCurrency<T> value)? unknownEnum,
+    TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
+    TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidDate<T> value)? invalidDate,
+    TResult Function(DateIsUTC<T> value)? dateIsUTC,
+    required TResult orElse(),
+  }) {
+    if (invalidDate != null) {
+      return invalidDate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvalidDate<T> implements ValueFailure<T> {
+  const factory InvalidDate({required T failedValue}) = _$InvalidDate<T>;
+
+  @override
+  T get failedValue;
+  @override
+  @JsonKey(ignore: true)
+  $InvalidDateCopyWith<T, InvalidDate<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DateIsUTCCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $DateIsUTCCopyWith(
+          DateIsUTC<T> value, $Res Function(DateIsUTC<T>) then) =
+      _$DateIsUTCCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class _$DateIsUTCCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $DateIsUTCCopyWith<T, $Res> {
+  _$DateIsUTCCopyWithImpl(
+      DateIsUTC<T> _value, $Res Function(DateIsUTC<T>) _then)
+      : super(_value, (v) => _then(v as DateIsUTC<T>));
+
+  @override
+  DateIsUTC<T> get _value => super._value as DateIsUTC<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+  }) {
+    return _then(DateIsUTC<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DateIsUTC<T> implements DateIsUTC<T> {
+  const _$DateIsUTC({required this.failedValue});
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.dateIsUTC(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is DateIsUTC<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
+
+  @JsonKey(ignore: true)
+  @override
+  $DateIsUTCCopyWith<T, DateIsUTC<T>> get copyWith =>
+      _$DateIsUTCCopyWithImpl<T, DateIsUTC<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) unknownEnum,
+    required TResult Function(double max, T failedValue) currencyValueTooBig,
+    required TResult Function(double min, T failedValue) currencyValueTooSmall,
+    required TResult Function(T failedValue) invalidStringToDouble,
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidDate,
+    required TResult Function(T failedValue) dateIsUTC,
+  }) {
+    return dateIsUTC(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T failedValue)? unknownEnum,
+    TResult Function(double max, T failedValue)? currencyValueTooBig,
+    TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? invalidStringToDouble,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidDate,
+    TResult Function(T failedValue)? dateIsUTC,
+  }) {
+    return dateIsUTC?.call(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? unknownEnum,
+    TResult Function(double max, T failedValue)? currencyValueTooBig,
+    TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? invalidStringToDouble,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidDate,
+    TResult Function(T failedValue)? dateIsUTC,
+    required TResult orElse(),
+  }) {
+    if (dateIsUTC != null) {
+      return dateIsUTC(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UnknownCurrency<T> value) unknownEnum,
+    required TResult Function(CurrencyTooBig<T> value) currencyValueTooBig,
+    required TResult Function(CurrencyTooSmall<T> value) currencyValueTooSmall,
+    required TResult Function(InvalidStringToDouble<T> value)
+        invalidStringToDouble,
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(InvalidDate<T> value) invalidDate,
+    required TResult Function(DateIsUTC<T> value) dateIsUTC,
+  }) {
+    return dateIsUTC(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(UnknownCurrency<T> value)? unknownEnum,
+    TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
+    TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidDate<T> value)? invalidDate,
+    TResult Function(DateIsUTC<T> value)? dateIsUTC,
+  }) {
+    return dateIsUTC?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UnknownCurrency<T> value)? unknownEnum,
+    TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
+    TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidDate<T> value)? invalidDate,
+    TResult Function(DateIsUTC<T> value)? dateIsUTC,
+    required TResult orElse(),
+  }) {
+    if (dateIsUTC != null) {
+      return dateIsUTC(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DateIsUTC<T> implements ValueFailure<T> {
+  const factory DateIsUTC({required T failedValue}) = _$DateIsUTC<T>;
+
+  @override
+  T get failedValue;
+  @override
+  @JsonKey(ignore: true)
+  $DateIsUTCCopyWith<T, DateIsUTC<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -20,20 +20,6 @@ void main() {
   );
 
   test(
-    'should create instance of email address and check basic functionality',
-    () async {
-      const expectedResult = true;
-      var testedData = EmailAddress('test@test.pl');
-      var result = testedData.value.isRight();
-      expect(result, expectedResult);
-
-      testedData = EmailAddress('testtest.pl');
-      result = testedData.value.isLeft();
-      expect(result, expectedResult);
-    },
-  );
-
-  test(
     'should create instance of password and check basic functionality',
     () async {
       const expectedResult = true;

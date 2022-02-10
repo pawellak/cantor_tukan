@@ -54,6 +54,13 @@ class ValueValidators {
     }
   }
 
-
-
+  Either<ValueFailure<DateTime>, DateTime> dateTime(DateTime input) {
+    if (input.isUtc) {
+      return left(ValueFailure.dateIsUTC(failedValue: input));
+    } else if (input.isAfter(DateTime.utc(CoreConstants.minPossiblyYearData))) {
+      return right(input);
+    } else {
+      return left(ValueFailure.invalidDate(failedValue: input));
+    }
+  }
 }

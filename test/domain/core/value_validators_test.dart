@@ -16,7 +16,7 @@ void main() {
     () {
       test(
         'should return email when email is correct',
-        () async {
+        () {
           const testedData = 'test@test.com';
           final result = valueValidators.emailAddress(testedData);
           const expectedResult = Right(testedData);
@@ -25,7 +25,7 @@ void main() {
       );
       test(
         'should return Failure when email have not @ sign',
-        () async {
+        () {
           const testedData = 'testtest.com';
           final result = valueValidators.emailAddress(testedData);
           const expectedResult = Left(ValueFailure<String>.invalidEmail(failedValue: testedData));
@@ -35,7 +35,7 @@ void main() {
 
       test(
         'should return Failure when email is incorrect',
-        () async {
+        () {
           const testedData = 'test@test.';
           final result = valueValidators.emailAddress(testedData);
           const expectedResult = Left(ValueFailure<String>.invalidEmail(failedValue: testedData));
@@ -44,12 +44,13 @@ void main() {
       );
     },
   );
+
   group(
     'password validation',
     () {
       test(
         'should return password when password is correct',
-        () async {
+        () {
           const testedData = '123456';
           final result = valueValidators.password(testedData);
           const expectedResult = Right(testedData);
@@ -58,7 +59,7 @@ void main() {
       );
       test(
         'should return Failure when password is too short',
-        () async {
+        () {
           const testedData = '12345';
           final result = valueValidators.password(testedData);
           const expectedResult = Left(ValueFailure<String>.shortPassword(failedValue: testedData));
@@ -67,12 +68,13 @@ void main() {
       );
     },
   );
+
   group(
-    'currency value validation,',
+    'currency value,',
     () {
       test(
         'should return failure when currency value is too small',
-        () async {
+        () {
           double minValueCurrency = CoreConstants.minValueCurrency;
           double valueBelowMin = CoreConstants.minValueCurrency - 1;
           var result = valueValidators.currencyValue(valueBelowMin);
@@ -84,7 +86,7 @@ void main() {
 
       test(
         'should return failure when currency value is too big',
-        () async {
+        () {
           double maxValueCurrency = CoreConstants.maxValueCurrency;
           double valueAboveMaxValue = CoreConstants.maxValueCurrency + 1;
           var result = valueValidators.currencyValue(valueAboveMaxValue);
@@ -96,7 +98,7 @@ void main() {
 
       test(
         'should return true when max value - min value is bigger or equal 1',
-        () async {
+        () {
           const expectedResult = true;
           const difference = CoreConstants.maxValueCurrency - CoreConstants.minValueCurrency;
           const result = difference >= 1;
@@ -106,7 +108,7 @@ void main() {
 
       test(
         'should CoreConstants.minValueCurrency be bigger or equal 1',
-        () async {
+        () {
           const expectedResult = true;
           const testedData = CoreConstants.minValueCurrency;
           const result = testedData >= 1;
@@ -116,11 +118,51 @@ void main() {
 
       test(
         'should return currency value when max value - min value is bigger than 1',
-        () async {
+        () {
           double difference = CoreConstants.maxValueCurrency - CoreConstants.minValueCurrency;
           var result = ValueValidators().currencyValue(difference);
           var expectedResult = Right(difference);
           expect(result, expectedResult);
+        },
+      );
+    },
+  );
+
+  group(
+    'date time',
+    () {
+      test(
+        'should return right result when correct date is passed',
+        () {
+          final date = DateTime.now();
+          var resultFold = ValueValidators().dateTime(date);
+          var result = resultFold.fold((l) => l, (r) => r);
+          final expectResult = date;
+          expect(result, expectResult);
+        },
+      );
+
+      test(
+        'should return left result when date before minPossiblyYearData -1',
+        () {
+          const minDate = CoreConstants.minPossiblyYearData;
+          final date = DateTime(minDate - 1);
+          var resultFold = ValueValidators().dateTime(date);
+          var result = resultFold.fold((l) => l, (r) => r);
+          final expectResult = ValueFailure.invalidDate(failedValue: date);
+          expect(result, expectResult);
+        },
+      );
+
+      test(
+        'should return left result when correct date is utc',
+        () {
+          const minDate = CoreConstants.minPossiblyYearData;
+          final date = DateTime.utc(minDate + 1);
+          var resultFold = ValueValidators().dateTime(date);
+          var result = resultFold.fold((l) => l, (r) => r);
+          final expectResult = ValueFailure.dateIsUTC(failedValue: date);
+          expect(result, expectResult);
         },
       );
     },
