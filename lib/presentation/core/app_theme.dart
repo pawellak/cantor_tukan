@@ -54,8 +54,7 @@ InputDecorationTheme buildInputDecorationTheme() {
   return InputDecorationTheme(
     labelStyle: const TextStyle(color: secondaryColor),
     focusedBorder: OutlineInputBorder(
-      borderSide:
-          const BorderSide(color: mainColor, width: borderWidthWhenActive),
+      borderSide: const BorderSide(color: mainColor, width: borderWidthWhenActive),
       borderRadius: BorderRadius.circular(borderRadius),
     ),
     border: OutlineInputBorder(
@@ -64,5 +63,4 @@ InputDecorationTheme buildInputDecorationTheme() {
   );
 }
 
-ColorScheme _buildColorScheme() =>
-    ColorScheme.fromSwatch().copyWith(secondary: secondaryColor);
+ColorScheme _buildColorScheme() => ColorScheme.fromSwatch().copyWith(secondary: secondaryColor);

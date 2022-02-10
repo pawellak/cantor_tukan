@@ -29,11 +29,8 @@ abstract class ValueObject<T> {
   int get hashCode => value.hashCode;
 
   @override
-  String toString() => '${CoreConstants.value}($value)';
+  String toString() => '${CoreConstants.valueToString}($value)';
 }
-
-
-
 
 class UniqueId extends ValueObject<String> {
   @override

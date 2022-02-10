@@ -4,7 +4,7 @@ import 'package:kantor_tukan/domain/core/failures.dart';
 
 class ValueConverters {
   Either<ValueFailure<String>, double> toStringFromDouble(String input) {
-    double? currency = double.tryParse(input);
+    final currency = double.tryParse(input);
 
     if (currency == null) {
       return Left(ValueFailure.invalidStringToDouble(failedValue: input));
@@ -14,8 +14,8 @@ class ValueConverters {
   }
 
   Either<ValueFailure<EnumCurrency>, EnumCurrency> toEnumCurrencyFromString(String? input) {
-    List<EnumCurrency> enumList = EnumCurrency.values;
-    var enumOrNull = enumList.toEnumFromString<EnumCurrency>(input);
+    const enumList = EnumCurrency.values;
+    final enumOrNull = enumList.toEnumFromString<EnumCurrency>(input);
 
     if (enumOrNull == null) {
       return left(const ValueFailure.unknownEnum(failedValue: EnumCurrency.undefined));
@@ -23,14 +23,15 @@ class ValueConverters {
       return right(enumOrNull);
     }
   }
+
   Either<ValueFailure<String>, String> toStringFromEnumCurrency(EnumCurrency input) {
-    String resultOfConversion = input.toShortString();
+    final resultOfConversion = input.toShortString();
     return right(resultOfConversion);
   }
 
   Either<ValueFailure<EnumTransactionType>, EnumTransactionType> toEnumTransactionTypeFromString(String? input) {
-    List<EnumTransactionType> enumList = EnumTransactionType.values;
-    var enumOrNull = enumList.toEnumFromString<EnumTransactionType>(input);
+    const enumList = EnumTransactionType.values;
+    final enumOrNull = enumList.toEnumFromString<EnumTransactionType>(input);
 
     if (enumOrNull == null) {
       return left(const ValueFailure.unknownEnum(failedValue: EnumTransactionType.undefined));
@@ -38,14 +39,15 @@ class ValueConverters {
       return right(enumOrNull);
     }
   }
+
   Either<ValueFailure<String>, String> toStringFromEnumTransactionType(EnumTransactionType input) {
-    String resultOfConversion = input.toShortString();
+    final resultOfConversion = input.toShortString();
     return right(resultOfConversion);
   }
 
   Either<ValueFailure<EnumTransactionStatus>, EnumTransactionStatus> toEnumTransactionStatusFromString(String? input) {
-    List<EnumTransactionStatus> enumList = EnumTransactionStatus.values;
-    var enumOrNull = enumList.toEnumFromString<EnumTransactionStatus>(input);
+    const enumList = EnumTransactionStatus.values;
+    final enumOrNull = enumList.toEnumFromString<EnumTransactionStatus>(input);
 
     if (enumOrNull == null) {
       return left(const ValueFailure.unknownEnum(failedValue: EnumTransactionStatus.undefined));
@@ -53,8 +55,9 @@ class ValueConverters {
       return right(enumOrNull);
     }
   }
+
   Either<ValueFailure<String>, String> toStringFromEnumTransactionStatus(EnumTransactionStatus input) {
-    String resultOfConversion = input.toShortString();
+    final resultOfConversion = input.toShortString();
     return right(resultOfConversion);
   }
 

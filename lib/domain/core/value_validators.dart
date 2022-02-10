@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:kantor_tukan/domain/core/core_constants.dart';
 import 'package:kantor_tukan/domain/core/enums.dart';
 import 'package:kantor_tukan/domain/core/failures.dart';
-import 'package:kantor_tukan/domain/currency/value_object.dart';
 
 class ValueValidators {
   Either<ValueFailure<String>, String> emailAddress(String input) {
@@ -23,9 +22,9 @@ class ValueValidators {
 
   Either<ValueFailure<double>, double> currencyValue(double input) {
     if (input < CoreConstants.minValueCurrency) {
-      return Left(ValueFailure.currencyTooSmall(failedValue: input, min: CoreConstants.minValueCurrency));
+      return Left(ValueFailure.currencyValueTooSmall(failedValue: input, min: CoreConstants.minValueCurrency));
     } else if (input > CoreConstants.maxValueCurrency) {
-      return Left(ValueFailure.currencyTooBig(failedValue: input, max: CoreConstants.maxValueCurrency));
+      return Left(ValueFailure.currencyValueTooBig(failedValue: input, max: CoreConstants.maxValueCurrency));
     } else {
       return Right(input);
     }
@@ -54,4 +53,7 @@ class ValueValidators {
       return left(ValueFailure.unknownEnum(failedValue: input));
     }
   }
+
+
+
 }

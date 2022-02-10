@@ -1,10 +1,9 @@
-class PresConst
-{
+class PresConst {
   //global
   static const nameOfCantor = 'Kantor Tukan';
 
   //SignInPage
-  static const sipSignIn ='ZALOGUJ';
+  static const sipSignIn = 'ZALOGUJ';
   static const sipRegister = 'REJESTRACJA';
   static const sipSignInWithGoogle = 'ZALOGUJ Z GOOGLE';
   static const sipEmail = 'Email';
@@ -17,6 +16,4 @@ class PresConst
   static const sipLogoSize = 40.0;
   static const sipLogoSpace = 120.0;
   static const sipEmptySpace = 8.0;
-
-
 }

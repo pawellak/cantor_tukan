@@ -17,8 +17,7 @@ class FirebaseAuthFacade implements IAuthFacade {
   final GoogleSignIn _googleSignIn;
   final FirebaseUserMapper _firebaseUserMapper;
 
-  FirebaseAuthFacade(
-      this._firebaseAuth, this._googleSignIn, this._firebaseUserMapper);
+  FirebaseAuthFacade(this._firebaseAuth, this._googleSignIn, this._firebaseUserMapper);
 
   @override
   Future<Option<CustomUser>> getSignedInUser() async {
@@ -35,8 +34,7 @@ class FirebaseAuthFacade implements IAuthFacade {
     final passwordStr = password.getOrCrash();
 
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
-          email: emailAddressStr, password: passwordStr);
+      await _firebaseAuth.createUserWithEmailAndPassword(email: emailAddressStr, password: passwordStr);
 
       return const Right(unit);
     } on FirebaseAuthException catch (e) {
@@ -59,8 +57,7 @@ class FirebaseAuthFacade implements IAuthFacade {
     final passwordStr = password.getOrCrash();
 
     try {
-      await _firebaseAuth.signInWithEmailAndPassword(
-          email: emailAddressStr, password: passwordStr);
+      await _firebaseAuth.signInWithEmailAndPassword(email: emailAddressStr, password: passwordStr);
 
       return const Right(unit);
     } on FirebaseAuthException catch (e) {
@@ -88,8 +85,7 @@ class FirebaseAuthFacade implements IAuthFacade {
       var googleAuthentication = await googleUser.authentication;
 
       final OAuthCredential authCredential = GoogleAuthProvider.credential(
-          accessToken: googleAuthentication.accessToken,
-          idToken: googleAuthentication.idToken);
+          accessToken: googleAuthentication.accessToken, idToken: googleAuthentication.idToken);
 
       await _firebaseAuth.signInWithCredential(authCredential);
 

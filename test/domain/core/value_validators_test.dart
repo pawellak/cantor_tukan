@@ -11,119 +11,118 @@ void main() {
     valueValidators = ValueValidators();
   });
 
-  group('email validation', () {
-    test(
-      'should return email when email is correct',
-      () async {
-        // arrange
-        const email = 'test@test.com';
-        // act
-        final result = valueValidators.emailAddress(email);
-        const correctEmail = Right(email);
+  group(
+    'email validation',
+    () {
+      test(
+        'should return email when email is correct',
+        () async {
+          const testedData = 'test@test.com';
+          final result = valueValidators.emailAddress(testedData);
+          const expectedResult = Right(testedData);
+          expect(result, expectedResult);
+        },
+      );
+      test(
+        'should return Failure when email have not @ sign',
+        () async {
+          const testedData = 'testtest.com';
+          final result = valueValidators.emailAddress(testedData);
+          const expectedResult = Left(ValueFailure<String>.invalidEmail(failedValue: testedData));
+          expect(result, expectedResult);
+        },
+      );
 
-        // assert
-        expect(result, correctEmail);
-      },
-    );
-    test(
-      'should return Failure when email have not @ sign',
-      () async {
-        // arrange
-        const email = 'testtest.com';
-        // act
-        final result = valueValidators.emailAddress(email);
-        const failureEmail =
-            Left(ValueFailure<String>.invalidEmail(failedValue: email));
-        // assert
-        expect(result, failureEmail);
-      },
-    );
+      test(
+        'should return Failure when email is incorrect',
+        () async {
+          const testedData = 'test@test.';
+          final result = valueValidators.emailAddress(testedData);
+          const expectedResult = Left(ValueFailure<String>.invalidEmail(failedValue: testedData));
+          expect(result, expectedResult);
+        },
+      );
+    },
+  );
+  group(
+    'password validation',
+    () {
+      test(
+        'should return password when password is correct',
+        () async {
+          const testedData = '123456';
+          final result = valueValidators.password(testedData);
+          const expectedResult = Right(testedData);
+          expect(result, expectedResult);
+        },
+      );
+      test(
+        'should return Failure when password is too short',
+        () async {
+          const testedData = '12345';
+          final result = valueValidators.password(testedData);
+          const expectedResult = Left(ValueFailure<String>.shortPassword(failedValue: testedData));
+          expect(result, expectedResult);
+        },
+      );
+    },
+  );
+  group(
+    'currency value validation,',
+    () {
+      test(
+        'should return failure when currency value is too small',
+        () async {
+          double minValueCurrency = CoreConstants.minValueCurrency;
+          double valueBelowMin = CoreConstants.minValueCurrency - 1;
+          var result = valueValidators.currencyValue(valueBelowMin);
+          var expectedResult =
+              Left(ValueFailure.currencyValueTooSmall(failedValue: valueBelowMin, min: minValueCurrency));
+          expect(result, expectedResult);
+        },
+      );
 
-    test(
-      'should return Failure when email is incorrect',
-      () async {
-        // arrange
-        const email = 'test@test.';
-        // act
-        final result = valueValidators.emailAddress(email);
-        const failureEmail =
-            Left(ValueFailure<String>.invalidEmail(failedValue: email));
-        // assert
-        expect(result, failureEmail);
-      },
-    );
-  });
-  group('password validation', () {
-    test(
-      'should return password when password is correct',
-      () async {
-        // arrange
-        const password = '123456';
-        // act
-        final result = valueValidators.password(password);
-        const correctPassword = Right(password);
+      test(
+        'should return failure when currency value is too big',
+        () async {
+          double maxValueCurrency = CoreConstants.maxValueCurrency;
+          double valueAboveMaxValue = CoreConstants.maxValueCurrency + 1;
+          var result = valueValidators.currencyValue(valueAboveMaxValue);
+          var expectedResult =
+              Left(ValueFailure.currencyValueTooBig(failedValue: valueAboveMaxValue, max: maxValueCurrency));
+          expect(result, expectedResult);
+        },
+      );
 
-        // assert
-        expect(result, correctPassword);
-      },
-    );
-    test(
-      'should return Failure when password is too short',
-      () async {
-        // arrange
-        const password = '12345';
-        // act
-        final result = valueValidators.password(password);
-        const failurePassword =
-            Left(ValueFailure<String>.shortPassword(failedValue: password));
+      test(
+        'should return true when max value - min value is bigger or equal 1',
+        () async {
+          const expectedResult = true;
+          const difference = CoreConstants.maxValueCurrency - CoreConstants.minValueCurrency;
+          const result = difference >= 1;
+          expect(result, expectedResult);
+        },
+      );
 
-        // assert
-        expect(result, failurePassword);
-      },
-    );
-  });
-  group('currency value validation,', () {
-    test(
-      'should return failure when currency value is too small',
-      () async {
-        double doubleValue = CoreConstants.minValueCurrency - 1;
-        var result = valueValidators.currencyValue(doubleValue);
-        var failureCurrency = Left(ValueFailure.currencyTooSmall(
-            failedValue: doubleValue, min: CoreConstants.minValueCurrency));
-        expect(result, failureCurrency);
-      },
-    );
+      test(
+        'should CoreConstants.minValueCurrency be bigger or equal 1',
+        () async {
+          const expectedResult = true;
+          const testedData = CoreConstants.minValueCurrency;
+          const result = testedData >= 1;
+          expect(result, expectedResult);
+        },
+      );
 
-    test(
-      'should return failure when currency value is too big',
-      () async {
-        double doubleValue = CoreConstants.maxValueCurrency + 1;
-        var result = valueValidators.currencyValue(doubleValue);
-        var failureCurrency = Left(ValueFailure.currencyTooBig(
-            failedValue: doubleValue, max: CoreConstants.maxValueCurrency));
-        expect(result, failureCurrency);
-      },
-    );
-
-    test(
-      'should return true when max value - min value is bigger than 1',
-      () async {
-        double difference =
-            CoreConstants.maxValueCurrency - CoreConstants.minValueCurrency;
-        bool differenceResult = difference > 1;
-        expect(differenceResult, true);
-      },
-    );
-
-    test(
-      'should return currency value currency value is correct',
-      () async {
-        double difference =
-            CoreConstants.maxValueCurrency - CoreConstants.minValueCurrency;
-        var result = ValueValidators().currencyValue(difference);
-        var correctCurrencyValue = Right(difference);
-        expect(result, correctCurrencyValue);
-      },
-    );
-  });
+      test(
+        'should return currency value when max value - min value is bigger than 1',
+        () async {
+          double difference = CoreConstants.maxValueCurrency - CoreConstants.minValueCurrency;
+          var result = ValueValidators().currencyValue(difference);
+          var expectedResult = Right(difference);
+          expect(result, expectedResult);
+        },
+      );
+    },
+  );
 }

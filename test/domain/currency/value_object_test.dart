@@ -28,7 +28,7 @@ void main() {
         var dataToConvert = minValue - 1;
         var resultFold = CurrencyValue(dataToConvert);
         var result = resultFold.value.fold((l) => l, (r) => r);
-        var expectedResult = ValueFailure.currencyTooSmall(min: minValue, failedValue: dataToConvert);
+        var expectedResult = ValueFailure.currencyValueTooSmall(min: minValue, failedValue: dataToConvert);
         expect(result, expectedResult);
       },
     );
@@ -50,7 +50,7 @@ void main() {
         var dataToConvert = maxValue + 1;
         var resultFold = CurrencyValue(dataToConvert);
         var result = resultFold.value.fold((l) => l, (r) => r);
-        var expectedResult = ValueFailure.currencyTooBig(max: maxValue, failedValue: dataToConvert);
+        var expectedResult = ValueFailure.currencyValueTooBig(max: maxValue, failedValue: dataToConvert);
         expect(result, expectedResult);
       },
     );

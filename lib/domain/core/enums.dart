@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 enum EnumTransactionType { buy, sell, undefined }
 
 enum EnumTransactionStatus { pending, accepted, decline, undefined }
@@ -55,15 +57,13 @@ extension ParseEnumToString on Enum {
 extension ParseStringToEnum on List {
   T? toEnumFromString<T>(String? value) {
     if (value == null) return null;
-
-    var localEnums = this;
+    final localEnums = this;
 
     for (var localEnum in localEnums) {
       if (localEnum.toString().split('.').last == value) {
         return localEnum;
       }
     }
-
     return null;
   }
 }

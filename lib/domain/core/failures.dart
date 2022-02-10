@@ -1,23 +1,19 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-part 'failures.freezed.dart';
 
+part 'failures.freezed.dart';
 
 @freezed
 abstract class ValueFailure<T> with _$ValueFailure<T> {
-
-
-
   const factory ValueFailure.unknownEnum({
     required T failedValue,
   }) = UnknownCurrency<T>;
 
-
-  const factory ValueFailure.currencyTooBig({
+  const factory ValueFailure.currencyValueTooBig({
     required double max,
     required T failedValue,
   }) = CurrencyTooBig<T>;
 
-  const factory ValueFailure.currencyTooSmall({
+  const factory ValueFailure.currencyValueTooSmall({
     required double min,
     required T failedValue,
   }) = CurrencyTooSmall<T>;

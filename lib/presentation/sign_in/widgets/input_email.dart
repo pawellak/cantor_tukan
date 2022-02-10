@@ -1,3 +1,4 @@
+// ignore_for_file: implementation_imports
 import 'package:flutter/material.dart';
 import 'package:kantor_tukan/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:kantor_tukan/domain/core/failures.dart';
@@ -28,9 +29,7 @@ class InputEmail extends StatelessWidget {
   }
 
   void _onChanged(BuildContext context, String value) {
-    return context
-        .read<SignInFormBloc>()
-        .add(SignInFormEvent.emailChanged(value));
+    return context.read<SignInFormBloc>().add(SignInFormEvent.emailChanged(value));
   }
 
   String? _buildValidator(BuildContext context) {

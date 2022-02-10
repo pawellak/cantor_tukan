@@ -14,20 +14,20 @@ import '../../domain/auth/i_auth_facade_test.mocks.dart';
 void main() {
   late MockIAuthFacade mockIAuthFacade;
   late AppAuthBloc appAuthBloc;
-  late CustomUser customUser =
-      CustomUser(id: UniqueId.fromUniqueString('uniqueIdStr'));
+  late CustomUser customUser = CustomUser(id: UniqueId.fromUniqueString('uniqueIdStr'));
 
   setUp(() {
     mockIAuthFacade = MockIAuthFacade();
     appAuthBloc = AppAuthBloc(mockIAuthFacade);
   });
 
-  group('user authentication', () {
+  group(
+    'user authentication',
+    () {
       blocTest<AppAuthBloc, AppAuthState>(
         'should authCheckRequested emit user authenticated',
         build: () {
-          when(mockIAuthFacade.getSignedInUser())
-              .thenAnswer((_) async => Future.value(optionOf(customUser)));
+          when(mockIAuthFacade.getSignedInUser()).thenAnswer((_) async => Future.value(optionOf(customUser)));
           return appAuthBloc;
         },
         act: (bloc) => bloc.add(const AppAuthEvent.authCheckRequested()),
@@ -39,8 +39,7 @@ void main() {
       blocTest<AppAuthBloc, AppAuthState>(
         'should authCheckRequested emit user unauthenticated',
         build: () {
-          when(mockIAuthFacade.getSignedInUser())
-              .thenAnswer((_) async => Future.value(optionOf(null)));
+          when(mockIAuthFacade.getSignedInUser()).thenAnswer((_) async => Future.value(optionOf(null)));
           return appAuthBloc;
         },
         act: (bloc) => bloc.add(const AppAuthEvent.authCheckRequested()),
@@ -48,8 +47,11 @@ void main() {
           const AppAuthState.unauthenticated(),
         ],
       );
-    },);
-  group('sign out',() {
+    },
+  );
+  group(
+    'sign out',
+    () {
       blocTest<AppAuthBloc, AppAuthState>(
         'should emit user unauthenticated after user sign out',
         build: () {
@@ -60,5 +62,6 @@ void main() {
           const AppAuthState.unauthenticated(),
         ],
       );
-    },);
+    },
+  );
 }

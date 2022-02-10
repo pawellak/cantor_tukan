@@ -14,9 +14,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-            create: (context) => getIt<AppAuthBloc>()
-              ..add(const AppAuthEvent.authCheckRequested())),
+        BlocProvider(create: (context) => getIt<AppAuthBloc>()..add(const AppAuthEvent.authCheckRequested())),
       ],
       child: MaterialApp(
         home: const SplashPage(),

@@ -7,6 +7,7 @@ const loading = 'Wczytywanie';
 
 class SplashPage extends StatelessWidget {
   static const routeName = '/splash';
+
   const SplashPage({Key? key}) : super(key: key);
 
   @override
@@ -23,8 +24,7 @@ class SplashPage extends StatelessWidget {
             });
       },
       child: Scaffold(
-        appBar: AppBar(
-            automaticallyImplyLeading: false, title: const Text(loading)),
+        appBar: AppBar(automaticallyImplyLeading: false, title: const Text(loading)),
         body: const Center(
           child: CircularProgressIndicator(),
         ),

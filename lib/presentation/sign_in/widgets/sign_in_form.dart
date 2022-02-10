@@ -1,4 +1,3 @@
-import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kantor_tukan/application/auth/sign_in_form/sign_in_form_bloc.dart';
@@ -7,14 +6,10 @@ import 'package:kantor_tukan/presentation/sign_in/widgets/button_register_email.
 import 'package:kantor_tukan/presentation/sign_in/widgets/button_sign_in_email.dart';
 import 'package:kantor_tukan/presentation/sign_in/widgets/button_sign_in_google.dart';
 import 'package:kantor_tukan/presentation/sign_in/widgets/custom_progress_indicator.dart';
+import 'package:kantor_tukan/presentation/sign_in/widgets/error_snack_bar.dart';
 import 'package:kantor_tukan/presentation/sign_in/widgets/input_email.dart';
 import 'package:kantor_tukan/presentation/sign_in/widgets/input_password.dart';
 import 'package:kantor_tukan/presentation/sign_in/widgets/logo_sign_in.dart';
-
-const canceled = 'Anuluwano operację';
-const serverError = 'Błąd servera';
-const emailInUse = 'Adres email w użyciu';
-const invalidEmailOrPassword = 'Niepawidłowe dane logowania';
 
 class SignInForm extends StatelessWidget {
   const SignInForm({Key? key}) : super(key: key);
@@ -23,35 +18,10 @@ class SignInForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<SignInFormBloc, SignInFormState>(
       listener: (context, state) {
-        _buildErrorSnackBar(state, context);
+        ErrorSnackBar().call(state, context);
       },
       builder: (context, state) {
         return _buildForm(state, context);
-      },
-    );
-  }
-
-  void _buildErrorSnackBar(SignInFormState state, BuildContext context) {
-    state.authFailureOrSuccessOption.fold(
-      () {},
-      (either) => {
-        either.fold(
-          (failure) {
-            FlushbarHelper.createError(
-                message: failure.map(cancelledByUser: (_) {
-              return canceled;
-            }, serverError: (_) {
-              return serverError;
-            }, emailAlreadyInUse: (_) {
-              return emailInUse;
-            }, invalidEmailAndPasswordCombination: (_) {
-              return invalidEmailOrPassword;
-            })).show(context);
-          },
-          (r) {
-            //go to another page
-          },
-        )
       },
     );
   }
@@ -100,14 +70,11 @@ class SignInForm extends StatelessWidget {
     );
   }
 
-  SizedBox _emptyHeightSpace() =>
-      const SizedBox(height: PresConst.sipEmptySpace);
+  SizedBox _emptyHeightSpace() => const SizedBox(height: PresConst.sipEmptySpace);
 
   SizedBox _emptyWidthSpace() => const SizedBox(width: PresConst.sipEmptySpace);
 
   AutovalidateMode _isShowErrorMessageOn(SignInFormState state) {
-    return state.showErrorMessages
-        ? AutovalidateMode.always
-        : AutovalidateMode.disabled;
+    return state.showErrorMessages ? AutovalidateMode.always : AutovalidateMode.disabled;
   }
 }

@@ -1,3 +1,4 @@
+// ignore_for_file: implementation_imports
 import 'package:flutter/material.dart';
 import 'package:kantor_tukan/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:kantor_tukan/domain/core/failures.dart';
@@ -20,16 +21,13 @@ class InputPassword extends StatelessWidget {
 
   InputDecoration _buildDecoration(BuildContext context) {
     return InputDecoration(
-      prefixIcon:
-          Icon(Icons.lock, color: Theme.of(context).colorScheme.secondary),
+      prefixIcon: Icon(Icons.lock, color: Theme.of(context).colorScheme.secondary),
       labelText: PresConst.sipPassword,
     );
   }
 
   void _buildOnChanged(BuildContext context, String value) {
-    return context
-        .read<SignInFormBloc>()
-        .add(SignInFormEvent.passwordChanged(value));
+    return context.read<SignInFormBloc>().add(SignInFormEvent.passwordChanged(value));
   }
 
   String? _buildValidator(BuildContext context) {
