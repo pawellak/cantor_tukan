@@ -6,7 +6,6 @@ import 'package:kantor_tukan/infrastructure/auth/firebase_auth_facade.dart';
 import 'package:kantor_tukan/infrastructure/auth/firebase_user_mapper.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-
 import 'firebase_auth_facade_test.mocks.dart';
 
 @GenerateMocks([FirebaseAuth])

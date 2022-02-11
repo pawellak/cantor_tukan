@@ -17,6 +17,18 @@ class CurrencyValue extends ValueObject<double> {
   const CurrencyValue._(this.value);
 }
 
+class CurrencyPrice extends ValueObject<double> {
+  @override
+  final Either<ValueFailure<double>, double> value;
+
+  factory CurrencyPrice(double input) {
+    var eitherFailureOrString = ValueValidators().currencyPrice(input);
+    return CurrencyPrice._(eitherFailureOrString);
+  }
+
+  const CurrencyPrice._(this.value);
+}
+
 class Currency extends ValueObject<EnumCurrency> {
   @override
   final Either<ValueFailure<EnumCurrency>, EnumCurrency> value;

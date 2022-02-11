@@ -18,6 +18,15 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
     required T failedValue,
   }) = CurrencyTooSmall<T>;
 
+  const factory ValueFailure.currencyPriceTooBig({
+    required double max,
+    required T failedValue,
+  }) = CurrencyPriceTooBig<T>;
+
+  const factory ValueFailure.currencyPriceTooSmall({
+    required T failedValue,
+  }) = CurrencyPriceTooSmall<T>;
+
   const factory ValueFailure.invalidStringToDouble({
     required T failedValue,
   }) = InvalidStringToDouble<T>;

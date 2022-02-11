@@ -144,10 +144,10 @@ void main() {
     test(
       'should convert string to enum transaction status and return enum',
       () {
-        var dataToConvert = 'pending';
-        var expectResult = EnumTransactionStatus.pending;
-        var resultFold = valueConverters.toEnumTransactionStatusFromString(dataToConvert);
-        var result = resultFold.fold((l) => l, (r) => r);
+        String dataToConvert = 'pending';
+        EnumTransactionStatus expectResult = EnumTransactionStatus.pending;
+        final resultFold = valueConverters.toEnumTransactionStatusFromString(dataToConvert);
+        final result = resultFold.fold((l) => l, (r) => r);
         expect(result, expectResult);
       },
     );
