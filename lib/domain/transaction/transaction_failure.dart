@@ -6,4 +6,5 @@ part 'transaction_failure.freezed.dart';
 abstract class TransactionFailure with _$TransactionFailure
 {
    const factory TransactionFailure.unexpected() = _Unexpected;
+   const factory TransactionFailure.insufficientPermission() = _InsufficientPermission;
 }

@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:kantor_tukan/domain/transaction/transaction.dart';
-import 'package:kantor_tukan/infrastructure/transaction/transaction_failure.dart';
+import 'package:kantor_tukan/domain/transaction/transaction_failure.dart';
 import 'package:kt_dart/kt.dart';
 
 

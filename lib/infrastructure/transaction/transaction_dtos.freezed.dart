@@ -26,8 +26,8 @@ class _$TransactionDtoTearOff {
       required String currency,
       required String transactionType,
       required String transactionStatus,
-      required String dateAcceptation,
-      required String dateReservation,
+      required DateTime dateAcceptation,
+      required DateTime dateReservation,
       required double currencyValue,
       required double currencyBill,
       required double priceBuy,
@@ -60,8 +60,8 @@ mixin _$TransactionDto {
   String get currency => throw _privateConstructorUsedError;
   String get transactionType => throw _privateConstructorUsedError;
   String get transactionStatus => throw _privateConstructorUsedError;
-  String get dateAcceptation => throw _privateConstructorUsedError;
-  String get dateReservation => throw _privateConstructorUsedError;
+  DateTime get dateAcceptation => throw _privateConstructorUsedError;
+  DateTime get dateReservation => throw _privateConstructorUsedError;
   double get currencyValue => throw _privateConstructorUsedError;
   double get currencyBill => throw _privateConstructorUsedError;
   double get priceBuy => throw _privateConstructorUsedError;
@@ -83,8 +83,8 @@ abstract class $TransactionDtoCopyWith<$Res> {
       String currency,
       String transactionType,
       String transactionStatus,
-      String dateAcceptation,
-      String dateReservation,
+      DateTime dateAcceptation,
+      DateTime dateReservation,
       double currencyValue,
       double currencyBill,
       double priceBuy,
@@ -133,11 +133,11 @@ class _$TransactionDtoCopyWithImpl<$Res>
       dateAcceptation: dateAcceptation == freezed
           ? _value.dateAcceptation
           : dateAcceptation // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       dateReservation: dateReservation == freezed
           ? _value.dateReservation
           : dateReservation // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       currencyValue: currencyValue == freezed
           ? _value.currencyValue
           : currencyValue // ignore: cast_nullable_to_non_nullable
@@ -170,8 +170,8 @@ abstract class _$TransactionDtoCopyWith<$Res>
       String currency,
       String transactionType,
       String transactionStatus,
-      String dateAcceptation,
-      String dateReservation,
+      DateTime dateAcceptation,
+      DateTime dateReservation,
       double currencyValue,
       double currencyBill,
       double priceBuy,
@@ -222,11 +222,11 @@ class __$TransactionDtoCopyWithImpl<$Res>
       dateAcceptation: dateAcceptation == freezed
           ? _value.dateAcceptation
           : dateAcceptation // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       dateReservation: dateReservation == freezed
           ? _value.dateReservation
           : dateReservation // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       currencyValue: currencyValue == freezed
           ? _value.currencyValue
           : currencyValue // ignore: cast_nullable_to_non_nullable
@@ -275,9 +275,9 @@ class _$_TransactionDto extends _TransactionDto {
   @override
   final String transactionStatus;
   @override
-  final String dateAcceptation;
+  final DateTime dateAcceptation;
   @override
-  final String dateReservation;
+  final DateTime dateReservation;
   @override
   final double currencyValue;
   @override
@@ -346,8 +346,8 @@ abstract class _TransactionDto extends TransactionDto {
       required String currency,
       required String transactionType,
       required String transactionStatus,
-      required String dateAcceptation,
-      required String dateReservation,
+      required DateTime dateAcceptation,
+      required DateTime dateReservation,
       required double currencyValue,
       required double currencyBill,
       required double priceBuy,
@@ -366,9 +366,9 @@ abstract class _TransactionDto extends TransactionDto {
   @override
   String get transactionStatus;
   @override
-  String get dateAcceptation;
+  DateTime get dateAcceptation;
   @override
-  String get dateReservation;
+  DateTime get dateReservation;
   @override
   double get currencyValue;
   @override

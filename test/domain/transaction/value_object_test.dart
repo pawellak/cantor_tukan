@@ -253,38 +253,6 @@ void main() {
     );
   });
   group('date time', () {
-    test(
-      'should return right result when correct string is passed',
-      () {
-        const dataToConvert = '2022-02-10T13:54:40.1';
-        var resultFold = DateCantor.fromIso8601String(dataToConvert);
-        var result = resultFold.value.fold((l) => l, (r) => r);
-        final expectResult = DateTime(2022, 2, 10, 13, 54, 40, 100);
-        expect(result, expectResult);
-      },
-    );
-
-    test(
-      'should return right result when correct date time is passed',
-      () {
-        const dataToConvert = '2022-02-10T13:54:40.1';
-        var resultFold = DateCantor.fromIso8601String(dataToConvert);
-        var result = resultFold.value.fold((l) => l, (r) => r);
-        final expectResult = DateTime(2022, 2, 10, 13, 54, 40, 100);
-        expect(result, expectResult);
-      },
-    );
-
-    test(
-      'should return left result when incorrect string is passed',
-      () {
-        const dataToConvert = '2022-02-1013:54:40.1';
-        var resultFold = DateCantor.fromIso8601String(dataToConvert);
-        var result = resultFold.value.fold((l) => l, (r) => r);
-        final expectResult = ValueFailure.invalidDate(failedValue: DateTime(0));
-        expect(result, expectResult);
-      },
-    );
 
     test(
       'should return right result when correct date time is passed',

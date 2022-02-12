@@ -84,11 +84,6 @@ class DateCantor extends ValueObject<DateTime> {
   @override
   final Either<ValueFailure<DateTime>, DateTime> value;
 
-  factory DateCantor.fromIso8601String(String? input) {
-    var eitherFailureOrString = ValueConverters().toDateTimeFromIso8601String(input);
-    return DateCantor._(eitherFailureOrString);
-  }
-
   factory DateCantor.fromDateTime(DateTime input) {
     var eitherFailureOrString = ValueValidators().dateTime(input);
     return DateCantor._(eitherFailureOrString);

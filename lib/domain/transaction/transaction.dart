@@ -24,18 +24,17 @@ abstract class Transaction implements _$Transaction {
     required CurrencyPrice priceSell,
   }) = _Transaction;
 
-  factory Transaction.empty() =>
-      Transaction(
-          uId: UniqueId(),
-          currency: Currency.fromEnum(EnumCurrency.undefined),
-          transactionType: TransactionType.fromEnum(EnumTransactionType.undefined),
-          transactionStatus: TransactionStatus.fromEnum(EnumTransactionStatus.undefined),
-          dateAcceptation: DateCantor.fromIso8601String('0'),
-          dateReservation: DateCantor.fromIso8601String('0'),
-          currencyValue: CurrencyValue(0),
-          currencyBill: CurrencyValue(0),
-          priceBuy: CurrencyPrice(0),
-          priceSell: CurrencyPrice(0));
+  factory Transaction.empty() => Transaction(
+      uId: UniqueId(),
+      currency: Currency.fromEnum(EnumCurrency.undefined),
+      transactionType: TransactionType.fromEnum(EnumTransactionType.undefined),
+      transactionStatus: TransactionStatus.fromEnum(EnumTransactionStatus.undefined),
+      dateAcceptation: DateCantor.fromDateTime(DateTime(0)),
+      dateReservation: DateCantor.fromDateTime(DateTime(0)),
+      currencyValue: CurrencyValue(0),
+      currencyBill: CurrencyValue(0),
+      priceBuy: CurrencyPrice(0),
+      priceSell: CurrencyPrice(0));
 
   Option<ValueFailure<dynamic>> get failureOption {
     return currency.failureOrUnit

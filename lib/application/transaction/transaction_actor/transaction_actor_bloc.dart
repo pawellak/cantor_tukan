@@ -4,8 +4,8 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kantor_tukan/domain/transaction/transaction.dart';
-import 'package:kantor_tukan/infrastructure/transaction/i_transaction_repository.dart';
-import 'package:kantor_tukan/infrastructure/transaction/transaction_failure.dart';
+import 'package:kantor_tukan/domain/transaction/i_transaction_repository.dart';
+import 'package:kantor_tukan/domain/transaction/transaction_failure.dart';
 
 part 'transaction_actor_event.dart';
 
