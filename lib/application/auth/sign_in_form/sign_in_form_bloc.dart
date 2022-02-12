@@ -32,7 +32,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   }
 
   void _emailChanged(e) {
-    // ignore: invalid_use_of_visible_for_testing_member
+
     emit(state.copyWith(
       emailAddress: EmailAddress(e.emailStr),
       authFailureOrSuccessOption: none(),

@@ -19,13 +19,14 @@ class AppAuthBloc extends Bloc<AppAuthEvent, AppAuthState> {
         event.map(authCheckRequested: (_) async {
           var userOption = await _authFacade.getSignedInUser();
           AppAuthState authOrNotAuth = userOption.fold(
-              () => const AppAuthState.unauthenticated(),
-              (_) => const AppAuthState.authenticated());
+            () => const AppAuthState.unauthenticated(),
+            (_) => const AppAuthState.authenticated(),
+          );
           emit(authOrNotAuth);
         }, signedOut: (_) async {
           await _authFacade.signOutGoogleAndFirebase();
           emit(const AppAuthState.unauthenticated());
-        });
+        },);
       },
     );
   }
