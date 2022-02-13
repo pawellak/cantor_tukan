@@ -11,6 +11,6 @@ abstract class ITransactionRepository {
   Stream<Either<TransactionFailure,KtList<Transaction>>> watchPending();
   Stream<Either<TransactionFailure,KtList<Transaction>>> watchDecline();
 
-  Future<Either<TransactionFailure,KtList<Unit>>> create(Transaction transaction);
-  Future<Either<TransactionFailure,KtList<Unit>>> delete(Transaction transaction);
+  Future<Either<TransactionFailure,Unit>> create(Transaction transaction);
+  Future<Either<TransactionFailure,Unit>> delete(Transaction transaction);
 }

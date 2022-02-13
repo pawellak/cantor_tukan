@@ -22,7 +22,7 @@ class _$TransactionDtoTearOff {
   const _$TransactionDtoTearOff();
 
   _TransactionDto call(
-      {String? uid,
+      {required String? uid,
       required String currency,
       required String transactionType,
       required String transactionStatus,
@@ -251,7 +251,7 @@ class __$TransactionDtoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_TransactionDto extends _TransactionDto {
   const _$_TransactionDto(
-      {this.uid,
+      {required this.uid,
       required this.currency,
       required this.transactionType,
       required this.transactionStatus,
@@ -342,7 +342,7 @@ class _$_TransactionDto extends _TransactionDto {
 
 abstract class _TransactionDto extends TransactionDto {
   const factory _TransactionDto(
-      {String? uid,
+      {required String? uid,
       required String currency,
       required String transactionType,
       required String transactionStatus,

@@ -77,7 +77,7 @@ void main() {
       'dateAcceptation',
       () {
         final result = transactionDto.dateAcceptation;
-        const expectedResult = '2022-01-01T00:00:00.000';
+        final expectedResult = DateTime(2022);
         expect(result, expectedResult);
       },
     );
@@ -85,7 +85,7 @@ void main() {
       'dateReservation',
       () {
         final result = transactionDto.dateReservation;
-        const expectedResult = '2022-01-01T00:00:00.000';
+        final expectedResult = DateTime(2022);
         expect(result, expectedResult);
       },
     );

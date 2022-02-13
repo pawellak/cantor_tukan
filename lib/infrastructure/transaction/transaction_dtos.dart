@@ -15,7 +15,7 @@ abstract class TransactionDto with _$TransactionDto {
   const TransactionDto._();
 
   const factory TransactionDto({
-    String? uid,
+    required String? uid,
     required String currency,
     required String transactionType,
     required String transactionStatus,
