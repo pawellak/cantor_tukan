@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart' as fs;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kantor_tukan/domain/core/value_objects.dart';
 import 'package:kantor_tukan/domain/transaction/transaction.dart';
-import 'package:kantor_tukan/domain/transaction/value_object.dart';
+import 'package:kantor_tukan/domain/core/currency_value.dart';
 import 'package:kantor_tukan/domain/core/enums.dart';
 
 part 'transaction_dtos.freezed.dart';

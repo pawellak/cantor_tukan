@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kantor_tukan/domain/core/core_constants.dart';
 import 'package:kantor_tukan/domain/core/enums.dart';
 import 'package:kantor_tukan/domain/core/failures.dart';
-import 'package:kantor_tukan/domain/transaction/value_object.dart';
+import 'package:kantor_tukan/domain/core/currency_value.dart';
 
 void main() {
   group('currency value', () {

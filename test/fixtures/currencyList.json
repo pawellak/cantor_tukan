@@ -1,0 +1,13 @@
+[
+  {"currency": "EUR", "priceBuy": 4.565, "priceSell": 4.53},
+  {"currency": "E500", "priceBuy": 4.565, "priceSell": 4.531},
+  {"currency": "USD", "priceBuy": 4.04, "priceSell": 4.0},
+  {"currency": "GBP", "priceBuy": 5.45, "priceSell": 5.41},
+  {"currency": "CHF", "priceBuy": 4.37, "priceSell": 4.33},
+  {"currency": "AUD", "priceBuy": 2.9, "priceSell": 2.84},
+  {"currency": "CZK", "priceBuy": 0.1865, "priceSell": 0.1835},
+  {"currency": "DKK", "priceBuy": 0.61, "priceSell": 0.608},
+  {"currency": "CAD", "priceBuy": 3.16, "priceSell": 3.13},
+  {"currency": "NOK", "priceBuy": 0.455, "priceSell": 0.448},
+  {"currency": "SEK", "priceBuy": 0.433, "priceSell": 0.425}
+]

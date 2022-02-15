@@ -4,24 +4,27 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
-import 'package:cloud_firestore/cloud_firestore.dart' as _i10;
+import 'package:cloud_firestore/cloud_firestore.dart' as _i13;
 import 'package:firebase_auth/firebase_auth.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:google_sign_in/google_sign_in.dart' as _i5;
+import 'package:http/http.dart' as _i10;
 import 'package:injectable/injectable.dart' as _i2;
 
-import 'application/auth/app_auth_bloc.dart' as _i14;
-import 'application/auth/sign_in_form/sign_in_form_bloc.dart' as _i11;
+import 'application/auth/app_auth_bloc.dart' as _i17;
+import 'application/auth/sign_in_form/sign_in_form_bloc.dart' as _i14;
 import 'application/transaction/transaction_actor/transaction_actor_bloc.dart'
-    as _i12;
+    as _i15;
 import 'application/transaction/transaction_watcher/transaction_watcher_bloc.dart'
-    as _i13;
+    as _i16;
 import 'domain/auth/i_auth_facade.dart' as _i6;
-import 'domain/transaction/i_transaction_repository.dart' as _i8;
+import 'domain/cantor/i_cantor_remote_data_source.dart' as _i8;
+import 'domain/transaction/i_transaction_repository.dart' as _i11;
 import 'infrastructure/auth/firebase_auth_facade.dart' as _i7;
 import 'infrastructure/auth/firebase_user_mapper.dart' as _i4;
-import 'infrastructure/core/firebase_injectable_module.dart' as _i15;
-import 'infrastructure/transaction/transaction_repository.dart' as _i9;
+import 'infrastructure/cantor/cantor_remote_data_source.dart' as _i9;
+import 'infrastructure/core/firebase_injectable_module.dart' as _i18;
+import 'infrastructure/transaction/transaction_repository.dart' as _i12;
 
 const String _prod = 'prod';
 // ignore_for_file: unnecessary_lambdas
@@ -40,16 +43,18 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i7.FirebaseAuthFacade(get<_i3.FirebaseAuth>(),
           get<_i5.GoogleSignIn>(), get<_i4.FirebaseUserMapper>()),
       registerFor: {_prod});
-  gh.lazySingleton<_i8.ITransactionRepository>(
-      () => _i9.TransactionRepository(get<_i10.FirebaseFirestore>()));
-  gh.factory<_i11.SignInFormBloc>(
-      () => _i11.SignInFormBloc(get<_i6.IAuthFacade>()));
-  gh.factory<_i12.TransactionActorBloc>(
-      () => _i12.TransactionActorBloc(get<_i8.ITransactionRepository>()));
-  gh.factory<_i13.TransactionWatcherBloc>(
-      () => _i13.TransactionWatcherBloc(get<_i8.ITransactionRepository>()));
-  gh.factory<_i14.AppAuthBloc>(() => _i14.AppAuthBloc(get<_i6.IAuthFacade>()));
+  gh.lazySingleton<_i8.ICantorRemoteDataSource>(
+      () => _i9.CantorRemoteDataSource(client: get<_i10.Client>()));
+  gh.lazySingleton<_i11.ITransactionRepository>(
+      () => _i12.TransactionRepository(get<_i13.FirebaseFirestore>()));
+  gh.factory<_i14.SignInFormBloc>(
+      () => _i14.SignInFormBloc(get<_i6.IAuthFacade>()));
+  gh.factory<_i15.TransactionActorBloc>(
+      () => _i15.TransactionActorBloc(get<_i11.ITransactionRepository>()));
+  gh.factory<_i16.TransactionWatcherBloc>(
+      () => _i16.TransactionWatcherBloc(get<_i11.ITransactionRepository>()));
+  gh.factory<_i17.AppAuthBloc>(() => _i17.AppAuthBloc(get<_i6.IAuthFacade>()));
   return get;
 }
 
-class _$FirebaseInjectableModule extends _i15.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i18.FirebaseInjectableModule {}

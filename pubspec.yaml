@@ -31,6 +31,8 @@ dependencies:
   kt_dart: ^0.10.0
   json_serializable: ^6.1.4
   json_annotation: ^4.4.0
+  http: ^0.13.4
+  data_connection_checker: ^0.3.4
 
 
 dev_dependencies:

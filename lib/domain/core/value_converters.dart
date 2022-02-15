@@ -17,6 +17,7 @@ class ValueConverters {
     const enumList = EnumCurrency.values;
     final enumOrNull = enumList.toEnumFromString<EnumCurrency>(input);
 
+
     if (enumOrNull == null) {
       return left(const ValueFailure.unknownEnum(failedValue: EnumCurrency.undefined));
     } else {

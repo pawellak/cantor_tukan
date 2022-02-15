@@ -10,8 +10,6 @@ import 'package:kantor_tukan/infrastructure/transaction/transaction_dtos.dart';
 import 'package:kt_dart/kt.dart';
 import 'package:kantor_tukan/infrastructure/core/firestore_helpers.dart';
 
-const orderTransactionsBy = 'dateReservation';
-
 @LazySingleton(as: ITransactionRepository)
 class TransactionRepository implements ITransactionRepository {
   final fs.FirebaseFirestore _firebaseFirestore;
@@ -65,7 +63,7 @@ class TransactionRepository implements ITransactionRepository {
   Stream<Either<TransactionFailure, KtList<Transaction>>> _transactions() async* {
     final userDoc = await _userDoc();
     yield* userDoc.transactionCollection
-        .orderBy(orderTransactionsBy, descending: true)
+        .orderBy(FirebaseConst.orderTransactionsBy, descending: true)
         .snapshots()
         .map(
           (snapshot) => right<TransactionFailure, KtList<Transaction>>(
@@ -78,7 +76,7 @@ class TransactionRepository implements ITransactionRepository {
       EnumTransactionStatus enumTransactionStatus) async* {
     final userDoc = await _userDoc();
     yield* userDoc.transactionCollection
-        .orderBy(orderTransactionsBy, descending: true)
+        .orderBy(FirebaseConst.orderTransactionsBy, descending: true)
         .snapshots()
         .map(
           (snapshot) => snapshot.docs.map((doc) => TransactionDto.fromFirestore(doc).toDomain()),
@@ -95,12 +93,18 @@ class TransactionRepository implements ITransactionRepository {
   }
 
   _transactionError(error) {
-    if (error is fs.FirebaseException && error.message!.contains(FirebaseConst.errorPermissionDenied)) {
+    if (isErrorPermissionDenied(error)) {
       return left(const TransactionFailure.insufficientPermission());
-    } else if (error is fs.FirebaseException && error.message!.contains(FirebaseConst.errorNotFound)) {
+    } else if (isErrorDataNotFound(error)) {
       return left(const TransactionFailure.insufficientPermission());
     } else {
-      left(const TransactionFailure.unexpected());
+      return left(const TransactionFailure.unexpected());
     }
   }
+
+  bool isErrorDataNotFound(error) =>
+      error is fs.FirebaseException && error.message!.contains(FirebaseConst.errorNotFound);
+
+  bool isErrorPermissionDenied(error) =>
+      error is fs.FirebaseException && error.message!.contains(FirebaseConst.errorPermissionDenied);
 }
