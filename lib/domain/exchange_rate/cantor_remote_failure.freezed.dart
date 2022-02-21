@@ -37,14 +37,12 @@ mixin _$CantorRemoteFailure {
     required TResult Function() incorrectDataError,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? incorrectDataError,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
@@ -52,21 +50,18 @@ mixin _$CantorRemoteFailure {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_IncorrectDataError value) incorrectDataError,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_IncorrectDataError value)? incorrectDataError,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
@@ -78,30 +73,34 @@ mixin _$CantorRemoteFailure {
 
 /// @nodoc
 abstract class $CantorRemoteFailureCopyWith<$Res> {
-  factory $CantorRemoteFailureCopyWith(CantorRemoteFailure value, $Res Function(CantorRemoteFailure) then) =
+  factory $CantorRemoteFailureCopyWith(
+          CantorRemoteFailure value, $Res Function(CantorRemoteFailure) then) =
       _$CantorRemoteFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$CantorRemoteFailureCopyWithImpl<$Res> implements $CantorRemoteFailureCopyWith<$Res> {
+class _$CantorRemoteFailureCopyWithImpl<$Res>
+    implements $CantorRemoteFailureCopyWith<$Res> {
   _$CantorRemoteFailureCopyWithImpl(this._value, this._then);
 
   final CantorRemoteFailure _value;
-
   // ignore: unused_field
   final $Res Function(CantorRemoteFailure) _then;
 }
 
 /// @nodoc
 abstract class _$ServerErrorCopyWith<$Res> {
-  factory _$ServerErrorCopyWith(_ServerError value, $Res Function(_ServerError) then) =
+  factory _$ServerErrorCopyWith(
+          _ServerError value, $Res Function(_ServerError) then) =
       __$ServerErrorCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ServerErrorCopyWithImpl<$Res> extends _$CantorRemoteFailureCopyWithImpl<$Res>
+class __$ServerErrorCopyWithImpl<$Res>
+    extends _$CantorRemoteFailureCopyWithImpl<$Res>
     implements _$ServerErrorCopyWith<$Res> {
-  __$ServerErrorCopyWithImpl(_ServerError _value, $Res Function(_ServerError) _then)
+  __$ServerErrorCopyWithImpl(
+      _ServerError _value, $Res Function(_ServerError) _then)
       : super(_value, (v) => _then(v as _ServerError));
 
   @override
@@ -120,7 +119,8 @@ class _$_ServerError implements _ServerError {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _ServerError);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _ServerError);
   }
 
   @override
@@ -195,14 +195,17 @@ abstract class _ServerError implements CantorRemoteFailure {
 
 /// @nodoc
 abstract class _$IncorrectDataErrorCopyWith<$Res> {
-  factory _$IncorrectDataErrorCopyWith(_IncorrectDataError value, $Res Function(_IncorrectDataError) then) =
+  factory _$IncorrectDataErrorCopyWith(
+          _IncorrectDataError value, $Res Function(_IncorrectDataError) then) =
       __$IncorrectDataErrorCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$IncorrectDataErrorCopyWithImpl<$Res> extends _$CantorRemoteFailureCopyWithImpl<$Res>
+class __$IncorrectDataErrorCopyWithImpl<$Res>
+    extends _$CantorRemoteFailureCopyWithImpl<$Res>
     implements _$IncorrectDataErrorCopyWith<$Res> {
-  __$IncorrectDataErrorCopyWithImpl(_IncorrectDataError _value, $Res Function(_IncorrectDataError) _then)
+  __$IncorrectDataErrorCopyWithImpl(
+      _IncorrectDataError _value, $Res Function(_IncorrectDataError) _then)
       : super(_value, (v) => _then(v as _IncorrectDataError));
 
   @override
@@ -221,7 +224,8 @@ class _$_IncorrectDataError implements _IncorrectDataError {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _IncorrectDataError);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _IncorrectDataError);
   }
 
   @override

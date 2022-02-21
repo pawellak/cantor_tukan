@@ -1,15 +1,17 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:kantor_tukan/domain/cantor/cantor_remote_failure.dart';
-import 'package:kantor_tukan/domain/cantor/exchange_date.dart';
-import 'package:kantor_tukan/domain/cantor/exchange_rate.dart';
-import 'package:kantor_tukan/domain/cantor/i_cantor_remote_data_source.dart';
+import 'package:kantor_tukan/domain/exchange_rate/cantor_remote_failure.dart';
+import 'package:kantor_tukan/domain/exchange_rate/exchange_date.dart';
+import 'package:kantor_tukan/domain/exchange_rate/exchange_rate.dart';
+import 'package:kantor_tukan/domain/exchange_rate/i_cantor_remote_data_source.dart';
 import 'package:http/http.dart' as http;
 import 'package:kantor_tukan/domain/core/currency_value.dart';
-import 'package:kantor_tukan/infrastructure/cantor/exchange_rate_dto.dart';
-import 'package:kantor_tukan/infrastructure/cantor/input_converter.dart';
-import 'package:kantor_tukan/infrastructure/cantor/links.dart';
+import 'package:kantor_tukan/infrastructure/exchange_rate/exchange_rate_dto.dart';
+import 'package:kantor_tukan/infrastructure/exchange_rate/input_converter.dart';
+import 'package:kantor_tukan/infrastructure/exchange_rate/links.dart';
 import 'package:kt_dart/kt.dart';
+
+import '../../domain/exchange_rate/i_cantor_remote_data_source.dart';
 
 const validateExchangeRate = 'validate';
 const invalidateExchangeRate = 'invalidate';
@@ -21,7 +23,7 @@ class CantorRemoteDataSource implements ICantorRemoteDataSource {
   CantorRemoteDataSource({required this.client});
 
   @override
-  Future<Either<CantorRemoteFailure, KtList<ExchangeRate>>> getCurrencyDataFromUrl() async {
+  Future<Either<CantorRemoteFailure, KtList<ExchangeRate>>> getExchangeRates() async {
     final uriToCantorWithExchangeRate = Uri.parse(Links.currencyData);
     final response = await client.get(uriToCantorWithExchangeRate);
 
@@ -40,7 +42,7 @@ class CantorRemoteDataSource implements ICantorRemoteDataSource {
   }
 
   @override
-  Future<Either<CantorRemoteFailure, ExchangeDate>> getCurrencyUpdateDateFromUrl() async {
+  Future<Either<CantorRemoteFailure, ExchangeDate>> getExchangeRatesUpdateDate() async {
     final uriToCantorWithUpdateDate = Uri.parse(Links.currencyUpdateTime);
     final response = await client.get(uriToCantorWithUpdateDate);
 

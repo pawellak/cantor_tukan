@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kantor_tukan/application/auth/app_auth_bloc.dart';
+import 'package:kantor_tukan/presentation/exchange_rate/exchange_rate_page.dart';
 import 'package:kantor_tukan/presentation/sign_in/sign_in_page.dart';
 
 const loading = 'Wczytywanie';
@@ -17,7 +18,7 @@ class SplashPage extends StatelessWidget {
         state.map(
             initial: (_) {},
             authenticated: (_) {
-              print(loading);
+              Navigator.of(context).pushNamed(ExchangeRatePage.routeName);
             },
             unauthenticated: (_) {
               Navigator.of(context).pushNamed(SignInPage.routeName);

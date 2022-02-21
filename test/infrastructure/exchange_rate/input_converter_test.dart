@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kantor_tukan/infrastructure/cantor/input_converter.dart';
+import 'package:kantor_tukan/infrastructure/exchange_rate/input_converter.dart';
 import '../../fixtures/fixture_reader.dart';
 
 void main() {

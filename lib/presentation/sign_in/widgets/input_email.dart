@@ -46,5 +46,5 @@ class InputEmail extends StatelessWidget {
     );
   }
 
-  Null _buildEmailValid() => null;
+  String? _buildEmailValid() => null;
 }

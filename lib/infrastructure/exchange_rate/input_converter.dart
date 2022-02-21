@@ -1,5 +1,5 @@
 import 'package:kantor_tukan/domain/core/separators.dart';
-import 'package:kantor_tukan/infrastructure/cantor/exchange_rate_dto.dart';
+import 'package:kantor_tukan/infrastructure/exchange_rate/exchange_rate_dto.dart';
 
 const currencyNameIndex = 0;
 const sellPriceIndex = 1;
@@ -51,46 +51,46 @@ class InputConverter {
 
     return DateTime(year, month, day);
   }
-}
 
-///Single string into List, where 1 line = 1 exchange rate
-List<String> _splitCurrency(String _currency) {
-  return _currency.split(Separators.lineCurrency);
-}
-
-///Remove trashes from list like "ArrayTESTH;;;2;2"
-List<String> _removeTestRow(List<String> _sc) {
-  int length = _sc.length;
-  int lastElementInList = length - 1;
-
-  _sc.removeAt(lastElementInList);
-  _sc.removeAt(firstElementInList);
-
-  return _sc;
-}
-
-///eg. EURH;4,5300;4,5650;2;2;; to EUR;4,5300;4,5650;2;2;;
-List<String> _removeHLetter(List<String> _sc) {
-  return _sc.map((element) {
-    var singleExchangeRate = element.split(Separators.singleCurrency);
-    var currencyName = singleExchangeRate[currencyNameIndex];
-    var currencyNameLength = currencyName.length;
-    final currencyNameLastChar = currencyNameLength - 1;
-
-    currencyName = currencyName.substring(currencyNameFirstChar, currencyNameLastChar);
-    singleExchangeRate[currencyNameIndex] = currencyName;
-    final exchangeRateString = _listOfStringToString(singleExchangeRate);
-    return exchangeRateString;
-  }).toList();
-}
-
-String _listOfStringToString(List<String> singleCurrency) {
-  String word = emptyString;
-
-  for (var element in singleCurrency) {
-    word = word + element;
-    word = word + Separators.singleCurrency;
+  ///Single string into List, where 1 line = 1 exchange rate
+  List<String> _splitCurrency(String _currency) {
+    return _currency.split(Separators.lineCurrency);
   }
 
-  return word;
+  ///Remove trashes from list like "ArrayTESTH;;;2;2"
+  List<String> _removeTestRow(List<String> _sc) {
+    int length = _sc.length;
+    int lastElementInList = length - 1;
+
+    _sc.removeAt(lastElementInList);
+    _sc.removeAt(firstElementInList);
+
+    return _sc;
+  }
+
+  ///eg. EURH;4,5300;4,5650;2;2;; to EUR;4,5300;4,5650;2;2;;
+  List<String> _removeHLetter(List<String> _sc) {
+    return _sc.map((element) {
+      var singleExchangeRate = element.split(Separators.singleCurrency);
+      var currencyName = singleExchangeRate[currencyNameIndex];
+      var currencyNameLength = currencyName.length;
+      final currencyNameLastChar = currencyNameLength - 1;
+
+      currencyName = currencyName.substring(currencyNameFirstChar, currencyNameLastChar);
+      singleExchangeRate[currencyNameIndex] = currencyName;
+      final exchangeRateString = _listOfStringToString(singleExchangeRate);
+      return exchangeRateString;
+    }).toList();
+  }
+
+  String _listOfStringToString(List<String> singleCurrency) {
+    String word = emptyString;
+
+    for (var element in singleCurrency) {
+      word = word + element;
+      word = word + Separators.singleCurrency;
+    }
+
+    return word;
+  }
 }

@@ -23,17 +23,17 @@ class TransactionRepository implements ITransactionRepository {
 
   @override
   Stream<Either<TransactionFailure, KtList<Transaction>>> watchAccepted() async* {
-    yield* transactionsFiltered(EnumTransactionStatus.accepted);
+    yield* _transactionsFiltered(EnumTransactionStatus.accepted);
   }
 
   @override
   Stream<Either<TransactionFailure, KtList<Transaction>>> watchDecline() async* {
-    yield* transactionsFiltered(EnumTransactionStatus.decline);
+    yield* _transactionsFiltered(EnumTransactionStatus.decline);
   }
 
   @override
   Stream<Either<TransactionFailure, KtList<Transaction>>> watchPending() async* {
-    yield* transactionsFiltered(EnumTransactionStatus.pending);
+    yield* _transactionsFiltered(EnumTransactionStatus.pending);
   }
 
   @override
@@ -72,7 +72,7 @@ class TransactionRepository implements ITransactionRepository {
         .handleError(_transactionError);
   }
 
-  Stream<Either<TransactionFailure, KtList<Transaction>>> transactionsFiltered(
+  Stream<Either<TransactionFailure, KtList<Transaction>>> _transactionsFiltered(
       EnumTransactionStatus enumTransactionStatus) async* {
     final userDoc = await _userDoc();
     yield* userDoc.transactionCollection
@@ -93,18 +93,18 @@ class TransactionRepository implements ITransactionRepository {
   }
 
   _transactionError(error) {
-    if (isErrorPermissionDenied(error)) {
+    if (_isErrorPermissionDenied(error)) {
       return left(const TransactionFailure.insufficientPermission());
-    } else if (isErrorDataNotFound(error)) {
+    } else if (_isErrorDataNotFound(error)) {
       return left(const TransactionFailure.insufficientPermission());
     } else {
       return left(const TransactionFailure.unexpected());
     }
   }
 
-  bool isErrorDataNotFound(error) =>
+  bool _isErrorDataNotFound(error) =>
       error is fs.FirebaseException && error.message!.contains(FirebaseConst.errorNotFound);
 
-  bool isErrorPermissionDenied(error) =>
+  bool _isErrorPermissionDenied(error) =>
       error is fs.FirebaseException && error.message!.contains(FirebaseConst.errorPermissionDenied);
 }

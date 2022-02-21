@@ -44,5 +44,5 @@ class InputPassword extends StatelessWidget {
     );
   }
 
-  Null _buildPasswordValid() => null;
+  String? _buildPasswordValid() => null;
 }

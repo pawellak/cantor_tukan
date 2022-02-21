@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kantor_tukan/domain/cantor/exchange_rate.dart';
+import 'package:kantor_tukan/domain/exchange_rate/exchange_rate.dart';
 import 'package:kantor_tukan/domain/core/currency_value.dart';
 
 part 'exchange_rate_dto.freezed.dart';

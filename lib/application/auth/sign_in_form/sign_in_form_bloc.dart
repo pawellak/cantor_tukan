@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_use_of_visible_for_testing_member
+
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
@@ -22,52 +24,46 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     on<SignInFormEvent>(
       (signInEvent, emitEvent) {
         signInEvent.map(
-            emailChanged: _emailChanged,
-            passwordChanged: _passwordChanged,
-            registerWithEmailAndPasswordPressed: _registerWithEmailAndPassword,
-            signInWithEmailAndPasswordPressed: _signInWithEmailAndPassword,
-            signInWithGooglePressed: _signInWithGoogle);
+          emailChanged: _emailChanged,
+          passwordChanged: _passwordChanged,
+          registerWithEmailAndPasswordPressed: _registerWithEmailAndPassword,
+          signInWithEmailAndPasswordPressed: _signInWithEmailAndPassword,
+          signInWithGooglePressed: _signInWithGoogle,
+        );
       },
     );
   }
 
-  void _emailChanged(e) {
-
+  void _emailChanged(EmailChanged e) {
     emit(state.copyWith(
       emailAddress: EmailAddress(e.emailStr),
       authFailureOrSuccessOption: none(),
     ));
   }
 
-  void _passwordChanged(e) {
-    // ignore: invalid_use_of_visible_for_testing_member
+  void _passwordChanged(PasswordChanged e) {
     emit(state.copyWith(
       password: Password(e.password),
       authFailureOrSuccessOption: none(),
     ));
   }
 
-  void _registerWithEmailAndPassword(e) {
-    _performActionOnAuthFacadeWithEmailAndPassword(
-        _authFacade.registerWithEmailAndPassword);
+  void _registerWithEmailAndPassword(_) {
+    _performActionOnAuthFacadeWithEmailAndPassword(_authFacade.registerWithEmailAndPassword);
   }
 
-  void _signInWithEmailAndPassword(e) {
-    _performActionOnAuthFacadeWithEmailAndPassword(
-        _authFacade.signInWithEmailAndPassword);
+  void _signInWithEmailAndPassword(_) {
+    _performActionOnAuthFacadeWithEmailAndPassword(_authFacade.signInWithEmailAndPassword);
   }
 
-  void _signInWithGoogle(e) async {
-    // ignore: invalid_use_of_visible_for_testing_member
+  void _signInWithGoogle(_) async {
     emit(state.copyWith(
       isSubmitting: true,
       authFailureOrSuccessOption: none(),
     ));
+
     final failureOrSuccess = await _authFacade.signInWithGoogle();
-    // ignore: invalid_use_of_visible_for_testing_member
-    emit(state.copyWith(
-        isSubmitting: false,
-        authFailureOrSuccessOption: some(failureOrSuccess)));
+    emit(state.copyWith(isSubmitting: false, authFailureOrSuccessOption: some(failureOrSuccess)));
   }
 
   void _performActionOnAuthFacadeWithEmailAndPassword(
@@ -84,7 +80,6 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     final isPasswordValid = state.password.isValid();
 
     if (isEmailValid && isPasswordValid) {
-      // ignore: invalid_use_of_visible_for_testing_member
       emit(state.copyWith(
         isSubmitting: true,
         authFailureOrSuccessOption: none(),
@@ -102,7 +97,6 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       }
     }
 
-    // ignore: invalid_use_of_visible_for_testing_member
     emit(state.copyWith(
       isSubmitting: false,
       showErrorMessages: _showErrorMessage,

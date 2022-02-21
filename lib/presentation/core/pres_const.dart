@@ -16,4 +16,9 @@ class PresConst {
   static const sipLogoSize = 40.0;
   static const sipLogoSpace = 120.0;
   static const sipEmptySpace = 8.0;
+
+  //ExchangeRatePage
+
+static const erpUpdateDate = 'Data aktualizacji kursów: ';
+
 }

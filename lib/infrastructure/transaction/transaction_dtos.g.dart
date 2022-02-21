@@ -6,6 +6,8 @@ part of 'transaction_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+
+
 Map<String, dynamic> _$TransactionDtoToJson(TransactionDto instance) =>
     <String, dynamic>{
       'uid': instance.uid,

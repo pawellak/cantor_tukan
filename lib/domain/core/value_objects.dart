@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_renaming_method_parameters
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:kantor_tukan/domain/core/core_constants.dart';

@@ -5,7 +5,6 @@ import 'package:kt_dart/kt.dart';
 
 
 abstract class ITransactionRepository {
-
   Stream<Either<TransactionFailure,KtList<Transaction>>> watchAll();
   Stream<Either<TransactionFailure,KtList<Transaction>>> watchAccepted();
   Stream<Either<TransactionFailure,KtList<Transaction>>> watchPending();

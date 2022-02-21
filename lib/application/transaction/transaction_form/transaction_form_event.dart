@@ -1,0 +1,15 @@
+part of 'transaction_form_bloc.dart';
+
+@freezed
+abstract class TransactionFormEvent with _$TransactionFormEvent {
+  const factory TransactionFormEvent.currencyValueChanged(CurrencyValue currencyValue) = _CurrencyValueChanged;
+
+  // const factory TransactionFormEvent.backToListWithCurrencies() = _BackToListWithCurrencies;
+
+  const factory TransactionFormEvent.transactionConfirmed() = _TransactionConfirmed;
+
+  const factory TransactionFormEvent.exchangeRateSelected(ExchangeRate exchangeRate) = _ExchangeRateSelected;
+
+  const factory TransactionFormEvent.transactionTypeSelected(TransactionType transactionType) =
+      _TransactionTypeSelected;
+}

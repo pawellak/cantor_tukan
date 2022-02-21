@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kantor_tukan/application/auth/app_auth_bloc.dart';
 import 'package:kantor_tukan/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:kantor_tukan/presentation/core/pres_const.dart';
+import 'package:kantor_tukan/presentation/exchange_rate/exchange_rate_page.dart';
 import 'package:kantor_tukan/presentation/sign_in/widgets/button_register_email.dart';
 import 'package:kantor_tukan/presentation/sign_in/widgets/button_sign_in_email.dart';
 import 'package:kantor_tukan/presentation/sign_in/widgets/button_sign_in_google.dart';
@@ -18,7 +20,20 @@ class SignInForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<SignInFormBloc, SignInFormState>(
       listener: (context, state) {
-        ErrorSnackBar().call(state, context);
+        state.authFailureOrSuccessOption.fold(
+          () {},
+          (either) {
+            either.fold(
+              (failure) {
+                ErrorSnackBar().call(state, context);
+              },
+              (_) {
+                Navigator.of(context).pushNamed(ExchangeRatePage.routeName);
+                context.read<AppAuthBloc>().add(const AppAuthEvent.authCheckRequested());
+              },
+            );
+          },
+        );
       },
       builder: (context, state) {
         return _buildForm(state, context);

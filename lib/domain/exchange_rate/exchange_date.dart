@@ -13,6 +13,7 @@ abstract class ExchangeDate implements _$ExchangeDate {
     required DateCantor updateDate,
   }) = _ExchangeDate;
 
+
   factory ExchangeDate.empty() => ExchangeDate(
         updateDate: DateCantor.fromDateTime(
           DateTime(0),
