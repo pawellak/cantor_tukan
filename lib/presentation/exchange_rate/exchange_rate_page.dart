@@ -4,7 +4,7 @@ import 'package:kantor_tukan/injection.dart';
 import 'package:kantor_tukan/presentation/core/pres_const.dart';
 import 'package:kantor_tukan/presentation/exchange_rate/widgets/exchange_rate_form.dart';
 
-import '../../application/transaction/transaction_form/transaction_form_bloc.dart';
+import '../../application/exchange_form/exchange_rate_bloc.dart';
 
 class ExchangeRatePage extends StatelessWidget {
   static const routeName = '/exchange-rate';
@@ -23,11 +23,8 @@ class ExchangeRatePage extends StatelessWidget {
       body: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => getIt<TransactionFormBloc>(),
+            create: (context) => getIt<ExchangeRateBloc>()..add(const ExchangeRateEvent.fetch()),
           ),
-          // BlocProvider(
-          //   create: (context) => getIt<ExchangeFormBloc>(),
-          // )
         ],
         child: const ExchangeRateForm(),
       ),

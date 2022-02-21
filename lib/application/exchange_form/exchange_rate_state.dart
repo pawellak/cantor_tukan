@@ -12,7 +12,7 @@ abstract class ExchangeRateState with _$ExchangeRateState {
   factory ExchangeRateState.initial() => ExchangeRateState(
       failureOrSuccessOption: none(),
       showErrorMessages: false,
-      isSubmitting: false,
+      isSubmitting: true,
       exchangeDate: ExchangeDate.empty(),
       exchangeRate: const KtList.empty());
 }

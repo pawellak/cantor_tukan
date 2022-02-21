@@ -23,9 +23,11 @@ class ExchangeRateBloc extends Bloc<ExchangeRateEvent, ExchangeRateState> {
   final ICantorRemoteDataSource iCantorRemoteDataSource;
 
   ExchangeRateBloc(this.iCantorRemoteDataSource) : super(ExchangeRateState.initial()) {
-    on<ExchangeRateEvent>((event, emit) {
-      event.map(fetch: _fetch);
-    });
+    on<ExchangeRateEvent>(
+      (event, emit) {
+        event.map(fetch: _fetch);
+      },
+    );
   }
 
   void _fetch(_) async {
@@ -38,9 +40,11 @@ class ExchangeRateBloc extends Bloc<ExchangeRateEvent, ExchangeRateState> {
       showErrorMessages: false,
     ));
 
-    final exchangeRates = await iCantorRemoteDataSource.getExchangeRates();
-    final exchangeRatesUpdateDate = await iCantorRemoteDataSource.getExchangeRatesUpdateDate();
 
+    final Either<CantorRemoteFailure, ExchangeDate> exchangeRatesUpdateDate =
+        await iCantorRemoteDataSource.getExchangeRatesUpdateDate();
+    final Either<CantorRemoteFailure, KtList<ExchangeRate>> exchangeRates =
+        await iCantorRemoteDataSource.getExchangeRates();
     _exchangeRateList = exchangeRates.fold((f) => const KtList.empty(), (r) => r);
     _exchangeDate = exchangeRatesUpdateDate.fold((l) => ExchangeDate.empty(), (r) => r);
 

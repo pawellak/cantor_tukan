@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
+import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 import 'package:kantor_tukan/domain/exchange_rate/cantor_remote_failure.dart';
 import 'package:kantor_tukan/domain/exchange_rate/exchange_date.dart';
 import 'package:kantor_tukan/domain/exchange_rate/exchange_rate.dart';
 import 'package:kantor_tukan/domain/exchange_rate/i_cantor_remote_data_source.dart';
-import 'package:http/http.dart' as http;
 import 'package:kantor_tukan/domain/core/currency_value.dart';
 import 'package:kantor_tukan/infrastructure/exchange_rate/exchange_rate_dto.dart';
 import 'package:kantor_tukan/infrastructure/exchange_rate/input_converter.dart';
@@ -16,41 +16,45 @@ import '../../domain/exchange_rate/i_cantor_remote_data_source.dart';
 const validateExchangeRate = 'validate';
 const invalidateExchangeRate = 'invalidate';
 
-@LazySingleton(as: ICantorRemoteDataSource)
+@Singleton(as: ICantorRemoteDataSource)
 class CantorRemoteDataSource implements ICantorRemoteDataSource {
-  final http.Client client;
-
-  CantorRemoteDataSource({required this.client});
+  CantorRemoteDataSource();
 
   @override
   Future<Either<CantorRemoteFailure, KtList<ExchangeRate>>> getExchangeRates() async {
-    final uriToCantorWithExchangeRate = Uri.parse(Links.currencyData);
-    final response = await client.get(uriToCantorWithExchangeRate);
-
-    if (isStatusCodeOk(response)) {
-      final exchangeRateListJson = InputConverter().toExchangeRateJsonFromCantorRemoteString(response.body);
-      final exchangeRateDtoList =
-          exchangeRateListJson.map((exchangeRate) => ExchangeRateDto.fromJson(exchangeRate)).toList();
-      final exchangeRateList = exchangeRateDtoList.map((exchangeRateDto) {
-        final exchangeRate = exchangeRateDto.toDomain();
-        return exchangeRate;
-      }).toList();
-      return right(exchangeRateList.toImmutableList());
-    } else {
+    try {
+      final uriToCantorWithExchangeRate = Uri.parse(Links.currencyData);
+      final response = await http.post(uriToCantorWithExchangeRate);
+      if (isStatusCodeOk(response)) {
+        final exchangeRateListJson = InputConverter().toExchangeRateJsonFromCantorRemoteString(response.body);
+        final exchangeRateDtoList =
+            exchangeRateListJson.map((exchangeRate) => ExchangeRateDto.fromJson(exchangeRate)).toList();
+        final exchangeRateList = exchangeRateDtoList.map((exchangeRateDto) {
+          final exchangeRate = exchangeRateDto.toDomain();
+          return exchangeRate;
+        }).toList();
+        return right(exchangeRateList.toImmutableList());
+      } else {
+        return left(_serverFailure());
+      }
+    } catch (ex) {
       return left(_serverFailure());
     }
   }
 
   @override
   Future<Either<CantorRemoteFailure, ExchangeDate>> getExchangeRatesUpdateDate() async {
-    final uriToCantorWithUpdateDate = Uri.parse(Links.currencyUpdateTime);
-    final response = await client.get(uriToCantorWithUpdateDate);
-
-    if (isStatusCodeOk(response)) {
-      final dateTimeUpdate = InputConverter().toDateTimeFromCantorRemoteString(response.body);
-      final exchangeUpdateDate = ExchangeDate(updateDate: DateCantor.fromDateTime(dateTimeUpdate));
-      return right(exchangeUpdateDate);
-    } else {
+    try {
+      final uriToCantorWithUpdateDate = Uri.parse(Links.currencyUpdateTime);
+      final response = await http.get(uriToCantorWithUpdateDate);
+      if (isStatusCodeOk(response)) {
+        final dateTimeUpdate = InputConverter().toDateTimeFromCantorRemoteString(response.body);
+        final exchangeUpdateDate = ExchangeDate(updateDate: DateCantor.fromDateTime(dateTimeUpdate));
+        return right(exchangeUpdateDate);
+      } else {
+        return left(_serverFailure());
+      }
+    } catch (ex) {
       return left(_serverFailure());
     }
   }

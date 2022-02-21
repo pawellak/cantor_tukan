@@ -49,8 +49,7 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i8.FirebaseAuthFacade(get<_i4.FirebaseAuth>(),
           get<_i6.GoogleSignIn>(), get<_i5.FirebaseUserMapper>()),
       registerFor: {_prod});
-  gh.lazySingleton<_i9.ICantorRemoteDataSource>(
-      () => _i10.CantorRemoteDataSource(client: get<_i3.Client>()));
+  gh.singleton<_i9.ICantorRemoteDataSource>(_i10.CantorRemoteDataSource());
   gh.lazySingleton<_i11.ITransactionRepository>(
       () => _i12.TransactionRepository(get<_i13.FirebaseFirestore>()));
   gh.factory<_i14.SignInFormBloc>(
