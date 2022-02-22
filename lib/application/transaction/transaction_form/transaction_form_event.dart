@@ -1,7 +1,7 @@
 part of 'transaction_form_bloc.dart';
 
 @freezed
-abstract class TransactionFormEvent with _$TransactionFormEvent {
+class TransactionFormEvent with _$TransactionFormEvent {
   const factory TransactionFormEvent.currencyValueChanged(CurrencyValue currencyValue) = _CurrencyValueChanged;
 
   const factory TransactionFormEvent.transactionConfirmed() = _TransactionConfirmed;

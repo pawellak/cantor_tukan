@@ -8,9 +8,9 @@ import 'package:kantor_tukan/domain/exchange_rate/exchange_rate.dart';
 import 'package:kantor_tukan/domain/core/currency_value.dart';
 import 'package:kantor_tukan/domain/core/enums.dart';
 import 'package:kantor_tukan/domain/core/value_objects.dart';
+import 'package:kantor_tukan/domain/transaction/i_transaction_repository.dart';
 import 'package:kantor_tukan/domain/transaction/transaction.dart';
 import 'package:kantor_tukan/domain/transaction/transaction_failure.dart';
-import 'package:kantor_tukan/infrastructure/transaction/transaction_repository.dart';
 
 part 'transaction_form_event.dart';
 
@@ -20,9 +20,9 @@ part 'transaction_form_bloc.freezed.dart';
 
 @injectable
 class TransactionFormBloc extends Bloc<TransactionFormEvent, TransactionFormState> {
-  final TransactionRepository _transactionRepository;
+  final ITransactionRepository _iTransactionRepository;
 
-  TransactionFormBloc(this._transactionRepository) : super(TransactionFormState.initial()) {
+  TransactionFormBloc(this._iTransactionRepository) : super(TransactionFormState.initial()) {
     on<TransactionFormEvent>(
       (event, emit) {
         event.map(
@@ -48,7 +48,7 @@ class TransactionFormBloc extends Bloc<TransactionFormEvent, TransactionFormStat
     if (_transactionFailureOptions.isNone()) {
       emit(state.copyWith(isSubmitting: true, transactionFailureOrSuccessOption: none()));
       final transaction = state.transaction;
-      _failureOrSuccess = await _transactionRepository.create(transaction);
+      _failureOrSuccess = await _iTransactionRepository.create(transaction);
 
       if (_failureOrSuccess.isRight()) {
         _showErrorMessage = false;

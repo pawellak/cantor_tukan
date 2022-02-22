@@ -20,6 +20,12 @@ class _$ExchangeRateEventTearOff {
   _FetchExchangeRate fetch() {
     return const _FetchExchangeRate();
   }
+
+  _FetchedExchangeRate fetched(ExchangeRate exchangeRate) {
+    return _FetchedExchangeRate(
+      exchangeRate,
+    );
+  }
 }
 
 /// @nodoc
@@ -30,32 +36,38 @@ mixin _$ExchangeRateEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetch,
+    required TResult Function(ExchangeRate exchangeRate) fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? fetch,
+    TResult Function(ExchangeRate exchangeRate)? fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetch,
+    TResult Function(ExchangeRate exchangeRate)? fetched,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchExchangeRate value) fetch,
+    required TResult Function(_FetchedExchangeRate value) fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_FetchExchangeRate value)? fetch,
+    TResult Function(_FetchedExchangeRate value)? fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchExchangeRate value)? fetch,
+    TResult Function(_FetchedExchangeRate value)? fetched,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,6 +132,7 @@ class _$_FetchExchangeRate implements _FetchExchangeRate {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetch,
+    required TResult Function(ExchangeRate exchangeRate) fetched,
   }) {
     return fetch();
   }
@@ -128,6 +141,7 @@ class _$_FetchExchangeRate implements _FetchExchangeRate {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? fetch,
+    TResult Function(ExchangeRate exchangeRate)? fetched,
   }) {
     return fetch?.call();
   }
@@ -136,6 +150,7 @@ class _$_FetchExchangeRate implements _FetchExchangeRate {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetch,
+    TResult Function(ExchangeRate exchangeRate)? fetched,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -148,6 +163,7 @@ class _$_FetchExchangeRate implements _FetchExchangeRate {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchExchangeRate value) fetch,
+    required TResult Function(_FetchedExchangeRate value) fetched,
   }) {
     return fetch(this);
   }
@@ -156,6 +172,7 @@ class _$_FetchExchangeRate implements _FetchExchangeRate {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_FetchExchangeRate value)? fetch,
+    TResult Function(_FetchedExchangeRate value)? fetched,
   }) {
     return fetch?.call(this);
   }
@@ -164,6 +181,7 @@ class _$_FetchExchangeRate implements _FetchExchangeRate {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchExchangeRate value)? fetch,
+    TResult Function(_FetchedExchangeRate value)? fetched,
     required TResult orElse(),
   }) {
     if (fetch != null) {
@@ -178,6 +196,152 @@ abstract class _FetchExchangeRate implements ExchangeRateEvent {
 }
 
 /// @nodoc
+abstract class _$FetchedExchangeRateCopyWith<$Res> {
+  factory _$FetchedExchangeRateCopyWith(_FetchedExchangeRate value,
+          $Res Function(_FetchedExchangeRate) then) =
+      __$FetchedExchangeRateCopyWithImpl<$Res>;
+  $Res call({ExchangeRate exchangeRate});
+
+  $ExchangeRateCopyWith<$Res> get exchangeRate;
+}
+
+/// @nodoc
+class __$FetchedExchangeRateCopyWithImpl<$Res>
+    extends _$ExchangeRateEventCopyWithImpl<$Res>
+    implements _$FetchedExchangeRateCopyWith<$Res> {
+  __$FetchedExchangeRateCopyWithImpl(
+      _FetchedExchangeRate _value, $Res Function(_FetchedExchangeRate) _then)
+      : super(_value, (v) => _then(v as _FetchedExchangeRate));
+
+  @override
+  _FetchedExchangeRate get _value => super._value as _FetchedExchangeRate;
+
+  @override
+  $Res call({
+    Object? exchangeRate = freezed,
+  }) {
+    return _then(_FetchedExchangeRate(
+      exchangeRate == freezed
+          ? _value.exchangeRate
+          : exchangeRate // ignore: cast_nullable_to_non_nullable
+              as ExchangeRate,
+    ));
+  }
+
+  @override
+  $ExchangeRateCopyWith<$Res> get exchangeRate {
+    return $ExchangeRateCopyWith<$Res>(_value.exchangeRate, (value) {
+      return _then(_value.copyWith(exchangeRate: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_FetchedExchangeRate implements _FetchedExchangeRate {
+  const _$_FetchedExchangeRate(this.exchangeRate);
+
+  @override
+  final ExchangeRate exchangeRate;
+
+  @override
+  String toString() {
+    return 'ExchangeRateEvent.fetched(exchangeRate: $exchangeRate)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _FetchedExchangeRate &&
+            const DeepCollectionEquality()
+                .equals(other.exchangeRate, exchangeRate));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(exchangeRate));
+
+  @JsonKey(ignore: true)
+  @override
+  _$FetchedExchangeRateCopyWith<_FetchedExchangeRate> get copyWith =>
+      __$FetchedExchangeRateCopyWithImpl<_FetchedExchangeRate>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetch,
+    required TResult Function(ExchangeRate exchangeRate) fetched,
+  }) {
+    return fetched(exchangeRate);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? fetch,
+    TResult Function(ExchangeRate exchangeRate)? fetched,
+  }) {
+    return fetched?.call(exchangeRate);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetch,
+    TResult Function(ExchangeRate exchangeRate)? fetched,
+    required TResult orElse(),
+  }) {
+    if (fetched != null) {
+      return fetched(exchangeRate);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchExchangeRate value) fetch,
+    required TResult Function(_FetchedExchangeRate value) fetched,
+  }) {
+    return fetched(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_FetchExchangeRate value)? fetch,
+    TResult Function(_FetchedExchangeRate value)? fetched,
+  }) {
+    return fetched?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchExchangeRate value)? fetch,
+    TResult Function(_FetchedExchangeRate value)? fetched,
+    required TResult orElse(),
+  }) {
+    if (fetched != null) {
+      return fetched(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchedExchangeRate implements ExchangeRateEvent {
+  const factory _FetchedExchangeRate(ExchangeRate exchangeRate) =
+      _$_FetchedExchangeRate;
+
+  ExchangeRate get exchangeRate;
+  @JsonKey(ignore: true)
+  _$FetchedExchangeRateCopyWith<_FetchedExchangeRate> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$ExchangeRateStateTearOff {
   const _$ExchangeRateStateTearOff();
 
@@ -186,6 +350,8 @@ class _$ExchangeRateStateTearOff {
       required ExchangeDate exchangeDate,
       required bool showErrorMessages,
       required bool isSubmitting,
+      required bool isExchangeRateSelected,
+      required ExchangeRate exchangeRateSelected,
       required Option<Either<CantorRemoteFailure, Unit>>
           failureOrSuccessOption}) {
     return _ExchangeRateState(
@@ -193,6 +359,8 @@ class _$ExchangeRateStateTearOff {
       exchangeDate: exchangeDate,
       showErrorMessages: showErrorMessages,
       isSubmitting: isSubmitting,
+      isExchangeRateSelected: isExchangeRateSelected,
+      exchangeRateSelected: exchangeRateSelected,
       failureOrSuccessOption: failureOrSuccessOption,
     );
   }
@@ -207,6 +375,8 @@ mixin _$ExchangeRateState {
   ExchangeDate get exchangeDate => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
+  bool get isExchangeRateSelected => throw _privateConstructorUsedError;
+  ExchangeRate get exchangeRateSelected => throw _privateConstructorUsedError;
   Option<Either<CantorRemoteFailure, Unit>> get failureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
@@ -225,9 +395,12 @@ abstract class $ExchangeRateStateCopyWith<$Res> {
       ExchangeDate exchangeDate,
       bool showErrorMessages,
       bool isSubmitting,
+      bool isExchangeRateSelected,
+      ExchangeRate exchangeRateSelected,
       Option<Either<CantorRemoteFailure, Unit>> failureOrSuccessOption});
 
   $ExchangeDateCopyWith<$Res> get exchangeDate;
+  $ExchangeRateCopyWith<$Res> get exchangeRateSelected;
 }
 
 /// @nodoc
@@ -245,6 +418,8 @@ class _$ExchangeRateStateCopyWithImpl<$Res>
     Object? exchangeDate = freezed,
     Object? showErrorMessages = freezed,
     Object? isSubmitting = freezed,
+    Object? isExchangeRateSelected = freezed,
+    Object? exchangeRateSelected = freezed,
     Object? failureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
@@ -264,6 +439,14 @@ class _$ExchangeRateStateCopyWithImpl<$Res>
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
+      isExchangeRateSelected: isExchangeRateSelected == freezed
+          ? _value.isExchangeRateSelected
+          : isExchangeRateSelected // ignore: cast_nullable_to_non_nullable
+              as bool,
+      exchangeRateSelected: exchangeRateSelected == freezed
+          ? _value.exchangeRateSelected
+          : exchangeRateSelected // ignore: cast_nullable_to_non_nullable
+              as ExchangeRate,
       failureOrSuccessOption: failureOrSuccessOption == freezed
           ? _value.failureOrSuccessOption
           : failureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -275,6 +458,13 @@ class _$ExchangeRateStateCopyWithImpl<$Res>
   $ExchangeDateCopyWith<$Res> get exchangeDate {
     return $ExchangeDateCopyWith<$Res>(_value.exchangeDate, (value) {
       return _then(_value.copyWith(exchangeDate: value));
+    });
+  }
+
+  @override
+  $ExchangeRateCopyWith<$Res> get exchangeRateSelected {
+    return $ExchangeRateCopyWith<$Res>(_value.exchangeRateSelected, (value) {
+      return _then(_value.copyWith(exchangeRateSelected: value));
     });
   }
 }
@@ -291,10 +481,14 @@ abstract class _$ExchangeRateStateCopyWith<$Res>
       ExchangeDate exchangeDate,
       bool showErrorMessages,
       bool isSubmitting,
+      bool isExchangeRateSelected,
+      ExchangeRate exchangeRateSelected,
       Option<Either<CantorRemoteFailure, Unit>> failureOrSuccessOption});
 
   @override
   $ExchangeDateCopyWith<$Res> get exchangeDate;
+  @override
+  $ExchangeRateCopyWith<$Res> get exchangeRateSelected;
 }
 
 /// @nodoc
@@ -314,6 +508,8 @@ class __$ExchangeRateStateCopyWithImpl<$Res>
     Object? exchangeDate = freezed,
     Object? showErrorMessages = freezed,
     Object? isSubmitting = freezed,
+    Object? isExchangeRateSelected = freezed,
+    Object? exchangeRateSelected = freezed,
     Object? failureOrSuccessOption = freezed,
   }) {
     return _then(_ExchangeRateState(
@@ -333,6 +529,14 @@ class __$ExchangeRateStateCopyWithImpl<$Res>
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
+      isExchangeRateSelected: isExchangeRateSelected == freezed
+          ? _value.isExchangeRateSelected
+          : isExchangeRateSelected // ignore: cast_nullable_to_non_nullable
+              as bool,
+      exchangeRateSelected: exchangeRateSelected == freezed
+          ? _value.exchangeRateSelected
+          : exchangeRateSelected // ignore: cast_nullable_to_non_nullable
+              as ExchangeRate,
       failureOrSuccessOption: failureOrSuccessOption == freezed
           ? _value.failureOrSuccessOption
           : failureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -349,6 +553,8 @@ class _$_ExchangeRateState implements _ExchangeRateState {
       required this.exchangeDate,
       required this.showErrorMessages,
       required this.isSubmitting,
+      required this.isExchangeRateSelected,
+      required this.exchangeRateSelected,
       required this.failureOrSuccessOption});
 
   @override
@@ -360,11 +566,15 @@ class _$_ExchangeRateState implements _ExchangeRateState {
   @override
   final bool isSubmitting;
   @override
+  final bool isExchangeRateSelected;
+  @override
+  final ExchangeRate exchangeRateSelected;
+  @override
   final Option<Either<CantorRemoteFailure, Unit>> failureOrSuccessOption;
 
   @override
   String toString() {
-    return 'ExchangeRateState(exchangeRate: $exchangeRate, exchangeDate: $exchangeDate, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, failureOrSuccessOption: $failureOrSuccessOption)';
+    return 'ExchangeRateState(exchangeRate: $exchangeRate, exchangeDate: $exchangeDate, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, isExchangeRateSelected: $isExchangeRateSelected, exchangeRateSelected: $exchangeRateSelected, failureOrSuccessOption: $failureOrSuccessOption)';
   }
 
   @override
@@ -381,6 +591,10 @@ class _$_ExchangeRateState implements _ExchangeRateState {
             const DeepCollectionEquality()
                 .equals(other.isSubmitting, isSubmitting) &&
             const DeepCollectionEquality()
+                .equals(other.isExchangeRateSelected, isExchangeRateSelected) &&
+            const DeepCollectionEquality()
+                .equals(other.exchangeRateSelected, exchangeRateSelected) &&
+            const DeepCollectionEquality()
                 .equals(other.failureOrSuccessOption, failureOrSuccessOption));
   }
 
@@ -391,6 +605,8 @@ class _$_ExchangeRateState implements _ExchangeRateState {
       const DeepCollectionEquality().hash(exchangeDate),
       const DeepCollectionEquality().hash(showErrorMessages),
       const DeepCollectionEquality().hash(isSubmitting),
+      const DeepCollectionEquality().hash(isExchangeRateSelected),
+      const DeepCollectionEquality().hash(exchangeRateSelected),
       const DeepCollectionEquality().hash(failureOrSuccessOption));
 
   @JsonKey(ignore: true)
@@ -405,6 +621,8 @@ abstract class _ExchangeRateState implements ExchangeRateState {
       required ExchangeDate exchangeDate,
       required bool showErrorMessages,
       required bool isSubmitting,
+      required bool isExchangeRateSelected,
+      required ExchangeRate exchangeRateSelected,
       required Option<Either<CantorRemoteFailure, Unit>>
           failureOrSuccessOption}) = _$_ExchangeRateState;
 
@@ -416,6 +634,10 @@ abstract class _ExchangeRateState implements ExchangeRateState {
   bool get showErrorMessages;
   @override
   bool get isSubmitting;
+  @override
+  bool get isExchangeRateSelected;
+  @override
+  ExchangeRate get exchangeRateSelected;
   @override
   Option<Either<CantorRemoteFailure, Unit>> get failureOrSuccessOption;
   @override

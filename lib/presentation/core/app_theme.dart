@@ -4,6 +4,7 @@ const borderRadius = 8.0;
 const elevationOfAppBar = 5.0;
 const borderWidthWhenActive = 2.0;
 const mainColor = Colors.amber;
+const surfaceColor = Colors.grey;
 const secondaryColor = Colors.black87;
 const googleColor = Colors.blue;
 
@@ -63,4 +64,6 @@ InputDecorationTheme buildInputDecorationTheme() {
   );
 }
 
-ColorScheme _buildColorScheme() => ColorScheme.fromSwatch().copyWith(secondary: secondaryColor);
+ColorScheme _buildColorScheme() {
+  return ColorScheme.fromSwatch().copyWith(secondary: secondaryColor,primary: mainColor[300],surface: surfaceColor[100]);
+}

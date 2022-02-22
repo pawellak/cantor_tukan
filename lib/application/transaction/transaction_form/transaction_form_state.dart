@@ -1,7 +1,7 @@
 part of 'transaction_form_bloc.dart';
 
 @freezed
-abstract class TransactionFormState with _$TransactionFormState {
+class TransactionFormState with _$TransactionFormState {
   const factory TransactionFormState({
     required Transaction transaction,
     required bool showErrorMessages,

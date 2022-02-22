@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kantor_tukan/application/exchange_form/exchange_rate_bloc.dart';
 import 'package:kantor_tukan/domain/exchange_rate/exchange_rate.dart';
 import 'package:kantor_tukan/infrastructure/exchange_rate/links.dart';
 import 'package:kantor_tukan/domain/core/enums.dart';
@@ -24,7 +26,7 @@ class SingleExchangeRate extends StatelessWidget {
   GestureDetector _buildCurrencyTile(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        ///TODO on tap handling
+        context.read<ExchangeRateBloc>().add(ExchangeRateEvent.fetched(exchangeRate));
       },
       child: _buildRowWithCurrencyData(context),
     );
@@ -32,9 +34,13 @@ class SingleExchangeRate extends StatelessWidget {
 
   Container _buildRowWithCurrencyData(BuildContext context) {
     return Container(
+      color: _buildColorOfSurface(context),
       child: _buildTileRow(),
     );
   }
+
+  Color _buildColorOfSurface(BuildContext context) =>
+      ordinalNumber.isEven ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.surface;
 
   Row _buildTileRow() {
     return Row(

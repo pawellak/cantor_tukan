@@ -229,5 +229,16 @@ void main() {
         expect(result, expectedResult);
       },
     );
+
+    test(
+      'should convert date time into daily date time string',
+          () {
+        final dataToConvert = DateTime(2022,02,22);
+        const expectedResult = '2022/2/22';
+        final resultFold = valueConverters.toDailyDateStringFromDateTime(dataToConvert);
+        final result = resultFold.fold((l) => l, (r) => r);
+        expect(result, expectedResult);
+      },
+    );
   });
 }

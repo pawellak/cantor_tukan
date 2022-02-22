@@ -25,9 +25,16 @@ class ExchangeRateBloc extends Bloc<ExchangeRateEvent, ExchangeRateState> {
   ExchangeRateBloc(this.iCantorRemoteDataSource) : super(ExchangeRateState.initial()) {
     on<ExchangeRateEvent>(
       (event, emit) {
-        event.map(fetch: _fetch);
+        event.map(fetch: _fetch, fetched: _fetched);
       },
     );
+  }
+
+  void _fetched(_FetchedExchangeRate value) {
+    emit(
+      state.copyWith(isExchangeRateSelected: true, exchangeRateSelected: value.exchangeRate),
+    );
+
   }
 
   void _fetch(_) async {
@@ -40,7 +47,6 @@ class ExchangeRateBloc extends Bloc<ExchangeRateEvent, ExchangeRateState> {
       showErrorMessages: false,
     ));
 
-
     final Either<CantorRemoteFailure, ExchangeDate> exchangeRatesUpdateDate =
         await iCantorRemoteDataSource.getExchangeRatesUpdateDate();
     final Either<CantorRemoteFailure, KtList<ExchangeRate>> exchangeRates =
@@ -49,23 +55,19 @@ class ExchangeRateBloc extends Bloc<ExchangeRateEvent, ExchangeRateState> {
     _exchangeDate = exchangeRatesUpdateDate.fold((l) => ExchangeDate.empty(), (r) => r);
 
     if (_exchangeRateList.isEmpty() || _exchangeDate == ExchangeDate.empty()) {
-      emit(
-        state.copyWith(
-          isSubmitting: false,
-          failureOrSuccessOption: some(left(const CantorRemoteFailure.serverError())),
-          showErrorMessages: true,
-        ),
-      );
+      emit(state.copyWith(
+        isSubmitting: false,
+        failureOrSuccessOption: some(left(const CantorRemoteFailure.serverError())),
+        showErrorMessages: true,
+      ));
     } else {
-      emit(
-        state.copyWith(
-          isSubmitting: false,
-          failureOrSuccessOption: some(right(unit)),
-          showErrorMessages: false,
-          exchangeRate: _exchangeRateList,
-          exchangeDate: _exchangeDate,
-        ),
-      );
+      emit(state.copyWith(
+        isSubmitting: false,
+        failureOrSuccessOption: some(right(unit)),
+        showErrorMessages: false,
+        exchangeRate: _exchangeRateList,
+        exchangeDate: _exchangeDate,
+      ));
     }
   }
 }

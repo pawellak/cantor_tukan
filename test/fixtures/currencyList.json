@@ -8,6 +8,5 @@
   {"currency": "CZK", "priceBuy": 0.1865, "priceSell": 0.1835},
   {"currency": "DKK", "priceBuy": 0.61, "priceSell": 0.608},
   {"currency": "CAD", "priceBuy": 3.16, "priceSell": 3.13},
-  {"currency": "NOK", "priceBuy": 0.455, "priceSell": 0.448},
-  {"currency": "SEK", "priceBuy": 0.433, "priceSell": 0.425}
+  {"currency": "NOK", "priceBuy": 0.455, "priceSell": 0.448}
 ]

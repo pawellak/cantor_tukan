@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kantor_tukan/domain/exchange_rate/cantor_remote_failure.dart';
 import 'package:kantor_tukan/domain/exchange_rate/exchange_date.dart';
@@ -18,13 +18,15 @@ const invalidateExchangeRate = 'invalidate';
 
 @Singleton(as: ICantorRemoteDataSource)
 class CantorRemoteDataSource implements ICantorRemoteDataSource {
-  CantorRemoteDataSource();
+  final Client client;
+
+  CantorRemoteDataSource(this.client);
 
   @override
   Future<Either<CantorRemoteFailure, KtList<ExchangeRate>>> getExchangeRates() async {
     try {
       final uriToCantorWithExchangeRate = Uri.parse(Links.currencyData);
-      final response = await http.post(uriToCantorWithExchangeRate);
+      final response = await client.post(uriToCantorWithExchangeRate);
       if (isStatusCodeOk(response)) {
         final exchangeRateListJson = InputConverter().toExchangeRateJsonFromCantorRemoteString(response.body);
         final exchangeRateDtoList =
@@ -46,7 +48,7 @@ class CantorRemoteDataSource implements ICantorRemoteDataSource {
   Future<Either<CantorRemoteFailure, ExchangeDate>> getExchangeRatesUpdateDate() async {
     try {
       final uriToCantorWithUpdateDate = Uri.parse(Links.currencyUpdateTime);
-      final response = await http.get(uriToCantorWithUpdateDate);
+      final response = await client.get(uriToCantorWithUpdateDate);
       if (isStatusCodeOk(response)) {
         final dateTimeUpdate = InputConverter().toDateTimeFromCantorRemoteString(response.body);
         final exchangeUpdateDate = ExchangeDate(updateDate: DateCantor.fromDateTime(dateTimeUpdate));
@@ -61,5 +63,5 @@ class CantorRemoteDataSource implements ICantorRemoteDataSource {
 
   CantorRemoteFailure _serverFailure() => const CantorRemoteFailure.serverError();
 
-  bool isStatusCodeOk(http.Response response) => response.statusCode == 200;
+  bool isStatusCodeOk(Response response) => response.statusCode == 200;
 }

@@ -78,4 +78,16 @@ class ValueConverters {
       }
     }
   }
+
+  Either<ValueFailure<String>, String> toDailyDateStringFromDateTime(DateTime dateTime)
+  {
+    var dailyDate = '';
+
+    final year = dateTime.year;
+    final month = dateTime.month;
+    final day = dateTime.day;
+
+    dailyDate = '$year/$month/$day';
+    return right(dailyDate);
+  }
 }
