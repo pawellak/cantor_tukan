@@ -45,6 +45,8 @@ class TransactionRepository implements ITransactionRepository {
       return right(unit);
     } on fs.FirebaseException catch (e) {
       return _transactionError(e);
+    } catch (e) {
+      return _transactionError(e);
     }
   }
 

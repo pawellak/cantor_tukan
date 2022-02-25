@@ -22,7 +22,7 @@ class ExchangeRateForm extends StatelessWidget {
           (either) {
             either.fold(
               (failure) {
-                ErrorSnackBar().call(state, context);
+                ErrorSnackBar().failure(failure, context);
               },
               (_) {
                 if (state.isExchangeRateSelected) {
@@ -46,7 +46,7 @@ class ExchangeRateForm extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: const [
-        CircularProgressIndicator(),
+        Center(child: CircularProgressIndicator()),
       ],
     );
   }

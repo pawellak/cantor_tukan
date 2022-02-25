@@ -34,7 +34,6 @@ class ExchangeRateBloc extends Bloc<ExchangeRateEvent, ExchangeRateState> {
     emit(
       state.copyWith(isExchangeRateSelected: true, exchangeRateSelected: value.exchangeRate),
     );
-
   }
 
   void _fetch(_) async {

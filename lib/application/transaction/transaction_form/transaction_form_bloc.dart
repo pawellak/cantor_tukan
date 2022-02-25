@@ -11,6 +11,7 @@ import 'package:kantor_tukan/domain/core/value_objects.dart';
 import 'package:kantor_tukan/domain/transaction/i_transaction_repository.dart';
 import 'package:kantor_tukan/domain/transaction/transaction.dart';
 import 'package:kantor_tukan/domain/transaction/transaction_failure.dart';
+import 'package:kantor_tukan/presentation/transaction/constants.dart';
 
 part 'transaction_form_event.dart';
 
@@ -30,6 +31,9 @@ class TransactionFormBloc extends Bloc<TransactionFormEvent, TransactionFormStat
           transactionConfirmed: _transactionConfirmed,
           exchangeRateSelected: _exchangeRateSelected,
           transactionTypeSelected: _transactionTypeSelected,
+          setDate: _setDate,
+          setBill: _setBill,
+          reset: _reset,
         );
       },
     );
@@ -73,5 +77,51 @@ class TransactionFormBloc extends Bloc<TransactionFormEvent, TransactionFormStat
 
   void _transactionTypeSelected(_TransactionTypeSelected e) async {
     emit(state.copyWith(transaction: state.transaction.copyWith(transactionType: e.transactionType)));
+  }
+
+  void _setDate(_SetDate e) async {
+    emit(state.copyWith(
+        transaction: state.transaction.copyWith(
+            dateAcceptation: DateCantor.fromDateTime(DateTime.now()),
+            dateReservation: DateCantor.fromDateTime(DateTime.now()))));
+  }
+
+  void _setBill(_SetBill e) async {
+    final typeOfTransaction = state.transaction.transactionType.getOrCrash();
+    final currencyValue = state.transaction.currencyValue.value.fold((l) => Constants.zeroDouble, (r) => r);
+    double rate;
+    double bill;
+
+    if (typeOfTransaction == EnumTransactionType.buy) {
+      rate = state.transaction.priceBuy.value.fold((l) => Constants.zeroDouble, (r) => r);
+    } else {
+      rate = state.transaction.priceSell.value.fold((l) => Constants.zeroDouble, (r) => r);
+    }
+
+    bill = rate * currencyValue;
+
+    emit(state.copyWith(transaction: state.transaction.copyWith(currencyBill: CurrencyValue(bill))));
+  }
+
+  void _reset(_Reset value) {
+    emit(
+      state.copyWith(
+        transaction: Transaction(
+          uId: UniqueId(),
+          currency: Currency.fromEnum(EnumCurrency.undefined),
+          transactionType: TransactionType.fromEnum(EnumTransactionType.buy),
+          transactionStatus: TransactionStatus.fromEnum(EnumTransactionStatus.pending),
+          dateAcceptation: DateCantor.fromDateTime(DateTime(0)),
+          dateReservation: DateCantor.fromDateTime(DateTime(0)),
+          currencyValue: CurrencyValue(0),
+          currencyBill: CurrencyValue(0),
+          priceBuy: CurrencyPrice(0),
+          priceSell: CurrencyPrice(0),
+        ),
+        showErrorMessages: false,
+        isSubmitting: false,
+        transactionFailureOrSuccessOption: none(),
+      ),
+    );
   }
 }

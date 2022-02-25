@@ -35,6 +35,5 @@ class ExchangeRangeAppBar extends StatelessWidget with PreferredSizeWidget {
 
     return AppBar(title: _buildTitle(description, dailyDate), automaticallyImplyLeading: false);
   }
-
   FittedBox _buildTitle(String description, String dailyDate) => FittedBox(child: Text("$description $dailyDate"));
 }

@@ -27,6 +27,18 @@ class _$TransactionFormEventTearOff {
     return const _TransactionConfirmed();
   }
 
+  _SetBill setBill() {
+    return const _SetBill();
+  }
+
+  _SetDate setDate() {
+    return const _SetDate();
+  }
+
+  _Reset reset() {
+    return const _Reset();
+  }
+
   _ExchangeRateSelected exchangeRateSelected(ExchangeRate exchangeRate) {
     return _ExchangeRateSelected(
       exchangeRate,
@@ -50,6 +62,9 @@ mixin _$TransactionFormEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(CurrencyValue currencyValue) currencyValueChanged,
     required TResult Function() transactionConfirmed,
+    required TResult Function() setBill,
+    required TResult Function() setDate,
+    required TResult Function() reset,
     required TResult Function(ExchangeRate exchangeRate) exchangeRateSelected,
     required TResult Function(TransactionType transactionType)
         transactionTypeSelected,
@@ -59,6 +74,9 @@ mixin _$TransactionFormEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(CurrencyValue currencyValue)? currencyValueChanged,
     TResult Function()? transactionConfirmed,
+    TResult Function()? setBill,
+    TResult Function()? setDate,
+    TResult Function()? reset,
     TResult Function(ExchangeRate exchangeRate)? exchangeRateSelected,
     TResult Function(TransactionType transactionType)? transactionTypeSelected,
   }) =>
@@ -67,6 +85,9 @@ mixin _$TransactionFormEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CurrencyValue currencyValue)? currencyValueChanged,
     TResult Function()? transactionConfirmed,
+    TResult Function()? setBill,
+    TResult Function()? setDate,
+    TResult Function()? reset,
     TResult Function(ExchangeRate exchangeRate)? exchangeRateSelected,
     TResult Function(TransactionType transactionType)? transactionTypeSelected,
     required TResult orElse(),
@@ -76,6 +97,9 @@ mixin _$TransactionFormEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_CurrencyValueChanged value) currencyValueChanged,
     required TResult Function(_TransactionConfirmed value) transactionConfirmed,
+    required TResult Function(_SetBill value) setBill,
+    required TResult Function(_SetDate value) setDate,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_ExchangeRateSelected value) exchangeRateSelected,
     required TResult Function(_TransactionTypeSelected value)
         transactionTypeSelected,
@@ -85,6 +109,9 @@ mixin _$TransactionFormEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_CurrencyValueChanged value)? currencyValueChanged,
     TResult Function(_TransactionConfirmed value)? transactionConfirmed,
+    TResult Function(_SetBill value)? setBill,
+    TResult Function(_SetDate value)? setDate,
+    TResult Function(_Reset value)? reset,
     TResult Function(_ExchangeRateSelected value)? exchangeRateSelected,
     TResult Function(_TransactionTypeSelected value)? transactionTypeSelected,
   }) =>
@@ -93,6 +120,9 @@ mixin _$TransactionFormEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CurrencyValueChanged value)? currencyValueChanged,
     TResult Function(_TransactionConfirmed value)? transactionConfirmed,
+    TResult Function(_SetBill value)? setBill,
+    TResult Function(_SetDate value)? setDate,
+    TResult Function(_Reset value)? reset,
     TResult Function(_ExchangeRateSelected value)? exchangeRateSelected,
     TResult Function(_TransactionTypeSelected value)? transactionTypeSelected,
     required TResult orElse(),
@@ -186,6 +216,9 @@ class _$_CurrencyValueChanged implements _CurrencyValueChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(CurrencyValue currencyValue) currencyValueChanged,
     required TResult Function() transactionConfirmed,
+    required TResult Function() setBill,
+    required TResult Function() setDate,
+    required TResult Function() reset,
     required TResult Function(ExchangeRate exchangeRate) exchangeRateSelected,
     required TResult Function(TransactionType transactionType)
         transactionTypeSelected,
@@ -198,6 +231,9 @@ class _$_CurrencyValueChanged implements _CurrencyValueChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(CurrencyValue currencyValue)? currencyValueChanged,
     TResult Function()? transactionConfirmed,
+    TResult Function()? setBill,
+    TResult Function()? setDate,
+    TResult Function()? reset,
     TResult Function(ExchangeRate exchangeRate)? exchangeRateSelected,
     TResult Function(TransactionType transactionType)? transactionTypeSelected,
   }) {
@@ -209,6 +245,9 @@ class _$_CurrencyValueChanged implements _CurrencyValueChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CurrencyValue currencyValue)? currencyValueChanged,
     TResult Function()? transactionConfirmed,
+    TResult Function()? setBill,
+    TResult Function()? setDate,
+    TResult Function()? reset,
     TResult Function(ExchangeRate exchangeRate)? exchangeRateSelected,
     TResult Function(TransactionType transactionType)? transactionTypeSelected,
     required TResult orElse(),
@@ -224,6 +263,9 @@ class _$_CurrencyValueChanged implements _CurrencyValueChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(_CurrencyValueChanged value) currencyValueChanged,
     required TResult Function(_TransactionConfirmed value) transactionConfirmed,
+    required TResult Function(_SetBill value) setBill,
+    required TResult Function(_SetDate value) setDate,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_ExchangeRateSelected value) exchangeRateSelected,
     required TResult Function(_TransactionTypeSelected value)
         transactionTypeSelected,
@@ -236,6 +278,9 @@ class _$_CurrencyValueChanged implements _CurrencyValueChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_CurrencyValueChanged value)? currencyValueChanged,
     TResult Function(_TransactionConfirmed value)? transactionConfirmed,
+    TResult Function(_SetBill value)? setBill,
+    TResult Function(_SetDate value)? setDate,
+    TResult Function(_Reset value)? reset,
     TResult Function(_ExchangeRateSelected value)? exchangeRateSelected,
     TResult Function(_TransactionTypeSelected value)? transactionTypeSelected,
   }) {
@@ -247,6 +292,9 @@ class _$_CurrencyValueChanged implements _CurrencyValueChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CurrencyValueChanged value)? currencyValueChanged,
     TResult Function(_TransactionConfirmed value)? transactionConfirmed,
+    TResult Function(_SetBill value)? setBill,
+    TResult Function(_SetDate value)? setDate,
+    TResult Function(_Reset value)? reset,
     TResult Function(_ExchangeRateSelected value)? exchangeRateSelected,
     TResult Function(_TransactionTypeSelected value)? transactionTypeSelected,
     required TResult orElse(),
@@ -311,6 +359,9 @@ class _$_TransactionConfirmed implements _TransactionConfirmed {
   TResult when<TResult extends Object?>({
     required TResult Function(CurrencyValue currencyValue) currencyValueChanged,
     required TResult Function() transactionConfirmed,
+    required TResult Function() setBill,
+    required TResult Function() setDate,
+    required TResult Function() reset,
     required TResult Function(ExchangeRate exchangeRate) exchangeRateSelected,
     required TResult Function(TransactionType transactionType)
         transactionTypeSelected,
@@ -323,6 +374,9 @@ class _$_TransactionConfirmed implements _TransactionConfirmed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(CurrencyValue currencyValue)? currencyValueChanged,
     TResult Function()? transactionConfirmed,
+    TResult Function()? setBill,
+    TResult Function()? setDate,
+    TResult Function()? reset,
     TResult Function(ExchangeRate exchangeRate)? exchangeRateSelected,
     TResult Function(TransactionType transactionType)? transactionTypeSelected,
   }) {
@@ -334,6 +388,9 @@ class _$_TransactionConfirmed implements _TransactionConfirmed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CurrencyValue currencyValue)? currencyValueChanged,
     TResult Function()? transactionConfirmed,
+    TResult Function()? setBill,
+    TResult Function()? setDate,
+    TResult Function()? reset,
     TResult Function(ExchangeRate exchangeRate)? exchangeRateSelected,
     TResult Function(TransactionType transactionType)? transactionTypeSelected,
     required TResult orElse(),
@@ -349,6 +406,9 @@ class _$_TransactionConfirmed implements _TransactionConfirmed {
   TResult map<TResult extends Object?>({
     required TResult Function(_CurrencyValueChanged value) currencyValueChanged,
     required TResult Function(_TransactionConfirmed value) transactionConfirmed,
+    required TResult Function(_SetBill value) setBill,
+    required TResult Function(_SetDate value) setDate,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_ExchangeRateSelected value) exchangeRateSelected,
     required TResult Function(_TransactionTypeSelected value)
         transactionTypeSelected,
@@ -361,6 +421,9 @@ class _$_TransactionConfirmed implements _TransactionConfirmed {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_CurrencyValueChanged value)? currencyValueChanged,
     TResult Function(_TransactionConfirmed value)? transactionConfirmed,
+    TResult Function(_SetBill value)? setBill,
+    TResult Function(_SetDate value)? setDate,
+    TResult Function(_Reset value)? reset,
     TResult Function(_ExchangeRateSelected value)? exchangeRateSelected,
     TResult Function(_TransactionTypeSelected value)? transactionTypeSelected,
   }) {
@@ -372,6 +435,9 @@ class _$_TransactionConfirmed implements _TransactionConfirmed {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CurrencyValueChanged value)? currencyValueChanged,
     TResult Function(_TransactionConfirmed value)? transactionConfirmed,
+    TResult Function(_SetBill value)? setBill,
+    TResult Function(_SetDate value)? setDate,
+    TResult Function(_Reset value)? reset,
     TResult Function(_ExchangeRateSelected value)? exchangeRateSelected,
     TResult Function(_TransactionTypeSelected value)? transactionTypeSelected,
     required TResult orElse(),
@@ -385,6 +451,411 @@ class _$_TransactionConfirmed implements _TransactionConfirmed {
 
 abstract class _TransactionConfirmed implements TransactionFormEvent {
   const factory _TransactionConfirmed() = _$_TransactionConfirmed;
+}
+
+/// @nodoc
+abstract class _$SetBillCopyWith<$Res> {
+  factory _$SetBillCopyWith(_SetBill value, $Res Function(_SetBill) then) =
+      __$SetBillCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$SetBillCopyWithImpl<$Res>
+    extends _$TransactionFormEventCopyWithImpl<$Res>
+    implements _$SetBillCopyWith<$Res> {
+  __$SetBillCopyWithImpl(_SetBill _value, $Res Function(_SetBill) _then)
+      : super(_value, (v) => _then(v as _SetBill));
+
+  @override
+  _SetBill get _value => super._value as _SetBill;
+}
+
+/// @nodoc
+
+class _$_SetBill implements _SetBill {
+  const _$_SetBill();
+
+  @override
+  String toString() {
+    return 'TransactionFormEvent.setBill()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _SetBill);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(CurrencyValue currencyValue) currencyValueChanged,
+    required TResult Function() transactionConfirmed,
+    required TResult Function() setBill,
+    required TResult Function() setDate,
+    required TResult Function() reset,
+    required TResult Function(ExchangeRate exchangeRate) exchangeRateSelected,
+    required TResult Function(TransactionType transactionType)
+        transactionTypeSelected,
+  }) {
+    return setBill();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(CurrencyValue currencyValue)? currencyValueChanged,
+    TResult Function()? transactionConfirmed,
+    TResult Function()? setBill,
+    TResult Function()? setDate,
+    TResult Function()? reset,
+    TResult Function(ExchangeRate exchangeRate)? exchangeRateSelected,
+    TResult Function(TransactionType transactionType)? transactionTypeSelected,
+  }) {
+    return setBill?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(CurrencyValue currencyValue)? currencyValueChanged,
+    TResult Function()? transactionConfirmed,
+    TResult Function()? setBill,
+    TResult Function()? setDate,
+    TResult Function()? reset,
+    TResult Function(ExchangeRate exchangeRate)? exchangeRateSelected,
+    TResult Function(TransactionType transactionType)? transactionTypeSelected,
+    required TResult orElse(),
+  }) {
+    if (setBill != null) {
+      return setBill();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CurrencyValueChanged value) currencyValueChanged,
+    required TResult Function(_TransactionConfirmed value) transactionConfirmed,
+    required TResult Function(_SetBill value) setBill,
+    required TResult Function(_SetDate value) setDate,
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_ExchangeRateSelected value) exchangeRateSelected,
+    required TResult Function(_TransactionTypeSelected value)
+        transactionTypeSelected,
+  }) {
+    return setBill(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_CurrencyValueChanged value)? currencyValueChanged,
+    TResult Function(_TransactionConfirmed value)? transactionConfirmed,
+    TResult Function(_SetBill value)? setBill,
+    TResult Function(_SetDate value)? setDate,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_ExchangeRateSelected value)? exchangeRateSelected,
+    TResult Function(_TransactionTypeSelected value)? transactionTypeSelected,
+  }) {
+    return setBill?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CurrencyValueChanged value)? currencyValueChanged,
+    TResult Function(_TransactionConfirmed value)? transactionConfirmed,
+    TResult Function(_SetBill value)? setBill,
+    TResult Function(_SetDate value)? setDate,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_ExchangeRateSelected value)? exchangeRateSelected,
+    TResult Function(_TransactionTypeSelected value)? transactionTypeSelected,
+    required TResult orElse(),
+  }) {
+    if (setBill != null) {
+      return setBill(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetBill implements TransactionFormEvent {
+  const factory _SetBill() = _$_SetBill;
+}
+
+/// @nodoc
+abstract class _$SetDateCopyWith<$Res> {
+  factory _$SetDateCopyWith(_SetDate value, $Res Function(_SetDate) then) =
+      __$SetDateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$SetDateCopyWithImpl<$Res>
+    extends _$TransactionFormEventCopyWithImpl<$Res>
+    implements _$SetDateCopyWith<$Res> {
+  __$SetDateCopyWithImpl(_SetDate _value, $Res Function(_SetDate) _then)
+      : super(_value, (v) => _then(v as _SetDate));
+
+  @override
+  _SetDate get _value => super._value as _SetDate;
+}
+
+/// @nodoc
+
+class _$_SetDate implements _SetDate {
+  const _$_SetDate();
+
+  @override
+  String toString() {
+    return 'TransactionFormEvent.setDate()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _SetDate);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(CurrencyValue currencyValue) currencyValueChanged,
+    required TResult Function() transactionConfirmed,
+    required TResult Function() setBill,
+    required TResult Function() setDate,
+    required TResult Function() reset,
+    required TResult Function(ExchangeRate exchangeRate) exchangeRateSelected,
+    required TResult Function(TransactionType transactionType)
+        transactionTypeSelected,
+  }) {
+    return setDate();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(CurrencyValue currencyValue)? currencyValueChanged,
+    TResult Function()? transactionConfirmed,
+    TResult Function()? setBill,
+    TResult Function()? setDate,
+    TResult Function()? reset,
+    TResult Function(ExchangeRate exchangeRate)? exchangeRateSelected,
+    TResult Function(TransactionType transactionType)? transactionTypeSelected,
+  }) {
+    return setDate?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(CurrencyValue currencyValue)? currencyValueChanged,
+    TResult Function()? transactionConfirmed,
+    TResult Function()? setBill,
+    TResult Function()? setDate,
+    TResult Function()? reset,
+    TResult Function(ExchangeRate exchangeRate)? exchangeRateSelected,
+    TResult Function(TransactionType transactionType)? transactionTypeSelected,
+    required TResult orElse(),
+  }) {
+    if (setDate != null) {
+      return setDate();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CurrencyValueChanged value) currencyValueChanged,
+    required TResult Function(_TransactionConfirmed value) transactionConfirmed,
+    required TResult Function(_SetBill value) setBill,
+    required TResult Function(_SetDate value) setDate,
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_ExchangeRateSelected value) exchangeRateSelected,
+    required TResult Function(_TransactionTypeSelected value)
+        transactionTypeSelected,
+  }) {
+    return setDate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_CurrencyValueChanged value)? currencyValueChanged,
+    TResult Function(_TransactionConfirmed value)? transactionConfirmed,
+    TResult Function(_SetBill value)? setBill,
+    TResult Function(_SetDate value)? setDate,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_ExchangeRateSelected value)? exchangeRateSelected,
+    TResult Function(_TransactionTypeSelected value)? transactionTypeSelected,
+  }) {
+    return setDate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CurrencyValueChanged value)? currencyValueChanged,
+    TResult Function(_TransactionConfirmed value)? transactionConfirmed,
+    TResult Function(_SetBill value)? setBill,
+    TResult Function(_SetDate value)? setDate,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_ExchangeRateSelected value)? exchangeRateSelected,
+    TResult Function(_TransactionTypeSelected value)? transactionTypeSelected,
+    required TResult orElse(),
+  }) {
+    if (setDate != null) {
+      return setDate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetDate implements TransactionFormEvent {
+  const factory _SetDate() = _$_SetDate;
+}
+
+/// @nodoc
+abstract class _$ResetCopyWith<$Res> {
+  factory _$ResetCopyWith(_Reset value, $Res Function(_Reset) then) =
+      __$ResetCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$ResetCopyWithImpl<$Res>
+    extends _$TransactionFormEventCopyWithImpl<$Res>
+    implements _$ResetCopyWith<$Res> {
+  __$ResetCopyWithImpl(_Reset _value, $Res Function(_Reset) _then)
+      : super(_value, (v) => _then(v as _Reset));
+
+  @override
+  _Reset get _value => super._value as _Reset;
+}
+
+/// @nodoc
+
+class _$_Reset implements _Reset {
+  const _$_Reset();
+
+  @override
+  String toString() {
+    return 'TransactionFormEvent.reset()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Reset);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(CurrencyValue currencyValue) currencyValueChanged,
+    required TResult Function() transactionConfirmed,
+    required TResult Function() setBill,
+    required TResult Function() setDate,
+    required TResult Function() reset,
+    required TResult Function(ExchangeRate exchangeRate) exchangeRateSelected,
+    required TResult Function(TransactionType transactionType)
+        transactionTypeSelected,
+  }) {
+    return reset();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(CurrencyValue currencyValue)? currencyValueChanged,
+    TResult Function()? transactionConfirmed,
+    TResult Function()? setBill,
+    TResult Function()? setDate,
+    TResult Function()? reset,
+    TResult Function(ExchangeRate exchangeRate)? exchangeRateSelected,
+    TResult Function(TransactionType transactionType)? transactionTypeSelected,
+  }) {
+    return reset?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(CurrencyValue currencyValue)? currencyValueChanged,
+    TResult Function()? transactionConfirmed,
+    TResult Function()? setBill,
+    TResult Function()? setDate,
+    TResult Function()? reset,
+    TResult Function(ExchangeRate exchangeRate)? exchangeRateSelected,
+    TResult Function(TransactionType transactionType)? transactionTypeSelected,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CurrencyValueChanged value) currencyValueChanged,
+    required TResult Function(_TransactionConfirmed value) transactionConfirmed,
+    required TResult Function(_SetBill value) setBill,
+    required TResult Function(_SetDate value) setDate,
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_ExchangeRateSelected value) exchangeRateSelected,
+    required TResult Function(_TransactionTypeSelected value)
+        transactionTypeSelected,
+  }) {
+    return reset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_CurrencyValueChanged value)? currencyValueChanged,
+    TResult Function(_TransactionConfirmed value)? transactionConfirmed,
+    TResult Function(_SetBill value)? setBill,
+    TResult Function(_SetDate value)? setDate,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_ExchangeRateSelected value)? exchangeRateSelected,
+    TResult Function(_TransactionTypeSelected value)? transactionTypeSelected,
+  }) {
+    return reset?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CurrencyValueChanged value)? currencyValueChanged,
+    TResult Function(_TransactionConfirmed value)? transactionConfirmed,
+    TResult Function(_SetBill value)? setBill,
+    TResult Function(_SetDate value)? setDate,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_ExchangeRateSelected value)? exchangeRateSelected,
+    TResult Function(_TransactionTypeSelected value)? transactionTypeSelected,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Reset implements TransactionFormEvent {
+  const factory _Reset() = _$_Reset;
 }
 
 /// @nodoc
@@ -465,6 +936,9 @@ class _$_ExchangeRateSelected implements _ExchangeRateSelected {
   TResult when<TResult extends Object?>({
     required TResult Function(CurrencyValue currencyValue) currencyValueChanged,
     required TResult Function() transactionConfirmed,
+    required TResult Function() setBill,
+    required TResult Function() setDate,
+    required TResult Function() reset,
     required TResult Function(ExchangeRate exchangeRate) exchangeRateSelected,
     required TResult Function(TransactionType transactionType)
         transactionTypeSelected,
@@ -477,6 +951,9 @@ class _$_ExchangeRateSelected implements _ExchangeRateSelected {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(CurrencyValue currencyValue)? currencyValueChanged,
     TResult Function()? transactionConfirmed,
+    TResult Function()? setBill,
+    TResult Function()? setDate,
+    TResult Function()? reset,
     TResult Function(ExchangeRate exchangeRate)? exchangeRateSelected,
     TResult Function(TransactionType transactionType)? transactionTypeSelected,
   }) {
@@ -488,6 +965,9 @@ class _$_ExchangeRateSelected implements _ExchangeRateSelected {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CurrencyValue currencyValue)? currencyValueChanged,
     TResult Function()? transactionConfirmed,
+    TResult Function()? setBill,
+    TResult Function()? setDate,
+    TResult Function()? reset,
     TResult Function(ExchangeRate exchangeRate)? exchangeRateSelected,
     TResult Function(TransactionType transactionType)? transactionTypeSelected,
     required TResult orElse(),
@@ -503,6 +983,9 @@ class _$_ExchangeRateSelected implements _ExchangeRateSelected {
   TResult map<TResult extends Object?>({
     required TResult Function(_CurrencyValueChanged value) currencyValueChanged,
     required TResult Function(_TransactionConfirmed value) transactionConfirmed,
+    required TResult Function(_SetBill value) setBill,
+    required TResult Function(_SetDate value) setDate,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_ExchangeRateSelected value) exchangeRateSelected,
     required TResult Function(_TransactionTypeSelected value)
         transactionTypeSelected,
@@ -515,6 +998,9 @@ class _$_ExchangeRateSelected implements _ExchangeRateSelected {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_CurrencyValueChanged value)? currencyValueChanged,
     TResult Function(_TransactionConfirmed value)? transactionConfirmed,
+    TResult Function(_SetBill value)? setBill,
+    TResult Function(_SetDate value)? setDate,
+    TResult Function(_Reset value)? reset,
     TResult Function(_ExchangeRateSelected value)? exchangeRateSelected,
     TResult Function(_TransactionTypeSelected value)? transactionTypeSelected,
   }) {
@@ -526,6 +1012,9 @@ class _$_ExchangeRateSelected implements _ExchangeRateSelected {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CurrencyValueChanged value)? currencyValueChanged,
     TResult Function(_TransactionConfirmed value)? transactionConfirmed,
+    TResult Function(_SetBill value)? setBill,
+    TResult Function(_SetDate value)? setDate,
+    TResult Function(_Reset value)? reset,
     TResult Function(_ExchangeRateSelected value)? exchangeRateSelected,
     TResult Function(_TransactionTypeSelected value)? transactionTypeSelected,
     required TResult orElse(),
@@ -617,6 +1106,9 @@ class _$_TransactionTypeSelected implements _TransactionTypeSelected {
   TResult when<TResult extends Object?>({
     required TResult Function(CurrencyValue currencyValue) currencyValueChanged,
     required TResult Function() transactionConfirmed,
+    required TResult Function() setBill,
+    required TResult Function() setDate,
+    required TResult Function() reset,
     required TResult Function(ExchangeRate exchangeRate) exchangeRateSelected,
     required TResult Function(TransactionType transactionType)
         transactionTypeSelected,
@@ -629,6 +1121,9 @@ class _$_TransactionTypeSelected implements _TransactionTypeSelected {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(CurrencyValue currencyValue)? currencyValueChanged,
     TResult Function()? transactionConfirmed,
+    TResult Function()? setBill,
+    TResult Function()? setDate,
+    TResult Function()? reset,
     TResult Function(ExchangeRate exchangeRate)? exchangeRateSelected,
     TResult Function(TransactionType transactionType)? transactionTypeSelected,
   }) {
@@ -640,6 +1135,9 @@ class _$_TransactionTypeSelected implements _TransactionTypeSelected {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CurrencyValue currencyValue)? currencyValueChanged,
     TResult Function()? transactionConfirmed,
+    TResult Function()? setBill,
+    TResult Function()? setDate,
+    TResult Function()? reset,
     TResult Function(ExchangeRate exchangeRate)? exchangeRateSelected,
     TResult Function(TransactionType transactionType)? transactionTypeSelected,
     required TResult orElse(),
@@ -655,6 +1153,9 @@ class _$_TransactionTypeSelected implements _TransactionTypeSelected {
   TResult map<TResult extends Object?>({
     required TResult Function(_CurrencyValueChanged value) currencyValueChanged,
     required TResult Function(_TransactionConfirmed value) transactionConfirmed,
+    required TResult Function(_SetBill value) setBill,
+    required TResult Function(_SetDate value) setDate,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_ExchangeRateSelected value) exchangeRateSelected,
     required TResult Function(_TransactionTypeSelected value)
         transactionTypeSelected,
@@ -667,6 +1168,9 @@ class _$_TransactionTypeSelected implements _TransactionTypeSelected {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_CurrencyValueChanged value)? currencyValueChanged,
     TResult Function(_TransactionConfirmed value)? transactionConfirmed,
+    TResult Function(_SetBill value)? setBill,
+    TResult Function(_SetDate value)? setDate,
+    TResult Function(_Reset value)? reset,
     TResult Function(_ExchangeRateSelected value)? exchangeRateSelected,
     TResult Function(_TransactionTypeSelected value)? transactionTypeSelected,
   }) {
@@ -678,6 +1182,9 @@ class _$_TransactionTypeSelected implements _TransactionTypeSelected {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CurrencyValueChanged value)? currencyValueChanged,
     TResult Function(_TransactionConfirmed value)? transactionConfirmed,
+    TResult Function(_SetBill value)? setBill,
+    TResult Function(_SetDate value)? setDate,
+    TResult Function(_Reset value)? reset,
     TResult Function(_ExchangeRateSelected value)? exchangeRateSelected,
     TResult Function(_TransactionTypeSelected value)? transactionTypeSelected,
     required TResult orElse(),

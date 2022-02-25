@@ -20,6 +20,7 @@ class AppWidget extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => getIt<AppAuthBloc>()..add(const AppAuthEvent.authCheckRequested())),
         BlocProvider(create: (context) => getIt<TransactionFormBloc>()),
+        //internet connection
       ],
       child: MaterialApp(
         home: const SplashPage(),

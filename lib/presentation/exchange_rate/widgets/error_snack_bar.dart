@@ -1,33 +1,21 @@
 import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:kantor_tukan/application/exchange_form/exchange_rate_bloc.dart';
+import 'package:kantor_tukan/domain/exchange_rate/cantor_remote_failure.dart';
 
 const incorrectDataError = 'Błąd servera, niepoprawne dane wejściowe';
 const serverError = 'Błąd servera';
 
 class ErrorSnackBar {
-  void call(ExchangeRateState state, BuildContext context) {
-    state.failureOrSuccessOption.fold(
-      () {},
-      (either) => {
-        either.fold(
-          (failure) {
-            FlushbarHelper.createError(
-              message: failure.map(
-                serverError: (_) {
-                  return serverError;
-                },
-                incorrectDataError: (_) {
-                  return serverError;
-                },
-              ),
-            ).show(context);
-          },
-          (r) {
-            //go to another page
-          },
-        )
-      },
-    );
+  void failure(CantorRemoteFailure failure, BuildContext context) {
+    FlushbarHelper.createError(
+      message: failure.map(
+        serverError: (_) {
+          return serverError;
+        },
+        incorrectDataError: (_) {
+          return serverError;
+        },
+      ),
+    ).show(context);
   }
 }

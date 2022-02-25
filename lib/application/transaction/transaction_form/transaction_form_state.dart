@@ -13,8 +13,8 @@ class TransactionFormState with _$TransactionFormState {
         transaction: Transaction(
           uId: UniqueId(),
           currency: Currency.fromEnum(EnumCurrency.undefined),
-          transactionType: TransactionType.fromEnum(EnumTransactionType.undefined),
-          transactionStatus: TransactionStatus.fromEnum(EnumTransactionStatus.undefined),
+          transactionType: TransactionType.fromEnum(EnumTransactionType.buy),
+          transactionStatus: TransactionStatus.fromEnum(EnumTransactionStatus.pending),
           dateAcceptation: DateCantor.fromDateTime(DateTime(0)),
           dateReservation: DateCantor.fromDateTime(DateTime(0)),
           currencyValue: CurrencyValue(0),
