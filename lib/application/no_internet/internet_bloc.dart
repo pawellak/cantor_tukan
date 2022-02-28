@@ -1,8 +1,8 @@
 import 'package:injectable/injectable.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 part 'internet_event.dart';
 
