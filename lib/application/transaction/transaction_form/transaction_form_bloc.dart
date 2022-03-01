@@ -43,7 +43,7 @@ class TransactionFormBloc extends Bloc<TransactionFormEvent, TransactionFormStat
     emit(state.copyWith(transaction: state.transaction.copyWith(currencyValue: e.currencyValue)));
   }
 
-  void _transactionConfirmed(_TransactionConfirmed e) async {
+  void _transactionConfirmed(_TransactionConfirmed _) async {
     bool _showErrorMessage = true;
     Either<TransactionFailure, Unit>? _failureOrSuccess;
 
