@@ -11,9 +11,13 @@ class Logo extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: heightOfWidget,
-      child: Image.asset(
-        Links.logoExchange,
-      ),
+      child: _buildLogo(),
+    );
+  }
+
+  Image _buildLogo() {
+    return Image.asset(
+      Links.logoExchange,
     );
   }
 }

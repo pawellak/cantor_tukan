@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:kantor_tukan/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:kantor_tukan/domain/core/failures.dart';
-import 'package:kantor_tukan/presentation/core/pres_const.dart';
 import 'package:provider/src/provider.dart';
+import 'package:kantor_tukan/presentation/sign_in/constants.dart';
 
 class InputPassword extends StatelessWidget {
   const InputPassword({Key? key}) : super(key: key);
@@ -11,26 +11,26 @@ class InputPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      decoration: _buildDecoration(context),
+      decoration: _getDecoration(context),
       obscureText: true,
       autocorrect: false,
-      onChanged: (value) => _buildOnChanged(context, value),
-      validator: (_) => _buildValidator(context),
+      onChanged: (value) => onPasswordChanged(context, value),
+      validator: (_) => _getValidator(context),
     );
   }
 
-  InputDecoration _buildDecoration(BuildContext context) {
+  InputDecoration _getDecoration(BuildContext context) {
     return InputDecoration(
       prefixIcon: Icon(Icons.lock, color: Theme.of(context).colorScheme.secondary),
-      labelText: PresConst.sipPassword,
+      labelText: Constants.password,
     );
   }
 
-  void _buildOnChanged(BuildContext context, String value) {
+  void onPasswordChanged(BuildContext context, String value) {
     return context.read<SignInFormBloc>().add(SignInFormEvent.passwordChanged(value));
   }
 
-  String? _buildValidator(BuildContext context) {
+  String? _getValidator(BuildContext context) {
     return context.read<SignInFormBloc>().state.password.value.fold(
           (f) => _buildPasswordNotValid(f),
           (_) => _buildPasswordValid(),
@@ -39,7 +39,7 @@ class InputPassword extends StatelessWidget {
 
   String? _buildPasswordNotValid(ValueFailure<String> f) {
     return f.maybeMap(
-      shortPassword: (_) => PresConst.sipPasswordNotValid,
+      shortPassword: (_) => Constants.passwordNotValid,
       orElse: () => _buildPasswordValid(),
     );
   }

@@ -23,12 +23,31 @@ class ExchangeRateBloc extends Bloc<ExchangeRateEvent, ExchangeRateState> {
   final ICantorRemoteDataSource iCantorRemoteDataSource;
 
   ExchangeRateBloc(this.iCantorRemoteDataSource) : super(ExchangeRateState.initial()) {
-    on<ExchangeRateEvent>(
-      (event, emit) {
-        event.map(fetch: _fetch, fetched: _fetched);
-      },
-    );
+    on<ExchangeRateEvent>((event, emit) {
+      event.map(fetch: _fetch, fetched: _fetched);
+    });
   }
+
+  void _fetch(_) async {
+    _setLoadingState();
+
+    final exchangeRatesUpdateDate = await _getExchangeRatesUpdateDate();
+    final exchangeRates = await _getExchangeRates();
+
+    final _exchangeRateList = _foldExchangeRatesList(exchangeRates);
+    final _exchangeDate = _foldExchangeDate(exchangeRatesUpdateDate);
+
+    if (isDataFailure(_exchangeRateList, _exchangeDate)) {
+      _setFailureState();
+    } else {
+      _setSuccessState(_exchangeRateList, _exchangeDate);
+    }
+  }
+
+  KtList<ExchangeRate> _foldExchangeRatesList(Either<CantorRemoteFailure, KtList<ExchangeRate>> exchangeRates) =>
+      exchangeRates.fold((f) => const KtList.empty(), (r) => r);
+
+  ExchangeDate _foldExchangeDate(Either<CantorRemoteFailure, ExchangeDate> exchangeRatesUpdateDate) => exchangeRatesUpdateDate.fold((l) => ExchangeDate.empty(), (r) => r);
 
   void _fetched(_FetchedExchangeRate value) {
     emit(
@@ -36,37 +55,44 @@ class ExchangeRateBloc extends Bloc<ExchangeRateEvent, ExchangeRateState> {
     );
   }
 
-  void _fetch(_) async {
-    KtList<ExchangeRate> _exchangeRateList;
-    ExchangeDate _exchangeDate;
+  Future<Either<CantorRemoteFailure, ExchangeDate>> _getExchangeRatesUpdateDate() async {
+    final Either<CantorRemoteFailure, ExchangeDate> exchangeRatesUpdateDate =
+        await iCantorRemoteDataSource.getExchangeRatesUpdateDate();
+    return exchangeRatesUpdateDate;
+  }
 
+  Future<Either<CantorRemoteFailure, KtList<ExchangeRate>>> _getExchangeRates() async {
+    final Either<CantorRemoteFailure, KtList<ExchangeRate>> exchangeRates =
+        await iCantorRemoteDataSource.getExchangeRates();
+    return exchangeRates;
+  }
+
+  bool isDataFailure(KtList<ExchangeRate> _exchangeRateList, ExchangeDate _exchangeDate) =>
+      _exchangeRateList.isEmpty() || _exchangeDate == ExchangeDate.empty();
+
+  void _setLoadingState() {
     emit(state.copyWith(
       isSubmitting: true,
       failureOrSuccessOption: none(),
       showErrorMessages: false,
     ));
+  }
 
-    final Either<CantorRemoteFailure, ExchangeDate> exchangeRatesUpdateDate =
-        await iCantorRemoteDataSource.getExchangeRatesUpdateDate();
-    final Either<CantorRemoteFailure, KtList<ExchangeRate>> exchangeRates =
-        await iCantorRemoteDataSource.getExchangeRates();
-    _exchangeRateList = exchangeRates.fold((f) => const KtList.empty(), (r) => r);
-    _exchangeDate = exchangeRatesUpdateDate.fold((l) => ExchangeDate.empty(), (r) => r);
+  void _setFailureState() {
+    emit(state.copyWith(
+      isSubmitting: false,
+      failureOrSuccessOption: some(left(const CantorRemoteFailure.serverError())),
+      showErrorMessages: true,
+    ));
+  }
 
-    if (_exchangeRateList.isEmpty() || _exchangeDate == ExchangeDate.empty()) {
-      emit(state.copyWith(
-        isSubmitting: false,
-        failureOrSuccessOption: some(left(const CantorRemoteFailure.serverError())),
-        showErrorMessages: true,
-      ));
-    } else {
-      emit(state.copyWith(
-        isSubmitting: false,
-        failureOrSuccessOption: some(right(unit)),
-        showErrorMessages: false,
-        exchangeRate: _exchangeRateList,
-        exchangeDate: _exchangeDate,
-      ));
-    }
+  void _setSuccessState(KtList<ExchangeRate> _exchangeRateList, ExchangeDate _exchangeDate) {
+    emit(state.copyWith(
+      isSubmitting: false,
+      failureOrSuccessOption: some(right(unit)),
+      showErrorMessages: false,
+      exchangeRate: _exchangeRateList,
+      exchangeDate: _exchangeDate,
+    ));
   }
 }

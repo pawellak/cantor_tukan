@@ -14,38 +14,42 @@ class InputFormRate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TransactionFormBloc, TransactionFormState>(
-      builder: (context, state) {
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Expanded(flex: Constants.currencyFlex, child: _inputText(context)),
-            Expanded(child: _currency(state)),
-          ],
-        );
-      },
+      builder: _buildBuilder,
     );
   }
 
-  Padding _inputText(BuildContext context) {
+  Widget _buildBuilder(context, state) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Expanded(flex: Constants.currencyFlex, child: _buildInputText(context)),
+          Expanded(child: _buildCurrencyNameText(state)),
+        ],
+      );
+    }
+
+  Padding _buildInputText(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(Constants.padding),
+      padding: _getPadding(),
       child: TextFormField(
-        decoration: _buildDecorator(context),
+        decoration: _getDecorator(context),
         autocorrect: false,
         keyboardType: TextInputType.number,
         onChanged: (value) => _onChanged(context, value),
-        validator: (_) => _buildValidator(context),
+        validator: (_) => _getValidator(context),
       ),
     );
   }
 
-  _currency(TransactionFormState state) {
+  EdgeInsets _getPadding() => const EdgeInsets.all(Constants.padding);
+
+  _buildCurrencyNameText(TransactionFormState state) {
     String currency = state.transaction.currency.value.fold((l) => Constants.invalidValue, (r) => r.toShortString());
     return Text(currency);
   }
 }
 
-InputDecoration _buildDecorator(BuildContext context) {
+InputDecoration _getDecorator(BuildContext context) {
   return InputDecoration(
     prefixIcon: Icon(
       Icons.account_balance_wallet_sharp,
@@ -59,24 +63,28 @@ void _onChanged(BuildContext context, String value) {
   var currencyValueFold = ValueConverters().toDoubleFromString(value);
   double currencyValueDouble = currencyValueFold.fold((f) => Constants.zeroDouble, (r) => r);
 
+  _setNewCurrencyValue(context, currencyValueDouble);
+}
+
+void _setNewCurrencyValue(BuildContext context, double currencyValueDouble) {
   context
       .read<TransactionFormBloc>()
       .add(TransactionFormEvent.currencyValueChanged(CurrencyValue(currencyValueDouble)));
 }
 
-String? _buildValidator(BuildContext context) {
+String? _getValidator(BuildContext context) {
   return context.read<TransactionFormBloc>().state.transaction.currencyValue.value.fold(
-        (f) => _buildEmailNotValid(f),
-        (_) => _buildEmailValid(),
+        (failure) => _getEmailNotValidMessage(failure),
+        (_) => _getEmailValidMessage(),
       );
 }
 
-String? _buildEmailNotValid(ValueFailure<double> f) {
-  return f.maybeMap(
+String? _getEmailNotValidMessage(ValueFailure<double> failure) {
+  return failure.maybeMap(
     currencyValueTooBig: (_) => Constants.valueToBig,
     currencyValueTooSmall: (_) => Constants.valueToSmall,
-    orElse: () => _buildEmailValid(),
+    orElse: () => _getEmailValidMessage(),
   );
 }
 
-String? _buildEmailValid() => null;
+String? _getEmailValidMessage() => null;

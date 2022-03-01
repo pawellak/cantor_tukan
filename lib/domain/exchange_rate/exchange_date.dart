@@ -5,6 +5,8 @@ import 'package:kantor_tukan/domain/core/failures.dart';
 
 part 'exchange_date.freezed.dart';
 
+const zeroDate = 0;
+
 @freezed
 abstract class ExchangeDate implements _$ExchangeDate {
   const ExchangeDate._();
@@ -13,15 +15,13 @@ abstract class ExchangeDate implements _$ExchangeDate {
     required DateCantor updateDate,
   }) = _ExchangeDate;
 
-
   factory ExchangeDate.empty() => ExchangeDate(
         updateDate: DateCantor.fromDateTime(
-          DateTime(0),
+          DateTime(zeroDate),
         ),
       );
 
   Option<ValueFailure<dynamic>> get failureOption {
-    return updateDate.failureOrUnit
-        .fold((f) => some(f), (r) => none());
+    return updateDate.failureOrUnit.fold((f) => some(f), (r) => none());
   }
 }

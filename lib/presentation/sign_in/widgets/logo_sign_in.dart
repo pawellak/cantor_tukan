@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kantor_tukan/presentation/core/pres_const.dart';
+import 'package:kantor_tukan/presentation/sign_in/constants.dart';
 
 class LogoSignIn extends StatelessWidget {
   const LogoSignIn({Key? key}) : super(key: key);
@@ -7,11 +7,11 @@ class LogoSignIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SizedBox(
-      height: PresConst.sipLogoSpace,
+      height: Constants.logoSpace,
       child: Center(
         child: Text(
-          PresConst.sipLogo,
-          style: TextStyle(fontSize: PresConst.sipLogoSize),
+          Constants.logo,
+          style: TextStyle(fontSize: Constants.logoSize),
         ),
       ),
     );

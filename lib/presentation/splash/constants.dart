@@ -1,3 +1,3 @@
 abstract class Constants {
-  static const loading = 'Autoryzacja...';
+  static const loading = 'autoryzacja...';
 }

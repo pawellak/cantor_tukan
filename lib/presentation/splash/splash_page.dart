@@ -4,7 +4,7 @@ import 'package:kantor_tukan/application/auth/app_auth_bloc.dart';
 import 'package:kantor_tukan/presentation/exchange_rate/exchange_rate_page.dart';
 import 'package:kantor_tukan/presentation/sign_in/sign_in_page.dart';
 
-const loading = 'Wczytywanie';
+import 'constants.dart';
 
 class SplashPage extends StatelessWidget {
   static const routeName = '/splash';
@@ -14,22 +14,30 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<AppAuthBloc, AppAuthState>(
-      listener: (context, state) {
-        state.map(
-            initial: (_) {},
-            authenticated: (_) {
-              Navigator.of(context).pushNamed(ExchangeRatePage.routeName);
-            },
-            unauthenticated: (_) {
-              Navigator.of(context).pushNamed(SignInPage.routeName);
-            });
-      },
+      listener: _getListener,
       child: Scaffold(
-        appBar: AppBar(automaticallyImplyLeading: false, title: const Text(loading)),
-        body: const Center(
-          child: CircularProgressIndicator(),
-        ),
+        appBar: _buildAppBarLoading(),
+        body: _buildLoadingWidget(),
       ),
     );
   }
+
+  void _getListener(BuildContext context, AppAuthState state) {
+    state.map(
+        initial: (_) {},
+        authenticated: (_) {
+          Navigator.of(context).pushNamed(ExchangeRatePage.routeName);
+        },
+        unauthenticated: (_) {
+          Navigator.of(context).pushNamed(SignInPage.routeName);
+        });
+  }
+
+  Center _buildLoadingWidget() {
+    return const Center(
+      child: CircularProgressIndicator(),
+    );
+  }
+
+  AppBar _buildAppBarLoading() => AppBar(automaticallyImplyLeading: false, title: const Text(Constants.loading));
 }

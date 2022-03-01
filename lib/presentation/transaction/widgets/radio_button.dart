@@ -11,52 +11,20 @@ class RadioButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TransactionFormBloc, TransactionFormState>(
-      builder: (context, state) {
-        return _buildRadioButton(context, state);
-      },
+      builder: _getBuilder,
     );
   }
 
-  Padding _buildRadioButton(BuildContext context, TransactionFormState state) {
-    bool isBuyActive = _getActiveTransactionType(state);
-
-    final activeColor = Theme.of(context).primaryColor;
-    final inactiveColor = Theme.of(context).colorScheme.surface;
+  Widget _getBuilder(BuildContext context, TransactionFormState state) {
+    final isBuyActive = _getActiveTransactionType(state);
 
     return Padding(
       padding: const EdgeInsets.all(Constants.padding),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _buyButton(isBuyActive, activeColor, inactiveColor, context),
-          const SizedBox(width: 10),
-          _sellButton(isBuyActive, inactiveColor, activeColor, context),
-        ],
+        children: _buildButtons(isBuyActive, context),
       ),
     );
-  }
-
-  Expanded _sellButton(bool isBuyActive, Color inactiveColor, Color activeColor, BuildContext context) {
-    return Expanded(
-        child: OutlinedButton(
-            style: OutlinedButton.styleFrom(backgroundColor: isBuyActive ? inactiveColor : activeColor),
-            onPressed: () {
-              context.read<TransactionFormBloc>().add(
-                  TransactionFormEvent.transactionTypeSelected(TransactionType.fromEnum(EnumTransactionType.sell)));
-            },
-            child: const Text(Constants.sell)));
-  }
-
-  Expanded _buyButton(bool isBuyActive, Color activeColor, Color inactiveColor, BuildContext context) {
-    return Expanded(
-        child: OutlinedButton(
-            style: OutlinedButton.styleFrom(backgroundColor: isBuyActive ? activeColor : inactiveColor),
-            onPressed: () {
-              context
-                  .read<TransactionFormBloc>()
-                  .add(TransactionFormEvent.transactionTypeSelected(TransactionType.fromEnum(EnumTransactionType.buy)));
-            },
-            child: const Text(Constants.buy)));
   }
 
   bool _getActiveTransactionType(TransactionFormState state) {
@@ -67,5 +35,63 @@ class RadioButton extends StatelessWidget {
       isBuyActive = true;
     }
     return isBuyActive;
+  }
+
+  List<Widget> _buildButtons(bool isBuyActive, BuildContext context) {
+    return [
+      _buyButton(isBuyActive, context),
+      const SizedBox(width: Constants.tenPixel),
+      _sellButton(isBuyActive, context),
+    ];
+  }
+
+  Expanded _buyButton(bool isBuyActive, BuildContext context) {
+    final activeColor = _getActiveColor(context);
+    final inactiveColor = _getInactiveColor(context);
+
+    return Expanded(
+        child: OutlinedButton(
+            style: _getButtonStyle(isBuyActive, activeColor, inactiveColor),
+            onPressed: () {
+              _setEnumTransactionTypeToBuy(context);
+            },
+            child: const Text(Constants.buy)));
+  }
+
+  void _setEnumTransactionTypeToBuy(BuildContext context) {
+    context
+        .read<TransactionFormBloc>()
+        .add(TransactionFormEvent.transactionTypeSelected(TransactionType.fromEnum(EnumTransactionType.buy)));
+  }
+
+  Expanded _sellButton(bool isBuyActive, BuildContext context) {
+    final activeColor = _getActiveColor(context);
+    final inactiveColor = _getInactiveColor(context);
+    return Expanded(
+        child: OutlinedButton(
+            style: _getButtonStyle(isBuyActive, inactiveColor, activeColor),
+            onPressed: () {
+              _setEnumTransactionTypeToSell(context);
+            },
+            child: const Text(Constants.sell)));
+  }
+
+  void _setEnumTransactionTypeToSell(BuildContext context) {
+    context
+        .read<TransactionFormBloc>()
+        .add(TransactionFormEvent.transactionTypeSelected(TransactionType.fromEnum(EnumTransactionType.sell)));
+  }
+
+  ButtonStyle _getButtonStyle(bool isBuyActive, Color activeColor, Color inactiveColor) =>
+      OutlinedButton.styleFrom(backgroundColor: isBuyActive ? activeColor : inactiveColor);
+
+  Color _getInactiveColor(BuildContext context) {
+    final inactiveColor = Theme.of(context).colorScheme.surface;
+    return inactiveColor;
+  }
+
+  Color _getActiveColor(BuildContext context) {
+    final activeColor = Theme.of(context).primaryColor;
+    return activeColor;
   }
 }

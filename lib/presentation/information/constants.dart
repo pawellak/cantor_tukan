@@ -1,5 +1,5 @@
 abstract class Constants {
-  static const backButtonDescription = 'Powrót';
+  static const backButtonDescription = 'powrót';
   static const appBarDescription = 'Kantor Tukan';
   static const emptyString = '';
 

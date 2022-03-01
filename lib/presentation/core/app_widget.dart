@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kantor_tukan/application/auth/app_auth_bloc.dart';
 import 'package:kantor_tukan/injection.dart';
 import 'package:kantor_tukan/presentation/core/app_theme.dart';
-import 'package:kantor_tukan/presentation/core/pres_const.dart';
+import 'package:kantor_tukan/presentation/core/constants.dart';
 import 'package:kantor_tukan/presentation/exchange_rate/exchange_rate_page.dart';
 import 'package:kantor_tukan/presentation/sign_in/sign_in_page.dart';
 import 'package:kantor_tukan/presentation/splash/splash_page.dart';
@@ -25,14 +25,14 @@ class AppWidget extends StatelessWidget {
       child: MaterialApp(
         home: const SplashPage(),
         debugShowCheckedModeBanner: false,
-        title: PresConst.nameOfCantor,
+        title: Constants.nameOfCantor,
         theme: AppTheme().buildLightTheme(),
-        routes: _routes(),
+        routes: _getRoutes(),
       ),
     );
   }
 
-  Map<String, WidgetBuilder> _routes() {
+  Map<String, WidgetBuilder> _getRoutes() {
     return {
       SignInPage.routeName: (context) => const SignInPage(),
       SplashPage.routeName: (context) => const SplashPage(),

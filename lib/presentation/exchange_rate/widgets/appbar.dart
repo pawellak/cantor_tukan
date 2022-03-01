@@ -14,10 +14,12 @@ class ExchangeRangeAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ExchangeRateBloc, ExchangeRateState>(
-      builder: (context, state) {
-        return state.isSubmitting ? _isSubmitting() : _isLoaded(state);
-      },
+      builder: _getBuilder,
     );
+  }
+
+  Widget _getBuilder(context, state) {
+    return state.isSubmitting ? _isSubmitting() : _isLoaded(state);
   }
 
   AppBar _isSubmitting() {
@@ -28,12 +30,19 @@ class ExchangeRangeAppBar extends StatelessWidget with PreferredSizeWidget {
   }
 
   AppBar _isLoaded(ExchangeRateState state) {
+    String dailyDate = _getDate(state);
+    return AppBar(title: _buildTitle(dailyDate), automaticallyImplyLeading: false);
+  }
+
+  String _getDate(ExchangeRateState state) {
     final dateOfUpdate = state.exchangeDate.updateDate.getOrCrash();
     final dailyDateFold = ValueConverters().toDailyDateStringFromDateTime(dateOfUpdate);
     final dailyDate = dailyDateFold.fold((l) => Constants.invalidData, (r) => r);
-    const description = Constants.dateOfUpdate;
-
-    return AppBar(title: _buildTitle(description, dailyDate), automaticallyImplyLeading: false);
+    return dailyDate;
   }
-  FittedBox _buildTitle(String description, String dailyDate) => FittedBox(child: Text("$description $dailyDate"));
+
+  FittedBox _buildTitle(String dailyDate) {
+    const description = Constants.dateOfUpdate;
+    return FittedBox(child: Text("$description $dailyDate"));
+  }
 }

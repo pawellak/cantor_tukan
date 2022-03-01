@@ -9,15 +9,25 @@ class Submitting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TransactionFormBloc, TransactionFormState>(
-      builder: (context, state) {
-        if (stateIsSubmitting(state)) {
-          return const LinearProgressIndicator();
-        } else {
-          return const SizedBox(height: Constants.tenPixel);
-        }
-      },
+      builder: _getBuilder,
     );
   }
 
-  bool stateIsSubmitting(TransactionFormState state) => state.isSubmitting == true;
+  Widget _getBuilder(context, state) {
+    if (isStateSubmitting(state)) {
+      return _buildLoadingState();
+    } else {
+      return _buildReadyState();
+    }
+  }
+
+  bool isStateSubmitting(TransactionFormState state) => state.isSubmitting == true;
+
+  LinearProgressIndicator _buildLoadingState() {
+    return const LinearProgressIndicator();
+  }
+
+  SizedBox _buildReadyState() {
+    return const SizedBox(height: Constants.tenPixel);
+  }
 }

@@ -26,10 +26,14 @@ class SingleExchangeRate extends StatelessWidget {
   GestureDetector _buildCurrencyTile(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.read<ExchangeRateBloc>().add(ExchangeRateEvent.fetched(exchangeRate));
+        _onTitleTap(context);
       },
       child: _buildRowWithCurrencyData(context),
     );
+  }
+
+  void _onTitleTap(BuildContext context) {
+    context.read<ExchangeRateBloc>().add(ExchangeRateEvent.fetched(exchangeRate));
   }
 
   Container _buildRowWithCurrencyData(BuildContext context) {

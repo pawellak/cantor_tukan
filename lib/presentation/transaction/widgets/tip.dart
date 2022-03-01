@@ -10,10 +10,12 @@ class Tip extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: heightOfWidget,
-      child: const Padding(
-        padding: EdgeInsets.all(Constants.padding),
-        child: FittedBox(child: (Text(Constants.tip))),
+      child:  Padding(
+        padding: const EdgeInsets.all(Constants.padding),
+        child: _buildTipText(),
       ),
     );
   }
+
+  FittedBox _buildTipText() => const FittedBox(child: (Text(Constants.tip)));
 }

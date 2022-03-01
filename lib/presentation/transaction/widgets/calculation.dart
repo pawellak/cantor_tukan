@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kantor_tukan/application/transaction/transaction_form/transaction_form_bloc.dart';
-import 'package:kantor_tukan/domain/core/enums.dart';
 import 'package:kantor_tukan/presentation/transaction/constants.dart';
+
+import '../../../application/transaction/transaction_form/calculations.dart';
 
 class Calculation extends StatelessWidget {
   final double heightOfWidget;
@@ -12,47 +13,24 @@ class Calculation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TransactionFormBloc, TransactionFormState>(
-      builder: (context, state) {
-        return _calculation(state, heightOfWidget);
-      },
+      builder: _getBuilder,
     );
   }
-}
 
-SizedBox _calculation(TransactionFormState state, double heightOfWidget) {
-  final transactionType = state.transaction.transactionType.getOrCrash();
-  bool isTypeBuy = false;
-  double rate;
-  double currencyValue;
-  String result;
-
-  currencyValue = state.transaction.currencyValue.value.fold((l) => Constants.zeroDouble, (r) => r);
-
-  if (isTransactionTypeBuy(transactionType)) {
-    isTypeBuy = true;
-  }
-
-  if (isTypeBuy) {
-    rate = state.transaction.priceBuy.value.fold((l) => Constants.zeroDouble, (r) => r);
-  } else {
-    rate = state.transaction.priceSell.value.fold((l) => Constants.zeroDouble, (r) => r);
-  }
-
-  if (currencyValue == Constants.zeroDouble) {
-    result = Constants.invalidValue;
-  } else {
-    result = (rate * currencyValue).toString();
-  }
-
-  return SizedBox(
-    height: heightOfWidget,
-    child: Padding(
-      padding: const EdgeInsets.all(Constants.smallPadding),
-      child: FittedBox(
-        child: Text(result),
+  Widget _getBuilder(context, state) {
+    String result = Calculations(state).result;
+    return SizedBox(
+      height: heightOfWidget,
+      child: Padding(
+        padding: _getSmallPadding(),
+        child: FittedBox(
+          child: _buildTextDescription(result),
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
-bool isTransactionTypeBuy(EnumTransactionType transactionType) => transactionType == EnumTransactionType.buy;
+  EdgeInsets _getSmallPadding() => const EdgeInsets.all(Constants.smallPadding);
+
+  Text _buildTextDescription(String result) => Text(result);
+}

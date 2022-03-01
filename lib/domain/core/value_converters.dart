@@ -2,6 +2,10 @@ import 'package:dartz/dartz.dart';
 import 'package:kantor_tukan/domain/core/enums.dart';
 import 'package:kantor_tukan/domain/core/failures.dart';
 
+const oneDigit = 1;
+const additionalZero = 0;
+const emptyString = '';
+
 class ValueConverters {
   Either<ValueFailure<String>, double> toDoubleFromString(String input) {
     final currency = double.tryParse(input);
@@ -16,7 +20,6 @@ class ValueConverters {
   Either<ValueFailure<EnumCurrency>, EnumCurrency> toEnumCurrencyFromString(String? input) {
     const enumList = EnumCurrency.values;
     final enumOrNull = enumList.toEnumFromString<EnumCurrency>(input);
-
 
     if (enumOrNull == null) {
       return left(const ValueFailure.unknownEnum(failedValue: EnumCurrency.undefined));
@@ -79,15 +82,24 @@ class ValueConverters {
     }
   }
 
-  Either<ValueFailure<String>, String> toDailyDateStringFromDateTime(DateTime dateTime)
-  {
-    var dailyDate = '';
+  Either<ValueFailure<String>, String> toDailyDateStringFromDateTime(DateTime dateTime) {
+    var dailyDate = emptyString;
 
-    final year = dateTime.year;
-    final month = dateTime.month;
-    final day = dateTime.day;
+    String sYear = dateTime.year.toString();
+    String sMonth = dateTime.month.toString();
+    String sDay = dateTime.day.toString();
 
-    dailyDate = '$year/$month/$day';
+    sMonth = _convertDateToTwoDigits(sMonth);
+    sDay = _convertDateToTwoDigits(sDay);
+
+    dailyDate = '$sDay/$sMonth/$sYear';
     return right(dailyDate);
+  }
+
+  String _convertDateToTwoDigits(String date) {
+    if (date.length == oneDigit) {
+      date = '$additionalZero$date';
+    }
+    return date;
   }
 }

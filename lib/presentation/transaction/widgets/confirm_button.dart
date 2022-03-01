@@ -14,42 +14,59 @@ class ConfirmButton extends StatefulWidget {
 class _ConfirmButtonState extends State<ConfirmButton> {
   @override
   Widget build(BuildContext context) {
-    return confirmButton(context);
+    return _confirmButton(context);
   }
 }
 
-Padding confirmButton(BuildContext context) {
+Padding _confirmButton(BuildContext context) {
   return Padding(
-    padding: const EdgeInsets.all(Constants.smallPadding),
+    padding: _getSmallPadding(),
     child: Row(
       children: [
-        Expanded(child: _button(context)),
+        _buildButton(context)
       ],
     ),
   );
 }
 
-BlocBuilder _button(BuildContext context) {
-  return BlocBuilder<TransactionFormBloc, TransactionFormState>(
-    builder: (context, state) {
-      bool isButtonLock = false;
+EdgeInsets _getSmallPadding() => const EdgeInsets.all(Constants.smallPadding);
 
-      if (state.isSubmitting) {
-        isButtonLock = true;
-      }
-
-      return ElevatedButton(
-          style: _style(context),
-          onPressed: isButtonLock
-              ? null
-              : () {
-                  context.read<TransactionFormBloc>().add(const TransactionFormEvent.setBill());
-                  context.read<TransactionFormBloc>().add(const TransactionFormEvent.setDate());
-                  context.read<TransactionFormBloc>().add(const TransactionFormEvent.transactionConfirmed());
-                },
-          child: const Text(Constants.confirm));
-    },
+Expanded _buildButton(BuildContext context) {
+  return const Expanded(
+    child: BlocBuilder<TransactionFormBloc, TransactionFormState>(
+      builder: _getBuilder,
+    ),
   );
+}
+
+Widget _getBuilder(BuildContext context, TransactionFormState state) {
+  bool isButtonLock = _getButtonState(state);
+
+  return ElevatedButton(
+      style: _style(context),
+      onPressed: isButtonLock
+          ? _buildLockButton()
+          : () {
+              _buildActiveButton(context);
+            },
+      child: const Text(Constants.confirm));
+}
+
+bool _getButtonState(TransactionFormState state) {
+  bool isButtonLock = false;
+
+  if (state.isSubmitting) {
+    isButtonLock = true;
+  }
+  return isButtonLock;
+}
+
+Null _buildLockButton() => null;
+
+void _buildActiveButton(BuildContext context) {
+  context.read<TransactionFormBloc>().add(const TransactionFormEvent.setBill());
+  context.read<TransactionFormBloc>().add(const TransactionFormEvent.setDate());
+  context.read<TransactionFormBloc>().add(const TransactionFormEvent.transactionConfirmed());
 }
 
 ButtonStyle _style(BuildContext context) => ElevatedButton.styleFrom(primary: Theme.of(context).primaryColor);

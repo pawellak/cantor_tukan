@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:kantor_tukan/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:kantor_tukan/domain/core/failures.dart';
-import 'package:kantor_tukan/presentation/core/pres_const.dart';
 import 'package:provider/src/provider.dart';
+import 'package:kantor_tukan/presentation/sign_in/constants.dart';
 
 class InputEmail extends StatelessWidget {
   const InputEmail({Key? key}) : super(key: key);
@@ -11,40 +11,40 @@ class InputEmail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      decoration: _buildDecorator(context),
+      decoration: _getDecorator(context),
       autocorrect: false,
-      onChanged: (value) => _onChanged(context, value),
-      validator: (_) => _buildValidator(context),
+      onChanged: (value) => _onTextInputChanged(context, value),
+      validator: (_) => _getValidator(context),
     );
   }
 
-  InputDecoration _buildDecorator(BuildContext context) {
+  InputDecoration _getDecorator(BuildContext context) {
     return InputDecoration(
       prefixIcon: Icon(
         Icons.email,
         color: Theme.of(context).colorScheme.secondary,
       ),
-      labelText: PresConst.sipEmail,
+      labelText: Constants.email,
     );
   }
 
-  void _onChanged(BuildContext context, String value) {
+  void _onTextInputChanged(BuildContext context, String value) {
     return context.read<SignInFormBloc>().add(SignInFormEvent.emailChanged(value));
   }
 
-  String? _buildValidator(BuildContext context) {
+  String? _getValidator(BuildContext context) {
     return context.read<SignInFormBloc>().state.emailAddress.value.fold(
-          (f) => _buildEmailNotValid(f),
-          (_) => _buildEmailValid(),
+          (f) => _getEmailNotValid(f),
+          (_) => _getEmailValid(),
         );
   }
 
-  String? _buildEmailNotValid(ValueFailure<String> f) {
+  String? _getEmailNotValid(ValueFailure<String> f) {
     return f.maybeMap(
-      invalidEmail: (_) => PresConst.sipEmailNotValid,
-      orElse: () => _buildEmailValid(),
+      invalidEmail: (_) => Constants.emailNotValid,
+      orElse: () => _getEmailValid(),
     );
   }
 
-  String? _buildEmailValid() => null;
+  String? _getEmailValid() => null;
 }

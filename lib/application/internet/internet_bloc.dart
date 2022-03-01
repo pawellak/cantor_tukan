@@ -11,10 +11,10 @@ part 'internet_state.dart';
 part 'internet_bloc.freezed.dart';
 
 @injectable
-class NoInternetBloc extends Bloc<NoInternetEvent, NoInternetState> {
+class InternetBloc extends Bloc<NoInternetEvent, NoInternetState> {
   final InternetConnectionChecker _internetConnectionChecker;
 
-  NoInternetBloc(this._internetConnectionChecker) : super(NoInternetState.initial()) {
+  InternetBloc(this._internetConnectionChecker) : super(NoInternetState.initial()) {
     on<NoInternetEvent>((event, emit) {
       event.map(checkConnection: _checkConnection);
     });

@@ -11,27 +11,27 @@ class ButtonBack extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(Constants.padding),
       child: Row(
-        children: [
-          Expanded(child: _buildButton(context)),
-        ],
+        children: [_buildButton(context)],
       ),
     );
   }
 
-  ElevatedButton _buildButton(BuildContext context) {
-    return ElevatedButton(
-      style: _buildButtonStyle(context),
-      onPressed: () {
-        _onPressed(context);
-      },
-      child: _buildButtonDescription(),
+  Expanded _buildButton(BuildContext context) {
+    return Expanded(
+      child: ElevatedButton(
+        style: _buildButtonStyle(context),
+        onPressed: () {
+          _onBackPressed(context);
+        },
+        child: _buildButtonDescription(),
+      ),
     );
   }
 
   ButtonStyle _buildButtonStyle(BuildContext context) =>
       ElevatedButton.styleFrom(primary: Theme.of(context).primaryColor);
 
-  void _onPressed(BuildContext context) {
+  void _onBackPressed(BuildContext context) {
     Navigator.of(context).pushNamedAndRemoveUntil(SplashPage.routeName, (route) => route.isFirst);
   }
 

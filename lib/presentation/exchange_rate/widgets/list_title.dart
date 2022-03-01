@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../infrastructure/exchange_rate/exchange_title.dart';
+import 'exchange_title.dart';
 
 class ListTitle extends StatelessWidget {
   const ListTitle({Key? key}) : super(key: key);

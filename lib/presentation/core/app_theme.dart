@@ -11,22 +11,22 @@ const googleColor = Colors.blue;
 class AppTheme {
   buildLightTheme() {
     return ThemeData.light().copyWith(
-      iconTheme: _buildIconTheme(),
-      primaryColor: _buildPrimaryColor(),
-      appBarTheme: buildAppBarTheme(),
-      outlinedButtonTheme: _buildOutlinedButtonDecoration(),
-      elevatedButtonTheme: _buildElevatedButtonDecoration(),
-      inputDecorationTheme: buildInputDecorationTheme(),
-      colorScheme: _buildColorScheme(),
+      iconTheme: _getIconTheme(),
+      primaryColor: _getPrimaryColor(),
+      appBarTheme: _getAppBarTheme(),
+      outlinedButtonTheme: _getOutlinedButtonDecoration(),
+      elevatedButtonTheme: _getElevatedButtonDecoration(),
+      inputDecorationTheme: _getInputDecorationTheme(),
+      colorScheme: _getColorScheme(),
     );
   }
 }
 
-IconThemeData _buildIconTheme() => const IconThemeData(color: mainColor);
+IconThemeData _getIconTheme() => const IconThemeData(color: mainColor);
 
-MaterialColor _buildPrimaryColor() => mainColor;
+MaterialColor _getPrimaryColor() => mainColor;
 
-AppBarTheme buildAppBarTheme() {
+AppBarTheme _getAppBarTheme() {
   return const AppBarTheme(
     foregroundColor: secondaryColor,
     backgroundColor: mainColor,
@@ -34,7 +34,7 @@ AppBarTheme buildAppBarTheme() {
   );
 }
 
-OutlinedButtonThemeData _buildOutlinedButtonDecoration() {
+OutlinedButtonThemeData _getOutlinedButtonDecoration() {
   return OutlinedButtonThemeData(
     style: ElevatedButton.styleFrom(
       primary: mainColor[300],
@@ -43,7 +43,7 @@ OutlinedButtonThemeData _buildOutlinedButtonDecoration() {
   );
 }
 
-ElevatedButtonThemeData _buildElevatedButtonDecoration() {
+ElevatedButtonThemeData _getElevatedButtonDecoration() {
   return ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
     primary: googleColor[400],
@@ -51,7 +51,7 @@ ElevatedButtonThemeData _buildElevatedButtonDecoration() {
   ));
 }
 
-InputDecorationTheme buildInputDecorationTheme() {
+InputDecorationTheme _getInputDecorationTheme() {
   return InputDecorationTheme(
     labelStyle: const TextStyle(color: secondaryColor),
     focusedBorder: OutlineInputBorder(
@@ -64,6 +64,7 @@ InputDecorationTheme buildInputDecorationTheme() {
   );
 }
 
-ColorScheme _buildColorScheme() {
-  return ColorScheme.fromSwatch().copyWith(secondary: secondaryColor,primary: mainColor[300],surface: surfaceColor[100]);
+ColorScheme _getColorScheme() {
+  return ColorScheme.fromSwatch()
+      .copyWith(secondary: secondaryColor, primary: mainColor[300], surface: surfaceColor[100]);
 }

@@ -16,14 +16,12 @@ class AppAuthBloc extends Bloc<AppAuthEvent, AppAuthState> {
   final IAuthFacade _authFacade;
 
   AppAuthBloc(this._authFacade) : super(const AppAuthState.initial()) {
-    on<AppAuthEvent>(
-      (event, emit) {
-        event.map(
-          authCheckRequested: _authCheckRequested,
-          signedOut: _signedOut,
-        );
-      },
-    );
+    on<AppAuthEvent>((event, emit) {
+      event.map(
+        authCheckRequested: _authCheckRequested,
+        signedOut: _signedOut,
+      );
+    });
   }
 
   void _authCheckRequested(_) async {

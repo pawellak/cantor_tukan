@@ -6,6 +6,7 @@ import 'package:kantor_tukan/domain/core/failures.dart';
 
 part 'exchange_rate.freezed.dart';
 
+const zeroValue = 0.0;
 @freezed
 abstract class ExchangeRate implements _$ExchangeRate {
   const ExchangeRate._();
@@ -18,8 +19,8 @@ abstract class ExchangeRate implements _$ExchangeRate {
 
   factory ExchangeRate.empty() => ExchangeRate(
         currency: Currency.fromEnum(EnumCurrency.undefined),
-        priceBuy: CurrencyPrice(0),
-        priceSell: CurrencyPrice(0),
+        priceBuy: CurrencyPrice(zeroValue),
+        priceSell: CurrencyPrice(zeroValue),
       );
 
   Option<ValueFailure<dynamic>> get failureOption {

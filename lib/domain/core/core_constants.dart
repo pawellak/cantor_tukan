@@ -9,5 +9,5 @@ class CoreConstants {
   static const valueToString = 'Value: ';
   static const explanationOfValueError = 'Encountered a ValueFailure at an unrecoverable point terminating.';
   static const failureWas = 'Failure was:';
-  static const noDate = '---';
+
 }

@@ -13,16 +13,16 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:internet_connection_checker/internet_connection_checker.dart'
     as _i14;
 
-import 'application/auth/app_auth_bloc.dart' as _i20;
-import 'application/auth/sign_in_form/sign_in_form_bloc.dart' as _i16;
-import 'application/exchange_form/exchange_rate_bloc.dart' as _i21;
-import 'application/no_internet/internet_bloc.dart' as _i15;
+import 'application/auth/app_auth_bloc.dart' as _i19;
+import 'application/auth/sign_in_form/sign_in_form_bloc.dart' as _i15;
+import 'application/exchange_form/exchange_rate_bloc.dart' as _i20;
+import 'application/internet/internet_bloc.dart' as _i21;
 import 'application/transaction/transaction_actor/transaction_actor_bloc.dart'
-    as _i17;
+    as _i16;
 import 'application/transaction/transaction_form/transaction_form_bloc.dart'
-    as _i18;
+    as _i17;
 import 'application/transaction/transaction_watcher/transaction_watcher_bloc.dart'
-    as _i19;
+    as _i18;
 import 'domain/auth/i_auth_facade.dart' as _i8;
 import 'domain/exchange_rate/i_cantor_remote_data_source.dart' as _i10;
 import 'domain/transaction/i_transaction_repository.dart' as _i12;
@@ -62,19 +62,19 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i13.TransactionRepository(get<_i5.FirebaseFirestore>()));
   gh.singleton<_i14.InternetConnectionChecker>(
       internetConnectionModule.internetConnection);
-  gh.factory<_i15.NoInternetBloc>(
-      () => _i15.NoInternetBloc(get<_i14.InternetConnectionChecker>()));
-  gh.factory<_i16.SignInFormBloc>(
-      () => _i16.SignInFormBloc(get<_i8.IAuthFacade>()));
-  gh.factory<_i17.TransactionActorBloc>(
-      () => _i17.TransactionActorBloc(get<_i12.ITransactionRepository>()));
-  gh.factory<_i18.TransactionFormBloc>(
-      () => _i18.TransactionFormBloc(get<_i12.ITransactionRepository>()));
-  gh.factory<_i19.TransactionWatcherBloc>(
-      () => _i19.TransactionWatcherBloc(get<_i12.ITransactionRepository>()));
-  gh.factory<_i20.AppAuthBloc>(() => _i20.AppAuthBloc(get<_i8.IAuthFacade>()));
-  gh.factory<_i21.ExchangeRateBloc>(
-      () => _i21.ExchangeRateBloc(get<_i10.ICantorRemoteDataSource>()));
+  gh.factory<_i15.SignInFormBloc>(
+      () => _i15.SignInFormBloc(get<_i8.IAuthFacade>()));
+  gh.factory<_i16.TransactionActorBloc>(
+      () => _i16.TransactionActorBloc(get<_i12.ITransactionRepository>()));
+  gh.factory<_i17.TransactionFormBloc>(
+      () => _i17.TransactionFormBloc(get<_i12.ITransactionRepository>()));
+  gh.factory<_i18.TransactionWatcherBloc>(
+      () => _i18.TransactionWatcherBloc(get<_i12.ITransactionRepository>()));
+  gh.factory<_i19.AppAuthBloc>(() => _i19.AppAuthBloc(get<_i8.IAuthFacade>()));
+  gh.factory<_i20.ExchangeRateBloc>(
+      () => _i20.ExchangeRateBloc(get<_i10.ICantorRemoteDataSource>()));
+  gh.factory<_i21.InternetBloc>(
+      () => _i21.InternetBloc(get<_i14.InternetConnectionChecker>()));
   return get;
 }
 
