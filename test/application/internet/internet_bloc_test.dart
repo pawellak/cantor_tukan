@@ -1,48 +1,52 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:kantor_tukan/application/internet/internet_bloc.dart';
+import 'package:kantor_tukan/domain/internet/i_internet_connection_checker.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import 'internet_bloc_test.mocks.dart';
 
-
-@GenerateMocks([InternetConnectionChecker])
+@GenerateMocks([IInternetConnectionChecker])
 void main() {
-  late MockInternetConnectionChecker mockChecker;
-  late InternetBloc noInternetBloc;
+  late MockIInternetConnectionChecker mockChecker;
+  late InternetBloc internetBloc;
 
   setUp(() {
-    mockChecker = MockInternetConnectionChecker();
-    noInternetBloc = InternetBloc(mockChecker);
+    mockChecker = MockIInternetConnectionChecker();
+    internetBloc = InternetBloc(mockChecker);
   });
 
   group('check state', () {
-    blocTest<InternetBloc, NoInternetState>(
+    blocTest<InternetBloc, InternetState>(
       'is internet connection',
       build: () {
-        when(mockChecker.hasConnection).thenAnswer((_) async => true);
-
-        return noInternetBloc;
+        when(mockChecker.hasConnection()).thenAnswer((_) async => true);
+        return internetBloc;
       },
       act: (bloc) {
-        bloc.add(const NoInternetEvent.checkConnection());
+        bloc.add(const InternetEvent.checkConnection());
       },
-      expect: () => [noInternetBloc.state.copyWith(isConnected: true)],
+      expect: () => [
+        internetBloc.state.copyWith(isConnected: false, isSubmitting: true),
+        internetBloc.state.copyWith(isConnected: true, isSubmitting: false)
+      ],
     );
 
-    blocTest<InternetBloc, NoInternetState>(
+    blocTest<InternetBloc, InternetState>(
       'is no internet connection',
       build: () {
-        when(mockChecker.hasConnection).thenAnswer((_) async => false);
+        when(mockChecker.hasConnection()).thenAnswer((_) async => false);
 
-        return noInternetBloc;
+        return internetBloc;
       },
       act: (bloc) {
-        bloc.add(const NoInternetEvent.checkConnection());
+        bloc.add(const InternetEvent.checkConnection());
       },
-      expect: () => [noInternetBloc.state.copyWith(isConnected: false)],
+      expect: () => [
+        internetBloc.state.copyWith(isConnected: false, isSubmitting: true),
+        internetBloc.state.copyWith(isConnected: false, isSubmitting: false)
+      ],
     );
   });
 }

@@ -6,6 +6,7 @@ import 'package:kantor_tukan/domain/core/currency_value.dart';
 import 'package:kantor_tukan/domain/core/enums.dart';
 import 'package:kantor_tukan/domain/core/value_objects.dart';
 import 'package:kantor_tukan/domain/exchange_rate/exchange_rate.dart';
+import 'package:kantor_tukan/domain/internet/i_internet_connection_checker.dart';
 import 'package:kantor_tukan/domain/transaction/i_transaction_repository.dart';
 import 'package:kantor_tukan/domain/transaction/transaction.dart';
 import 'package:kantor_tukan/domain/transaction/transaction_failure.dart';
@@ -14,10 +15,11 @@ import 'package:mockito/mockito.dart';
 
 import 'transaction_form_bloc_test.mocks.dart';
 
-
 @GenerateMocks([ITransactionRepository])
+@GenerateMocks([IInternetConnectionChecker])
 void main() {
   late MockITransactionRepository mockTransRepo;
+  late MockIInternetConnectionChecker mockInternetChecker;
   late TransactionFormBloc transactionFormBloc;
   late Transaction transaction;
   late Transaction transactionError;
@@ -26,7 +28,8 @@ void main() {
 
   setUp(() {
     mockTransRepo = MockITransactionRepository();
-    transactionFormBloc = TransactionFormBloc(mockTransRepo);
+    mockInternetChecker = MockIInternetConnectionChecker();
+    transactionFormBloc = TransactionFormBloc(mockTransRepo, mockInternetChecker);
 
     transaction = transactionFormBloc.state.transaction.copyWith(
       uId: UniqueId.fromUniqueString('1234'),
@@ -81,6 +84,7 @@ void main() {
       'correct passed data',
       build: () {
         when(mockTransRepo.create(transaction)).thenAnswer((_) async => right(unit));
+        when(mockInternetChecker.hasConnection()).thenAnswer((_) => Future.value(true));
         return transactionFormBloc;
       },
       act: (bloc) {
@@ -116,6 +120,7 @@ void main() {
       'wrong passed data',
       build: () {
         when(mockTransRepo.create(transactionError)).thenAnswer((_) async => right(unit));
+        when(mockInternetChecker.hasConnection()).thenAnswer((_) => Future.value(true));
         return transactionFormBloc;
       },
       act: (bloc) {
@@ -127,8 +132,14 @@ void main() {
         transactionFormBloc.state.copyWith(
           showErrorMessages: false,
           isSubmitting: false,
-          transactionFailureOrSuccessOption: none(),
+          transactionFailureOrSuccessOption: const None(),
           transaction: transactionError,
+        ),
+        transactionFormBloc.state.copyWith(
+          isSubmitting: true,
+          showErrorMessages: false,
+          transaction: transactionError,
+          transactionFailureOrSuccessOption: const None(),
         ),
         transactionFormBloc.state.copyWith(
           isSubmitting: false,
@@ -142,6 +153,7 @@ void main() {
       'correct passed data, but server error',
       build: () {
         when(mockTransRepo.create(transaction)).thenAnswer((_) async => const Left(TransactionFailure.unexpected()));
+        when(mockInternetChecker.hasConnection()).thenAnswer((_) => Future.value(true));
         return transactionFormBloc;
       },
       act: (bloc) {
@@ -191,6 +203,7 @@ void main() {
           transactionFailureOrSuccessOption: none(),
           transaction: transaction,
         ),
+
         transactionFormBloc.state.copyWith(
           showErrorMessages: false,
           isSubmitting: false,
@@ -204,11 +217,12 @@ void main() {
       'wrong passed data',
       build: () {
         when(mockTransRepo.create(transactionError)).thenAnswer((_) async => right(unit));
+        when(mockInternetChecker.hasConnection()).thenAnswer((_) => Future.value(true));
         return transactionFormBloc;
       },
       act: (bloc) {
         bloc.emit(bloc.state.copyWith(transaction: transactionError));
-        bloc.add(const TransactionFormEvent.transactionConfirmed());
+        bloc.add(const TransactionFormEvent.setBill());
       },
       expect: () => [
         //first emit is call to change state of bloc. No exist in real app.
@@ -220,8 +234,8 @@ void main() {
         ),
         transactionFormBloc.state.copyWith(
           isSubmitting: false,
-          showErrorMessages: true,
-          transaction: transactionError,
+          showErrorMessages: false,
+          transaction: transactionError.copyWith(currencyBill: CurrencyValue(0)),
           transactionFailureOrSuccessOption: const None(),
         ),
       ],
@@ -230,6 +244,7 @@ void main() {
       'correct passed data, but server error',
       build: () {
         when(mockTransRepo.create(transaction)).thenAnswer((_) async => const Left(TransactionFailure.unexpected()));
+        when(mockInternetChecker.hasConnection()).thenAnswer((_) => Future.value(true));
         return transactionFormBloc;
       },
       act: (bloc) {

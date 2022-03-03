@@ -1,8 +1,8 @@
 part of 'internet_bloc.dart';
 
 @freezed
-class NoInternetState  with _$NoInternetState
+class InternetState  with _$InternetState
 {
-  const factory NoInternetState({required bool isConnected}) = _NoInternetState;
-  factory NoInternetState.initial() => const NoInternetState(isConnected: false);
+  const factory InternetState({required bool isConnected,required bool isSubmitting}) = _InternetState;
+  factory InternetState.initial() => const InternetState(isConnected: false,isSubmitting: true);
 }

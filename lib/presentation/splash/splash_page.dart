@@ -17,27 +17,47 @@ class SplashPage extends StatelessWidget {
       listener: _getListener,
       child: Scaffold(
         appBar: _buildAppBarLoading(),
-        body: _buildLoadingWidget(),
+        body: _buildLoadingWidget(context),
       ),
     );
   }
 
   void _getListener(BuildContext context, AppAuthState state) {
     state.map(
-        initial: (_) {},
-        authenticated: (_) {
-          Navigator.of(context).pushNamed(ExchangeRatePage.routeName);
-        },
-        unauthenticated: (_) {
-          Navigator.of(context).pushNamed(SignInPage.routeName);
-        });
+      initial: (_) {},
+      authenticated: (_) {
+        _navigateToExchangeRatePage(context);
+      },
+      unauthenticated: (_) {
+        _navigateToSignInPage(context);
+      },
+    );
   }
 
-  Center _buildLoadingWidget() {
+  void _navigateToExchangeRatePage(BuildContext context) {
+    Navigator.of(context).pushNamed(ExchangeRatePage.routeName);
+  }
+
+  void _navigateToSignInPage(BuildContext context) {
+    Navigator.of(context).pushNamed(SignInPage.routeName);
+  }
+
+  Center _buildLoadingWidget(BuildContext context) {
+    _checkAuthState(context);
     return const Center(
       child: CircularProgressIndicator(),
     );
   }
 
-  AppBar _buildAppBarLoading() => AppBar(automaticallyImplyLeading: false, title: const Text(Constants.loading));
+  void _checkAuthState(BuildContext context) {
+    context.read<AppAuthBloc>().add(const AppAuthEvent.resetState());
+    context.read<AppAuthBloc>().add(const AppAuthEvent.authCheckRequested());
+  }
+
+  AppBar _buildAppBarLoading() =>
+      AppBar(automaticallyImplyLeading: _isBackArrowShow(), title: _buildAppBarDescription());
+
+  bool _isBackArrowShow() => false;
+
+  Text _buildAppBarDescription() => const Text(Constants.loading);
 }

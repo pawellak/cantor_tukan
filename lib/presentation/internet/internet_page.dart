@@ -13,25 +13,25 @@ class InternetPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<InternetBloc, NoInternetState>(
+    return BlocConsumer<InternetBloc, InternetState>(
       listener: _getListener,
       builder: _getBuilder,
     );
   }
 
-  void _getListener(context, state) {
+  void _getListener(BuildContext context,InternetState state) {
     if (_isInternetConnection(state)) {
       _navigateToSplashScreen(context);
     }
   }
 
-  _isInternetConnection(state) => state.isConnected;
+  _isInternetConnection(InternetState state) => state.isConnected;
 
-  void _navigateToSplashScreen(context) {
+  void _navigateToSplashScreen(BuildContext context) {
     Navigator.of(context).pushNamedAndRemoveUntil(SplashPage.routeName, (route) => route.isFirst);
   }
 
-  Widget _getBuilder(context, state) {
+  Widget _getBuilder(BuildContext context, InternetState _) {
     return Scaffold(
       appBar: _buildAppBar(),
       body: _buildBody(context),
@@ -40,7 +40,7 @@ class InternetPage extends StatelessWidget {
 
   AppBar _buildAppBar() => AppBar(automaticallyImplyLeading: false, title: const Text(Constants.tip));
 
-  Center _buildBody(context) {
+  Center _buildBody(BuildContext context) {
     return Center(
       child: Padding(
         padding: _getPadding(),

@@ -25,6 +25,8 @@ class Calculations {
     return isTypeBuy;
   }
 
+
+
   double getRate(bool isTypeBuy, TransactionFormState state) {
     double rate;
     if (isTypeBuy) {

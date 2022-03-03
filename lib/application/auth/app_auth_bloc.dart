@@ -18,6 +18,7 @@ class AppAuthBloc extends Bloc<AppAuthEvent, AppAuthState> {
   AppAuthBloc(this._authFacade) : super(const AppAuthState.initial()) {
     on<AppAuthEvent>((event, emit) {
       event.map(
+        resetState: _resetState,
         authCheckRequested: _authCheckRequested,
         signedOut: _signedOut,
       );
@@ -37,6 +38,12 @@ class AppAuthBloc extends Bloc<AppAuthEvent, AppAuthState> {
     await _authFacade.signOutGoogleAndFirebase();
     emit(
       const AppAuthState.unauthenticated(),
+    );
+  }
+
+  void _resetState(ResetState value) {
+    emit(
+      const AppAuthState.initial(),
     );
   }
 }

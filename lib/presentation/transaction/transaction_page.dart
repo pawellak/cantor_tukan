@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kantor_tukan/application/internet/internet_bloc.dart';
 import 'package:kantor_tukan/application/transaction/transaction_form/transaction_form_bloc.dart';
 import 'package:kantor_tukan/domain/transaction/transaction_failure.dart';
 import 'package:kantor_tukan/presentation/exchange_rate/exchange_rate_page.dart';
+import 'package:kantor_tukan/presentation/internet/internet_page.dart';
 import 'package:kantor_tukan/presentation/transaction/constants.dart';
 import 'package:kantor_tukan/presentation/transaction/widgets/appbar.dart';
 import 'package:kantor_tukan/presentation/transaction/widgets/calculation.dart';
+import 'package:kantor_tukan/presentation/transaction/widgets/cancel_accept_buttons.dart';
 import 'package:kantor_tukan/presentation/transaction/widgets/confirm_button.dart';
 import 'package:kantor_tukan/presentation/transaction/widgets/error_snack_bar.dart';
 import 'package:kantor_tukan/presentation/transaction/widgets/input_form_rate.dart';
@@ -23,20 +26,26 @@ class TransactionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    _restartTransactionPageState(context);
     return Scaffold(
+
       appBar: const TransactionAppBar(),
-      body: _getBody(),
+      body: _getBody(context),
     );
   }
 
-  BlocConsumer _getBody() {
+  void _restartTransactionPageState(BuildContext context) {
+     context.read<TransactionFormBloc>().add(const TransactionFormEvent.reset());
+  }
+
+  BlocConsumer _getBody(BuildContext context) {
     return BlocConsumer<TransactionFormBloc, TransactionFormState>(listener: _getListener, builder: _getBuilder);
   }
 
   void _getListener(BuildContext context, TransactionFormState state) {
     state.transactionFailureOrSuccessOption.fold(_getNone, (either) {
       either.fold((failure) {
-        _getSomeError(failure, context);
+        _getSomeError(context);
       }, (_) {
         _getSomeSuccess(context);
       });
@@ -45,8 +54,13 @@ class TransactionPage extends StatelessWidget {
 
   Null _getNone() {}
 
-  void _getSomeError(TransactionFailure failure, BuildContext context) {
-    ErrorSnackBar().failure(failure, context);
+  void _getSomeError(BuildContext context) {
+    _navigateToNoInternetPage(context);
+  }
+
+  void _navigateToNoInternetPage(BuildContext context) {
+    context.read<InternetBloc>().add(const InternetEvent.setNoInternetConnection());
+    Navigator.of(context).pushNamedAndRemoveUntil(InternetPage.routeName, (Route route) => route.isFirst);
   }
 
   void _getSomeSuccess(BuildContext context) {
@@ -55,14 +69,14 @@ class TransactionPage extends StatelessWidget {
   }
 
   void _resetTransactionState(BuildContext context) {
-    context.read<TransactionFormBloc>().add(const TransactionFormEvent.reset());
+    _restartTransactionPageState(context);
   }
 
   void _navigateToSuccessPage(BuildContext context) {
     Navigator.of(context).pushNamedAndRemoveUntil(ExchangeRatePage.routeName, (Route route) => route.isFirst);
   }
 
-  Widget _getBuilder(context, state) {
+  Widget _getBuilder(BuildContext context, TransactionFormState state) {
     double pageHeight = _getHeightOfScreen(context);
     return Form(
       autovalidateMode: _isShowErrorMessageOn(state),
@@ -76,7 +90,7 @@ class TransactionPage extends StatelessWidget {
             const RadioButton(),
             const InputFormRate(),
             Calculation(SizeWidget(pageHeight).calculationHeight()),
-            const ConfirmButton(),
+            const CancelAcceptButtons(),
             const Submitting(),
           ],
         ),
@@ -90,5 +104,7 @@ class TransactionPage extends StatelessWidget {
     return state.showErrorMessages ? AutovalidateMode.always : AutovalidateMode.disabled;
   }
 
-  double _getHeightOfScreen(context) => MediaQuery.of(context).size.height;
+  double _getHeightOfScreen(BuildContext context) {
+    return MediaQuery.of(context).size.height;
+  }
 }

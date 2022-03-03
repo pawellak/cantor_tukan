@@ -5,6 +5,8 @@ import 'package:injectable/injectable.dart';
 import 'package:kantor_tukan/injection.dart';
 import 'package:kantor_tukan/presentation/core/app_widget.dart';
 
+const splashScreenDurationInSec = 1;
+
 void main() async {
   FlutterNativeSplash.removeAfter(initialization);
   configureInjection(Environment.prod);
@@ -14,5 +16,5 @@ void main() async {
 }
 
 void initialization(BuildContext context) async {
-  await Future.delayed(const Duration(seconds: 1));
+  await Future.delayed(const Duration(seconds: splashScreenDurationInSec));
 }

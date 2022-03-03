@@ -5,10 +5,12 @@ import 'package:kantor_tukan/injection.dart';
 import 'package:kantor_tukan/presentation/core/app_theme.dart';
 import 'package:kantor_tukan/presentation/core/constants.dart';
 import 'package:kantor_tukan/presentation/exchange_rate/exchange_rate_page.dart';
+import 'package:kantor_tukan/presentation/internet/internet_page.dart';
 import 'package:kantor_tukan/presentation/sign_in/sign_in_page.dart';
 import 'package:kantor_tukan/presentation/splash/splash_page.dart';
 import 'package:kantor_tukan/presentation/transaction/transaction_page.dart';
 
+import '../../application/internet/internet_bloc.dart';
 import '../../application/transaction/transaction_form/transaction_form_bloc.dart';
 
 class AppWidget extends StatelessWidget {
@@ -18,9 +20,9 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => getIt<AppAuthBloc>()..add(const AppAuthEvent.authCheckRequested())),
         BlocProvider(create: (context) => getIt<TransactionFormBloc>()),
-        //internet connection
+        BlocProvider(create: (context) => getIt<InternetBloc>()),
+        BlocProvider(create: (context) => getIt<AppAuthBloc>()),
       ],
       child: MaterialApp(
         home: const SplashPage(),
@@ -38,6 +40,7 @@ class AppWidget extends StatelessWidget {
       SplashPage.routeName: (context) => const SplashPage(),
       ExchangeRatePage.routeName: (context) => const ExchangeRatePage(),
       TransactionPage.routeName: (context) => const TransactionPage(),
+      InternetPage.routeName: (context) => const InternetPage(),
     };
   }
 }

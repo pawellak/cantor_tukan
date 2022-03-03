@@ -14,28 +14,13 @@ class ConfirmButton extends StatefulWidget {
 class _ConfirmButtonState extends State<ConfirmButton> {
   @override
   Widget build(BuildContext context) {
-    return _confirmButton(context);
+    return _buildButton(context);
   }
 }
 
-Padding _confirmButton(BuildContext context) {
-  return Padding(
-    padding: _getSmallPadding(),
-    child: Row(
-      children: [
-        _buildButton(context)
-      ],
-    ),
-  );
-}
-
-EdgeInsets _getSmallPadding() => const EdgeInsets.all(Constants.smallPadding);
-
-Expanded _buildButton(BuildContext context) {
-  return const Expanded(
-    child: BlocBuilder<TransactionFormBloc, TransactionFormState>(
-      builder: _getBuilder,
-    ),
+BlocBuilder _buildButton(BuildContext context) {
+  return const BlocBuilder<TransactionFormBloc, TransactionFormState>(
+    builder: _getBuilder,
   );
 }
 
@@ -69,4 +54,4 @@ void _buildActiveButton(BuildContext context) {
   context.read<TransactionFormBloc>().add(const TransactionFormEvent.transactionConfirmed());
 }
 
-ButtonStyle _style(BuildContext context) => ElevatedButton.styleFrom(primary: Theme.of(context).primaryColor);
+ButtonStyle _style(BuildContext context) => ElevatedButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary);

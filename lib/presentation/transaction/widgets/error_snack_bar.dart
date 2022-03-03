@@ -6,12 +6,11 @@ import 'package:kantor_tukan/presentation/transaction/constants.dart';
 class ErrorSnackBar {
   failure(TransactionFailure failure, BuildContext context) {
     FlushbarHelper.createError(
-        message: failure.map(unexpected: (_) {
-      return Constants.unexpected;
-    }, insufficientPermission: (_) {
-      return Constants.insufficientPermission;
-    }, notFound: (_) {
-      return Constants.notFound;
-    })).show(context);
+      message: failure.map(
+          noInternet: (_) => Constants.noInternet,
+          unexpected: (_) => Constants.unexpected,
+          insufficientPermission: (_) => Constants.insufficientPermission,
+          notFound: (_) => Constants.notFound),
+    ).show(context);
   }
 }

@@ -1,15 +1,15 @@
 import '../../../presentation/transaction/constants.dart';
 
 class SizeWidget {
-  late double heightOfScreen;
+  late double height;
 
   SizeWidget(double heightOfScreen) {
-    heightOfScreen = this.heightOfScreen;
+    height = heightOfScreen;
   }
 
-  double logoHeight() => heightOfScreen * Constants.proportionTwentyPercent;
+  double logoHeight() => height * Constants.proportionTwentyPercent;
 
-  double tipHeight() => heightOfScreen * Constants.proportionFifteenPercent;
+  double tipHeight() => height * Constants.proportionFifteenPercent;
 
-  double calculationHeight() => heightOfScreen * Constants.proportionTenPercent;
+  double calculationHeight() => height * Constants.proportionTenPercent;
 }

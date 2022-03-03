@@ -7,6 +7,8 @@ const mainColor = Colors.amber;
 const surfaceColor = Colors.grey;
 const secondaryColor = Colors.black87;
 const googleColor = Colors.blue;
+const cancelColor = Colors.deepOrangeAccent;
+const confirmColor = Colors.lightGreen;
 
 class AppTheme {
   buildLightTheme() {
@@ -65,6 +67,10 @@ InputDecorationTheme _getInputDecorationTheme() {
 }
 
 ColorScheme _getColorScheme() {
-  return ColorScheme.fromSwatch()
-      .copyWith(secondary: secondaryColor, primary: mainColor[300], surface: surfaceColor[100]);
+  return ColorScheme.fromSwatch().copyWith(
+      secondary: secondaryColor,
+      primary: mainColor[300],
+      surface: surfaceColor[100],
+      onError: cancelColor,
+      onPrimary: confirmColor);
 }

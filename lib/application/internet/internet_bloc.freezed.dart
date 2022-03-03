@@ -14,68 +14,79 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$NoInternetEventTearOff {
-  const _$NoInternetEventTearOff();
+class _$InternetEventTearOff {
+  const _$InternetEventTearOff();
 
   _CheckConnection checkConnection() {
     return const _CheckConnection();
   }
+
+  _SetNoInternetConnection setNoInternetConnection() {
+    return const _SetNoInternetConnection();
+  }
 }
 
 /// @nodoc
-const $NoInternetEvent = _$NoInternetEventTearOff();
+const $InternetEvent = _$InternetEventTearOff();
 
 /// @nodoc
-mixin _$NoInternetEvent {
+mixin _$InternetEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() checkConnection,
+    required TResult Function() setNoInternetConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? checkConnection,
+    TResult Function()? setNoInternetConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkConnection,
+    TResult Function()? setNoInternetConnection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_CheckConnection value) checkConnection,
+    required TResult Function(_SetNoInternetConnection value)
+        setNoInternetConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_CheckConnection value)? checkConnection,
+    TResult Function(_SetNoInternetConnection value)? setNoInternetConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CheckConnection value)? checkConnection,
+    TResult Function(_SetNoInternetConnection value)? setNoInternetConnection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NoInternetEventCopyWith<$Res> {
-  factory $NoInternetEventCopyWith(
-          NoInternetEvent value, $Res Function(NoInternetEvent) then) =
-      _$NoInternetEventCopyWithImpl<$Res>;
+abstract class $InternetEventCopyWith<$Res> {
+  factory $InternetEventCopyWith(
+          InternetEvent value, $Res Function(InternetEvent) then) =
+      _$InternetEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$NoInternetEventCopyWithImpl<$Res>
-    implements $NoInternetEventCopyWith<$Res> {
-  _$NoInternetEventCopyWithImpl(this._value, this._then);
+class _$InternetEventCopyWithImpl<$Res>
+    implements $InternetEventCopyWith<$Res> {
+  _$InternetEventCopyWithImpl(this._value, this._then);
 
-  final NoInternetEvent _value;
+  final InternetEvent _value;
   // ignore: unused_field
-  final $Res Function(NoInternetEvent) _then;
+  final $Res Function(InternetEvent) _then;
 }
 
 /// @nodoc
@@ -87,7 +98,7 @@ abstract class _$CheckConnectionCopyWith<$Res> {
 
 /// @nodoc
 class __$CheckConnectionCopyWithImpl<$Res>
-    extends _$NoInternetEventCopyWithImpl<$Res>
+    extends _$InternetEventCopyWithImpl<$Res>
     implements _$CheckConnectionCopyWith<$Res> {
   __$CheckConnectionCopyWithImpl(
       _CheckConnection _value, $Res Function(_CheckConnection) _then)
@@ -104,7 +115,7 @@ class _$_CheckConnection implements _CheckConnection {
 
   @override
   String toString() {
-    return 'NoInternetEvent.checkConnection()';
+    return 'InternetEvent.checkConnection()';
   }
 
   @override
@@ -120,6 +131,7 @@ class _$_CheckConnection implements _CheckConnection {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() checkConnection,
+    required TResult Function() setNoInternetConnection,
   }) {
     return checkConnection();
   }
@@ -128,6 +140,7 @@ class _$_CheckConnection implements _CheckConnection {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? checkConnection,
+    TResult Function()? setNoInternetConnection,
   }) {
     return checkConnection?.call();
   }
@@ -136,6 +149,7 @@ class _$_CheckConnection implements _CheckConnection {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkConnection,
+    TResult Function()? setNoInternetConnection,
     required TResult orElse(),
   }) {
     if (checkConnection != null) {
@@ -148,6 +162,8 @@ class _$_CheckConnection implements _CheckConnection {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_CheckConnection value) checkConnection,
+    required TResult Function(_SetNoInternetConnection value)
+        setNoInternetConnection,
   }) {
     return checkConnection(this);
   }
@@ -156,6 +172,7 @@ class _$_CheckConnection implements _CheckConnection {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_CheckConnection value)? checkConnection,
+    TResult Function(_SetNoInternetConnection value)? setNoInternetConnection,
   }) {
     return checkConnection?.call(this);
   }
@@ -164,6 +181,7 @@ class _$_CheckConnection implements _CheckConnection {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CheckConnection value)? checkConnection,
+    TResult Function(_SetNoInternetConnection value)? setNoInternetConnection,
     required TResult orElse(),
   }) {
     if (checkConnection != null) {
@@ -173,92 +191,211 @@ class _$_CheckConnection implements _CheckConnection {
   }
 }
 
-abstract class _CheckConnection implements NoInternetEvent {
+abstract class _CheckConnection implements InternetEvent {
   const factory _CheckConnection() = _$_CheckConnection;
 }
 
 /// @nodoc
-class _$NoInternetStateTearOff {
-  const _$NoInternetStateTearOff();
+abstract class _$SetNoInternetConnectionCopyWith<$Res> {
+  factory _$SetNoInternetConnectionCopyWith(_SetNoInternetConnection value,
+          $Res Function(_SetNoInternetConnection) then) =
+      __$SetNoInternetConnectionCopyWithImpl<$Res>;
+}
 
-  _NoInternetState call({required bool isConnected}) {
-    return _NoInternetState(
+/// @nodoc
+class __$SetNoInternetConnectionCopyWithImpl<$Res>
+    extends _$InternetEventCopyWithImpl<$Res>
+    implements _$SetNoInternetConnectionCopyWith<$Res> {
+  __$SetNoInternetConnectionCopyWithImpl(_SetNoInternetConnection _value,
+      $Res Function(_SetNoInternetConnection) _then)
+      : super(_value, (v) => _then(v as _SetNoInternetConnection));
+
+  @override
+  _SetNoInternetConnection get _value =>
+      super._value as _SetNoInternetConnection;
+}
+
+/// @nodoc
+
+class _$_SetNoInternetConnection implements _SetNoInternetConnection {
+  const _$_SetNoInternetConnection();
+
+  @override
+  String toString() {
+    return 'InternetEvent.setNoInternetConnection()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _SetNoInternetConnection);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() checkConnection,
+    required TResult Function() setNoInternetConnection,
+  }) {
+    return setNoInternetConnection();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? checkConnection,
+    TResult Function()? setNoInternetConnection,
+  }) {
+    return setNoInternetConnection?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? checkConnection,
+    TResult Function()? setNoInternetConnection,
+    required TResult orElse(),
+  }) {
+    if (setNoInternetConnection != null) {
+      return setNoInternetConnection();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CheckConnection value) checkConnection,
+    required TResult Function(_SetNoInternetConnection value)
+        setNoInternetConnection,
+  }) {
+    return setNoInternetConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_CheckConnection value)? checkConnection,
+    TResult Function(_SetNoInternetConnection value)? setNoInternetConnection,
+  }) {
+    return setNoInternetConnection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CheckConnection value)? checkConnection,
+    TResult Function(_SetNoInternetConnection value)? setNoInternetConnection,
+    required TResult orElse(),
+  }) {
+    if (setNoInternetConnection != null) {
+      return setNoInternetConnection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetNoInternetConnection implements InternetEvent {
+  const factory _SetNoInternetConnection() = _$_SetNoInternetConnection;
+}
+
+/// @nodoc
+class _$InternetStateTearOff {
+  const _$InternetStateTearOff();
+
+  _InternetState call({required bool isConnected, required bool isSubmitting}) {
+    return _InternetState(
       isConnected: isConnected,
+      isSubmitting: isSubmitting,
     );
   }
 }
 
 /// @nodoc
-const $NoInternetState = _$NoInternetStateTearOff();
+const $InternetState = _$InternetStateTearOff();
 
 /// @nodoc
-mixin _$NoInternetState {
+mixin _$InternetState {
   bool get isConnected => throw _privateConstructorUsedError;
+  bool get isSubmitting => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $NoInternetStateCopyWith<NoInternetState> get copyWith =>
+  $InternetStateCopyWith<InternetState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NoInternetStateCopyWith<$Res> {
-  factory $NoInternetStateCopyWith(
-          NoInternetState value, $Res Function(NoInternetState) then) =
-      _$NoInternetStateCopyWithImpl<$Res>;
-  $Res call({bool isConnected});
+abstract class $InternetStateCopyWith<$Res> {
+  factory $InternetStateCopyWith(
+          InternetState value, $Res Function(InternetState) then) =
+      _$InternetStateCopyWithImpl<$Res>;
+  $Res call({bool isConnected, bool isSubmitting});
 }
 
 /// @nodoc
-class _$NoInternetStateCopyWithImpl<$Res>
-    implements $NoInternetStateCopyWith<$Res> {
-  _$NoInternetStateCopyWithImpl(this._value, this._then);
+class _$InternetStateCopyWithImpl<$Res>
+    implements $InternetStateCopyWith<$Res> {
+  _$InternetStateCopyWithImpl(this._value, this._then);
 
-  final NoInternetState _value;
+  final InternetState _value;
   // ignore: unused_field
-  final $Res Function(NoInternetState) _then;
+  final $Res Function(InternetState) _then;
 
   @override
   $Res call({
     Object? isConnected = freezed,
+    Object? isSubmitting = freezed,
   }) {
     return _then(_value.copyWith(
       isConnected: isConnected == freezed
           ? _value.isConnected
           : isConnected // ignore: cast_nullable_to_non_nullable
               as bool,
+      isSubmitting: isSubmitting == freezed
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$NoInternetStateCopyWith<$Res>
-    implements $NoInternetStateCopyWith<$Res> {
-  factory _$NoInternetStateCopyWith(
-          _NoInternetState value, $Res Function(_NoInternetState) then) =
-      __$NoInternetStateCopyWithImpl<$Res>;
+abstract class _$InternetStateCopyWith<$Res>
+    implements $InternetStateCopyWith<$Res> {
+  factory _$InternetStateCopyWith(
+          _InternetState value, $Res Function(_InternetState) then) =
+      __$InternetStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool isConnected});
+  $Res call({bool isConnected, bool isSubmitting});
 }
 
 /// @nodoc
-class __$NoInternetStateCopyWithImpl<$Res>
-    extends _$NoInternetStateCopyWithImpl<$Res>
-    implements _$NoInternetStateCopyWith<$Res> {
-  __$NoInternetStateCopyWithImpl(
-      _NoInternetState _value, $Res Function(_NoInternetState) _then)
-      : super(_value, (v) => _then(v as _NoInternetState));
+class __$InternetStateCopyWithImpl<$Res>
+    extends _$InternetStateCopyWithImpl<$Res>
+    implements _$InternetStateCopyWith<$Res> {
+  __$InternetStateCopyWithImpl(
+      _InternetState _value, $Res Function(_InternetState) _then)
+      : super(_value, (v) => _then(v as _InternetState));
 
   @override
-  _NoInternetState get _value => super._value as _NoInternetState;
+  _InternetState get _value => super._value as _InternetState;
 
   @override
   $Res call({
     Object? isConnected = freezed,
+    Object? isSubmitting = freezed,
   }) {
-    return _then(_NoInternetState(
+    return _then(_InternetState(
       isConnected: isConnected == freezed
           ? _value.isConnected
           : isConnected // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSubmitting: isSubmitting == freezed
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -266,44 +403,54 @@ class __$NoInternetStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_NoInternetState implements _NoInternetState {
-  const _$_NoInternetState({required this.isConnected});
+class _$_InternetState implements _InternetState {
+  const _$_InternetState(
+      {required this.isConnected, required this.isSubmitting});
 
   @override
   final bool isConnected;
+  @override
+  final bool isSubmitting;
 
   @override
   String toString() {
-    return 'NoInternetState(isConnected: $isConnected)';
+    return 'InternetState(isConnected: $isConnected, isSubmitting: $isSubmitting)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _NoInternetState &&
+            other is _InternetState &&
             const DeepCollectionEquality()
-                .equals(other.isConnected, isConnected));
+                .equals(other.isConnected, isConnected) &&
+            const DeepCollectionEquality()
+                .equals(other.isSubmitting, isSubmitting));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(isConnected));
+      runtimeType,
+      const DeepCollectionEquality().hash(isConnected),
+      const DeepCollectionEquality().hash(isSubmitting));
 
   @JsonKey(ignore: true)
   @override
-  _$NoInternetStateCopyWith<_NoInternetState> get copyWith =>
-      __$NoInternetStateCopyWithImpl<_NoInternetState>(this, _$identity);
+  _$InternetStateCopyWith<_InternetState> get copyWith =>
+      __$InternetStateCopyWithImpl<_InternetState>(this, _$identity);
 }
 
-abstract class _NoInternetState implements NoInternetState {
-  const factory _NoInternetState({required bool isConnected}) =
-      _$_NoInternetState;
+abstract class _InternetState implements InternetState {
+  const factory _InternetState(
+      {required bool isConnected,
+      required bool isSubmitting}) = _$_InternetState;
 
   @override
   bool get isConnected;
   @override
+  bool get isSubmitting;
+  @override
   @JsonKey(ignore: true)
-  _$NoInternetStateCopyWith<_NoInternetState> get copyWith =>
+  _$InternetStateCopyWith<_InternetState> get copyWith =>
       throw _privateConstructorUsedError;
 }

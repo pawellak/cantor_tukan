@@ -28,6 +28,10 @@ class _$TransactionFailureTearOff {
   _NotFound notFound() {
     return const _NotFound();
   }
+
+  _noInternet noInternet() {
+    return const _noInternet();
+  }
 }
 
 /// @nodoc
@@ -40,6 +44,7 @@ mixin _$TransactionFailure {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() notFound,
+    required TResult Function() noInternet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,6 +52,7 @@ mixin _$TransactionFailure {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? notFound,
+    TResult Function()? noInternet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +60,7 @@ mixin _$TransactionFailure {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? notFound,
+    TResult Function()? noInternet,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,6 +70,7 @@ mixin _$TransactionFailure {
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
     required TResult Function(_NotFound value) notFound,
+    required TResult Function(_noInternet value) noInternet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +78,7 @@ mixin _$TransactionFailure {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_NotFound value)? notFound,
+    TResult Function(_noInternet value)? noInternet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,6 +86,7 @@ mixin _$TransactionFailure {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_NotFound value)? notFound,
+    TResult Function(_noInternet value)? noInternet,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -143,6 +153,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() notFound,
+    required TResult Function() noInternet,
   }) {
     return unexpected();
   }
@@ -153,6 +164,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? notFound,
+    TResult Function()? noInternet,
   }) {
     return unexpected?.call();
   }
@@ -163,6 +175,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? notFound,
+    TResult Function()? noInternet,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -178,6 +191,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
     required TResult Function(_NotFound value) notFound,
+    required TResult Function(_noInternet value) noInternet,
   }) {
     return unexpected(this);
   }
@@ -188,6 +202,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_NotFound value)? notFound,
+    TResult Function(_noInternet value)? noInternet,
   }) {
     return unexpected?.call(this);
   }
@@ -198,6 +213,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_NotFound value)? notFound,
+    TResult Function(_noInternet value)? noInternet,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -255,6 +271,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() notFound,
+    required TResult Function() noInternet,
   }) {
     return insufficientPermission();
   }
@@ -265,6 +282,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? notFound,
+    TResult Function()? noInternet,
   }) {
     return insufficientPermission?.call();
   }
@@ -275,6 +293,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? notFound,
+    TResult Function()? noInternet,
     required TResult orElse(),
   }) {
     if (insufficientPermission != null) {
@@ -290,6 +309,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
     required TResult Function(_NotFound value) notFound,
+    required TResult Function(_noInternet value) noInternet,
   }) {
     return insufficientPermission(this);
   }
@@ -300,6 +320,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_NotFound value)? notFound,
+    TResult Function(_noInternet value)? noInternet,
   }) {
     return insufficientPermission?.call(this);
   }
@@ -310,6 +331,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_NotFound value)? notFound,
+    TResult Function(_noInternet value)? noInternet,
     required TResult orElse(),
   }) {
     if (insufficientPermission != null) {
@@ -365,6 +387,7 @@ class _$_NotFound implements _NotFound {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermission,
     required TResult Function() notFound,
+    required TResult Function() noInternet,
   }) {
     return notFound();
   }
@@ -375,6 +398,7 @@ class _$_NotFound implements _NotFound {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? notFound,
+    TResult Function()? noInternet,
   }) {
     return notFound?.call();
   }
@@ -385,6 +409,7 @@ class _$_NotFound implements _NotFound {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermission,
     TResult Function()? notFound,
+    TResult Function()? noInternet,
     required TResult orElse(),
   }) {
     if (notFound != null) {
@@ -400,6 +425,7 @@ class _$_NotFound implements _NotFound {
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
     required TResult Function(_NotFound value) notFound,
+    required TResult Function(_noInternet value) noInternet,
   }) {
     return notFound(this);
   }
@@ -410,6 +436,7 @@ class _$_NotFound implements _NotFound {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_NotFound value)? notFound,
+    TResult Function(_noInternet value)? noInternet,
   }) {
     return notFound?.call(this);
   }
@@ -420,6 +447,7 @@ class _$_NotFound implements _NotFound {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_NotFound value)? notFound,
+    TResult Function(_noInternet value)? noInternet,
     required TResult orElse(),
   }) {
     if (notFound != null) {
@@ -431,4 +459,122 @@ class _$_NotFound implements _NotFound {
 
 abstract class _NotFound implements TransactionFailure {
   const factory _NotFound() = _$_NotFound;
+}
+
+/// @nodoc
+abstract class _$noInternetCopyWith<$Res> {
+  factory _$noInternetCopyWith(
+          _noInternet value, $Res Function(_noInternet) then) =
+      __$noInternetCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$noInternetCopyWithImpl<$Res>
+    extends _$TransactionFailureCopyWithImpl<$Res>
+    implements _$noInternetCopyWith<$Res> {
+  __$noInternetCopyWithImpl(
+      _noInternet _value, $Res Function(_noInternet) _then)
+      : super(_value, (v) => _then(v as _noInternet));
+
+  @override
+  _noInternet get _value => super._value as _noInternet;
+}
+
+/// @nodoc
+
+class _$_noInternet implements _noInternet {
+  const _$_noInternet();
+
+  @override
+  String toString() {
+    return 'TransactionFailure.noInternet()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _noInternet);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() insufficientPermission,
+    required TResult Function() notFound,
+    required TResult Function() noInternet,
+  }) {
+    return noInternet();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? insufficientPermission,
+    TResult Function()? notFound,
+    TResult Function()? noInternet,
+  }) {
+    return noInternet?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? insufficientPermission,
+    TResult Function()? notFound,
+    TResult Function()? noInternet,
+    required TResult orElse(),
+  }) {
+    if (noInternet != null) {
+      return noInternet();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+    required TResult Function(_NotFound value) notFound,
+    required TResult Function(_noInternet value) noInternet,
+  }) {
+    return noInternet(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    TResult Function(_NotFound value)? notFound,
+    TResult Function(_noInternet value)? noInternet,
+  }) {
+    return noInternet?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    TResult Function(_NotFound value)? notFound,
+    TResult Function(_noInternet value)? noInternet,
+    required TResult orElse(),
+  }) {
+    if (noInternet != null) {
+      return noInternet(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _noInternet implements TransactionFailure {
+  const factory _noInternet() = _$_noInternet;
 }

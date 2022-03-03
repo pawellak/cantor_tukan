@@ -1,6 +1,7 @@
 part of 'internet_bloc.dart';
 @freezed
-class NoInternetEvent  with _$NoInternetEvent
+class InternetEvent  with _$InternetEvent
 {
-  const factory NoInternetEvent.checkConnection() = _CheckConnection;
+  const factory InternetEvent.checkConnection() = _CheckConnection;
+  const factory InternetEvent.setNoInternetConnection() = _SetNoInternetConnection;
 }

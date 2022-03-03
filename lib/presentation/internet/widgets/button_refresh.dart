@@ -12,26 +12,36 @@ class ButtonRefresh extends StatelessWidget {
     return _buildRefreshButton(context);
   }
 
-  Row _buildRefreshButton(context) {
+  Row _buildRefreshButton(BuildContext context) {
     return Row(
       children: [
         Expanded(
-          child: ElevatedButton(
-            style: _buildButtonStyle(context),
-            onPressed: () => _onRefreshPressed(context),
-            child: const Text(Constants.tipButton),
+          child: BlocBuilder<InternetBloc, InternetState>(
+            builder: (BuildContext context, InternetState state) {
+              bool isSubmitting = state.isSubmitting;
+              return isSubmitting
+                  ? const LinearProgressIndicator()
+                  : ElevatedButton(
+                      style: _getButtonStyle(context),
+                      onPressed: () => _onRefreshPressed(context),
+                      child: _getButtonDescription(),
+                    );
+            },
           ),
         ),
       ],
     );
   }
 
-  ButtonStyle _buildButtonStyle(context) => ElevatedButton.styleFrom(primary: Theme.of(context).primaryColor);
+  Text _getButtonDescription() => const Text(Constants.tipButton);
+
+  ButtonStyle _getButtonStyle(BuildContext context) =>
+      ElevatedButton.styleFrom(primary: Theme.of(context).primaryColor);
 
   void _onRefreshPressed(BuildContext context) {
     return _checkInternetConnection(context);
   }
 
   void _checkInternetConnection(BuildContext context) =>
-      context.read<InternetBloc>().add(const NoInternetEvent.checkConnection());
+      context.read<InternetBloc>().add(const InternetEvent.checkConnection());
 }
