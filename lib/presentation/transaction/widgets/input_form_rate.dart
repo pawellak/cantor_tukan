@@ -19,14 +19,14 @@ class InputFormRate extends StatelessWidget {
   }
 
   Widget _buildBuilder(context, state) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Expanded(flex: Constants.currencyFlex, child: _buildInputText(context)),
-          Expanded(child: _buildCurrencyNameText(state)),
-        ],
-      );
-    }
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Expanded(flex: Constants.currencyFlex, child: _buildInputText(context)),
+        Expanded(child: _buildCurrencyNameText(state)),
+      ],
+    );
+  }
 
   Padding _buildInputText(BuildContext context) {
     return Padding(
@@ -60,10 +60,16 @@ InputDecoration _getDecorator(BuildContext context) {
 }
 
 void _onChanged(BuildContext context, String value) {
+  value = _replaceCommaToDot(value);
+
   var currencyValueFold = ValueConverters().toDoubleFromString(value);
   double currencyValueDouble = currencyValueFold.fold((f) => Constants.zeroDouble, (r) => r);
-
   _setNewCurrencyValue(context, currencyValueDouble);
+}
+
+String _replaceCommaToDot(String value) {
+  value = value.replaceAll(RegExp(Constants.comma), Constants.dot);
+  return value;
 }
 
 void _setNewCurrencyValue(BuildContext context, double currencyValueDouble) {
@@ -74,17 +80,18 @@ void _setNewCurrencyValue(BuildContext context, double currencyValueDouble) {
 
 String? _getValidator(BuildContext context) {
   return context.read<TransactionFormBloc>().state.transaction.currencyValue.value.fold(
-        (failure) => _getEmailNotValidMessage(failure),
-        (_) => _getEmailValidMessage(),
+        (failure) => _getCurrencyNotValidate(failure),
+        (_) => _getCurrencyValueValid(),
       );
 }
 
-String? _getEmailNotValidMessage(ValueFailure<double> failure) {
+String? _getCurrencyNotValidate(ValueFailure<double> failure) {
   return failure.maybeMap(
     currencyValueTooBig: (_) => Constants.valueToBig,
     currencyValueTooSmall: (_) => Constants.valueToSmall,
-    orElse: () => _getEmailValidMessage(),
+    currencyValueNotInteger: (_) => Constants.invalidParse,
+    orElse: () => _getCurrencyValueValid(),
   );
 }
 
-String? _getEmailValidMessage() => null;
+String? _getCurrencyValueValid() => null;

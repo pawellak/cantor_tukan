@@ -19,15 +19,16 @@ class Calculation extends StatelessWidget {
 
   Widget _getBuilder(context, state) {
     String result = Calculations(state).result;
+
+    String resultWithDescription = '${Constants.forWord} $result ${Constants.plnCurrency}';
     return SizedBox(
-      height: heightOfWidget,
-      child: Padding(
-        padding: _getSmallPadding(),
-        child: FittedBox(
-          child: _buildTextDescription(result),
-        ),
-      )
-    );
+        height: heightOfWidget,
+        child: Padding(
+          padding: _getSmallPadding(),
+          child: FittedBox(
+            child: _buildTextDescription(resultWithDescription),
+          ),
+        ));
   }
 
   EdgeInsets _getSmallPadding() => const EdgeInsets.all(Constants.smallPadding);

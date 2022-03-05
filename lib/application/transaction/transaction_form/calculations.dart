@@ -25,8 +25,6 @@ class Calculations {
     return isTypeBuy;
   }
 
-
-
   double getRate(bool isTypeBuy, TransactionFormState state) {
     double rate;
     if (isTypeBuy) {
@@ -45,7 +43,7 @@ class Calculations {
     if (currencyValue == Constants.zeroDouble) {
       result = Constants.invalidValue;
     } else {
-      result = (rate * currencyValue).toString();
+      result = (rate * currencyValue).toStringAsFixed(Constants.fixeNumberOfCurrency);
     }
     return result;
   }

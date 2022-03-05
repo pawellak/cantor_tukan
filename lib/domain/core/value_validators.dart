@@ -21,7 +21,9 @@ class ValueValidators {
   }
 
   Either<ValueFailure<double>, double> currencyValue(double input) {
-    if (input < CoreConstants.minValueCurrency) {
+    if (_isNotInputInteger(input)) {
+      return Left(ValueFailure.currencyValueNotInteger(failedValue: input));
+    } else if (input < CoreConstants.minValueCurrency) {
       return Left(ValueFailure.currencyValueTooSmall(failedValue: input, min: CoreConstants.minValueCurrency));
     } else if (input > CoreConstants.maxValueCurrency) {
       return Left(ValueFailure.currencyValueTooBig(failedValue: input, max: CoreConstants.maxValueCurrency));
@@ -30,8 +32,10 @@ class ValueValidators {
     }
   }
 
+  bool _isNotInputInteger(double input) => (input % 1) != 0;
+
   Either<ValueFailure<double>, double> currencyPrice(double input) {
-    if (input <=CoreConstants.minCurrencyPrice ) {
+    if (input <= CoreConstants.minCurrencyPrice) {
       return Left(ValueFailure.currencyPriceTooSmall(failedValue: input));
     } else if (input > CoreConstants.maxCurrencyPrice) {
       return Left(ValueFailure.currencyPriceTooBig(failedValue: input, max: CoreConstants.maxCurrencyPrice));
@@ -63,8 +67,6 @@ class ValueValidators {
       return left(ValueFailure.unknownEnum(failedValue: input));
     }
   }
-
-
 
   Either<ValueFailure<DateTime>, DateTime> dateTime(DateTime input) {
     if (input.isUtc) {

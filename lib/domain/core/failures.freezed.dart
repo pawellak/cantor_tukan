@@ -39,6 +39,13 @@ class _$ValueFailureTearOff {
     );
   }
 
+  CurrencyValueNotInteger<T> currencyValueNotInteger<T>(
+      {required T failedValue}) {
+    return CurrencyValueNotInteger<T>(
+      failedValue: failedValue,
+    );
+  }
+
   CurrencyPriceTooBig<T> currencyPriceTooBig<T>(
       {required double max, required T failedValue}) {
     return CurrencyPriceTooBig<T>(
@@ -96,6 +103,7 @@ mixin _$ValueFailure<T> {
     required TResult Function(T failedValue) unknownEnum,
     required TResult Function(double max, T failedValue) currencyValueTooBig,
     required TResult Function(double min, T failedValue) currencyValueTooSmall,
+    required TResult Function(T failedValue) currencyValueNotInteger,
     required TResult Function(double max, T failedValue) currencyPriceTooBig,
     required TResult Function(T failedValue) currencyPriceTooSmall,
     required TResult Function(T failedValue) invalidStringToDouble,
@@ -110,6 +118,7 @@ mixin _$ValueFailure<T> {
     TResult Function(T failedValue)? unknownEnum,
     TResult Function(double max, T failedValue)? currencyValueTooBig,
     TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
     TResult Function(double max, T failedValue)? currencyPriceTooBig,
     TResult Function(T failedValue)? currencyPriceTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
@@ -124,6 +133,7 @@ mixin _$ValueFailure<T> {
     TResult Function(T failedValue)? unknownEnum,
     TResult Function(double max, T failedValue)? currencyValueTooBig,
     TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
     TResult Function(double max, T failedValue)? currencyPriceTooBig,
     TResult Function(T failedValue)? currencyPriceTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
@@ -139,6 +149,8 @@ mixin _$ValueFailure<T> {
     required TResult Function(UnknownCurrency<T> value) unknownEnum,
     required TResult Function(CurrencyTooBig<T> value) currencyValueTooBig,
     required TResult Function(CurrencyTooSmall<T> value) currencyValueTooSmall,
+    required TResult Function(CurrencyValueNotInteger<T> value)
+        currencyValueNotInteger,
     required TResult Function(CurrencyPriceTooBig<T> value) currencyPriceTooBig,
     required TResult Function(CurrencyPriceTooSmall<T> value)
         currencyPriceTooSmall,
@@ -155,6 +167,7 @@ mixin _$ValueFailure<T> {
     TResult Function(UnknownCurrency<T> value)? unknownEnum,
     TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
     TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
     TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
@@ -169,6 +182,7 @@ mixin _$ValueFailure<T> {
     TResult Function(UnknownCurrency<T> value)? unknownEnum,
     TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
     TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
     TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
@@ -286,6 +300,7 @@ class _$UnknownCurrency<T> implements UnknownCurrency<T> {
     required TResult Function(T failedValue) unknownEnum,
     required TResult Function(double max, T failedValue) currencyValueTooBig,
     required TResult Function(double min, T failedValue) currencyValueTooSmall,
+    required TResult Function(T failedValue) currencyValueNotInteger,
     required TResult Function(double max, T failedValue) currencyPriceTooBig,
     required TResult Function(T failedValue) currencyPriceTooSmall,
     required TResult Function(T failedValue) invalidStringToDouble,
@@ -303,6 +318,7 @@ class _$UnknownCurrency<T> implements UnknownCurrency<T> {
     TResult Function(T failedValue)? unknownEnum,
     TResult Function(double max, T failedValue)? currencyValueTooBig,
     TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
     TResult Function(double max, T failedValue)? currencyPriceTooBig,
     TResult Function(T failedValue)? currencyPriceTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
@@ -320,6 +336,7 @@ class _$UnknownCurrency<T> implements UnknownCurrency<T> {
     TResult Function(T failedValue)? unknownEnum,
     TResult Function(double max, T failedValue)? currencyValueTooBig,
     TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
     TResult Function(double max, T failedValue)? currencyPriceTooBig,
     TResult Function(T failedValue)? currencyPriceTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
@@ -341,6 +358,8 @@ class _$UnknownCurrency<T> implements UnknownCurrency<T> {
     required TResult Function(UnknownCurrency<T> value) unknownEnum,
     required TResult Function(CurrencyTooBig<T> value) currencyValueTooBig,
     required TResult Function(CurrencyTooSmall<T> value) currencyValueTooSmall,
+    required TResult Function(CurrencyValueNotInteger<T> value)
+        currencyValueNotInteger,
     required TResult Function(CurrencyPriceTooBig<T> value) currencyPriceTooBig,
     required TResult Function(CurrencyPriceTooSmall<T> value)
         currencyPriceTooSmall,
@@ -360,6 +379,7 @@ class _$UnknownCurrency<T> implements UnknownCurrency<T> {
     TResult Function(UnknownCurrency<T> value)? unknownEnum,
     TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
     TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
     TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
@@ -377,6 +397,7 @@ class _$UnknownCurrency<T> implements UnknownCurrency<T> {
     TResult Function(UnknownCurrency<T> value)? unknownEnum,
     TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
     TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
     TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
@@ -486,6 +507,7 @@ class _$CurrencyTooBig<T> implements CurrencyTooBig<T> {
     required TResult Function(T failedValue) unknownEnum,
     required TResult Function(double max, T failedValue) currencyValueTooBig,
     required TResult Function(double min, T failedValue) currencyValueTooSmall,
+    required TResult Function(T failedValue) currencyValueNotInteger,
     required TResult Function(double max, T failedValue) currencyPriceTooBig,
     required TResult Function(T failedValue) currencyPriceTooSmall,
     required TResult Function(T failedValue) invalidStringToDouble,
@@ -503,6 +525,7 @@ class _$CurrencyTooBig<T> implements CurrencyTooBig<T> {
     TResult Function(T failedValue)? unknownEnum,
     TResult Function(double max, T failedValue)? currencyValueTooBig,
     TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
     TResult Function(double max, T failedValue)? currencyPriceTooBig,
     TResult Function(T failedValue)? currencyPriceTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
@@ -520,6 +543,7 @@ class _$CurrencyTooBig<T> implements CurrencyTooBig<T> {
     TResult Function(T failedValue)? unknownEnum,
     TResult Function(double max, T failedValue)? currencyValueTooBig,
     TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
     TResult Function(double max, T failedValue)? currencyPriceTooBig,
     TResult Function(T failedValue)? currencyPriceTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
@@ -541,6 +565,8 @@ class _$CurrencyTooBig<T> implements CurrencyTooBig<T> {
     required TResult Function(UnknownCurrency<T> value) unknownEnum,
     required TResult Function(CurrencyTooBig<T> value) currencyValueTooBig,
     required TResult Function(CurrencyTooSmall<T> value) currencyValueTooSmall,
+    required TResult Function(CurrencyValueNotInteger<T> value)
+        currencyValueNotInteger,
     required TResult Function(CurrencyPriceTooBig<T> value) currencyPriceTooBig,
     required TResult Function(CurrencyPriceTooSmall<T> value)
         currencyPriceTooSmall,
@@ -560,6 +586,7 @@ class _$CurrencyTooBig<T> implements CurrencyTooBig<T> {
     TResult Function(UnknownCurrency<T> value)? unknownEnum,
     TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
     TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
     TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
@@ -577,6 +604,7 @@ class _$CurrencyTooBig<T> implements CurrencyTooBig<T> {
     TResult Function(UnknownCurrency<T> value)? unknownEnum,
     TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
     TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
     TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
@@ -687,6 +715,7 @@ class _$CurrencyTooSmall<T> implements CurrencyTooSmall<T> {
     required TResult Function(T failedValue) unknownEnum,
     required TResult Function(double max, T failedValue) currencyValueTooBig,
     required TResult Function(double min, T failedValue) currencyValueTooSmall,
+    required TResult Function(T failedValue) currencyValueNotInteger,
     required TResult Function(double max, T failedValue) currencyPriceTooBig,
     required TResult Function(T failedValue) currencyPriceTooSmall,
     required TResult Function(T failedValue) invalidStringToDouble,
@@ -704,6 +733,7 @@ class _$CurrencyTooSmall<T> implements CurrencyTooSmall<T> {
     TResult Function(T failedValue)? unknownEnum,
     TResult Function(double max, T failedValue)? currencyValueTooBig,
     TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
     TResult Function(double max, T failedValue)? currencyPriceTooBig,
     TResult Function(T failedValue)? currencyPriceTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
@@ -721,6 +751,7 @@ class _$CurrencyTooSmall<T> implements CurrencyTooSmall<T> {
     TResult Function(T failedValue)? unknownEnum,
     TResult Function(double max, T failedValue)? currencyValueTooBig,
     TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
     TResult Function(double max, T failedValue)? currencyPriceTooBig,
     TResult Function(T failedValue)? currencyPriceTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
@@ -742,6 +773,8 @@ class _$CurrencyTooSmall<T> implements CurrencyTooSmall<T> {
     required TResult Function(UnknownCurrency<T> value) unknownEnum,
     required TResult Function(CurrencyTooBig<T> value) currencyValueTooBig,
     required TResult Function(CurrencyTooSmall<T> value) currencyValueTooSmall,
+    required TResult Function(CurrencyValueNotInteger<T> value)
+        currencyValueNotInteger,
     required TResult Function(CurrencyPriceTooBig<T> value) currencyPriceTooBig,
     required TResult Function(CurrencyPriceTooSmall<T> value)
         currencyPriceTooSmall,
@@ -761,6 +794,7 @@ class _$CurrencyTooSmall<T> implements CurrencyTooSmall<T> {
     TResult Function(UnknownCurrency<T> value)? unknownEnum,
     TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
     TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
     TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
@@ -778,6 +812,7 @@ class _$CurrencyTooSmall<T> implements CurrencyTooSmall<T> {
     TResult Function(UnknownCurrency<T> value)? unknownEnum,
     TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
     TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
     TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
@@ -805,6 +840,206 @@ abstract class CurrencyTooSmall<T> implements ValueFailure<T> {
   @JsonKey(ignore: true)
   $CurrencyTooSmallCopyWith<T, CurrencyTooSmall<T>> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CurrencyValueNotIntegerCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $CurrencyValueNotIntegerCopyWith(CurrencyValueNotInteger<T> value,
+          $Res Function(CurrencyValueNotInteger<T>) then) =
+      _$CurrencyValueNotIntegerCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class _$CurrencyValueNotIntegerCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $CurrencyValueNotIntegerCopyWith<T, $Res> {
+  _$CurrencyValueNotIntegerCopyWithImpl(CurrencyValueNotInteger<T> _value,
+      $Res Function(CurrencyValueNotInteger<T>) _then)
+      : super(_value, (v) => _then(v as CurrencyValueNotInteger<T>));
+
+  @override
+  CurrencyValueNotInteger<T> get _value =>
+      super._value as CurrencyValueNotInteger<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+  }) {
+    return _then(CurrencyValueNotInteger<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CurrencyValueNotInteger<T> implements CurrencyValueNotInteger<T> {
+  const _$CurrencyValueNotInteger({required this.failedValue});
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.currencyValueNotInteger(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CurrencyValueNotInteger<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(failedValue));
+
+  @JsonKey(ignore: true)
+  @override
+  $CurrencyValueNotIntegerCopyWith<T, CurrencyValueNotInteger<T>>
+      get copyWith =>
+          _$CurrencyValueNotIntegerCopyWithImpl<T, CurrencyValueNotInteger<T>>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) unknownEnum,
+    required TResult Function(double max, T failedValue) currencyValueTooBig,
+    required TResult Function(double min, T failedValue) currencyValueTooSmall,
+    required TResult Function(T failedValue) currencyValueNotInteger,
+    required TResult Function(double max, T failedValue) currencyPriceTooBig,
+    required TResult Function(T failedValue) currencyPriceTooSmall,
+    required TResult Function(T failedValue) invalidStringToDouble,
+    required TResult Function(T failedValue) invalidEmail,
+    required TResult Function(T failedValue) shortPassword,
+    required TResult Function(T failedValue) invalidDate,
+    required TResult Function(T failedValue) dateIsUTC,
+  }) {
+    return currencyValueNotInteger(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(T failedValue)? unknownEnum,
+    TResult Function(double max, T failedValue)? currencyValueTooBig,
+    TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
+    TResult Function(double max, T failedValue)? currencyPriceTooBig,
+    TResult Function(T failedValue)? currencyPriceTooSmall,
+    TResult Function(T failedValue)? invalidStringToDouble,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidDate,
+    TResult Function(T failedValue)? dateIsUTC,
+  }) {
+    return currencyValueNotInteger?.call(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? unknownEnum,
+    TResult Function(double max, T failedValue)? currencyValueTooBig,
+    TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
+    TResult Function(double max, T failedValue)? currencyPriceTooBig,
+    TResult Function(T failedValue)? currencyPriceTooSmall,
+    TResult Function(T failedValue)? invalidStringToDouble,
+    TResult Function(T failedValue)? invalidEmail,
+    TResult Function(T failedValue)? shortPassword,
+    TResult Function(T failedValue)? invalidDate,
+    TResult Function(T failedValue)? dateIsUTC,
+    required TResult orElse(),
+  }) {
+    if (currencyValueNotInteger != null) {
+      return currencyValueNotInteger(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UnknownCurrency<T> value) unknownEnum,
+    required TResult Function(CurrencyTooBig<T> value) currencyValueTooBig,
+    required TResult Function(CurrencyTooSmall<T> value) currencyValueTooSmall,
+    required TResult Function(CurrencyValueNotInteger<T> value)
+        currencyValueNotInteger,
+    required TResult Function(CurrencyPriceTooBig<T> value) currencyPriceTooBig,
+    required TResult Function(CurrencyPriceTooSmall<T> value)
+        currencyPriceTooSmall,
+    required TResult Function(InvalidStringToDouble<T> value)
+        invalidStringToDouble,
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(InvalidDate<T> value) invalidDate,
+    required TResult Function(DateIsUTC<T> value) dateIsUTC,
+  }) {
+    return currencyValueNotInteger(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(UnknownCurrency<T> value)? unknownEnum,
+    TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
+    TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
+    TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
+    TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
+    TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidDate<T> value)? invalidDate,
+    TResult Function(DateIsUTC<T> value)? dateIsUTC,
+  }) {
+    return currencyValueNotInteger?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UnknownCurrency<T> value)? unknownEnum,
+    TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
+    TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
+    TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
+    TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
+    TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidDate<T> value)? invalidDate,
+    TResult Function(DateIsUTC<T> value)? dateIsUTC,
+    required TResult orElse(),
+  }) {
+    if (currencyValueNotInteger != null) {
+      return currencyValueNotInteger(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CurrencyValueNotInteger<T> implements ValueFailure<T> {
+  const factory CurrencyValueNotInteger({required T failedValue}) =
+      _$CurrencyValueNotInteger<T>;
+
+  @override
+  T get failedValue;
+  @override
+  @JsonKey(ignore: true)
+  $CurrencyValueNotIntegerCopyWith<T, CurrencyValueNotInteger<T>>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -889,6 +1124,7 @@ class _$CurrencyPriceTooBig<T> implements CurrencyPriceTooBig<T> {
     required TResult Function(T failedValue) unknownEnum,
     required TResult Function(double max, T failedValue) currencyValueTooBig,
     required TResult Function(double min, T failedValue) currencyValueTooSmall,
+    required TResult Function(T failedValue) currencyValueNotInteger,
     required TResult Function(double max, T failedValue) currencyPriceTooBig,
     required TResult Function(T failedValue) currencyPriceTooSmall,
     required TResult Function(T failedValue) invalidStringToDouble,
@@ -906,6 +1142,7 @@ class _$CurrencyPriceTooBig<T> implements CurrencyPriceTooBig<T> {
     TResult Function(T failedValue)? unknownEnum,
     TResult Function(double max, T failedValue)? currencyValueTooBig,
     TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
     TResult Function(double max, T failedValue)? currencyPriceTooBig,
     TResult Function(T failedValue)? currencyPriceTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
@@ -923,6 +1160,7 @@ class _$CurrencyPriceTooBig<T> implements CurrencyPriceTooBig<T> {
     TResult Function(T failedValue)? unknownEnum,
     TResult Function(double max, T failedValue)? currencyValueTooBig,
     TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
     TResult Function(double max, T failedValue)? currencyPriceTooBig,
     TResult Function(T failedValue)? currencyPriceTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
@@ -944,6 +1182,8 @@ class _$CurrencyPriceTooBig<T> implements CurrencyPriceTooBig<T> {
     required TResult Function(UnknownCurrency<T> value) unknownEnum,
     required TResult Function(CurrencyTooBig<T> value) currencyValueTooBig,
     required TResult Function(CurrencyTooSmall<T> value) currencyValueTooSmall,
+    required TResult Function(CurrencyValueNotInteger<T> value)
+        currencyValueNotInteger,
     required TResult Function(CurrencyPriceTooBig<T> value) currencyPriceTooBig,
     required TResult Function(CurrencyPriceTooSmall<T> value)
         currencyPriceTooSmall,
@@ -963,6 +1203,7 @@ class _$CurrencyPriceTooBig<T> implements CurrencyPriceTooBig<T> {
     TResult Function(UnknownCurrency<T> value)? unknownEnum,
     TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
     TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
     TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
@@ -980,6 +1221,7 @@ class _$CurrencyPriceTooBig<T> implements CurrencyPriceTooBig<T> {
     TResult Function(UnknownCurrency<T> value)? unknownEnum,
     TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
     TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
     TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
@@ -1082,6 +1324,7 @@ class _$CurrencyPriceTooSmall<T> implements CurrencyPriceTooSmall<T> {
     required TResult Function(T failedValue) unknownEnum,
     required TResult Function(double max, T failedValue) currencyValueTooBig,
     required TResult Function(double min, T failedValue) currencyValueTooSmall,
+    required TResult Function(T failedValue) currencyValueNotInteger,
     required TResult Function(double max, T failedValue) currencyPriceTooBig,
     required TResult Function(T failedValue) currencyPriceTooSmall,
     required TResult Function(T failedValue) invalidStringToDouble,
@@ -1099,6 +1342,7 @@ class _$CurrencyPriceTooSmall<T> implements CurrencyPriceTooSmall<T> {
     TResult Function(T failedValue)? unknownEnum,
     TResult Function(double max, T failedValue)? currencyValueTooBig,
     TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
     TResult Function(double max, T failedValue)? currencyPriceTooBig,
     TResult Function(T failedValue)? currencyPriceTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
@@ -1116,6 +1360,7 @@ class _$CurrencyPriceTooSmall<T> implements CurrencyPriceTooSmall<T> {
     TResult Function(T failedValue)? unknownEnum,
     TResult Function(double max, T failedValue)? currencyValueTooBig,
     TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
     TResult Function(double max, T failedValue)? currencyPriceTooBig,
     TResult Function(T failedValue)? currencyPriceTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
@@ -1137,6 +1382,8 @@ class _$CurrencyPriceTooSmall<T> implements CurrencyPriceTooSmall<T> {
     required TResult Function(UnknownCurrency<T> value) unknownEnum,
     required TResult Function(CurrencyTooBig<T> value) currencyValueTooBig,
     required TResult Function(CurrencyTooSmall<T> value) currencyValueTooSmall,
+    required TResult Function(CurrencyValueNotInteger<T> value)
+        currencyValueNotInteger,
     required TResult Function(CurrencyPriceTooBig<T> value) currencyPriceTooBig,
     required TResult Function(CurrencyPriceTooSmall<T> value)
         currencyPriceTooSmall,
@@ -1156,6 +1403,7 @@ class _$CurrencyPriceTooSmall<T> implements CurrencyPriceTooSmall<T> {
     TResult Function(UnknownCurrency<T> value)? unknownEnum,
     TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
     TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
     TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
@@ -1173,6 +1421,7 @@ class _$CurrencyPriceTooSmall<T> implements CurrencyPriceTooSmall<T> {
     TResult Function(UnknownCurrency<T> value)? unknownEnum,
     TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
     TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
     TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
@@ -1274,6 +1523,7 @@ class _$InvalidStringToDouble<T> implements InvalidStringToDouble<T> {
     required TResult Function(T failedValue) unknownEnum,
     required TResult Function(double max, T failedValue) currencyValueTooBig,
     required TResult Function(double min, T failedValue) currencyValueTooSmall,
+    required TResult Function(T failedValue) currencyValueNotInteger,
     required TResult Function(double max, T failedValue) currencyPriceTooBig,
     required TResult Function(T failedValue) currencyPriceTooSmall,
     required TResult Function(T failedValue) invalidStringToDouble,
@@ -1291,6 +1541,7 @@ class _$InvalidStringToDouble<T> implements InvalidStringToDouble<T> {
     TResult Function(T failedValue)? unknownEnum,
     TResult Function(double max, T failedValue)? currencyValueTooBig,
     TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
     TResult Function(double max, T failedValue)? currencyPriceTooBig,
     TResult Function(T failedValue)? currencyPriceTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
@@ -1308,6 +1559,7 @@ class _$InvalidStringToDouble<T> implements InvalidStringToDouble<T> {
     TResult Function(T failedValue)? unknownEnum,
     TResult Function(double max, T failedValue)? currencyValueTooBig,
     TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
     TResult Function(double max, T failedValue)? currencyPriceTooBig,
     TResult Function(T failedValue)? currencyPriceTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
@@ -1329,6 +1581,8 @@ class _$InvalidStringToDouble<T> implements InvalidStringToDouble<T> {
     required TResult Function(UnknownCurrency<T> value) unknownEnum,
     required TResult Function(CurrencyTooBig<T> value) currencyValueTooBig,
     required TResult Function(CurrencyTooSmall<T> value) currencyValueTooSmall,
+    required TResult Function(CurrencyValueNotInteger<T> value)
+        currencyValueNotInteger,
     required TResult Function(CurrencyPriceTooBig<T> value) currencyPriceTooBig,
     required TResult Function(CurrencyPriceTooSmall<T> value)
         currencyPriceTooSmall,
@@ -1348,6 +1602,7 @@ class _$InvalidStringToDouble<T> implements InvalidStringToDouble<T> {
     TResult Function(UnknownCurrency<T> value)? unknownEnum,
     TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
     TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
     TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
@@ -1365,6 +1620,7 @@ class _$InvalidStringToDouble<T> implements InvalidStringToDouble<T> {
     TResult Function(UnknownCurrency<T> value)? unknownEnum,
     TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
     TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
     TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
@@ -1464,6 +1720,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     required TResult Function(T failedValue) unknownEnum,
     required TResult Function(double max, T failedValue) currencyValueTooBig,
     required TResult Function(double min, T failedValue) currencyValueTooSmall,
+    required TResult Function(T failedValue) currencyValueNotInteger,
     required TResult Function(double max, T failedValue) currencyPriceTooBig,
     required TResult Function(T failedValue) currencyPriceTooSmall,
     required TResult Function(T failedValue) invalidStringToDouble,
@@ -1481,6 +1738,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(T failedValue)? unknownEnum,
     TResult Function(double max, T failedValue)? currencyValueTooBig,
     TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
     TResult Function(double max, T failedValue)? currencyPriceTooBig,
     TResult Function(T failedValue)? currencyPriceTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
@@ -1498,6 +1756,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(T failedValue)? unknownEnum,
     TResult Function(double max, T failedValue)? currencyValueTooBig,
     TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
     TResult Function(double max, T failedValue)? currencyPriceTooBig,
     TResult Function(T failedValue)? currencyPriceTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
@@ -1519,6 +1778,8 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     required TResult Function(UnknownCurrency<T> value) unknownEnum,
     required TResult Function(CurrencyTooBig<T> value) currencyValueTooBig,
     required TResult Function(CurrencyTooSmall<T> value) currencyValueTooSmall,
+    required TResult Function(CurrencyValueNotInteger<T> value)
+        currencyValueNotInteger,
     required TResult Function(CurrencyPriceTooBig<T> value) currencyPriceTooBig,
     required TResult Function(CurrencyPriceTooSmall<T> value)
         currencyPriceTooSmall,
@@ -1538,6 +1799,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(UnknownCurrency<T> value)? unknownEnum,
     TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
     TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
     TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
@@ -1555,6 +1817,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(UnknownCurrency<T> value)? unknownEnum,
     TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
     TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
     TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
@@ -1653,6 +1916,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     required TResult Function(T failedValue) unknownEnum,
     required TResult Function(double max, T failedValue) currencyValueTooBig,
     required TResult Function(double min, T failedValue) currencyValueTooSmall,
+    required TResult Function(T failedValue) currencyValueNotInteger,
     required TResult Function(double max, T failedValue) currencyPriceTooBig,
     required TResult Function(T failedValue) currencyPriceTooSmall,
     required TResult Function(T failedValue) invalidStringToDouble,
@@ -1670,6 +1934,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(T failedValue)? unknownEnum,
     TResult Function(double max, T failedValue)? currencyValueTooBig,
     TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
     TResult Function(double max, T failedValue)? currencyPriceTooBig,
     TResult Function(T failedValue)? currencyPriceTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
@@ -1687,6 +1952,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(T failedValue)? unknownEnum,
     TResult Function(double max, T failedValue)? currencyValueTooBig,
     TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
     TResult Function(double max, T failedValue)? currencyPriceTooBig,
     TResult Function(T failedValue)? currencyPriceTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
@@ -1708,6 +1974,8 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     required TResult Function(UnknownCurrency<T> value) unknownEnum,
     required TResult Function(CurrencyTooBig<T> value) currencyValueTooBig,
     required TResult Function(CurrencyTooSmall<T> value) currencyValueTooSmall,
+    required TResult Function(CurrencyValueNotInteger<T> value)
+        currencyValueNotInteger,
     required TResult Function(CurrencyPriceTooBig<T> value) currencyPriceTooBig,
     required TResult Function(CurrencyPriceTooSmall<T> value)
         currencyPriceTooSmall,
@@ -1727,6 +1995,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(UnknownCurrency<T> value)? unknownEnum,
     TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
     TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
     TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
@@ -1744,6 +2013,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(UnknownCurrency<T> value)? unknownEnum,
     TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
     TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
     TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
@@ -1842,6 +2112,7 @@ class _$InvalidDate<T> implements InvalidDate<T> {
     required TResult Function(T failedValue) unknownEnum,
     required TResult Function(double max, T failedValue) currencyValueTooBig,
     required TResult Function(double min, T failedValue) currencyValueTooSmall,
+    required TResult Function(T failedValue) currencyValueNotInteger,
     required TResult Function(double max, T failedValue) currencyPriceTooBig,
     required TResult Function(T failedValue) currencyPriceTooSmall,
     required TResult Function(T failedValue) invalidStringToDouble,
@@ -1859,6 +2130,7 @@ class _$InvalidDate<T> implements InvalidDate<T> {
     TResult Function(T failedValue)? unknownEnum,
     TResult Function(double max, T failedValue)? currencyValueTooBig,
     TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
     TResult Function(double max, T failedValue)? currencyPriceTooBig,
     TResult Function(T failedValue)? currencyPriceTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
@@ -1876,6 +2148,7 @@ class _$InvalidDate<T> implements InvalidDate<T> {
     TResult Function(T failedValue)? unknownEnum,
     TResult Function(double max, T failedValue)? currencyValueTooBig,
     TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
     TResult Function(double max, T failedValue)? currencyPriceTooBig,
     TResult Function(T failedValue)? currencyPriceTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
@@ -1897,6 +2170,8 @@ class _$InvalidDate<T> implements InvalidDate<T> {
     required TResult Function(UnknownCurrency<T> value) unknownEnum,
     required TResult Function(CurrencyTooBig<T> value) currencyValueTooBig,
     required TResult Function(CurrencyTooSmall<T> value) currencyValueTooSmall,
+    required TResult Function(CurrencyValueNotInteger<T> value)
+        currencyValueNotInteger,
     required TResult Function(CurrencyPriceTooBig<T> value) currencyPriceTooBig,
     required TResult Function(CurrencyPriceTooSmall<T> value)
         currencyPriceTooSmall,
@@ -1916,6 +2191,7 @@ class _$InvalidDate<T> implements InvalidDate<T> {
     TResult Function(UnknownCurrency<T> value)? unknownEnum,
     TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
     TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
     TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
@@ -1933,6 +2209,7 @@ class _$InvalidDate<T> implements InvalidDate<T> {
     TResult Function(UnknownCurrency<T> value)? unknownEnum,
     TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
     TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
     TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
@@ -2031,6 +2308,7 @@ class _$DateIsUTC<T> implements DateIsUTC<T> {
     required TResult Function(T failedValue) unknownEnum,
     required TResult Function(double max, T failedValue) currencyValueTooBig,
     required TResult Function(double min, T failedValue) currencyValueTooSmall,
+    required TResult Function(T failedValue) currencyValueNotInteger,
     required TResult Function(double max, T failedValue) currencyPriceTooBig,
     required TResult Function(T failedValue) currencyPriceTooSmall,
     required TResult Function(T failedValue) invalidStringToDouble,
@@ -2048,6 +2326,7 @@ class _$DateIsUTC<T> implements DateIsUTC<T> {
     TResult Function(T failedValue)? unknownEnum,
     TResult Function(double max, T failedValue)? currencyValueTooBig,
     TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
     TResult Function(double max, T failedValue)? currencyPriceTooBig,
     TResult Function(T failedValue)? currencyPriceTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
@@ -2065,6 +2344,7 @@ class _$DateIsUTC<T> implements DateIsUTC<T> {
     TResult Function(T failedValue)? unknownEnum,
     TResult Function(double max, T failedValue)? currencyValueTooBig,
     TResult Function(double min, T failedValue)? currencyValueTooSmall,
+    TResult Function(T failedValue)? currencyValueNotInteger,
     TResult Function(double max, T failedValue)? currencyPriceTooBig,
     TResult Function(T failedValue)? currencyPriceTooSmall,
     TResult Function(T failedValue)? invalidStringToDouble,
@@ -2086,6 +2366,8 @@ class _$DateIsUTC<T> implements DateIsUTC<T> {
     required TResult Function(UnknownCurrency<T> value) unknownEnum,
     required TResult Function(CurrencyTooBig<T> value) currencyValueTooBig,
     required TResult Function(CurrencyTooSmall<T> value) currencyValueTooSmall,
+    required TResult Function(CurrencyValueNotInteger<T> value)
+        currencyValueNotInteger,
     required TResult Function(CurrencyPriceTooBig<T> value) currencyPriceTooBig,
     required TResult Function(CurrencyPriceTooSmall<T> value)
         currencyPriceTooSmall,
@@ -2105,6 +2387,7 @@ class _$DateIsUTC<T> implements DateIsUTC<T> {
     TResult Function(UnknownCurrency<T> value)? unknownEnum,
     TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
     TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
     TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
@@ -2122,6 +2405,7 @@ class _$DateIsUTC<T> implements DateIsUTC<T> {
     TResult Function(UnknownCurrency<T> value)? unknownEnum,
     TResult Function(CurrencyTooBig<T> value)? currencyValueTooBig,
     TResult Function(CurrencyTooSmall<T> value)? currencyValueTooSmall,
+    TResult Function(CurrencyValueNotInteger<T> value)? currencyValueNotInteger,
     TResult Function(CurrencyPriceTooBig<T> value)? currencyPriceTooBig,
     TResult Function(CurrencyPriceTooSmall<T> value)? currencyPriceTooSmall,
     TResult Function(InvalidStringToDouble<T> value)? invalidStringToDouble,
