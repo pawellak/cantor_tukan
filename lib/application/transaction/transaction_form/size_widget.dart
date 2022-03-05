@@ -7,7 +7,7 @@ class SizeWidget {
     height = heightOfScreen;
   }
 
-  double logoHeight() => height * Constants.proportionTwentyPercent;
+  double logoHeight() => height * Constants.proportionFifteenPercent;
 
   double tipHeight() => height * Constants.proportionFifteenPercent;
 

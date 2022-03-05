@@ -26,7 +26,7 @@ class Calculation extends StatelessWidget {
         child: FittedBox(
           child: _buildTextDescription(result),
         ),
-      ),
+      )
     );
   }
 

@@ -3,7 +3,7 @@ abstract class Constants {
   static const tip = 'Chcę: ';
   static const buy = 'kupić';
   static const sell = 'sprzedać';
-  static const confirm = 'akceptuj';
+  static const confirm = 'rezerwuj';
   static const cancel = 'anuluj';
   static const amountOfTransaction = 'kwota transakcji';
   static const invalidValue = '---';
@@ -20,6 +20,8 @@ abstract class Constants {
   static const proportionTenPercent = 0.1;
   static const proportionFifteenPercent = 0.15;
   static const proportionTwentyPercent = 0.20;
+
+  static const timerDurationInSec = 30;
 
   static const tenPixel = 10.0;
   static const currencyFlex = 7;

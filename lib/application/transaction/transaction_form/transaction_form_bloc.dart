@@ -109,26 +109,6 @@ class TransactionFormBloc extends Bloc<TransactionFormEvent, TransactionFormStat
     final currencyValue = _getCurrencyValue();
     double rate = _getRate(typeOfTransaction);
     double bill = _calculateBill(rate, currencyValue);
-    _emitSetBillState(bill);
-  }
-
-  EnumTransactionType _getTransactionType() => state.transaction.transactionType.getOrCrash();
-
-  double _getCurrencyValue() => state.transaction.currencyValue.value.fold((l) => Constants.zeroDouble, (r) => r);
-
-  double _getRate(EnumTransactionType typeOfTransaction) {
-    double rate;
-    if (typeOfTransaction == EnumTransactionType.buy) {
-      rate = state.transaction.priceBuy.value.fold((l) => Constants.zeroDouble, (r) => r);
-    } else {
-      rate = state.transaction.priceSell.value.fold((l) => Constants.zeroDouble, (r) => r);
-    }
-    return rate;
-  }
-
-  double _calculateBill(double rate, double currencyValue) => rate * currencyValue;
-
-  void _emitSetBillState(double bill) {
     emit(state.copyWith(transaction: state.transaction.copyWith(currencyBill: CurrencyValue(bill))));
   }
 
@@ -153,4 +133,20 @@ class TransactionFormBloc extends Bloc<TransactionFormEvent, TransactionFormStat
       ),
     );
   }
+
+  EnumTransactionType _getTransactionType() => state.transaction.transactionType.getOrCrash();
+
+  double _getCurrencyValue() => state.transaction.currencyValue.value.fold((l) => Constants.zeroDouble, (r) => r);
+
+  double _getRate(EnumTransactionType typeOfTransaction) {
+    double rate;
+    if (typeOfTransaction == EnumTransactionType.buy) {
+      rate = state.transaction.priceBuy.value.fold((l) => Constants.zeroDouble, (r) => r);
+    } else {
+      rate = state.transaction.priceSell.value.fold((l) => Constants.zeroDouble, (r) => r);
+    }
+    return rate;
+  }
+
+  double _calculateBill(double rate, double currencyValue) => rate * currencyValue;
 }

@@ -11,6 +11,7 @@ import 'package:kantor_tukan/presentation/splash/splash_page.dart';
 import 'package:kantor_tukan/presentation/transaction/transaction_page.dart';
 
 import '../../application/internet/internet_bloc.dart';
+import '../../application/timer/timer_bloc.dart';
 import '../../application/transaction/transaction_form/transaction_form_bloc.dart';
 
 class AppWidget extends StatelessWidget {
@@ -23,6 +24,7 @@ class AppWidget extends StatelessWidget {
         BlocProvider(create: (context) => getIt<TransactionFormBloc>()),
         BlocProvider(create: (context) => getIt<InternetBloc>()),
         BlocProvider(create: (context) => getIt<AppAuthBloc>()),
+        BlocProvider(create: (context) => TimerBloc()),
       ],
       child: MaterialApp(
         home: const SplashPage(),
