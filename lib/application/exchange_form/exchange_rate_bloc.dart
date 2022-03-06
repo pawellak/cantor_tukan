@@ -7,6 +7,7 @@ import 'package:injectable/injectable.dart';
 import 'package:kantor_tukan/domain/exchange_rate/exchange_date.dart';
 import 'package:kantor_tukan/domain/exchange_rate/exchange_rate.dart';
 import 'package:kantor_tukan/domain/exchange_rate/i_cantor_remote_data_source.dart';
+import 'package:kantor_tukan/domain/internet/i_internet_connection_checker.dart';
 
 import 'package:kt_dart/collection.dart';
 import '../../domain/exchange_rate/cantor_remote_failure.dart';
@@ -21,8 +22,9 @@ part 'exchange_rate_bloc.freezed.dart';
 @injectable
 class ExchangeRateBloc extends Bloc<ExchangeRateEvent, ExchangeRateState> {
   final ICantorRemoteDataSource iCantorRemoteDataSource;
+  final IInternetConnectionChecker internetConnectionChecker;
 
-  ExchangeRateBloc(this.iCantorRemoteDataSource) : super(ExchangeRateState.initial()) {
+  ExchangeRateBloc(this.iCantorRemoteDataSource, this.internetConnectionChecker) : super(ExchangeRateState.initial()) {
     on<ExchangeRateEvent>((event, emit) {
       event.map(fetch: _fetch, fetched: _fetched);
     });
@@ -30,6 +32,12 @@ class ExchangeRateBloc extends Bloc<ExchangeRateEvent, ExchangeRateState> {
 
   void _fetch(_) async {
     _setLoadingState();
+    final hasNoConnection = !await internetConnectionChecker.hasConnection();
+
+    if (hasNoConnection) {
+      _setNoInternetState();
+      return;
+    }
 
     final exchangeRatesUpdateDate = await _getExchangeRatesUpdateDate();
     final exchangeRates = await _getExchangeRates();
@@ -44,10 +52,13 @@ class ExchangeRateBloc extends Bloc<ExchangeRateEvent, ExchangeRateState> {
     }
   }
 
+
+
   KtList<ExchangeRate> _foldExchangeRatesList(Either<CantorRemoteFailure, KtList<ExchangeRate>> exchangeRates) =>
       exchangeRates.fold((f) => const KtList.empty(), (r) => r);
 
-  ExchangeDate _foldExchangeDate(Either<CantorRemoteFailure, ExchangeDate> exchangeRatesUpdateDate) => exchangeRatesUpdateDate.fold((l) => ExchangeDate.empty(), (r) => r);
+  ExchangeDate _foldExchangeDate(Either<CantorRemoteFailure, ExchangeDate> exchangeRatesUpdateDate) =>
+      exchangeRatesUpdateDate.fold((l) => ExchangeDate.empty(), (r) => r);
 
   void _fetched(_FetchedExchangeRate value) {
     emit(
@@ -82,6 +93,14 @@ class ExchangeRateBloc extends Bloc<ExchangeRateEvent, ExchangeRateState> {
     emit(state.copyWith(
       isSubmitting: false,
       failureOrSuccessOption: some(left(const CantorRemoteFailure.serverError())),
+      showErrorMessages: true,
+    ));
+  }
+
+  void _setNoInternetState() {
+    emit(state.copyWith(
+      isSubmitting: false,
+      failureOrSuccessOption: some(left(const CantorRemoteFailure.noInternet())),
       showErrorMessages: true,
     ));
   }

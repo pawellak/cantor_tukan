@@ -9,7 +9,7 @@ class SizeWidget {
 
   double logoHeight() => height * Constants.proportionFifteenPercent;
 
-  double tipHeight() => height * Constants.proportionFifteenPercent;
+  double tipHeight() => height * Constants.proportionFivePercent;
 
-  double calculationHeight() => height * Constants.proportionTenPercent;
+  double calculationHeight() => height * Constants.proportionFivePercent;
 }

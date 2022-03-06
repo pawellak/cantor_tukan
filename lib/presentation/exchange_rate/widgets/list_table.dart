@@ -23,23 +23,33 @@ class ListTable extends StatelessWidget {
   double _getHeightOfScreen(BuildContext context) => MediaQuery.of(context).size.height;
 
   _buildSingleCurrency(int index, double _heightOfScreen) {
-    ExchangeRate singleCurrency = _getSingleCurrency(index);
+    ExchangeRate singleCurrency = _getSingleCurrencyByIndex(index);
     return _buildSingleCurrencyRow(index, singleCurrency, _heightOfScreen);
   }
 
-  ExchangeRate _getSingleCurrency(int index) => items[index];
+  ExchangeRate _getSingleCurrencyByIndex(int index) => items[index];
 
   int _getItemsLength() => items.size;
 
   _buildSingleCurrencyRow(int index, ExchangeRate exchangeRate, double _heightOfScreen) {
-    if (exchangeRate.failureOption.isSome()) return const Center(child: Text(Constants.invalidCurrency));
+    if (_isSingleCurrencyFailure(exchangeRate)) return _buildInvalidCurrency();
     return SizedBox(
-      height: _heightOfScreen / Constants.divisorOfTileRow,
-      child: SingleExchangeRate(
-        mainAxisAlignment: MainAxisAlignment.center,
-        ordinalNumber: index,
-        exchangeRate: exchangeRate,
-      ),
+      height: _getWidgetHeight(_heightOfScreen),
+      child: _buildSingleExchangeRate(index, exchangeRate),
     );
   }
+
+  double _getWidgetHeight(double _heightOfScreen) => _heightOfScreen / Constants.divisorOfTileRow;
+
+  SingleExchangeRate _buildSingleExchangeRate(int index, ExchangeRate exchangeRate) {
+    return SingleExchangeRate(
+      mainAxisAlignment: MainAxisAlignment.center,
+      ordinalNumber: index,
+      exchangeRate: exchangeRate,
+    );
+  }
+
+  bool _isSingleCurrencyFailure(ExchangeRate exchangeRate) => exchangeRate.failureOption.isSome();
+
+  Center _buildInvalidCurrency() => const Center(child: Text(Constants.invalidCurrency));
 }

@@ -15,23 +15,26 @@ class ButtonRefresh extends StatelessWidget {
   Row _buildRefreshButton(BuildContext context) {
     return Row(
       children: [
-        Expanded(
-          child: BlocBuilder<InternetBloc, InternetState>(
-            builder: (BuildContext context, InternetState state) {
-              bool isSubmitting = state.isSubmitting;
-              return isSubmitting
-                  ? const LinearProgressIndicator()
-                  : ElevatedButton(
-                      style: _getButtonStyle(context),
-                      onPressed: () => _onRefreshPressed(context),
-                      child: _getButtonDescription(),
-                    );
-            },
-          ),
-        ),
+        Expanded(child: BlocBuilder<InternetBloc, InternetState>(builder: (BuildContext context, InternetState state) {
+          bool isSubmitting = state.isSubmitting;
+          return isSubmitting ? _buildLoadingWidget() : _buildRefreshButtonWidget(context);
+        }))
       ],
     );
   }
+
+  ElevatedButton _buildRefreshButtonWidget(BuildContext context) {
+    return ElevatedButton(
+      style: _getButtonStyle(context),
+      onPressed: () => _onRefreshPressed(context),
+      child: _getButtonDescription(),
+    );
+  }
+
+  Padding _buildLoadingWidget() => const Padding(
+        padding: EdgeInsets.all(Constants.padding),
+        child: CircularProgressIndicator(),
+      );
 
   Text _getButtonDescription() => const Text(Constants.tipButton);
 

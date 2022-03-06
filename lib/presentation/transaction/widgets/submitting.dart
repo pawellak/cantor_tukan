@@ -23,8 +23,11 @@ class Submitting extends StatelessWidget {
 
   bool isStateSubmitting(TransactionFormState state) => state.isSubmitting == true;
 
-  LinearProgressIndicator _buildLoadingState() {
-    return const LinearProgressIndicator();
+  Padding _buildLoadingState() {
+    return const Padding(
+      padding: EdgeInsets.all(Constants.padding),
+      child: LinearProgressIndicator(),
+    );
   }
 
   SizedBox _buildReadyState() {

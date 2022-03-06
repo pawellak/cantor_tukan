@@ -35,9 +35,11 @@ class ExchangeRangeAppBar extends StatelessWidget with PreferredSizeWidget {
   }
 
   String _getDate(ExchangeRateState state) {
-    final dateOfUpdate = state.exchangeDate.updateDate.getOrCrash();
+    final dateOfUpdate = state.exchangeDate.updateDate.value.fold((l) {
+      return DateTime(Constants.invalidDate);
+    }, (r) => r);
     final dailyDateFold = ValueConverters().toDailyDateStringFromDateTime(dateOfUpdate);
-    final dailyDate = dailyDateFold.fold((l) => Constants.invalidData, (r) => r);
+    final dailyDate = dailyDateFold.fold((l) => Constants.errorOccurred, (r) => r);
     return dailyDate;
   }
 

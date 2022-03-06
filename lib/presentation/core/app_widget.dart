@@ -23,7 +23,7 @@ class AppWidget extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => getIt<TransactionFormBloc>()),
-        BlocProvider(create: (context) => getIt<InternetBloc>()),
+        BlocProvider(create: (context) => getIt<InternetBloc>()..add(const InternetEvent.checkConnection())),
         BlocProvider(create: (context) => getIt<AppAuthBloc>()),
         BlocProvider(create: (context) => TimerBloc()),
       ],

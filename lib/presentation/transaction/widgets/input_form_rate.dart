@@ -40,11 +40,14 @@ class InputFormRate extends StatelessWidget {
     );
   }
 
-  EdgeInsets _getPadding() => const EdgeInsets.all(Constants.padding);
+  EdgeInsets _getPadding() => const EdgeInsets.only(left: Constants.padding, right: Constants.padding);
 
   _buildCurrencyNameText(TransactionFormState state) {
     String currency = state.transaction.currency.value.fold((l) => Constants.invalidValue, (r) => r.toShortString());
-    return Text(currency);
+    return Padding(
+      padding: const EdgeInsets.only(right: Constants.padding),
+      child: FittedBox(child: Text(currency)),
+    );
   }
 }
 

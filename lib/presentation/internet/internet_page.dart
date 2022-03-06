@@ -19,7 +19,7 @@ class InternetPage extends StatelessWidget {
     );
   }
 
-  void _getListener(BuildContext context,InternetState state) {
+  void _getListener(BuildContext context, InternetState state) {
     if (_isInternetConnection(state)) {
       _navigateToSplashScreen(context);
     }
@@ -32,9 +32,12 @@ class InternetPage extends StatelessWidget {
   }
 
   Widget _getBuilder(BuildContext context, InternetState _) {
-    return Scaffold(
-      appBar: _buildAppBar(),
-      body: _buildBody(context),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: _buildAppBar(),
+        body: _buildBody(context),
+      ),
     );
   }
 

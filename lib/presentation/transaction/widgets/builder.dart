@@ -24,20 +24,18 @@ class TransactionBuilder
     double pageHeight = _getHeightOfScreen(context);
     return Form(
       autovalidateMode: _isShowErrorMessageOn(state),
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const TransactionTimer(),
-            Logo(SizeWidget(pageHeight).logoHeight()),
-            Tip(SizeWidget(pageHeight).tipHeight()),
-            const RadioButton(),
-            const InputFormRate(),
-            Calculation(SizeWidget(pageHeight).calculationHeight()),
-            const CancelAcceptButtons(),
-            const Submitting(),
-          ],
-        ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          const TransactionTimer(),
+          Logo(SizeWidget(pageHeight).logoHeight()),
+          Tip(SizeWidget(pageHeight).tipHeight()),
+          const RadioButton(),
+          const InputFormRate(),
+          Calculation(SizeWidget(pageHeight).calculationHeight()),
+          const CancelAcceptButtons(),
+          const Submitting(),
+        ],
       ),
     );
   }

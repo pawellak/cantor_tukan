@@ -6,4 +6,5 @@ part 'cantor_remote_failure.freezed.dart';
 abstract class CantorRemoteFailure with _$CantorRemoteFailure {
   const factory CantorRemoteFailure.serverError() = _ServerError;
   const factory CantorRemoteFailure.incorrectDataError() = _IncorrectDataError;
+  const factory CantorRemoteFailure.noInternet() = _NoInternet;
 }

@@ -66,5 +66,5 @@ class TransactionTimer extends StatelessWidget {
 
   Color _getProgressColor(BuildContext context) => Theme.of(context).colorScheme.onPrimary;
 
-  EdgeInsets _getPadding() => const EdgeInsets.all(Constants.padding);
+  EdgeInsets _getPadding() => const EdgeInsets.all(Constants.smallPadding);
 }

@@ -9,15 +9,19 @@ import 'package:kantor_tukan/domain/exchange_rate/exchange_date.dart';
 
 import 'package:kantor_tukan/domain/exchange_rate/exchange_rate.dart';
 import 'package:kantor_tukan/domain/exchange_rate/i_cantor_remote_data_source.dart';
+import 'package:kantor_tukan/domain/internet/i_internet_connection_checker.dart';
 import 'package:kt_dart/collection.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
+import '../internet/internet_bloc_test.mocks.dart';
 import 'exchange_rate_bloc_test.mocks.dart';
 
 @GenerateMocks([ICantorRemoteDataSource])
+@GenerateMocks([IInternetConnectionChecker])
 void main() {
   late MockICantorRemoteDataSource mockIData;
+  late MockIInternetConnectionChecker mockInternet;
   late ExchangeRateBloc exchangeRateBloc;
   late KtList<ExchangeRate> ktListExchangeRate;
   late ExchangeRate exchangeRate;
@@ -27,7 +31,8 @@ void main() {
 
   setUp(() {
     mockIData = MockICantorRemoteDataSource();
-    exchangeRateBloc = ExchangeRateBloc(mockIData);
+    mockInternet = MockIInternetConnectionChecker();
+    exchangeRateBloc = ExchangeRateBloc(mockIData,mockInternet);
 
     var listExchangeRate = <ExchangeRate>[];
     exchangeRate = ExchangeRate(
@@ -44,6 +49,7 @@ void main() {
     blocTest<ExchangeRateBloc, ExchangeRateState>(
       'should exchange rate event fetch correct data',
       build: () {
+        when(mockInternet.hasConnection()).thenAnswer((_) async => Future.value(true));
         when(mockIData.getExchangeRates()).thenAnswer((_) async => Future.value(right(ktListExchangeRate)));
         when(mockIData.getExchangeRatesUpdateDate()).thenAnswer((_) async => Future.value(right(exchangeDate)));
         return exchangeRateBloc;
@@ -72,6 +78,7 @@ void main() {
     blocTest<ExchangeRateBloc, ExchangeRateState>(
       'should exchange rate event fetch incorrect data',
       build: () {
+        when(mockInternet.hasConnection()).thenAnswer((_) async => Future.value(true));
         when(mockIData.getExchangeRates())
             .thenAnswer((_) async => Future.value(left(const CantorRemoteFailure.serverError())));
 

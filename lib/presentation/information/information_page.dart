@@ -13,9 +13,12 @@ class InformationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     String information = _getDescription(context);
 
-    return Scaffold(
-      appBar: _buildAppBar(),
-      body: _buildBody(information),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: _buildAppBar(),
+        body: _buildBody(information),
+      ),
     );
   }
 

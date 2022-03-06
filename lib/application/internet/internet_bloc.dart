@@ -15,17 +15,17 @@ class InternetBloc extends Bloc<InternetEvent, InternetState> {
 
   InternetBloc(this._internetConnectionChecker) : super(InternetState.initial()) {
     on<InternetEvent>((event, emit) {
-      event.map(checkConnection: _checkConnection,setNoInternetConnection: _setNoInternetConnection);
+      event.map(checkConnection: _checkConnection, setNoInternetConnection: _setNoInternetConnection);
     });
   }
 
   void _checkConnection(_) async {
-    emit(state.copyWith(isConnected: state.isConnected,isSubmitting: true));
+    emit(state.copyWith(isConnected: state.isConnected, isSubmitting: true));
     final bool isConnected = await _internetConnectionChecker.hasConnection();
-    emit(state.copyWith(isConnected: isConnected,isSubmitting: false));
+    emit(state.copyWith(isConnected: isConnected, isSubmitting: false));
   }
 
   void _setNoInternetConnection(_SetNoInternetConnection value) {
-    emit(state.copyWith(isConnected: false,isSubmitting: false));
+    emit(state.copyWith(isConnected: false, isSubmitting: false));
   }
 }

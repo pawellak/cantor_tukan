@@ -1,11 +1,12 @@
 class Constants {
   static const heightOfFlag = 60.0;
   static const appBarLoading = 'pobieranie danych walutowych...';
+  static const errorOccurred = 'wystąpił wyjątek';
   static const dateOfUpdate = 'data aktualizacji: ';
-  static const invalidData = 'invalid data';
   static const invalidCurrency = 'waluta nieobsługiwana';
   static const divisorOfTileRow = 10;
   static const exchangeRateListFlex = 10;
+  static const invalidDate = 0;
 
   static const flag = 'flaga';
   static const currency = 'waluta';

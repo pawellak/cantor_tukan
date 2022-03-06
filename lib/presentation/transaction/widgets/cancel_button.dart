@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kantor_tukan/application/internet/internet_bloc.dart';
 import 'package:kantor_tukan/presentation/transaction/constants.dart';
 
 import '../../splash/splash_page.dart';

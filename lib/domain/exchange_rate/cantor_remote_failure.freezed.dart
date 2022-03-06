@@ -24,6 +24,10 @@ class _$CantorRemoteFailureTearOff {
   _IncorrectDataError incorrectDataError() {
     return const _IncorrectDataError();
   }
+
+  _NoInternet noInternet() {
+    return const _NoInternet();
+  }
 }
 
 /// @nodoc
@@ -35,18 +39,21 @@ mixin _$CantorRemoteFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
     required TResult Function() incorrectDataError,
+    required TResult Function() noInternet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? incorrectDataError,
+    TResult Function()? noInternet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? incorrectDataError,
+    TResult Function()? noInternet,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,18 +61,21 @@ mixin _$CantorRemoteFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_IncorrectDataError value) incorrectDataError,
+    required TResult Function(_NoInternet value) noInternet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_IncorrectDataError value)? incorrectDataError,
+    TResult Function(_NoInternet value)? noInternet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_IncorrectDataError value)? incorrectDataError,
+    TResult Function(_NoInternet value)? noInternet,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -131,6 +141,7 @@ class _$_ServerError implements _ServerError {
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
     required TResult Function() incorrectDataError,
+    required TResult Function() noInternet,
   }) {
     return serverError();
   }
@@ -140,6 +151,7 @@ class _$_ServerError implements _ServerError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? incorrectDataError,
+    TResult Function()? noInternet,
   }) {
     return serverError?.call();
   }
@@ -149,6 +161,7 @@ class _$_ServerError implements _ServerError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? incorrectDataError,
+    TResult Function()? noInternet,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -162,6 +175,7 @@ class _$_ServerError implements _ServerError {
   TResult map<TResult extends Object?>({
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_IncorrectDataError value) incorrectDataError,
+    required TResult Function(_NoInternet value) noInternet,
   }) {
     return serverError(this);
   }
@@ -171,6 +185,7 @@ class _$_ServerError implements _ServerError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_IncorrectDataError value)? incorrectDataError,
+    TResult Function(_NoInternet value)? noInternet,
   }) {
     return serverError?.call(this);
   }
@@ -180,6 +195,7 @@ class _$_ServerError implements _ServerError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_IncorrectDataError value)? incorrectDataError,
+    TResult Function(_NoInternet value)? noInternet,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -236,6 +252,7 @@ class _$_IncorrectDataError implements _IncorrectDataError {
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
     required TResult Function() incorrectDataError,
+    required TResult Function() noInternet,
   }) {
     return incorrectDataError();
   }
@@ -245,6 +262,7 @@ class _$_IncorrectDataError implements _IncorrectDataError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? incorrectDataError,
+    TResult Function()? noInternet,
   }) {
     return incorrectDataError?.call();
   }
@@ -254,6 +272,7 @@ class _$_IncorrectDataError implements _IncorrectDataError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
     TResult Function()? incorrectDataError,
+    TResult Function()? noInternet,
     required TResult orElse(),
   }) {
     if (incorrectDataError != null) {
@@ -267,6 +286,7 @@ class _$_IncorrectDataError implements _IncorrectDataError {
   TResult map<TResult extends Object?>({
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_IncorrectDataError value) incorrectDataError,
+    required TResult Function(_NoInternet value) noInternet,
   }) {
     return incorrectDataError(this);
   }
@@ -276,6 +296,7 @@ class _$_IncorrectDataError implements _IncorrectDataError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_IncorrectDataError value)? incorrectDataError,
+    TResult Function(_NoInternet value)? noInternet,
   }) {
     return incorrectDataError?.call(this);
   }
@@ -285,6 +306,7 @@ class _$_IncorrectDataError implements _IncorrectDataError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ServerError value)? serverError,
     TResult Function(_IncorrectDataError value)? incorrectDataError,
+    TResult Function(_NoInternet value)? noInternet,
     required TResult orElse(),
   }) {
     if (incorrectDataError != null) {
@@ -296,4 +318,115 @@ class _$_IncorrectDataError implements _IncorrectDataError {
 
 abstract class _IncorrectDataError implements CantorRemoteFailure {
   const factory _IncorrectDataError() = _$_IncorrectDataError;
+}
+
+/// @nodoc
+abstract class _$NoInternetCopyWith<$Res> {
+  factory _$NoInternetCopyWith(
+          _NoInternet value, $Res Function(_NoInternet) then) =
+      __$NoInternetCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$NoInternetCopyWithImpl<$Res>
+    extends _$CantorRemoteFailureCopyWithImpl<$Res>
+    implements _$NoInternetCopyWith<$Res> {
+  __$NoInternetCopyWithImpl(
+      _NoInternet _value, $Res Function(_NoInternet) _then)
+      : super(_value, (v) => _then(v as _NoInternet));
+
+  @override
+  _NoInternet get _value => super._value as _NoInternet;
+}
+
+/// @nodoc
+
+class _$_NoInternet implements _NoInternet {
+  const _$_NoInternet();
+
+  @override
+  String toString() {
+    return 'CantorRemoteFailure.noInternet()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _NoInternet);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() incorrectDataError,
+    required TResult Function() noInternet,
+  }) {
+    return noInternet();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? incorrectDataError,
+    TResult Function()? noInternet,
+  }) {
+    return noInternet?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? incorrectDataError,
+    TResult Function()? noInternet,
+    required TResult orElse(),
+  }) {
+    if (noInternet != null) {
+      return noInternet();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_IncorrectDataError value) incorrectDataError,
+    required TResult Function(_NoInternet value) noInternet,
+  }) {
+    return noInternet(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_IncorrectDataError value)? incorrectDataError,
+    TResult Function(_NoInternet value)? noInternet,
+  }) {
+    return noInternet?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_IncorrectDataError value)? incorrectDataError,
+    TResult Function(_NoInternet value)? noInternet,
+    required TResult orElse(),
+  }) {
+    if (noInternet != null) {
+      return noInternet(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NoInternet implements CantorRemoteFailure {
+  const factory _NoInternet() = _$_NoInternet;
 }
