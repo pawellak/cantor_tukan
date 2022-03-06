@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kantor_tukan/domain/core/core_constants.dart';
 import 'package:kantor_tukan/domain/core/currency_value.dart';
 import 'package:kantor_tukan/domain/core/failures.dart';
 import 'package:kantor_tukan/domain/core/value_converters.dart';
@@ -19,19 +20,17 @@ class InputFormRate extends StatelessWidget {
   }
 
   Widget _buildBuilder(context, state) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Expanded(flex: Constants.currencyFlex, child: _buildInputText(context)),
-        Expanded(child: _buildCurrencyNameText(state)),
-      ],
-    );
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+      Expanded(flex: Constants.currencyFlex, child: _buildInputText(context)),
+      Expanded(child: _buildCurrencyNameText(state)),
+    ]);
   }
 
   Padding _buildInputText(BuildContext context) {
     return Padding(
       padding: _getPadding(),
       child: TextFormField(
+        maxLength: CoreConstants.maxNumberCurrency,
         decoration: _getDecorator(context),
         autocorrect: false,
         keyboardType: TextInputType.number,
@@ -60,17 +59,14 @@ InputDecoration _getDecorator(BuildContext context) {
 }
 
 void _onChanged(BuildContext context, String value) {
-  value = _replaceCommaToDot(value);
-
+  value = _parseCommaToDot(value);
   var currencyValueFold = ValueConverters().toDoubleFromString(value);
+  //zero double is return when somebody e.g paste non number text into number only input text
   double currencyValueDouble = currencyValueFold.fold((f) => Constants.zeroDouble, (r) => r);
   _setNewCurrencyValue(context, currencyValueDouble);
 }
 
-String _replaceCommaToDot(String value) {
-  value = value.replaceAll(RegExp(Constants.comma), Constants.dot);
-  return value;
-}
+String _parseCommaToDot(String value) => value.replaceAll(RegExp(Constants.comma), Constants.dot);
 
 void _setNewCurrencyValue(BuildContext context, double currencyValueDouble) {
   context
@@ -80,16 +76,16 @@ void _setNewCurrencyValue(BuildContext context, double currencyValueDouble) {
 
 String? _getValidator(BuildContext context) {
   return context.read<TransactionFormBloc>().state.transaction.currencyValue.value.fold(
-        (failure) => _getCurrencyNotValidate(failure),
+        (failure) => _getCurrencyValueNotValid(failure),
         (_) => _getCurrencyValueValid(),
       );
 }
 
-String? _getCurrencyNotValidate(ValueFailure<double> failure) {
+String? _getCurrencyValueNotValid(ValueFailure<double> failure) {
   return failure.maybeMap(
     currencyValueTooBig: (_) => Constants.valueToBig,
     currencyValueTooSmall: (_) => Constants.valueToSmall,
-    currencyValueNotInteger: (_) => Constants.invalidParse,
+    currencyValueNotInteger: (_) => Constants.valueNotInteger,
     orElse: () => _getCurrencyValueValid(),
   );
 }

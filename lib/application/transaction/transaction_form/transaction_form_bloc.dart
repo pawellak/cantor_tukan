@@ -109,7 +109,7 @@ class TransactionFormBloc extends Bloc<TransactionFormEvent, TransactionFormStat
     final currencyValue = _getCurrencyValue();
     double rate = _getRate(typeOfTransaction);
     double bill = _calculateBill(rate, currencyValue);
-    emit(state.copyWith(transaction: state.transaction.copyWith(currencyBill: CurrencyValue(bill))));
+    emit(state.copyWith(transaction: state.transaction.copyWith(currencyBill: CurrencyBill(bill))));
   }
 
   void _reset(_Reset value) {
@@ -123,7 +123,7 @@ class TransactionFormBloc extends Bloc<TransactionFormEvent, TransactionFormStat
           dateAcceptation: DateCantor.fromDateTime(DateTime(0)),
           dateReservation: DateCantor.fromDateTime(DateTime(0)),
           currencyValue: CurrencyValue(0),
-          currencyBill: CurrencyValue(0),
+          currencyBill: CurrencyBill(0),
           priceBuy: CurrencyPrice(state.transaction.priceBuy.getOrCrash()),
           priceSell: CurrencyPrice(state.transaction.priceSell.getOrCrash()),
         ),

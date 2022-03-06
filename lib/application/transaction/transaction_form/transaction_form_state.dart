@@ -18,7 +18,7 @@ class TransactionFormState with _$TransactionFormState {
           dateAcceptation: DateCantor.fromDateTime(DateTime(0)),
           dateReservation: DateCantor.fromDateTime(DateTime(0)),
           currencyValue: CurrencyValue(0),
-          currencyBill: CurrencyValue(0),
+          currencyBill: CurrencyBill(0),
           priceBuy: CurrencyPrice(0),
           priceSell: CurrencyPrice(0),
         ),

@@ -1,3 +1,5 @@
+import 'package:kantor_tukan/domain/core/core_constants.dart';
+
 import 'transaction_form_bloc.dart';
 import '../../../domain/core/enums.dart';
 import '../../../presentation/transaction/constants.dart';
@@ -43,7 +45,7 @@ class Calculations {
     if (currencyValue == Constants.zeroDouble) {
       result = Constants.invalidValue;
     } else {
-      result = (rate * currencyValue).toStringAsFixed(Constants.fixeNumberOfCurrency);
+      result = (rate * currencyValue).toStringAsFixed(CoreConstants.fixedNumberOfValue);
     }
     return result;
   }

@@ -77,7 +77,7 @@ void main() {
         () {
           double minValueCurrency = CoreConstants.minValueCurrency;
           double valueBelowMin = CoreConstants.minValueCurrency - 1;
-          var result = valueValidators.currencyValue(valueBelowMin);
+          var result = valueValidators.currencyBill(valueBelowMin);
           var expectedResult =
               Left(ValueFailure.currencyValueTooSmall(failedValue: valueBelowMin, min: minValueCurrency));
           expect(result, expectedResult);
@@ -89,7 +89,7 @@ void main() {
         () {
           double maxValueCurrency = CoreConstants.maxValueCurrency;
           double valueAboveMaxValue = CoreConstants.maxValueCurrency + 1;
-          var result = valueValidators.currencyValue(valueAboveMaxValue);
+          var result = valueValidators.currencyBill(valueAboveMaxValue);
           var expectedResult =
               Left(ValueFailure.currencyValueTooBig(failedValue: valueAboveMaxValue, max: maxValueCurrency));
           expect(result, expectedResult);
@@ -120,7 +120,7 @@ void main() {
         'should return currency value when max value - min value is bigger than 1',
         () {
           double difference = CoreConstants.maxValueCurrency - CoreConstants.minValueCurrency;
-          var result = ValueValidators().currencyValue(difference);
+          var result = ValueValidators().currencyBill(difference);
           var expectedResult = Right(difference);
           expect(result, expectedResult);
         },

@@ -20,6 +20,16 @@ class ValueValidators {
     }
   }
 
+  Either<ValueFailure<double>, double> currencyBill(double input) {
+    if (input < CoreConstants.minValueCurrency) {
+      return Left(ValueFailure.currencyValueTooSmall(failedValue: input, min: CoreConstants.minValueCurrency));
+    } else if (input > CoreConstants.maxValueCurrency) {
+      return Left(ValueFailure.currencyValueTooBig(failedValue: input, max: CoreConstants.maxValueCurrency));
+    } else {
+      return Right(input);
+    }
+  }
+
   Either<ValueFailure<double>, double> currencyValue(double input) {
     if (_isNotInputInteger(input)) {
       return Left(ValueFailure.currencyValueNotInteger(failedValue: input));
@@ -32,7 +42,7 @@ class ValueValidators {
     }
   }
 
-  bool _isNotInputInteger(double input) => (input % 1) != 0;
+  bool _isNotInputInteger(double input) => input % 1 != 0;
 
   Either<ValueFailure<double>, double> currencyPrice(double input) {
     if (input <= CoreConstants.minCurrencyPrice) {

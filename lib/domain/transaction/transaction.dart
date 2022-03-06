@@ -8,7 +8,7 @@ import 'package:kantor_tukan/domain/core/currency_value.dart';
 part 'transaction.freezed.dart';
 
 const zeroDouble = 0.0;
-const zeroDate = 0;
+const zeroInteger = 0;
 
 @freezed
 abstract class Transaction implements _$Transaction {
@@ -22,7 +22,7 @@ abstract class Transaction implements _$Transaction {
     required DateCantor dateAcceptation,
     required DateCantor dateReservation,
     required CurrencyValue currencyValue,
-    required CurrencyValue currencyBill,
+    required CurrencyBill currencyBill,
     required CurrencyPrice priceBuy,
     required CurrencyPrice priceSell,
   }) = _Transaction;
@@ -32,10 +32,10 @@ abstract class Transaction implements _$Transaction {
       currency: Currency.fromEnum(EnumCurrency.undefined),
       transactionType: TransactionType.fromEnum(EnumTransactionType.undefined),
       transactionStatus: TransactionStatus.fromEnum(EnumTransactionStatus.undefined),
-      dateAcceptation: DateCantor.fromDateTime(DateTime(zeroDate)),
-      dateReservation: DateCantor.fromDateTime(DateTime(zeroDate)),
+      dateAcceptation: DateCantor.fromDateTime(DateTime(zeroInteger)),
+      dateReservation: DateCantor.fromDateTime(DateTime(zeroInteger)),
       currencyValue: CurrencyValue(zeroDouble),
-      currencyBill: CurrencyValue(zeroDouble),
+      currencyBill: CurrencyBill(zeroDouble),
       priceBuy: CurrencyPrice(zeroDouble),
       priceSell: CurrencyPrice(zeroDouble));
 

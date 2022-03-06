@@ -39,7 +39,7 @@ void main() {
       dateAcceptation: DateCantor.fromDateTime(DateTime.now()),
       dateReservation: DateCantor.fromDateTime(DateTime.now()),
       currencyValue: CurrencyValue(15),
-      currencyBill: CurrencyValue(15),
+      currencyBill: CurrencyBill(15),
       priceBuy: CurrencyPrice(5),
       priceSell: CurrencyPrice(5),
     );
@@ -55,11 +55,12 @@ void main() {
     blocTest<TransactionFormBloc, TransactionFormState>(
       'correct passed data, but server error',
       build: () {
+        when(mockTransRepo.create(transaction)).thenAnswer((_) async => left(const TransactionFailure.unexpected()));
         return transactionFormBloc;
       },
       act: (bloc) {
         bloc.emit(bloc.state.copyWith(transaction: transaction));
-        bloc.add(TransactionFormEvent.exchangeRateSelected(exchangeRate));
+        bloc.add(TransactionFormEvent.currencyValueChanged(CurrencyValue(20)));
       },
       expect: () => [
         //first emit is call to change state of bloc. No exist in real app.
@@ -73,7 +74,7 @@ void main() {
           isSubmitting: false,
           showErrorMessages: false,
           transaction: transaction.copyWith(
-              currency: exchangeRate.currency, priceBuy: exchangeRate.priceBuy, priceSell: exchangeRate.priceSell),
+             currencyValue: CurrencyValue(20)),
           transactionFailureOrSuccessOption: none(),
         ),
       ],
@@ -208,7 +209,7 @@ void main() {
           showErrorMessages: false,
           isSubmitting: false,
           transactionFailureOrSuccessOption: none(),
-          transaction: transaction.copyWith(currencyBill: CurrencyValue(75)),
+          transaction: transaction.copyWith(currencyBill: CurrencyBill(75)),
         ),
       ],
     );
@@ -235,7 +236,7 @@ void main() {
         transactionFormBloc.state.copyWith(
           isSubmitting: false,
           showErrorMessages: false,
-          transaction: transactionError.copyWith(currencyBill: CurrencyValue(0)),
+          transaction: transactionError.copyWith(currencyBill: CurrencyBill(0)),
           transactionFailureOrSuccessOption: const None(),
         ),
       ],
@@ -316,7 +317,7 @@ void main() {
               dateAcceptation: DateCantor.fromDateTime(DateTime(0)),
               dateReservation: DateCantor.fromDateTime(DateTime(0)),
               currencyValue: CurrencyValue(0),
-              currencyBill: CurrencyValue(0),
+              currencyBill: CurrencyBill(0),
               priceBuy: CurrencyPrice(0),
               priceSell: CurrencyPrice(0),
             ),
@@ -336,7 +337,7 @@ void main() {
             dateAcceptation: DateCantor.fromDateTime(DateTime(0)),
             dateReservation: DateCantor.fromDateTime(DateTime(0)),
             currencyValue: CurrencyValue(0),
-            currencyBill: CurrencyValue(0),
+            currencyBill: CurrencyBill(0),
             priceBuy: CurrencyPrice(0),
             priceSell: CurrencyPrice(0),
           ),

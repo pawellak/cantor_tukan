@@ -20,7 +20,7 @@ void main() {
       dateAcceptation: DateCantor.fromDateTime(DateTime(2022)),
       dateReservation: DateCantor.fromDateTime(DateTime(2022)),
       currencyValue: CurrencyValue(100),
-      currencyBill: CurrencyValue(200),
+      currencyBill: CurrencyBill(200),
       priceBuy: CurrencyPrice(2),
       priceSell: CurrencyPrice(2),
     );

@@ -7,6 +7,7 @@ const additionalZero = 0;
 const emptyString = '';
 
 class ValueConverters {
+
   Either<ValueFailure<String>, double> toDoubleFromString(String input) {
     final currency = double.tryParse(input);
 

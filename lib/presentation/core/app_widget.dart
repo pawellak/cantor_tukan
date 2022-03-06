@@ -5,6 +5,7 @@ import 'package:kantor_tukan/injection.dart';
 import 'package:kantor_tukan/presentation/core/app_theme.dart';
 import 'package:kantor_tukan/presentation/core/constants.dart';
 import 'package:kantor_tukan/presentation/exchange_rate/exchange_rate_page.dart';
+import 'package:kantor_tukan/presentation/information/information_page.dart';
 import 'package:kantor_tukan/presentation/internet/internet_page.dart';
 import 'package:kantor_tukan/presentation/sign_in/sign_in_page.dart';
 import 'package:kantor_tukan/presentation/splash/splash_page.dart';
@@ -43,6 +44,7 @@ class AppWidget extends StatelessWidget {
       ExchangeRatePage.routeName: (context) => const ExchangeRatePage(),
       TransactionPage.routeName: (context) => const TransactionPage(),
       InternetPage.routeName: (context) => const InternetPage(),
+      InformationPage.routeName: (context) => const InformationPage()
     };
   }
 }

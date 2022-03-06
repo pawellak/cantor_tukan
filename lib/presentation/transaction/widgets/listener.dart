@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kantor_tukan/presentation/information/information_page.dart';
 
 import '../../../application/internet/internet_bloc.dart';
 import '../../../application/transaction/transaction_form/transaction_form_bloc.dart';
-import '../../exchange_rate/exchange_rate_page.dart';
 import '../../internet/internet_page.dart';
+import 'package:kantor_tukan/presentation/transaction/constants.dart';
 
 class TransactionListener {
   late final TransactionFormState state;
@@ -38,6 +39,7 @@ class TransactionListener {
   }
 
   void _navigateToSuccessPage(BuildContext context) {
-    Navigator.of(context).pushNamedAndRemoveUntil(ExchangeRatePage.routeName, (Route route) => route.isFirst);
+    Navigator.of(context).pushNamedAndRemoveUntil(InformationPage.routeName, (Route route) => route.isFirst,
+        arguments: Constants.reservationSuccess);
   }
 }

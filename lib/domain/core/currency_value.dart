@@ -5,6 +5,18 @@ import 'package:kantor_tukan/domain/core/value_converters.dart';
 import 'package:kantor_tukan/domain/core/value_objects.dart';
 import 'package:kantor_tukan/domain/core/value_validators.dart';
 
+class CurrencyBill extends ValueObject<double> {
+  @override
+  final Either<ValueFailure<double>, double> value;
+
+  factory CurrencyBill(double input) {
+    var eitherFailureOrString = ValueValidators().currencyBill(input);
+    return CurrencyBill._(eitherFailureOrString);
+  }
+
+  const CurrencyBill._(this.value);
+}
+
 class CurrencyValue extends ValueObject<double> {
   @override
   final Either<ValueFailure<double>, double> value;

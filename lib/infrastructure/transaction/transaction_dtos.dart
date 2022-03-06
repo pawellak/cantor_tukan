@@ -50,7 +50,7 @@ abstract class TransactionDto with _$TransactionDto {
       dateAcceptation: DateCantor.fromDateTime(dateAcceptation),
       dateReservation: DateCantor.fromDateTime(dateReservation),
       currencyValue: CurrencyValue(currencyValue),
-      currencyBill: CurrencyValue(currencyBill),
+      currencyBill: CurrencyBill(currencyBill),
       priceBuy: CurrencyPrice(priceBuy),
       priceSell: CurrencyPrice(priceSell),
     );

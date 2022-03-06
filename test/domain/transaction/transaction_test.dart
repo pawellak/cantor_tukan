@@ -25,7 +25,7 @@ void main() {
         dateAcceptation: DateCantor.fromDateTime(DateTime.now()),
         dateReservation: DateCantor.fromDateTime(DateTime.now()),
         currencyValue: CurrencyValue(100),
-        currencyBill: CurrencyValue(200),
+        currencyBill: CurrencyBill(200),
         priceBuy: CurrencyPrice(2),
         priceSell: CurrencyPrice(2),
       );
@@ -44,7 +44,7 @@ void main() {
         dateAcceptation: DateCantor.fromDateTime(DateTime.now()),
         dateReservation: DateCantor.fromDateTime(DateTime.now()),
         currencyValue: CurrencyValue(0),
-        currencyBill: CurrencyValue(200),
+        currencyBill: CurrencyBill(200),
         priceBuy: CurrencyPrice(2),
         priceSell: CurrencyPrice(2),
       );
@@ -63,7 +63,7 @@ void main() {
         dateAcceptation: DateCantor.fromDateTime(DateTime.now()),
         dateReservation: DateCantor.fromDateTime(DateTime.now()),
         currencyValue: CurrencyValue(200),
-        currencyBill: CurrencyValue(200),
+        currencyBill: CurrencyBill(200),
         priceBuy: CurrencyPrice(0),
         priceSell: CurrencyPrice(2),
       );
@@ -82,7 +82,7 @@ void main() {
       dateAcceptation: DateCantor.fromDateTime(DateTime(1970)),
       dateReservation: DateCantor.fromDateTime(DateTime.now()),
       currencyValue: CurrencyValue(100),
-      currencyBill: CurrencyValue(200),
+      currencyBill: CurrencyBill(200),
       priceBuy: CurrencyPrice(2),
       priceSell: CurrencyPrice(2),
     );
@@ -101,7 +101,7 @@ void main() {
         dateAcceptation: DateCantor.fromDateTime(DateTime.now()),
         dateReservation: DateCantor.fromDateTime(DateTime.now()),
         currencyValue: CurrencyValue(100),
-        currencyBill: CurrencyValue(200),
+        currencyBill: CurrencyBill(200),
         priceBuy: CurrencyPrice(2),
         priceSell: CurrencyPrice(2),
       );

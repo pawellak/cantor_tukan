@@ -25,7 +25,7 @@ class _$TransactionTearOff {
       required DateCantor dateAcceptation,
       required DateCantor dateReservation,
       required CurrencyValue currencyValue,
-      required CurrencyValue currencyBill,
+      required CurrencyBill currencyBill,
       required CurrencyPrice priceBuy,
       required CurrencyPrice priceSell}) {
     return _Transaction(
@@ -55,7 +55,7 @@ mixin _$Transaction {
   DateCantor get dateAcceptation => throw _privateConstructorUsedError;
   DateCantor get dateReservation => throw _privateConstructorUsedError;
   CurrencyValue get currencyValue => throw _privateConstructorUsedError;
-  CurrencyValue get currencyBill => throw _privateConstructorUsedError;
+  CurrencyBill get currencyBill => throw _privateConstructorUsedError;
   CurrencyPrice get priceBuy => throw _privateConstructorUsedError;
   CurrencyPrice get priceSell => throw _privateConstructorUsedError;
 
@@ -77,7 +77,7 @@ abstract class $TransactionCopyWith<$Res> {
       DateCantor dateAcceptation,
       DateCantor dateReservation,
       CurrencyValue currencyValue,
-      CurrencyValue currencyBill,
+      CurrencyBill currencyBill,
       CurrencyPrice priceBuy,
       CurrencyPrice priceSell});
 }
@@ -135,7 +135,7 @@ class _$TransactionCopyWithImpl<$Res> implements $TransactionCopyWith<$Res> {
       currencyBill: currencyBill == freezed
           ? _value.currencyBill
           : currencyBill // ignore: cast_nullable_to_non_nullable
-              as CurrencyValue,
+              as CurrencyBill,
       priceBuy: priceBuy == freezed
           ? _value.priceBuy
           : priceBuy // ignore: cast_nullable_to_non_nullable
@@ -163,7 +163,7 @@ abstract class _$TransactionCopyWith<$Res>
       DateCantor dateAcceptation,
       DateCantor dateReservation,
       CurrencyValue currencyValue,
-      CurrencyValue currencyBill,
+      CurrencyBill currencyBill,
       CurrencyPrice priceBuy,
       CurrencyPrice priceSell});
 }
@@ -223,7 +223,7 @@ class __$TransactionCopyWithImpl<$Res> extends _$TransactionCopyWithImpl<$Res>
       currencyBill: currencyBill == freezed
           ? _value.currencyBill
           : currencyBill // ignore: cast_nullable_to_non_nullable
-              as CurrencyValue,
+              as CurrencyBill,
       priceBuy: priceBuy == freezed
           ? _value.priceBuy
           : priceBuy // ignore: cast_nullable_to_non_nullable
@@ -267,7 +267,7 @@ class _$_Transaction extends _Transaction {
   @override
   final CurrencyValue currencyValue;
   @override
-  final CurrencyValue currencyBill;
+  final CurrencyBill currencyBill;
   @override
   final CurrencyPrice priceBuy;
   @override
@@ -330,7 +330,7 @@ abstract class _Transaction extends Transaction {
       required DateCantor dateAcceptation,
       required DateCantor dateReservation,
       required CurrencyValue currencyValue,
-      required CurrencyValue currencyBill,
+      required CurrencyBill currencyBill,
       required CurrencyPrice priceBuy,
       required CurrencyPrice priceSell}) = _$_Transaction;
   const _Transaction._() : super._();
@@ -350,7 +350,7 @@ abstract class _Transaction extends Transaction {
   @override
   CurrencyValue get currencyValue;
   @override
-  CurrencyValue get currencyBill;
+  CurrencyBill get currencyBill;
   @override
   CurrencyPrice get priceBuy;
   @override
