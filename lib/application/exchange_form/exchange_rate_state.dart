@@ -12,11 +12,12 @@ class ExchangeRateState with _$ExchangeRateState {
       required Option<Either<CantorRemoteFailure, Unit>> failureOrSuccessOption}) = _ExchangeRateState;
 
   factory ExchangeRateState.initial() => ExchangeRateState(
-      failureOrSuccessOption: none(),
-      showErrorMessages: false,
-      isSubmitting: true,
-      isExchangeRateSelected: false,
-      exchangeRateSelected: ExchangeRate.empty(),
-      exchangeDate: ExchangeDate.empty(),
-      exchangeRate: const KtList.empty());
+        failureOrSuccessOption: none(),
+        showErrorMessages: false,
+        isSubmitting: true,
+        isExchangeRateSelected: false,
+        exchangeRateSelected: ExchangeRate.empty(),
+        exchangeDate: ExchangeDate.empty(),
+        exchangeRate: const KtList.empty(),
+      );
 }

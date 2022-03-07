@@ -11,6 +11,8 @@ import 'package:kantor_tukan/domain/exchange_rate/exchange_date.dart' as _i6;
 import 'package:kantor_tukan/domain/exchange_rate/exchange_rate.dart' as _i8;
 import 'package:kantor_tukan/domain/exchange_rate/i_cantor_remote_data_source.dart'
     as _i3;
+import 'package:kantor_tukan/domain/internet/i_internet_connection_checker.dart'
+    as _i9;
 import 'package:kt_dart/kt.dart' as _i7;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -52,4 +54,19 @@ class MockICantorRemoteDataSource extends _i1.Mock
                       _FakeEither_0<_i5.CantorRemoteFailure,
                           _i7.KtList<_i8.ExchangeRate>>())) as _i4
               .Future<_i2.Either<_i5.CantorRemoteFailure, _i7.KtList<_i8.ExchangeRate>>>);
+}
+
+/// A class which mocks [IInternetConnectionChecker].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockIInternetConnectionChecker extends _i1.Mock
+    implements _i9.IInternetConnectionChecker {
+  MockIInternetConnectionChecker() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<bool> hasConnection() =>
+      (super.noSuchMethod(Invocation.method(#hasConnection, []),
+          returnValue: Future<bool>.value(false)) as _i4.Future<bool>);
 }

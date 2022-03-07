@@ -14,7 +14,6 @@ import 'package:kt_dart/collection.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import '../internet/internet_bloc_test.mocks.dart';
 import 'exchange_rate_bloc_test.mocks.dart';
 
 @GenerateMocks([ICantorRemoteDataSource])

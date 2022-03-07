@@ -17,7 +17,7 @@ class ExchangeRatePage extends StatelessWidget {
       child: WillPopScope(
         onWillPop: () async => false,
         child: const Scaffold(
-          appBar: ExchangeRangeAppBar(),
+          appBar: ExchangeRateAppBar(),
           body: ExchangeRateForm(),
         ),
       ),

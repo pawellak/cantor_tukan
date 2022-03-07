@@ -3,6 +3,7 @@ class CoreConstants {
   static const minValueCurrency = 10.0;
   static const maxNumberCurrency = 10;
   static const timerDurationInSecTimer = 120;
+
   static const finishTimeTimer = 0;
   static const fixedNumberOfValue = 2;
 
@@ -14,4 +15,5 @@ class CoreConstants {
   static const valueToString = 'Value: ';
   static const explanationOfValueError = 'Encountered a ValueFailure at an unrecoverable point terminating.';
   static const failureWas = 'Failure was:';
+  static const pln = 'PLN';
 }

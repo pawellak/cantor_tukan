@@ -8,5 +8,4 @@ abstract class TransactionWatcherState with _$TransactionWatcherState
   const factory TransactionWatcherState.loadInProgress() = _LoadInProgress;
   const factory TransactionWatcherState.loadSuccess(KtList<Transaction> transaction) = _LoadSuccess;
   const factory TransactionWatcherState.loadFailure(TransactionFailure transactionFailure) = _LoadFailurenitial;
-
 }

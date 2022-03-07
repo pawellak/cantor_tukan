@@ -175,6 +175,19 @@ void main() {
     );
   });
   group('date time', () {
+
+
+    test(
+      'should convert date time into Date time without ms',
+          () {
+        final dataConverted = DateTime(2022, 2, 10, 13, 54, 40, 100);
+        final resultFold = valueConverters.toDailyTimeStringFromDateTime(dataConverted);
+        final result = resultFold.fold((l) => l, (r) => r);
+        const expectedResult = '10/02/2022 13:54:40';
+        expect(result, expectedResult);
+      },
+    );
+
     test(
       'should convert Iso8601String into Date time',
       () {

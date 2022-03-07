@@ -63,8 +63,19 @@ class TransactionRepository implements ITransactionRepository {
   }
 
   Stream<Either<TransactionFailure, KtList<Transaction>>> _transactions() async* {
+    // DateTime _dateWithTimeZero =
+    // Converter().dateTimeWithTimeZero(DateTime.now());
+    //
+    // return await cantorCollectionOrders
+    //     .doc(FirebaseDB.users.toString())
+    //     .collection(uid)
+    //     .doc(_dateWithTimeZero.toIso8601String())
+    //     .collection(FirebaseDB.order.toString())
+    //     .get();
+
     final userDoc = await _userDoc();
-    yield* userDoc.transactionCollection
+    final collection = userDoc.transactionCollection;
+    final Stream<Either<TransactionFailure, KtList<Transaction>>> stream = collection
         .orderBy(FirebaseConst.orderTransactionsBy, descending: true)
         .snapshots()
         .map(
@@ -72,6 +83,8 @@ class TransactionRepository implements ITransactionRepository {
               snapshot.docs.map((doc) => TransactionDto.fromFirestore(doc).toDomain()).toImmutableList()),
         )
         .handleError(_transactionError);
+
+    yield* stream;
   }
 
   Stream<Either<TransactionFailure, KtList<Transaction>>> _transactionsFiltered(

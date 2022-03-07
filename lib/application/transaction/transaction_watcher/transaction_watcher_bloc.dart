@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kantor_tukan/domain/transaction/transaction.dart';
@@ -35,43 +36,50 @@ class TransactionWatcherBloc extends Bloc<TransactionWatcherEvent, TransactionWa
     );
   }
 
-  void _watchAllTransaction(_) async {
+  void _watchAllTransaction(_WatchAllTransaction _) async {
     emit(const TransactionWatcherState.loadInProgress());
     await _transactionStreamSubscription?.cancel();
-    _transactionStreamSubscription = _transactionRepository
-        .watchAll()
-        .listen((failureOrNotes) => add(TransactionWatcherEvent.transactionReceived(failureOrNotes)));
+    Stream<Either<TransactionFailure, KtList<Transaction>>> stream = _transactionRepository.watchAll();
+    _transactionStreamSubscription = stream.listen((Either<TransactionFailure, KtList<Transaction>> failureOrNotes) {
+      return add(TransactionWatcherEvent.transactionReceived(failureOrNotes));
+    });
   }
 
   void _watchAcceptedTransaction(_) async {
     emit(const TransactionWatcherState.loadInProgress());
     await _transactionStreamSubscription?.cancel();
-    _transactionStreamSubscription = _transactionRepository
-        .watchAccepted()
-        .listen((failureOrNotes) => add(TransactionWatcherEvent.transactionReceived(failureOrNotes)));
+    _transactionStreamSubscription = _transactionRepository.watchAccepted().listen(
+        (Either<TransactionFailure, KtList<Transaction>> failureOrNotes) =>
+            add(TransactionWatcherEvent.transactionReceived(failureOrNotes)));
   }
 
   void _watchDeclineTransaction(_) async {
     emit(const TransactionWatcherState.loadInProgress());
     await _transactionStreamSubscription?.cancel();
-    _transactionStreamSubscription = _transactionRepository
-        .watchDecline()
-        .listen((failureOrNotes) => add(TransactionWatcherEvent.transactionReceived(failureOrNotes)));
+    _transactionStreamSubscription = _transactionRepository.watchDecline().listen(
+        (Either<TransactionFailure, KtList<Transaction>> failureOrNotes) =>
+            add(TransactionWatcherEvent.transactionReceived(failureOrNotes)));
   }
 
   void _watchPendingTransaction(_) async {
     emit(const TransactionWatcherState.loadInProgress());
     await _transactionStreamSubscription?.cancel();
-    _transactionStreamSubscription = _transactionRepository
-        .watchPending()
-        .listen((failureOrNotes) => add(TransactionWatcherEvent.transactionReceived(failureOrNotes)));
+    _transactionStreamSubscription = _transactionRepository.watchPending().listen(
+        (Either<TransactionFailure, KtList<Transaction>> failureOrNotes) =>
+            add(TransactionWatcherEvent.transactionReceived(failureOrNotes)));
   }
 
-  void _transactionReceived(e) {
-    emit(e.failureOrTransaction.fold(
-      (f) => TransactionWatcherState.loadFailure(f),
-      (transaction) => TransactionWatcherState.loadSuccess,
-    ));
+  void _transactionReceived(_TransactionReceived e) {
+    emit(
+      e.failureOrTransaction.fold(
+        (TransactionFailure failure) {
+          return TransactionWatcherState.loadFailure(failure);
+        },
+        (KtList<Transaction> transaction) {
+          return TransactionWatcherState.loadSuccess(transaction);
+        },
+      ),
+    );
   }
 
   @override

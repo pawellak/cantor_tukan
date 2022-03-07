@@ -13,5 +13,8 @@ extension FirestoreX on FirebaseFirestore {
 }
 
 extension DocumentReferenceX on DocumentReference {
-  CollectionReference get transactionCollection => collection(FirebaseConst.docTransactions);
+  CollectionReference get transactionCollection {
+    return collection(FirebaseConst.docTransactions);
+
+  }
 }

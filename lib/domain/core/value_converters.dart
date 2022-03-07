@@ -97,6 +97,26 @@ class ValueConverters {
     return right(dailyDate);
   }
 
+  Either<ValueFailure<String>, String> toDailyTimeStringFromDateTime(DateTime dateTime) {
+    var dailyDate = emptyString;
+
+    String sYear = dateTime.year.toString();
+    String sMonth = dateTime.month.toString();
+    String sDay = dateTime.day.toString();
+    String sHour = dateTime.hour.toString();
+    String sMin = dateTime.minute.toString();
+    String sSec = dateTime.second.toString();
+
+    sMonth = _convertDateToTwoDigits(sMonth);
+    sDay = _convertDateToTwoDigits(sDay);
+    sHour = _convertDateToTwoDigits(sHour);
+    sMin = _convertDateToTwoDigits(sMin);
+    sSec = _convertDateToTwoDigits(sSec);
+
+    dailyDate = '$sDay/$sMonth/$sYear $sHour:$sMin:$sSec';
+    return right(dailyDate);
+  }
+
   String _convertDateToTwoDigits(String date) {
     if (date.length == oneDigit) {
       date = '$additionalZero$date';

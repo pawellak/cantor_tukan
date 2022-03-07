@@ -4,9 +4,10 @@ import 'package:kantor_tukan/presentation/exchange_rate/constants.dart';
 
 import '../../../application/exchange_form/exchange_rate_bloc.dart';
 import '../../../domain/core/value_converters.dart';
+import '../../core/menu_app_bar.dart';
 
-class ExchangeRangeAppBar extends StatelessWidget with PreferredSizeWidget {
-  const ExchangeRangeAppBar({Key? key}) : super(key: key);
+class ExchangeRateAppBar extends StatelessWidget with PreferredSizeWidget {
+  const ExchangeRateAppBar({Key? key}) : super(key: key);
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -24,6 +25,7 @@ class ExchangeRangeAppBar extends StatelessWidget with PreferredSizeWidget {
 
   AppBar _isSubmitting() {
     return AppBar(
+
       title: const Text(Constants.appBarLoading),
       automaticallyImplyLeading: false,
     );
@@ -31,7 +33,7 @@ class ExchangeRangeAppBar extends StatelessWidget with PreferredSizeWidget {
 
   AppBar _isLoaded(ExchangeRateState state) {
     String dailyDate = _getDate(state);
-    return AppBar(title: _buildTitle(dailyDate), automaticallyImplyLeading: false);
+    return AppBar(actions: const [MenuAppBar()],title: _buildTitle(dailyDate), automaticallyImplyLeading: false);
   }
 
   String _getDate(ExchangeRateState state) {
