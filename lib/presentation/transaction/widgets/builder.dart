@@ -13,8 +13,7 @@ import 'package:kantor_tukan/presentation/transaction/widgets/tip.dart';
 import '../../../application/transaction/transaction_form/size_widget.dart';
 import '../../../application/transaction/transaction_form/transaction_form_bloc.dart';
 
-class TransactionBuilder
-{
+class TransactionBuilder {
   late final TransactionFormState state;
   late final BuildContext context;
 
@@ -47,5 +46,4 @@ class TransactionBuilder
   AutovalidateMode _isShowErrorMessageOn(TransactionFormState state) {
     return state.showErrorMessages ? AutovalidateMode.always : AutovalidateMode.disabled;
   }
-
 }

@@ -7,7 +7,7 @@ abstract class Constants {
   static const cancel = 'anuluj';
   static const amountOfTransaction = 'kwota transakcji';
   static const invalidValue = '---';
-  static const currencyNotSet = 'wpisz poprawną kwotę transakcji';
+  static const currencyNotSet = 'wpisz kwotę transakcji';
   static const valueToBig = 'wartość zbyt duża';
   static const valueToSmall = 'wartość zbyt mała';
   static const valueNotInteger = 'wartość musi być całkowita';

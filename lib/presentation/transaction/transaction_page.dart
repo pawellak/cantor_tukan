@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kantor_tukan/application/timer/timer_bloc.dart';
 import 'package:kantor_tukan/application/transaction/transaction_form/transaction_form_bloc.dart';
-import 'package:kantor_tukan/presentation/splash/splash_page.dart';
-
 import 'package:kantor_tukan/presentation/transaction/widgets/appbar.dart';
 import 'package:kantor_tukan/presentation/transaction/widgets/body.dart';
-import 'package:flutter/services.dart';
+import 'package:kantor_tukan/presentation/transaction/widgets/settings.dart';
 
 class TransactionPage extends StatefulWidget {
   static const routeName = '/transaction';
@@ -22,10 +20,19 @@ class _TransactionPageState extends State<TransactionPage> {
   Widget build(BuildContext context) {
     _restartTransactionPageState(context);
     _startTimer(context);
-    return const Scaffold(
-      appBar: TransactionAppBar(),
-      body: TransactionBody(),
+    return WillPopScope(
+      onWillPop: () {
+        return _onWillPop(context);
+      },
+      child: const Scaffold(
+        appBar: TransactionAppBar(),
+        body: TransactionBody(),
+      ),
     );
+  }
+
+  Future<bool> _onWillPop(BuildContext context) {
+    return Settings().onWillPop(context);
   }
 
   void _restartTransactionPageState(BuildContext context) {
@@ -39,28 +46,12 @@ class _TransactionPageState extends State<TransactionPage> {
   @override
   void initState() {
     super.initState();
-    _allowOnlyForPortraitMode();
+    Settings().allowOnlyForPortraitMode();
   }
 
   @override
   dispose() {
-    _allowForLandscapeAndPortraitMode();
+    Settings().allowForLandscapeAndPortraitMode();
     super.dispose();
-  }
-
-  void _allowOnlyForPortraitMode() {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
-  }
-
-  void _allowForLandscapeAndPortraitMode() {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
   }
 }

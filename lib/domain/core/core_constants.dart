@@ -1,8 +1,8 @@
 class CoreConstants {
-  static const maxValueCurrency = 999999.0;
+  static const maxValueCurrency = 999999999.0;
   static const minValueCurrency = 10.0;
-  static const maxNumberCurrency = 7;
-  static const timerDurationInSecTimer = 30;
+  static const maxNumberCurrency = 10;
+  static const timerDurationInSecTimer = 120;
   static const finishTimeTimer = 0;
   static const fixedNumberOfValue = 2;
 
