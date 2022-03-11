@@ -14,16 +14,22 @@ class InputFormRate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TransactionFormBloc, TransactionFormState>(
-      builder: _buildBuilder,
+    final inputForm = BlocBuilder<TransactionFormBloc, TransactionFormState>(
+      builder: _buildInputFormBuilder,
     );
+
+    return _decorate(inputForm);
   }
 
-  Widget _buildBuilder(context, state) {
+  Widget _buildInputFormBuilder(context, state) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-      Expanded(flex: Constants.currencyFlex, child: _buildInputText(context)),
+      Expanded(flex: Constants.flexTextInputCurrencyValue, child: _buildInputText(context)),
       Expanded(child: _buildCurrencyNameText(state)),
     ]);
+  }
+
+  Expanded _decorate(BlocBuilder inputForm) {
+    return Expanded(flex: Constants.flexTextInput, child: inputForm);
   }
 
   Padding _buildInputText(BuildContext context) {

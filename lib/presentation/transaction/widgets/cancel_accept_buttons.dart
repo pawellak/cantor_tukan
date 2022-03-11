@@ -8,9 +8,13 @@ class CancelAcceptButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [_buildDecoratedCancelBottom(), _buildDecoratedConfirmButton()],
+    return Expanded(
+      flex: Constants.flexDecisionButton,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [_buildDecoratedCancelBottom(), _buildDecoratedConfirmButton()],
+      ),
     );
   }
 

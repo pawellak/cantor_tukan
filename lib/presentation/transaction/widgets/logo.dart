@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:kantor_tukan/presentation/transaction/constants.dart';
 
 import '../../../infrastructure/exchange_rate/links.dart';
 
 class Logo extends StatelessWidget {
-  final double heightOfWidget;
-
-  const Logo(this.heightOfWidget,{Key? key}) : super(key: key);
+  const Logo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: heightOfWidget,
-      child: _buildLogo(),
-    );
+    final logo = _buildLogo();
+    return _decorator(logo);
+  }
+
+  Expanded _decorator(Image image) {
+    return Expanded(flex: Constants.flexLogo, child: image);
   }
 
   Image _buildLogo() {

@@ -45,7 +45,7 @@ class Calculations {
     if (currencyValue == Constants.zeroDouble) {
       result = Constants.invalidValue;
     } else {
-      result = (rate * currencyValue).toStringAsFixed(CoreConstants.fixedNumberOfValue);
+      result = (rate * currencyValue).toStringAsFixed(CoreConstants.valueDecimalPlaces);
     }
     return result;
   }

@@ -42,7 +42,7 @@ String _getDescription(Transaction userTransaction) {
 }
 
 String _getCurrencyBill(Transaction userTransaction) =>
-    userTransaction.currencyValue.getOrCrash().toStringAsFixed(CoreConstants.fixedNumberOfValue);
+    userTransaction.currencyValue.getOrCrash().toStringAsFixed(CoreConstants.valueDecimalPlaces);
 
 String _getCurrencyType(Transaction userTransaction) {
   EnumTransactionType enumTransactionType = userTransaction.transactionType.getOrCrash();

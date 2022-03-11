@@ -45,10 +45,10 @@ class ValueValidators {
   bool _isNotInputInteger(double input) => input % 1 != 0;
 
   Either<ValueFailure<double>, double> currencyPrice(double input) {
-    if (input <= CoreConstants.minCurrencyPrice) {
+    if (input <= CoreConstants.minCurrencyPriceNumbers) {
       return Left(ValueFailure.currencyPriceTooSmall(failedValue: input));
-    } else if (input > CoreConstants.maxCurrencyPrice) {
-      return Left(ValueFailure.currencyPriceTooBig(failedValue: input, max: CoreConstants.maxCurrencyPrice));
+    } else if (input > CoreConstants.maxCurrencyPriceNumbers) {
+      return Left(ValueFailure.currencyPriceTooBig(failedValue: input, max: CoreConstants.maxCurrencyPriceNumbers));
     } else {
       return Right(input);
     }

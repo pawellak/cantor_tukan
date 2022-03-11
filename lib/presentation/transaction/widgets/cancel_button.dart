@@ -21,12 +21,12 @@ ElevatedButton _buildButton(BuildContext context) {
   return ElevatedButton(
       style: _style(context),
       onPressed: () {
-        _navigateToSplashScreen(context);
+        _navigateToExchangeRatePage(context);
       },
-      child: const Text(Constants.cancel));
+      child: const FittedBox(child: Text(Constants.cancel)));
 }
 
-void _navigateToSplashScreen(BuildContext context) {
+void _navigateToExchangeRatePage(BuildContext context) {
   Navigator.of(context).popAndPushNamed(ExchangeRatePage.routeName);
 }
 

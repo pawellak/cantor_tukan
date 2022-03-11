@@ -6,15 +6,15 @@ import 'package:kantor_tukan/presentation/transaction/constants.dart';
 import '../../../application/transaction/transaction_form/calculations.dart';
 
 class Calculation extends StatelessWidget {
-  final double heightOfWidget;
-
-  const Calculation(this.heightOfWidget, {Key? key}) : super(key: key);
+  const Calculation({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TransactionFormBloc, TransactionFormState>(
+    final calculation = BlocBuilder<TransactionFormBloc, TransactionFormState>(
       builder: _getBuilder,
     );
+
+    return _decorate(calculation);
   }
 
   Widget _getBuilder(context, state) {
@@ -25,13 +25,17 @@ class Calculation extends StatelessWidget {
       result = _decorateResult(result);
     }
 
-    return SizedBox(
-        height: heightOfWidget,
+    return FittedBox(
+      child: _buildTextDescription(result),
+    );
+  }
+
+  Expanded _decorate(BlocBuilder calculation) {
+    return Expanded(
+        flex: Constants.flexCalculation,
         child: Padding(
           padding: _getPadding(),
-          child: FittedBox(
-            child: _buildTextDescription(result),
-          ),
+          child: calculation,
         ));
   }
 

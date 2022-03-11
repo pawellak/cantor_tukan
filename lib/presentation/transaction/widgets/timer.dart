@@ -14,10 +14,8 @@ class TransactionTimer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: _getPadding(),
-      child: _buildTimerHandler(context),
-    );
+    final timer = _buildTimerHandler(context);
+    return _decorate(timer);
   }
 
   BlocConsumer _buildTimerHandler(BuildContext context) {
@@ -27,9 +25,19 @@ class TransactionTimer extends StatelessWidget {
     );
   }
 
+  Expanded _decorate(BlocConsumer consumer) {
+    return Expanded(
+      flex: Constants.flexTimer,
+      child: Padding(
+        padding: _getPadding(),
+        child: consumer,
+      ),
+    );
+  }
+
   void _getListener(BuildContext context, TimerState state) {
     if (_isStateDone(state)) {
-      _navigateToExchangeRatePage(context);
+      _navigateToEchangeRatePage(context);
     }
   }
 
@@ -51,7 +59,7 @@ class TransactionTimer extends StatelessWidget {
 
   bool _isStateDone(TimerState state) => state.done;
 
-  void _navigateToExchangeRatePage(BuildContext context) {
+  void _navigateToEchangeRatePage(BuildContext context) {
     Navigator.of(context).popAndPushNamed(ExchangeRatePage.routeName);
   }
 

@@ -30,9 +30,7 @@ class _ConfirmButtonState extends State<ConfirmButton> {
   }
 
   _getUnauthenticatedState(_) {
-    return const Center(
-      child: Text(Constants.notSignIn, textAlign: TextAlign.center),
-    );
+    return const FittedBox(child: Text(Constants.notSignIn, textAlign: TextAlign.center));
   }
 }
 

@@ -77,7 +77,7 @@ void main() {
     test(
       'should return right result when value price is maximum',
       () {
-        const dataToConvert = CoreConstants.maxCurrencyPrice;
+        const dataToConvert = CoreConstants.maxCurrencyPriceNumbers;
         final resultFold = CurrencyPrice(dataToConvert);
         final result = resultFold.value.fold((l) => l, (r) => r);
         const expectResult = dataToConvert;
@@ -88,7 +88,7 @@ void main() {
     test(
       'should max price - min price be bigger than 0',
       () {
-        const dataToConvert = CoreConstants.maxCurrencyPrice - CoreConstants.minCurrencyPrice;
+        const dataToConvert = CoreConstants.maxCurrencyPriceNumbers - CoreConstants.minCurrencyPriceNumbers;
         const result = dataToConvert > 0;
         const expectResult = true;
         expect(result, expectResult);
@@ -98,7 +98,7 @@ void main() {
     test(
       'should return left value failure when value price is to big',
       () {
-        const maxValue = CoreConstants.maxCurrencyPrice;
+        const maxValue = CoreConstants.maxCurrencyPriceNumbers;
         const dataToConvert = maxValue + 1;
         final resultFold = CurrencyPrice(dataToConvert);
         final result = resultFold.value.fold((l) => l, (r) => r);

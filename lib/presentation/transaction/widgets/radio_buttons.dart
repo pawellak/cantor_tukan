@@ -5,25 +5,31 @@ import 'package:kantor_tukan/domain/core/currency_value.dart';
 import 'package:kantor_tukan/domain/core/enums.dart';
 import 'package:kantor_tukan/presentation/transaction/constants.dart';
 
-class RadioButton extends StatelessWidget {
-  const RadioButton({Key? key}) : super(key: key);
+class RadioButtons extends StatelessWidget {
+  const RadioButtons({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TransactionFormBloc, TransactionFormState>(
-      builder: _getBuilder,
+    final buttons = BlocBuilder<TransactionFormBloc, TransactionFormState>(
+      builder: _getButtonsBuilder,
+    );
+
+    return _decorate(buttons);
+  }
+
+  Widget _getButtonsBuilder(BuildContext context, TransactionFormState state) {
+    final isBuyActive = _getActiveTransactionType(state);
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: _buildButtons(isBuyActive, context),
     );
   }
 
-  Widget _getBuilder(BuildContext context, TransactionFormState state) {
-    final isBuyActive = _getActiveTransactionType(state);
-
-    return Padding(
-      padding: const EdgeInsets.all(Constants.padding),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: _buildButtons(isBuyActive, context),
-      ),
+  Expanded _decorate(BlocBuilder buttons) {
+    return Expanded(
+      flex: Constants.flexRadioButtons,
+      child: Padding(
+          padding: const EdgeInsets.only(left: Constants.smallPadding, right: Constants.smallPadding), child: buttons),
     );
   }
 
@@ -55,7 +61,7 @@ class RadioButton extends StatelessWidget {
             onPressed: () {
               _setEnumTransactionTypeToBuy(context);
             },
-            child: const Text(Constants.buy)));
+            child: const FittedBox(child: Text(Constants.buy))));
   }
 
   void _setEnumTransactionTypeToBuy(BuildContext context) {

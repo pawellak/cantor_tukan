@@ -2,13 +2,13 @@ class CoreConstants {
   static const maxValueCurrency = 999999999.0;
   static const minValueCurrency = 10.0;
   static const maxNumberCurrency = 10;
-  static const timerDurationInSecTimer = 120;
+  static const timerDurationInSecTimer = 30;
 
   static const finishTimeTimer = 0;
-  static const fixedNumberOfValue = 2;
+  static const valueDecimalPlaces = 2;
 
-  static const maxCurrencyPrice = 10.0;
-  static const minCurrencyPrice = 0.0;
+  static const maxCurrencyPriceNumbers = 10.0;
+  static const minCurrencyPriceNumbers = 0.0;
   static const minPasswordLength = 6;
   static const minPossiblyYearData = 2021;
   static const emailRegex = r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";

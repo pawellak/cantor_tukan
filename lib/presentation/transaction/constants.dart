@@ -32,8 +32,17 @@ abstract class Constants {
   static const proportionTwentyPercent = 0.20;
   static const timerDurationInSec = 30;
 
+  static const flexTimer = 1;
+  static const flexLogo = 5;
+  static const flexTip = 2;
+  static const flexRadioButtons = 3;
+  static const flexTextInput = 4;
+  static const flexCalculation = 2;
+  static const flexDecisionButton = 4;
+  static const flexSubmitting = 1;
+
   static const tenPixel = 10.0;
-  static const currencyFlex = 5;
+  static const flexTextInputCurrencyValue = 5;
 
   static const zeroDouble = 0.0;
 }

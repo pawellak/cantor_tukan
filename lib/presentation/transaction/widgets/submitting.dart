@@ -8,17 +8,23 @@ class Submitting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TransactionFormBloc, TransactionFormState>(
-      builder: _getBuilder,
+    final submitting = BlocBuilder<TransactionFormBloc, TransactionFormState>(
+      builder: _getSubmittingBuilder,
     );
+
+    return _decorate(submitting);
   }
 
-  Widget _getBuilder(context, state) {
+  Widget _getSubmittingBuilder(context, state) {
     if (isStateSubmitting(state)) {
       return _buildLoadingState();
     } else {
       return _buildReadyState();
     }
+  }
+
+  Expanded _decorate(BlocBuilder submitting) {
+    return Expanded(flex: Constants.flexSubmitting, child: Container(child: submitting,color: Colors.red,));
   }
 
   bool isStateSubmitting(TransactionFormState state) => state.isSubmitting == true;

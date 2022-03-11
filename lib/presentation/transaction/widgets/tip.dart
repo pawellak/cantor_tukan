@@ -3,16 +3,20 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class Tip extends StatelessWidget {
-  final double heightOfWidget;
-  const Tip(this.heightOfWidget,{Key? key}) : super(key: key);
+  const Tip({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: heightOfWidget,
-      child:  Padding(
+    final text = _buildTipText();
+    return _decorate(text);
+  }
+
+  Expanded _decorate(FittedBox text) {
+    return Expanded(
+      flex: Constants.flexTip,
+      child: Padding(
         padding: const EdgeInsets.only(top: Constants.microPadding),
-        child: _buildTipText(),
+        child: text,
       ),
     );
   }
