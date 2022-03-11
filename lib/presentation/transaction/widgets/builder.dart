@@ -19,7 +19,7 @@ class TransactionBuilder {
 
   TransactionBuilder({required this.context, required this.state});
 
-  Widget handle() {
+  Widget call() {
     double pageHeight = _getHeightOfScreen(context);
     return Form(
       autovalidateMode: _isShowErrorMessageOn(state),

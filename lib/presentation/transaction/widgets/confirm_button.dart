@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kantor_tukan/application/auth/app_auth_bloc.dart';
 import 'package:kantor_tukan/presentation/transaction/constants.dart';
 
 import '../../../application/transaction/transaction_form/transaction_form_bloc.dart';
@@ -14,11 +15,28 @@ class ConfirmButton extends StatefulWidget {
 class _ConfirmButtonState extends State<ConfirmButton> {
   @override
   Widget build(BuildContext context) {
-    return _buildButton(context);
+    return BlocBuilder<AppAuthBloc, AppAuthState>(
+      builder: _getBuilder,
+    );
+  }
+
+  Widget _getBuilder(context, state) {
+    return state.map(
+        initial: _getUnauthenticatedState,
+        authenticated: (_) {
+          return _buildAuthenticatedButton(context);
+        },
+        unauthenticated: _getUnauthenticatedState);
+  }
+
+  _getUnauthenticatedState(_) {
+    return const Center(
+      child: Text(Constants.notSignIn, textAlign: TextAlign.center),
+    );
   }
 }
 
-BlocBuilder _buildButton(BuildContext context) {
+BlocBuilder _buildAuthenticatedButton(BuildContext context) {
   return const BlocBuilder<TransactionFormBloc, TransactionFormState>(
     builder: _getBuilder,
   );

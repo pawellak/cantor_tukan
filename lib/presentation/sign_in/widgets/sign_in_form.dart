@@ -43,7 +43,7 @@ class SignInForm extends StatelessWidget {
   }
 
   void _getSuccessOption(BuildContext context) {
-    Navigator.of(context).pushNamed(ExchangeRatePage.routeName);
+    Navigator.of(context).popAndPushNamed(ExchangeRatePage.routeName);
     context.read<AppAuthBloc>().add(const AppAuthEvent.authCheckRequested());
   }
 

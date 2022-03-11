@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../splash/splash_page.dart';
+import 'package:kantor_tukan/presentation/exchange_rate/exchange_rate_page.dart';
 import '../constants.dart';
 
 class ButtonBack extends StatelessWidget {
@@ -8,23 +7,26 @@ class ButtonBack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final button = _buildButton(context);
+    return _decorator(button);
+  }
+
+  Padding _decorator(ElevatedButton button) {
     return Padding(
       padding: const EdgeInsets.all(Constants.padding),
       child: Row(
-        children: [_buildButton(context)],
+        children: [Expanded(child: button)],
       ),
     );
   }
 
-  Expanded _buildButton(BuildContext context) {
-    return Expanded(
-      child: ElevatedButton(
-        style: _buildButtonStyle(context),
-        onPressed: () {
-          _onBackPressed(context);
-        },
-        child: _buildButtonDescription(),
-      ),
+  ElevatedButton _buildButton(BuildContext context) {
+    return ElevatedButton(
+      style: _buildButtonStyle(context),
+      onPressed: () {
+        _onBackPressed(context);
+      },
+      child: _buildButtonDescription(),
     );
   }
 
@@ -32,7 +34,7 @@ class ButtonBack extends StatelessWidget {
       ElevatedButton.styleFrom(primary: Theme.of(context).primaryColor);
 
   void _onBackPressed(BuildContext context) {
-    Navigator.of(context).pushNamedAndRemoveUntil(SplashPage.routeName, (route) => route.isFirst);
+    Navigator.of(context).popAndPushNamed(ExchangeRatePage.routeName);
   }
 
   Text _buildButtonDescription() => const Text(Constants.backButtonDescription);

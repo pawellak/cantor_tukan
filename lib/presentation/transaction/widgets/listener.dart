@@ -13,7 +13,7 @@ class TransactionListener {
 
   TransactionListener({required this.context, required this.state});
 
-  void handle() {
+  void call() {
     state.transactionFailureOrSuccessOption.fold(_getNone, (either) {
       either.fold((failure) {
         _getSomeError(context);
@@ -35,11 +35,10 @@ class TransactionListener {
 
   void _navigateToNoInternetPage(BuildContext context) {
     context.read<InternetBloc>().add(const InternetEvent.setNoInternetConnection());
-    Navigator.of(context).pushNamedAndRemoveUntil(InternetPage.routeName, (Route route) => route.isFirst);
+    Navigator.of(context).popAndPushNamed(InternetPage.routeName);
   }
 
   void _navigateToSuccessPage(BuildContext context) {
-    Navigator.of(context).pushNamedAndRemoveUntil(InformationPage.routeName, (Route route) => route.isFirst,
-        arguments: Constants.reservationSuccess);
+    Navigator.of(context).popAndPushNamed(InformationPage.routeName, arguments: Constants.reservationSuccess);
   }
 }

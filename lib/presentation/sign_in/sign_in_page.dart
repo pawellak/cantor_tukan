@@ -5,6 +5,8 @@ import 'package:kantor_tukan/injection.dart';
 import 'package:kantor_tukan/presentation/sign_in/widgets/sign_in_form.dart';
 import 'package:kantor_tukan/presentation/sign_in/constants.dart';
 
+import '../core/menu_app_bar/menu_app_bar.dart';
+
 class SignInPage extends StatelessWidget {
   static const routeName = '/sign-in';
 
@@ -20,6 +22,7 @@ class SignInPage extends StatelessWidget {
 
   AppBar _buildSignInAppBar() {
     return AppBar(
+      actions: const [MenuAppBar()],
       automaticallyImplyLeading: false,
       title: const Text(Constants.signIn),
     );

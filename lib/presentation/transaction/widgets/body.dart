@@ -16,10 +16,10 @@ class TransactionBody extends StatelessWidget {
   BlocConsumer _getBody(BuildContext context) {
     return BlocConsumer<TransactionFormBloc, TransactionFormState>(
       listener: (context, state) {
-        TransactionListener(context: context, state: state).handle();
+        TransactionListener(context: context, state: state).call();
       },
       builder: (context, state) {
-        return TransactionBuilder(context: context, state: state).handle();
+        return TransactionBuilder(context: context, state: state).call();
       },
     );
   }

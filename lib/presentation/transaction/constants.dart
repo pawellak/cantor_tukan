@@ -7,7 +7,7 @@ abstract class Constants {
   static const cancel = 'anuluj';
   static const amountOfTransaction = 'kwota transakcji';
   static const invalidValue = '---';
-  static const currencyNotSet = 'wpisz kwotę transakcji';
+  static const currencyNotSet = '---';
   static const valueToBig = 'wartość zbyt duża';
   static const valueToSmall = 'wartość zbyt mała';
   static const valueNotInteger = 'wartość musi być całkowita';
@@ -16,6 +16,7 @@ abstract class Constants {
   static const noInternet = 'brak internetu';
   static const notFound = 'nie znaleziono rekordu';
   static const reservationSuccess = 'rezerwacja wykonana poprawnie';
+  static const notSignIn = 'zaloguj się w celu rezerwacji waluty';
   static const comma = ',';
   static const dot = '.';
   static const forWord = 'za';

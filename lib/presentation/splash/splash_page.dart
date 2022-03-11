@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kantor_tukan/application/auth/app_auth_bloc.dart';
 import 'package:kantor_tukan/presentation/exchange_rate/exchange_rate_page.dart';
-import 'package:kantor_tukan/presentation/sign_in/sign_in_page.dart';
 
 import 'constants.dart';
 
@@ -29,17 +28,13 @@ class SplashPage extends StatelessWidget {
         _navigateToExchangeRatePage(context);
       },
       unauthenticated: (_) {
-        _navigateToSignInPage(context);
+        _navigateToExchangeRatePage(context);
       },
     );
   }
 
   void _navigateToExchangeRatePage(BuildContext context) {
-    Navigator.of(context).pushNamed(ExchangeRatePage.routeName);
-  }
-
-  void _navigateToSignInPage(BuildContext context) {
-    Navigator.of(context).pushNamed(SignInPage.routeName);
+    Navigator.of(context).popAndPushNamed(ExchangeRatePage.routeName);
   }
 
   Center _buildLoadingWidget(BuildContext context) {

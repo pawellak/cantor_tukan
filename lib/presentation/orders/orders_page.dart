@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kantor_tukan/presentation/exchange_rate/exchange_rate_page.dart';
 import 'package:kantor_tukan/presentation/orders/widgets/appbar.dart';
 import 'package:kantor_tukan/presentation/orders/widgets/body.dart';
 
@@ -9,13 +10,23 @@ class OrdersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _buildOrdersPage();
+    return _buildOrdersPage(context);
   }
 
-  Scaffold _buildOrdersPage() {
-    return const Scaffold(
-      appBar: OrdersAppBar(),
-      body: OrdersBody(),
+  WillPopScope _buildOrdersPage(BuildContext context) {
+    return WillPopScope(
+      onWillPop: () {
+        return _onWillPop(context);
+      },
+      child: const Scaffold(
+        appBar: OrdersAppBar(),
+        body: OrdersBody(),
+      ),
     );
+  }
+
+  Future<bool> _onWillPop(BuildContext context) async {
+    Navigator.of(context).popAndPushNamed(ExchangeRatePage.routeName);
+    return false;
   }
 }
