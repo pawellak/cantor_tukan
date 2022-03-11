@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:kantor_tukan/presentation/exchange_rate/exchange_rate_page.dart';
 
-import '../../splash/splash_page.dart';
-
-class Settings
-{
+class Settings {
   void allowOnlyForPortraitMode() {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
@@ -22,7 +20,7 @@ class Settings
   }
 
   Future<bool> onWillPop(BuildContext context) async {
-    Navigator.of(context).pushNamedAndRemoveUntil(SplashPage.routeName, (route) => route.isFirst);
+    Navigator.of(context).popAndPushNamed(ExchangeRatePage.routeName);
     return false;
   }
 }

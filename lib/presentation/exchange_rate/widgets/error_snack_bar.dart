@@ -32,6 +32,6 @@ class ErrorSnackBar {
   }
 
   void _navigateToNoInternetPage(BuildContext context) {
-    Navigator.of(context).pushNamedAndRemoveUntil(InternetPage.routeName, (route) => route.isFirst);
+    Navigator.of(context).popAndPushNamed(InternetPage.routeName);
   }
 }

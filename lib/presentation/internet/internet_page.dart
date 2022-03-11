@@ -28,6 +28,8 @@ class InternetPage extends StatelessWidget {
   _isInternetConnection(InternetState state) => state.isConnected;
 
   void _navigateToSplashScreen(BuildContext context) {
+
+
     Navigator.of(context).popAndPushNamed(SplashPage.routeName);
   }
 

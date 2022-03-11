@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kantor_tukan/application/timer/timer_bloc.dart';
 import 'package:kantor_tukan/domain/core/core_constants.dart';
+import 'package:kantor_tukan/presentation/exchange_rate/exchange_rate_page.dart';
 import 'package:kantor_tukan/presentation/splash/splash_page.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:kantor_tukan/presentation/transaction/constants.dart';
@@ -28,7 +29,7 @@ class TransactionTimer extends StatelessWidget {
 
   void _getListener(BuildContext context, TimerState state) {
     if (_isStateDone(state)) {
-      _navigateToSplashScreen(context);
+      _navigateToExchangeRatePage(context);
     }
   }
 
@@ -50,8 +51,8 @@ class TransactionTimer extends StatelessWidget {
 
   bool _isStateDone(TimerState state) => state.done;
 
-  void _navigateToSplashScreen(BuildContext context) {
-    Navigator.of(context).pushNamedAndRemoveUntil(SplashPage.routeName, (route) => route.isFirst);
+  void _navigateToExchangeRatePage(BuildContext context) {
+    Navigator.of(context).popAndPushNamed(ExchangeRatePage.routeName);
   }
 
   double _getActualTimeInSec(TimerState state) => state.timeInSec.toDouble();

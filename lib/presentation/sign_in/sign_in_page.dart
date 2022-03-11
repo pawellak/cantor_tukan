@@ -6,6 +6,7 @@ import 'package:kantor_tukan/presentation/sign_in/widgets/sign_in_form.dart';
 import 'package:kantor_tukan/presentation/sign_in/constants.dart';
 
 import '../core/menu_app_bar/menu_app_bar.dart';
+import '../exchange_rate/exchange_rate_page.dart';
 
 class SignInPage extends StatelessWidget {
   static const routeName = '/sign-in';
@@ -14,9 +15,14 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _buildSignInAppBar(),
-      body: _buildSignInForm(),
+    return WillPopScope(
+      onWillPop: () {
+        return _onWillPop(context);
+      },
+      child: Scaffold(
+        appBar: _buildSignInAppBar(),
+        body: _buildSignInForm(),
+      ),
     );
   }
 
@@ -33,5 +39,10 @@ class SignInPage extends StatelessWidget {
       create: (context) => getIt<SignInFormBloc>(),
       child: const SignInForm(),
     );
+  }
+
+  Future<bool> _onWillPop(BuildContext context) async {
+    Navigator.of(context).popAndPushNamed(ExchangeRatePage.routeName);
+    return false;
   }
 }
