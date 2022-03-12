@@ -6,7 +6,6 @@ import 'package:kantor_tukan/presentation/exchange_rate/exchange_rate_page.dart'
 import '../../../application/auth/app_auth_bloc.dart';
 import '../../orders/orders_page.dart';
 import '../../sign_in/sign_in_page.dart';
-import '../../splash/splash_page.dart';
 
 class MenuAppBarFunctions {
   void handleClick(BuildContext context, String option) {

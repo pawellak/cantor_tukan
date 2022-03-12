@@ -3,7 +3,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:kantor_tukan/domain/internet/i_internet_connection_checker.dart';
 import 'package:kantor_tukan/domain/transaction/transaction.dart';
 import 'package:kantor_tukan/domain/transaction/i_transaction_repository.dart';
 import 'package:kantor_tukan/domain/transaction/transaction_failure.dart';

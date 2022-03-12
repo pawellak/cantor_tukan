@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kantor_tukan/application/timer/timer_bloc.dart';
 import 'package:kantor_tukan/application/transaction/transaction_form/transaction_form_bloc.dart';
 import 'package:kantor_tukan/presentation/transaction/widgets/appbar.dart';
 import 'package:kantor_tukan/presentation/transaction/widgets/body.dart';
 import 'package:kantor_tukan/presentation/transaction/widgets/settings.dart';
+
+import '../core/app_life_cycle.dart';
 
 class TransactionPage extends StatefulWidget {
   static const routeName = '/transaction';
@@ -15,11 +16,18 @@ class TransactionPage extends StatefulWidget {
   State<TransactionPage> createState() => _TransactionPageState();
 }
 
-class _TransactionPageState extends State<TransactionPage> {
+class _TransactionPageState extends State<TransactionPage> with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    Settings().allowOnlyForPortraitMode();
+    WidgetsBinding.instance!.addObserver(this);
+  }
+
   @override
   Widget build(BuildContext context) {
     _restartTransactionPageState(context);
-    _startTimer(context);
+
     return WillPopScope(
       onWillPop: () {
         return _onWillPop(context);
@@ -39,19 +47,17 @@ class _TransactionPageState extends State<TransactionPage> {
     context.read<TransactionFormBloc>().add(const TransactionFormEvent.reset());
   }
 
-  void _startTimer(BuildContext context) {
-    context.read<TimerBloc>().add(const TimerEvent.start());
-  }
 
   @override
-  void initState() {
-    super.initState();
-    Settings().allowOnlyForPortraitMode();
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    AppLifeCycle().call(context, state);
   }
 
   @override
   dispose() {
     Settings().allowForLandscapeAndPortraitMode();
+    WidgetsBinding.instance!.removeObserver(this);
     super.dispose();
   }
 }

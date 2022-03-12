@@ -4,14 +4,28 @@ import 'package:kantor_tukan/injection.dart';
 import 'package:kantor_tukan/presentation/exchange_rate/widgets/appbar.dart';
 import 'package:kantor_tukan/presentation/exchange_rate/widgets/exchange_rate_form.dart';
 import '../../application/exchange_form/exchange_rate_bloc.dart';
+import '../../application/timer/timer_bloc.dart';
+import '../core/app_life_cycle.dart';
 
-class ExchangeRatePage extends StatelessWidget {
+class ExchangeRatePage extends StatefulWidget {
   static const routeName = '/exchange-rate';
 
   const ExchangeRatePage({Key? key}) : super(key: key);
 
   @override
+  State<ExchangeRatePage> createState() => _ExchangeRatePageState();
+}
+
+class _ExchangeRatePageState extends State<ExchangeRatePage> with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addObserver(this);
+  }
+
+  @override
   Widget build(BuildContext context) {
+    _startTimer(context);
     return BlocProvider(
       create: (context) => getIt<ExchangeRateBloc>()..add(const ExchangeRateEvent.fetch()),
       child: WillPopScope(
@@ -22,5 +36,21 @@ class ExchangeRatePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _startTimer(BuildContext context) {
+    context.read<TimerBloc>().add(const TimerEvent.start());
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    AppLifeCycle().call(context, state);
+  }
+
+  @override
+  dispose() {
+    WidgetsBinding.instance!.removeObserver(this);
+    super.dispose();
   }
 }

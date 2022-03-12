@@ -24,19 +24,19 @@ class Submitting extends StatelessWidget {
   }
 
   Expanded _decorate(BlocBuilder submitting) {
-    return Expanded(flex: Constants.flexSubmitting, child: Container(child: submitting,color: Colors.red,));
+    return Expanded(flex: TransactionConstants.flexSubmitting, child: Container(child: submitting,color: Colors.red,));
   }
 
   bool isStateSubmitting(TransactionFormState state) => state.isSubmitting == true;
 
   Padding _buildLoadingState() {
     return const Padding(
-      padding: EdgeInsets.all(Constants.padding),
+      padding: EdgeInsets.all(TransactionConstants.padding),
       child: LinearProgressIndicator(),
     );
   }
 
   SizedBox _buildReadyState() {
-    return const SizedBox(height: Constants.tenPixel);
+    return const SizedBox(height: TransactionConstants.tenPixel);
   }
 }

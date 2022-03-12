@@ -39,6 +39,6 @@ class TransactionListener {
   }
 
   void _navigateToSuccessPage(BuildContext context) {
-    Navigator.of(context).popAndPushNamed(InformationPage.routeName, arguments: Constants.reservationSuccess);
+    Navigator.of(context).popAndPushNamed(InformationPage.routeName, arguments: TransactionConstants.reservationSuccess);
   }
 }

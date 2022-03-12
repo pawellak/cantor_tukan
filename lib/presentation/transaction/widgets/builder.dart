@@ -36,10 +36,6 @@ class TransactionBuilder {
     );
   }
 
-  double _getHeightOfScreen(BuildContext context) {
-    return MediaQuery.of(context).size.height;
-  }
-
   AutovalidateMode _isShowErrorMessageOn(TransactionFormState state) {
     return state.showErrorMessages ? AutovalidateMode.always : AutovalidateMode.disabled;
   }

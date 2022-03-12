@@ -9,7 +9,7 @@ class CancelAcceptButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      flex: Constants.flexDecisionButton,
+      flex: TransactionConstants.flexDecisionButton,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -25,8 +25,8 @@ class CancelAcceptButtons extends StatelessWidget {
     ));
   }
 
-  EdgeInsets _getCancelPadding() => const EdgeInsets.only(left: Constants.padding, right: Constants.smallPadding);
-  EdgeInsets _getAcceptPadding() => const EdgeInsets.only(left: Constants.smallPadding, right: Constants.padding);
+  EdgeInsets _getCancelPadding() => const EdgeInsets.only(left: TransactionConstants.padding, right: TransactionConstants.smallPadding);
+  EdgeInsets _getAcceptPadding() => const EdgeInsets.only(left: TransactionConstants.smallPadding, right: TransactionConstants.padding);
 
   Expanded _buildDecoratedConfirmButton() {
     return Expanded(

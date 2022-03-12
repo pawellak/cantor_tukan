@@ -22,5 +22,5 @@ class TransactionAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   bool _getIsImplyLeading() => false;
 
-  Text _buildAppBarTitle() => const Text(Constants.appBarTitle);
+  Text _buildAppBarTitle() => const Text(TransactionConstants.appBarTitle);
 }

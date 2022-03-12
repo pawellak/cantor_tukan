@@ -23,13 +23,13 @@ class InputFormRate extends StatelessWidget {
 
   Widget _buildInputFormBuilder(context, state) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-      Expanded(flex: Constants.flexTextInputCurrencyValue, child: _buildInputText(context)),
+      Expanded(flex: TransactionConstants.flexTextInputCurrencyValue, child: _buildInputText(context)),
       Expanded(child: _buildCurrencyNameText(state)),
     ]);
   }
 
   Expanded _decorate(BlocBuilder inputForm) {
-    return Expanded(flex: Constants.flexTextInput, child: inputForm);
+    return Expanded(flex: TransactionConstants.flexTextInput, child: inputForm);
   }
 
   Padding _buildInputText(BuildContext context) {
@@ -46,12 +46,12 @@ class InputFormRate extends StatelessWidget {
     );
   }
 
-  EdgeInsets _getPadding() => const EdgeInsets.only(left: Constants.padding, right: Constants.padding);
+  EdgeInsets _getPadding() => const EdgeInsets.only(left: TransactionConstants.padding, right: TransactionConstants.padding);
 
   _buildCurrencyNameText(TransactionFormState state) {
-    String currency = state.transaction.currency.value.fold((l) => Constants.invalidValue, (r) => r.toShortString());
+    String currency = state.transaction.currency.value.fold((l) => TransactionConstants.invalidValue, (r) => r.toShortString());
     return Padding(
-      padding: const EdgeInsets.only(right: Constants.padding),
+      padding: const EdgeInsets.only(right: TransactionConstants.padding),
       child: FittedBox(child: Text(currency)),
     );
   }
@@ -63,7 +63,7 @@ InputDecoration _getDecorator(BuildContext context) {
       Icons.account_balance_wallet_sharp,
       color: Theme.of(context).colorScheme.secondary,
     ),
-    labelText: Constants.amountOfTransaction,
+    labelText: TransactionConstants.amountOfTransaction,
   );
 }
 
@@ -71,11 +71,11 @@ void _onChanged(BuildContext context, String value) {
   value = _parseCommaToDot(value);
   var currencyValueFold = ValueConverters().toDoubleFromString(value);
   //zero double is return when somebody e.g paste non number text into number only input text
-  double currencyValueDouble = currencyValueFold.fold((f) => Constants.zeroDouble, (r) => r);
+  double currencyValueDouble = currencyValueFold.fold((f) => TransactionConstants.zeroDouble, (r) => r);
   _setNewCurrencyValue(context, currencyValueDouble);
 }
 
-String _parseCommaToDot(String value) => value.replaceAll(RegExp(Constants.comma), Constants.dot);
+String _parseCommaToDot(String value) => value.replaceAll(RegExp(TransactionConstants.comma), TransactionConstants.dot);
 
 void _setNewCurrencyValue(BuildContext context, double currencyValueDouble) {
   context
@@ -92,9 +92,9 @@ String? _getValidator(BuildContext context) {
 
 String? _getCurrencyValueNotValid(ValueFailure<double> failure) {
   return failure.maybeMap(
-    currencyValueTooBig: (_) => Constants.valueToBig,
-    currencyValueTooSmall: (_) => Constants.valueToSmall,
-    currencyValueNotInteger: (_) => Constants.valueNotInteger,
+    currencyValueTooBig: (_) => TransactionConstants.valueToBig,
+    currencyValueTooSmall: (_) => TransactionConstants.valueToSmall,
+    currencyValueNotInteger: (_) => TransactionConstants.valueNotInteger,
     orElse: () => _getCurrencyValueValid(),
   );
 }

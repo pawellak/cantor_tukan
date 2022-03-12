@@ -23,7 +23,7 @@ ElevatedButton _buildButton(BuildContext context) {
       onPressed: () {
         _navigateToExchangeRatePage(context);
       },
-      child: const FittedBox(child: Text(Constants.cancel)));
+      child: const FittedBox(child: Text(TransactionConstants.cancel)));
 }
 
 void _navigateToExchangeRatePage(BuildContext context) {

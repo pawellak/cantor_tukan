@@ -13,13 +13,13 @@ class Tip extends StatelessWidget {
 
   Expanded _decorate(FittedBox text) {
     return Expanded(
-      flex: Constants.flexTip,
+      flex: TransactionConstants.flexTip,
       child: Padding(
-        padding: const EdgeInsets.only(top: Constants.microPadding),
+        padding: const EdgeInsets.only(top: TransactionConstants.microPadding),
         child: text,
       ),
     );
   }
 
-  FittedBox _buildTipText() => const FittedBox(child: (Text(Constants.tip)));
+  FittedBox _buildTipText() => const FittedBox(child: (Text(TransactionConstants.tip)));
 }

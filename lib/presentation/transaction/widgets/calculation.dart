@@ -19,8 +19,8 @@ class Calculation extends StatelessWidget {
 
   Widget _getBuilder(context, state) {
     String result = Calculations(state).result;
-    if (result == Constants.invalidValue) {
-      result = Constants.currencyNotSet;
+    if (result == TransactionConstants.invalidValue) {
+      result = TransactionConstants.currencyNotSet;
     } else {
       result = _decorateResult(result);
     }
@@ -32,16 +32,16 @@ class Calculation extends StatelessWidget {
 
   Expanded _decorate(BlocBuilder calculation) {
     return Expanded(
-        flex: Constants.flexCalculation,
+        flex: TransactionConstants.flexCalculation,
         child: Padding(
           padding: _getPadding(),
           child: calculation,
         ));
   }
 
-  String _decorateResult(String result) => '${Constants.forWord} $result ${Constants.plnCurrency}';
+  String _decorateResult(String result) => '${TransactionConstants.forWord} $result ${TransactionConstants.plnCurrency}';
 
-  EdgeInsets _getPadding() => const EdgeInsets.only(left: Constants.padding, right: Constants.padding);
+  EdgeInsets _getPadding() => const EdgeInsets.only(left: TransactionConstants.padding, right: TransactionConstants.padding);
 
   Text _buildTextDescription(String result) => Text(result);
 }

@@ -30,7 +30,7 @@ class _ConfirmButtonState extends State<ConfirmButton> {
   }
 
   _getUnauthenticatedState(_) {
-    return const FittedBox(child: Text(Constants.notSignIn, textAlign: TextAlign.center));
+    return const FittedBox(child: Center(child: Text(TransactionConstants.notSignIn, textAlign: TextAlign.center)));
   }
 }
 
@@ -50,7 +50,7 @@ Widget _getBuilder(BuildContext context, TransactionFormState state) {
           : () {
               _buildActiveButton(context);
             },
-      child: const Text(Constants.confirm));
+      child: const Text(TransactionConstants.confirm));
 }
 
 bool _getButtonState(TransactionFormState state) {
@@ -60,6 +60,7 @@ bool _getButtonState(TransactionFormState state) {
     isButtonLock = true;
   }
   return isButtonLock;
+
 }
 
 Null _buildLockButton() => null;

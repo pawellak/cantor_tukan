@@ -27,9 +27,9 @@ class RadioButtons extends StatelessWidget {
 
   Expanded _decorate(BlocBuilder buttons) {
     return Expanded(
-      flex: Constants.flexRadioButtons,
+      flex: TransactionConstants.flexRadioButtons,
       child: Padding(
-          padding: const EdgeInsets.only(left: Constants.smallPadding, right: Constants.smallPadding), child: buttons),
+          padding: const EdgeInsets.only(left: TransactionConstants.smallPadding, right: TransactionConstants.smallPadding), child: buttons),
     );
   }
 
@@ -46,7 +46,7 @@ class RadioButtons extends StatelessWidget {
   List<Widget> _buildButtons(bool isBuyActive, BuildContext context) {
     return [
       _buyButton(isBuyActive, context),
-      const SizedBox(width: Constants.tenPixel),
+      const SizedBox(width: TransactionConstants.tenPixel),
       _sellButton(isBuyActive, context),
     ];
   }
@@ -61,7 +61,7 @@ class RadioButtons extends StatelessWidget {
             onPressed: () {
               _setEnumTransactionTypeToBuy(context);
             },
-            child: const FittedBox(child: Text(Constants.buy))));
+            child: const FittedBox(child: Text(TransactionConstants.buy))));
   }
 
   void _setEnumTransactionTypeToBuy(BuildContext context) {
@@ -79,7 +79,7 @@ class RadioButtons extends StatelessWidget {
             onPressed: () {
               _setEnumTransactionTypeToSell(context);
             },
-            child: const Text(Constants.sell)));
+            child: const Text(TransactionConstants.sell)));
   }
 
   void _setEnumTransactionTypeToSell(BuildContext context) {

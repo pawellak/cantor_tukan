@@ -1,4 +1,4 @@
-abstract class Constants {
+abstract class TransactionConstants {
   static const appBarTitle = 'rezerwacja waluty';
   static const tip = 'chcę: ';
   static const buy = 'kupić';
@@ -17,6 +17,7 @@ abstract class Constants {
   static const notFound = 'nie znaleziono rekordu';
   static const reservationSuccess = 'rezerwacja wykonana poprawnie';
   static const notSignIn = 'zaloguj się w celu rezerwacji waluty';
+  static const background = 'sesja wygasła';
   static const comma = ',';
   static const dot = '.';
   static const forWord = 'za';

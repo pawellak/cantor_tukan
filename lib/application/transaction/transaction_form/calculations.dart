@@ -30,20 +30,20 @@ class Calculations {
   double getRate(bool isTypeBuy, TransactionFormState state) {
     double rate;
     if (isTypeBuy) {
-      rate = state.transaction.priceBuy.value.fold((l) => Constants.zeroDouble, (r) => r);
+      rate = state.transaction.priceBuy.value.fold((l) => TransactionConstants.zeroDouble, (r) => r);
     } else {
-      rate = state.transaction.priceSell.value.fold((l) => Constants.zeroDouble, (r) => r);
+      rate = state.transaction.priceSell.value.fold((l) => TransactionConstants.zeroDouble, (r) => r);
     }
     return rate;
   }
 
   double getCurrencyValue(TransactionFormState state) =>
-      state.transaction.currencyValue.value.fold((l) => Constants.zeroDouble, (r) => r);
+      state.transaction.currencyValue.value.fold((l) => TransactionConstants.zeroDouble, (r) => r);
 
   String getResult(double currencyValue, double rate) {
     String result;
-    if (currencyValue == Constants.zeroDouble) {
-      result = Constants.invalidValue;
+    if (currencyValue == TransactionConstants.zeroDouble) {
+      result = TransactionConstants.invalidValue;
     } else {
       result = (rate * currencyValue).toStringAsFixed(CoreConstants.valueDecimalPlaces);
     }

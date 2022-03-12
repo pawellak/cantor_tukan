@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kantor_tukan/application/timer/timer_bloc.dart';
 import 'package:kantor_tukan/domain/core/core_constants.dart';
 import 'package:kantor_tukan/presentation/exchange_rate/exchange_rate_page.dart';
-import 'package:kantor_tukan/presentation/splash/splash_page.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:kantor_tukan/presentation/transaction/constants.dart';
 
@@ -27,7 +26,7 @@ class TransactionTimer extends StatelessWidget {
 
   Expanded _decorate(BlocConsumer consumer) {
     return Expanded(
-      flex: Constants.flexTimer,
+      flex: TransactionConstants.flexTimer,
       child: Padding(
         padding: _getPadding(),
         child: consumer,
@@ -75,5 +74,5 @@ class TransactionTimer extends StatelessWidget {
 
   Color _getProgressColor(BuildContext context) => Theme.of(context).colorScheme.onPrimary;
 
-  EdgeInsets _getPadding() => const EdgeInsets.all(Constants.smallPadding);
+  EdgeInsets _getPadding() => const EdgeInsets.all(TransactionConstants.smallPadding);
 }

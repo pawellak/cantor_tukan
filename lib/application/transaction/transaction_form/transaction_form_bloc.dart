@@ -136,14 +136,14 @@ class TransactionFormBloc extends Bloc<TransactionFormEvent, TransactionFormStat
 
   EnumTransactionType _getTransactionType() => state.transaction.transactionType.getOrCrash();
 
-  double _getCurrencyValue() => state.transaction.currencyValue.value.fold((l) => Constants.zeroDouble, (r) => r);
+  double _getCurrencyValue() => state.transaction.currencyValue.value.fold((l) => TransactionConstants.zeroDouble, (r) => r);
 
   double _getRate(EnumTransactionType typeOfTransaction) {
     double rate;
     if (typeOfTransaction == EnumTransactionType.buy) {
-      rate = state.transaction.priceBuy.value.fold((l) => Constants.zeroDouble, (r) => r);
+      rate = state.transaction.priceBuy.value.fold((l) => TransactionConstants.zeroDouble, (r) => r);
     } else {
-      rate = state.transaction.priceSell.value.fold((l) => Constants.zeroDouble, (r) => r);
+      rate = state.transaction.priceSell.value.fold((l) => TransactionConstants.zeroDouble, (r) => r);
     }
     return rate;
   }
