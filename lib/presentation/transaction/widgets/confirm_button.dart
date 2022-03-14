@@ -30,7 +30,9 @@ class _ConfirmButtonState extends State<ConfirmButton> {
   }
 
   _getUnauthenticatedState(_) {
-    return const FittedBox(child: Center(child: Text(TransactionConstants.notSignIn, textAlign: TextAlign.center)));
+    return const ElevatedButton(onPressed: null, child: FittedBox(child: Text(TransactionConstants.notSignIn,textAlign: TextAlign.center,)));
+
+    //return const FittedBox(child: Center(child: Text(TransactionConstants.notSignIn, textAlign: TextAlign.center)));
   }
 }
 

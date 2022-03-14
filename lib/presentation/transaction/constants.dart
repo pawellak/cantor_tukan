@@ -16,7 +16,7 @@ abstract class TransactionConstants {
   static const noInternet = 'brak internetu';
   static const notFound = 'nie znaleziono rekordu';
   static const reservationSuccess = 'rezerwacja wykonana poprawnie';
-  static const notSignIn = 'zaloguj się w celu rezerwacji waluty';
+  static const notSignIn = 'zaloguj się w celu \n rezerwacji waluty';
   static const background = 'sesja wygasła';
   static const comma = ',';
   static const dot = '.';
