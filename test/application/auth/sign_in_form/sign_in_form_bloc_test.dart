@@ -58,90 +58,90 @@ void main() {
       ],
     );
   });
-  group('user register with email and password', () {
-    blocTest<SignInFormBloc, SignInFormState>(
-      'should register user',
-      build: () {
-        when(mockIAuthFacade.registerWithEmailAndPassword(
-                emailAddress: EmailAddress(correctEmail),
-                password: Password(correctPassword)))
-            .thenAnswer((realInvocation) => Future.value(const Right(unit)));
-
-        signInFormBloc.add(const SignInFormEvent.emailChanged(correctEmail));
-        signInFormBloc
-            .add(const SignInFormEvent.passwordChanged(correctPassword));
-        return signInFormBloc;
-      },
-      act: (bloc) {
-        bloc.add(const SignInFormEvent.registerWithEmailAndPasswordPressed());
-      },
-      expect: () => [
-        signInFormBloc.state.copyWith(
-            emailAddress: EmailAddress(correctEmail),
-            password: Password(incorrectPassword),
-            showErrorMessages: false,
-            isSubmitting: false,
-            authFailureOrSuccessOption: none()),
-        signInFormBloc.state.copyWith(
-            emailAddress: EmailAddress(correctEmail),
-            password: Password(correctPassword),
-            showErrorMessages: false,
-            isSubmitting: false,
-            authFailureOrSuccessOption: none()),
-        signInFormBloc.state.copyWith(
-            emailAddress: EmailAddress(correctEmail),
-            password: Password(correctPassword),
-            isSubmitting: true,
-            showErrorMessages: false,
-            authFailureOrSuccessOption: none()),
-        signInFormBloc.state.copyWith(
-            emailAddress: EmailAddress(correctEmail),
-            password: Password(correctPassword),
-            showErrorMessages: false,
-            isSubmitting: false,
-            authFailureOrSuccessOption: optionOf(const Right(unit)))
-      ],
-    );
-
-    blocTest<SignInFormBloc, SignInFormState>(
-      'should not register user',
-      build: () {
-        when(mockIAuthFacade.registerWithEmailAndPassword(
-                emailAddress: EmailAddress(incorrectEmail),
-                password: Password(correctPassword)))
-            .thenAnswer((realInvocation) => Future.value(
-                const Left(AuthFailure.invalidEmailAndPasswordCombination())));
-
-        signInFormBloc.add(const SignInFormEvent.emailChanged(incorrectEmail));
-        signInFormBloc
-            .add(const SignInFormEvent.passwordChanged(correctPassword));
-        return signInFormBloc;
-      },
-      act: (bloc) {
-        bloc.add(const SignInFormEvent.registerWithEmailAndPasswordPressed());
-      },
-      expect: () => [
-        signInFormBloc.state.copyWith(
-          emailAddress: EmailAddress(incorrectEmail),
-          password: Password(incorrectPassword),
-          showErrorMessages: false,
-          isSubmitting: false,
-          authFailureOrSuccessOption: none(),
-        ),
-        signInFormBloc.state.copyWith(
-            emailAddress: EmailAddress(incorrectEmail),
-            password: Password(correctPassword),
-            showErrorMessages: false,
-            isSubmitting: false,
-            authFailureOrSuccessOption: none()),
-        signInFormBloc.state.copyWith(
-            emailAddress: EmailAddress(incorrectEmail),
-            password: Password(correctPassword),
-            isSubmitting: false,
-            showErrorMessages: true),
-      ],
-    );
-  });
+  // group('user register with email and password', () {
+  //   blocTest<SignInFormBloc, SignInFormState>(
+  //     'should register user',
+  //     build: () {
+  //       when(mockIAuthFacade.registerWithEmailAndPassword(
+  //               emailAddress: EmailAddress(correctEmail),
+  //               password: Password(correctPassword)))
+  //           .thenAnswer((realInvocation) => Future.value(const Right(unit)));
+  //
+  //       signInFormBloc.add(const SignInFormEvent.emailChanged(correctEmail));
+  //       signInFormBloc
+  //           .add(const SignInFormEvent.passwordChanged(correctPassword));
+  //       return signInFormBloc;
+  //     },
+  //     act: (bloc) {
+  //       bloc.add(const SignInFormEvent.registerWithEmailAndPasswordPressed());
+  //     },
+  //     expect: () => [
+  //       signInFormBloc.state.copyWith(
+  //           emailAddress: EmailAddress(correctEmail),
+  //           password: Password(incorrectPassword),
+  //           showErrorMessages: false,
+  //           isSubmitting: false,
+  //           authFailureOrSuccessOption: none()),
+  //       signInFormBloc.state.copyWith(
+  //           emailAddress: EmailAddress(correctEmail),
+  //           password: Password(correctPassword),
+  //           showErrorMessages: false,
+  //           isSubmitting: false,
+  //           authFailureOrSuccessOption: none()),
+  //       signInFormBloc.state.copyWith(
+  //           emailAddress: EmailAddress(correctEmail),
+  //           password: Password(correctPassword),
+  //           isSubmitting: true,
+  //           showErrorMessages: false,
+  //           authFailureOrSuccessOption: none()),
+  //       signInFormBloc.state.copyWith(
+  //           emailAddress: EmailAddress(correctEmail),
+  //           password: Password(correctPassword),
+  //           showErrorMessages: false,
+  //           isSubmitting: false,
+  //           authFailureOrSuccessOption: optionOf(const Right(unit)))
+  //     ],
+  //   );
+  //
+  //   blocTest<SignInFormBloc, SignInFormState>(
+  //     'should not register user',
+  //     build: () {
+  //       when(mockIAuthFacade.registerWithEmailAndPassword(
+  //               emailAddress: EmailAddress(incorrectEmail),
+  //               password: Password(correctPassword)))
+  //           .thenAnswer((realInvocation) => Future.value(
+  //               const Left(AuthFailure.invalidEmailAndPasswordCombination())));
+  //
+  //       signInFormBloc.add(const SignInFormEvent.emailChanged(incorrectEmail));
+  //       signInFormBloc
+  //           .add(const SignInFormEvent.passwordChanged(correctPassword));
+  //       return signInFormBloc;
+  //     },
+  //     act: (bloc) {
+  //       bloc.add(const SignInFormEvent.registerWithEmailAndPasswordPressed());
+  //     },
+  //     expect: () => [
+  //       signInFormBloc.state.copyWith(
+  //         emailAddress: EmailAddress(incorrectEmail),
+  //         password: Password(incorrectPassword),
+  //         showErrorMessages: false,
+  //         isSubmitting: false,
+  //         authFailureOrSuccessOption: none(),
+  //       ),
+  //       signInFormBloc.state.copyWith(
+  //           emailAddress: EmailAddress(incorrectEmail),
+  //           password: Password(correctPassword),
+  //           showErrorMessages: false,
+  //           isSubmitting: false,
+  //           authFailureOrSuccessOption: none()),
+  //       signInFormBloc.state.copyWith(
+  //           emailAddress: EmailAddress(incorrectEmail),
+  //           password: Password(correctPassword),
+  //           isSubmitting: false,
+  //           showErrorMessages: true),
+  //     ],
+  //   );
+  // });
   group('user sign in with email nad password',() {
     blocTest<SignInFormBloc, SignInFormState>(
       'should not sign in user',

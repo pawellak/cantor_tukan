@@ -8,6 +8,7 @@ part of 'exchange_rate_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+
 Map<String, dynamic> _$ExchangeRateDtoToJson(ExchangeRateDto instance) =>
     <String, dynamic>{
       'currency': instance.currency,

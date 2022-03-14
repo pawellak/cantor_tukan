@@ -1,7 +1,6 @@
 // ignore_for_file: invalid_use_of_visible_for_testing_member
 
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -26,13 +25,33 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         signInEvent.map(
           emailChanged: _emailChanged,
           passwordChanged: _passwordChanged,
-          registerWithEmailAndPasswordPressed: _registerWithEmailAndPassword,
           signInWithEmailAndPasswordPressed: _signInWithEmailAndPassword,
           signInWithGooglePressed: _signInWithGoogle,
         );
       },
     );
   }
+
+  // void _passwordRepeatCheckEqual(PasswordRepeatCheckEqual e) {
+  //   final password = state.password.value.fold((l) => '', (r) => r);
+  //   final passwordRepeat = state.repeatPassword.value.fold((l) => '', (r) => r);
+  //
+  //   if (_isPasswordsEqual(password, passwordRepeat)) {
+  //     emit(state.copyWith(
+  //       isPasswordsEqual: true,
+  //       showErrorMessages: false,
+  //       authFailureOrSuccessOption: none(),
+  //     ));
+  //   } else {
+  //     emit(state.copyWith(
+  //       isPasswordsEqual: false,
+  //       showErrorMessages: true,
+  //       authFailureOrSuccessOption: none(),
+  //     ));
+  //   }
+  // }
+
+  // bool _isPasswordsEqual(String password, String passwordRepeat) => password == passwordRepeat;
 
   void _emailChanged(EmailChanged e) {
     emit(state.copyWith(
@@ -48,9 +67,17 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     ));
   }
 
-  void _registerWithEmailAndPassword(_) {
-    _performActionOnAuthFacadeWithEmailAndPassword(_authFacade.registerWithEmailAndPassword);
-  }
+  // void _registerWithEmailAndPassword(_) {
+  //   emit(state.copyWith(authFailureOrSuccessOption: none()));
+  //   bool isPasswordsEqual = state.isPasswordsEqual;
+  //
+  //   if (isPasswordsEqual) {
+  //     _performActionOnAuthFacadeWithEmailAndPassword(_authFacade.registerWithEmailAndPassword);
+  //   } else {
+  //     emit(state.copyWith(
+  //         isPasswordsEqual: false, authFailureOrSuccessOption: optionOf(const Left(AuthFailure.passwordsNotEqual()))));
+  //   }
+  // }
 
   void _signInWithEmailAndPassword(_) {
     _performActionOnAuthFacadeWithEmailAndPassword(_authFacade.signInWithEmailAndPassword);
@@ -67,10 +94,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   }
 
   void _performActionOnAuthFacadeWithEmailAndPassword(
-    Future<Either<AuthFailure, Unit>> Function({
-      required EmailAddress emailAddress,
-      required Password password,
-    })
+    Future<Either<AuthFailure, Unit>> Function({required EmailAddress emailAddress, required Password password})
         forwardedCall,
   ) async {
     Either<AuthFailure, Unit>? failureOrSuccess;

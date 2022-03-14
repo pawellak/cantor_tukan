@@ -1,8 +1,7 @@
 // ignore_for_file: implementation_imports
 
 import 'package:flutter/material.dart';
-import 'package:kantor_tukan/application/auth/sign_in_form/sign_in_form_bloc.dart';
-import 'package:provider/src/provider.dart';
+import 'package:kantor_tukan/presentation/register/register_page.dart';
 import 'package:kantor_tukan/presentation/sign_in/constants.dart';
 
 class ButtonRegisterEmail extends StatelessWidget {
@@ -14,7 +13,7 @@ class ButtonRegisterEmail extends StatelessWidget {
   }
 
   void _onRegisterPressed(BuildContext context) {
-    return context.read<SignInFormBloc>().add(const SignInFormEvent.registerWithEmailAndPasswordPressed());
+    Navigator.of(context).popAndPushNamed(RegisterPage.routeName);
   }
 
   Text _buildTextDescription() => const Text(Constants.register);

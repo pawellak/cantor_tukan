@@ -20,26 +20,41 @@ class _ExchangeRatePageState extends State<ExchangeRatePage> with WidgetsBinding
   @override
   void initState() {
     super.initState();
+    _addAppLifeCycleObserver();
+  }
+
+  void _addAppLifeCycleObserver() {
     WidgetsBinding.instance!.addObserver(this);
   }
 
   @override
   Widget build(BuildContext context) {
     _startTimer(context);
+
     return BlocProvider(
-      create: (context) => getIt<ExchangeRateBloc>()..add(const ExchangeRateEvent.fetch()),
-      child: WillPopScope(
-        onWillPop: () async => false,
-        child: const Scaffold(
-          appBar: ExchangeRateAppBar(),
-          body: ExchangeRateForm(),
-        ),
-      ),
+      create: _fetchExchangeRate,
+      child: _buildScaffoldWithWillPopScope(),
     );
   }
 
   void _startTimer(BuildContext context) {
     context.read<TimerBloc>().add(const TimerEvent.start());
+  }
+
+  ExchangeRateBloc _fetchExchangeRate(context) => getIt<ExchangeRateBloc>()..add(const ExchangeRateEvent.fetch());
+
+  WillPopScope _buildScaffoldWithWillPopScope() {
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: _buildScaffold(),
+    );
+  }
+
+  Scaffold _buildScaffold() {
+    return const Scaffold(
+      appBar: ExchangeRateAppBar(),
+      body: ExchangeRateForm(),
+    );
   }
 
   @override
@@ -50,7 +65,11 @@ class _ExchangeRatePageState extends State<ExchangeRatePage> with WidgetsBinding
 
   @override
   dispose() {
-    WidgetsBinding.instance!.removeObserver(this);
+    _removeAppLifeCycleObserver();
     super.dispose();
+  }
+
+  void _removeAppLifeCycleObserver() {
+    WidgetsBinding.instance!.removeObserver(this);
   }
 }

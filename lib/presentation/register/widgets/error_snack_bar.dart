@@ -1,19 +1,24 @@
 import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:kantor_tukan/domain/auth/auth_failure.dart';
-import 'package:kantor_tukan/presentation/sign_in/constants.dart';
+
+import '../constants.dart';
 
 class ErrorSnackBar {
   void call(BuildContext context, AuthFailure failure) {
     FlushbarHelper.createError(
-        message: failure.map(cancelledByUser: (_) {
-      return Constants.canceled;
+        message: failure.map(noInternet: (_) {
+      return RegisterConstants.noInternet;
+    }, passwordsNotEqual: (_) {
+      return RegisterConstants.passwordsNotEqual;
+    }, cancelledByUser: (_) {
+      return RegisterConstants.canceled;
     }, serverError: (_) {
-      return Constants.serverError;
+      return RegisterConstants.serverError;
     }, emailAlreadyInUse: (_) {
-      return Constants.emailInUse;
+      return RegisterConstants.emailInUse;
     }, invalidEmailAndPasswordCombination: (_) {
-      return Constants.invalidEmailOrPassword;
+      return RegisterConstants.invalidEmailOrPassword;
     })).show(context);
   }
 }

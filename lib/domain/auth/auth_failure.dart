@@ -10,6 +10,10 @@ abstract class AuthFailure with _$AuthFailure {
 
   const factory AuthFailure.invalidEmailAndPasswordCombination() = InvalidEmailAndPasswordCombination;
 
+  const factory AuthFailure.passwordsNotEqual() = PasswordsNotEqual;
+
+  const factory AuthFailure.noInternet() = NoInternet;
+
   // Servers as a "catch all" failure if we don't know what exactly went wrong
   const factory AuthFailure.serverError() = ServerError;
 }

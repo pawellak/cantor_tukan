@@ -14,13 +14,14 @@ import 'package:internet_connection_checker/internet_connection_checker.dart'
     as _i14;
 
 import 'application/auth/app_auth_bloc.dart' as _i18;
+import 'application/auth/register/register_form_bloc.dart' as _i22;
 import 'application/auth/sign_in_form/sign_in_form_bloc.dart' as _i15;
-import 'application/exchange_form/exchange_rate_bloc.dart' as _i23;
+import 'application/exchange_form/exchange_rate_bloc.dart' as _i24;
 import 'application/internet/internet_bloc.dart' as _i21;
 import 'application/transaction/transaction_actor/transaction_actor_bloc.dart'
     as _i16;
 import 'application/transaction/transaction_form/transaction_form_bloc.dart'
-    as _i22;
+    as _i23;
 import 'application/transaction/transaction_watcher/transaction_watcher_bloc.dart'
     as _i17;
 import 'domain/auth/i_auth_facade.dart' as _i8;
@@ -29,9 +30,9 @@ import 'domain/internet/i_internet_connection_checker.dart' as _i19;
 import 'domain/transaction/i_transaction_repository.dart' as _i12;
 import 'infrastructure/auth/firebase_auth_facade.dart' as _i9;
 import 'infrastructure/auth/firebase_user_mapper.dart' as _i6;
-import 'infrastructure/core/firebase_injectable_module.dart' as _i25;
-import 'infrastructure/core/http_injectable_module.dart' as _i24;
-import 'infrastructure/core/internet_injectable_module.dart' as _i26;
+import 'infrastructure/core/firebase_injectable_module.dart' as _i26;
+import 'infrastructure/core/http_injectable_module.dart' as _i25;
+import 'infrastructure/core/internet_injectable_module.dart' as _i27;
 import 'infrastructure/exchange_rate/cantor_remote_data_source.dart' as _i11;
 import 'infrastructure/internet/internet_checker.dart' as _i20;
 import 'infrastructure/transaction/transaction_repository.dart' as _i13;
@@ -75,17 +76,19 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       _i20.InternetChecker(get<_i14.InternetConnectionChecker>()));
   gh.factory<_i21.InternetBloc>(
       () => _i21.InternetBloc(get<_i19.IInternetConnectionChecker>()));
-  gh.factory<_i22.TransactionFormBloc>(() => _i22.TransactionFormBloc(
+  gh.factory<_i22.RegisterFormBloc>(() => _i22.RegisterFormBloc(
+      get<_i8.IAuthFacade>(), get<_i19.IInternetConnectionChecker>()));
+  gh.factory<_i23.TransactionFormBloc>(() => _i23.TransactionFormBloc(
       get<_i12.ITransactionRepository>(),
       get<_i19.IInternetConnectionChecker>()));
-  gh.factory<_i23.ExchangeRateBloc>(() => _i23.ExchangeRateBloc(
+  gh.factory<_i24.ExchangeRateBloc>(() => _i24.ExchangeRateBloc(
       get<_i10.ICantorRemoteDataSource>(),
       get<_i19.IInternetConnectionChecker>()));
   return get;
 }
 
-class _$HttpInjectableModule extends _i24.HttpInjectableModule {}
+class _$HttpInjectableModule extends _i25.HttpInjectableModule {}
 
-class _$FirebaseInjectableModule extends _i25.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i26.FirebaseInjectableModule {}
 
-class _$InternetInjectableModule extends _i26.InternetInjectableModule {}
+class _$InternetInjectableModule extends _i27.InternetInjectableModule {}

@@ -8,6 +8,7 @@ import 'package:kantor_tukan/presentation/exchange_rate/exchange_rate_page.dart'
 import 'package:kantor_tukan/presentation/information/information_page.dart';
 import 'package:kantor_tukan/presentation/internet/internet_page.dart';
 import 'package:kantor_tukan/presentation/orders/orders_page.dart';
+import 'package:kantor_tukan/presentation/register/register_page.dart';
 import 'package:kantor_tukan/presentation/sign_in/sign_in_page.dart';
 import 'package:kantor_tukan/presentation/splash/splash_page.dart';
 import 'package:kantor_tukan/presentation/transaction/transaction_page.dart';
@@ -48,7 +49,8 @@ class AppWidget extends StatelessWidget {
       TransactionPage.routeName: (context) => const TransactionPage(),
       InternetPage.routeName: (context) => const InternetPage(),
       InformationPage.routeName: (context) => const InformationPage(),
-      OrdersPage.routeName: (context) => const OrdersPage()
+      OrdersPage.routeName: (context) => const OrdersPage(),
+      RegisterPage.routeName: (context) => const RegisterPage(),
     };
   }
 }

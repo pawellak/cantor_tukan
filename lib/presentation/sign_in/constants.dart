@@ -4,6 +4,7 @@ abstract class Constants {
   static const signInWithGoogle = 'ZALOGUJ Z GOOGLE';
   static const email = 'email';
   static const emailNotValid = 'nieprawidłowy adres e-mail';
+  static const noInternet = 'brak internetu';
   static const password = 'haslo';
   static const passwordNotValid = 'haslo zbyt któtkie.';
   static const logo = 'LOGOWANIE';
@@ -14,6 +15,7 @@ abstract class Constants {
   static const emptySpace = 8.0;
 
   static const canceled = 'anuluwano operację';
+  static const passwordsNotEqual = 'hasła nie są jednakowe';
   static const serverError = 'błąd servera';
   static const emailInUse = 'adres email w użyciu';
   static const invalidEmailOrPassword = 'niepawidłowe dane logowania';

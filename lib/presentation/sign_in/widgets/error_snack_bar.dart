@@ -6,7 +6,11 @@ import 'package:kantor_tukan/presentation/sign_in/constants.dart';
 class ErrorSnackBar {
   void call(BuildContext context, AuthFailure failure) {
     FlushbarHelper.createError(
-        message: failure.map(cancelledByUser: (_) {
+        message: failure.map(noInternet: (_){
+          return Constants.noInternet;
+        },passwordsNotEqual: (_) {
+      return Constants.passwordsNotEqual;
+    }, cancelledByUser: (_) {
       return Constants.canceled;
     }, serverError: (_) {
       return Constants.serverError;

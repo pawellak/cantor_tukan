@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:kantor_tukan/presentation/sign_in/constants.dart';
+import 'package:kantor_tukan/presentation/register/constants.dart';
 
 class LogoRegister extends StatelessWidget {
   const LogoRegister({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
-      height: Constants.logoSpace,
+    return  const SizedBox(
+      height: RegisterConstants.logoSpace,
       child: Center(
         child: Text(
-          Constants.logo,
-          style: TextStyle(fontSize: Constants.logoSize),
+          RegisterConstants.registerUpper,
+          style: TextStyle(fontSize: RegisterConstants.logoSize),
         ),
       ),
     );

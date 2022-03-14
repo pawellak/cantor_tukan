@@ -1,8 +1,8 @@
 // ignore_for_file: implementation_imports
 import 'package:flutter/material.dart';
-import 'package:kantor_tukan/application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kantor_tukan/application/auth/register/register_form_bloc.dart';
 import 'package:kantor_tukan/presentation/register/constants.dart';
-import 'package:provider/src/provider.dart';
 
 class ButtonRegisterEmail extends StatelessWidget {
   const ButtonRegisterEmail({Key? key}) : super(key: key);
@@ -13,9 +13,8 @@ class ButtonRegisterEmail extends StatelessWidget {
   }
 
   void _onRegisterPressed(BuildContext context) {
-    return context.read<SignInFormBloc>().add(const SignInFormEvent.registerWithEmailAndPasswordPressed());
+    context.read<RegisterFormBloc>().add(const RegisterFormEvent.registerWithEmailAndPasswordPressed());
   }
 
-  Text _buildTextDescription() => const Text(RegisterConstants.registerButton);
+  Text _buildTextDescription() => const Text(RegisterConstants.registerUpper);
 }
-

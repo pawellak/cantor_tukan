@@ -5,8 +5,8 @@ import 'package:kantor_tukan/domain/core/failures.dart';
 import 'package:kantor_tukan/presentation/register/constants.dart';
 import 'package:provider/src/provider.dart';
 
-class InputPassword extends StatelessWidget {
-  const InputPassword({Key? key}) : super(key: key);
+class InputRepeatPassword extends StatelessWidget {
+  const InputRepeatPassword({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,16 +22,16 @@ class InputPassword extends StatelessWidget {
   InputDecoration _getDecoration(BuildContext context) {
     return InputDecoration(
       prefixIcon: Icon(Icons.lock, color: Theme.of(context).colorScheme.secondary),
-      labelText: RegisterConstants.password,
+      labelText: RegisterConstants.passwordRepeat,
     );
   }
 
   void onPasswordChanged(BuildContext context, String value) {
-    return context.read<RegisterFormBloc>().add(RegisterFormEvent.passwordChanged(value));
+    return context.read<RegisterFormBloc>().add(RegisterFormEvent.passwordRepeatChanged(value));
   }
 
   String? _getValidator(BuildContext context) {
-    return context.read<RegisterFormBloc>().state.password.value.fold(
+    return context.read<RegisterFormBloc>().state.passwordRepeat.value.fold(
           (f) => _buildPasswordNotValid(f),
           (_) => _buildPasswordValid(),
         );
