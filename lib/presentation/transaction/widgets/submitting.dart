@@ -21,7 +21,6 @@ class Submitting extends StatelessWidget {
     }
   }
 
-
   bool isStateSubmitting(TransactionFormState state) => state.isSubmitting == true;
 
   Padding _buildLoadingState() {

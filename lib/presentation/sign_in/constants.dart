@@ -2,11 +2,11 @@ abstract class Constants {
   static const signIn = 'ZALOGUJ';
   static const register = 'REJESTRACJA';
   static const signInWithGoogle = 'ZALOGUJ Z GOOGLE';
-  static const email = 'email';
+  static const email = 'e-mail';
   static const emailNotValid = 'nieprawidłowy adres e-mail';
   static const noInternet = 'brak internetu';
-  static const password = 'haslo';
-  static const passwordNotValid = 'haslo zbyt któtkie.';
+  static const password = 'hasło';
+  static const passwordNotValid = 'hasło zbyt któtkie';
   static const logo = 'LOGOWANIE';
 
   static const padding = 8.0;
@@ -17,6 +17,6 @@ abstract class Constants {
   static const canceled = 'anuluwano operację';
   static const passwordsNotEqual = 'hasła nie są jednakowe';
   static const serverError = 'błąd servera';
-  static const emailInUse = 'adres email w użyciu';
+  static const emailInUse = 'adres e-mail w użyciu';
   static const invalidEmailOrPassword = 'niepawidłowe dane logowania';
 }

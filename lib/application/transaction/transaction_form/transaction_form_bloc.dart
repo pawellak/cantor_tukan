@@ -45,6 +45,9 @@ class TransactionFormBloc extends Bloc<TransactionFormEvent, TransactionFormStat
     emit(state.copyWith(transaction: state.transaction.copyWith(currencyValue: e.currencyValue)));
   }
 
+
+
+
   void _transactionConfirmed(_TransactionConfirmed _) async {
     bool _showErrorMessage = true;
     Either<TransactionFailure, Unit>? _failureOrSuccess;
@@ -79,6 +82,7 @@ class TransactionFormBloc extends Bloc<TransactionFormEvent, TransactionFormStat
           showErrorMessages: _showErrorMessage,
           transactionFailureOrSuccessOption: optionOf(_failureOrSuccess)),
     );
+
   }
 
   void _exchangeRateSelected(_ExchangeRateSelected e) async {
@@ -136,7 +140,8 @@ class TransactionFormBloc extends Bloc<TransactionFormEvent, TransactionFormStat
 
   EnumTransactionType _getTransactionType() => state.transaction.transactionType.getOrCrash();
 
-  double _getCurrencyValue() => state.transaction.currencyValue.value.fold((l) => TransactionConstants.zeroDouble, (r) => r);
+  double _getCurrencyValue() =>
+      state.transaction.currencyValue.value.fold((l) => TransactionConstants.zeroDouble, (r) => r);
 
   double _getRate(EnumTransactionType typeOfTransaction) {
     double rate;

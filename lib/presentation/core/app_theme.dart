@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 const borderRadius = 8.0;
 const elevationOfAppBar = 5.0;
 const borderWidthWhenActive = 2.0;
-const mainColor = Colors.amber;
+const mainColor = Colors.green;
 const surfaceColor = Colors.grey;
 const secondaryColor = Colors.black87;
 const googleColor = Colors.blue;

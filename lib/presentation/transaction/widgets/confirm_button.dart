@@ -21,18 +21,25 @@ class _ConfirmButtonState extends State<ConfirmButton> {
   }
 
   Widget _getBuilder(context, state) {
+
+
+
     return state.map(
-        initial: _getUnauthenticatedState,
         authenticated: (_) {
           return _buildAuthenticatedButton(context);
         },
+        initial: _getUnauthenticatedState,
         unauthenticated: _getUnauthenticatedState);
   }
 
   _getUnauthenticatedState(_) {
-    return const ElevatedButton(onPressed: null, child: FittedBox(child: Text(TransactionConstants.notSignIn,textAlign: TextAlign.center,)));
-
-    //return const FittedBox(child: Center(child: Text(TransactionConstants.notSignIn, textAlign: TextAlign.center)));
+    return const ElevatedButton(
+        onPressed: null,
+        child: FittedBox(
+            child: Text(
+          TransactionConstants.notSignIn,
+          textAlign: TextAlign.center,
+        )));
   }
 }
 
@@ -46,23 +53,24 @@ Widget _getBuilder(BuildContext context, TransactionFormState state) {
   bool isButtonLock = _getButtonState(state);
 
   return ElevatedButton(
-      style: _style(context),
-      onPressed: isButtonLock
-          ? _buildLockButton()
-          : () {
-              _buildActiveButton(context);
-            },
-      child: const Text(TransactionConstants.confirm));
+    style: _style(context),
+    onPressed: isButtonLock
+        ? _buildLockButton()
+        : () {
+            _buildActiveButton(context);
+          },
+    child: _buildButtonDescription(),
+  );
 }
+
+Text _buildButtonDescription() => const Text(TransactionConstants.confirm);
 
 bool _getButtonState(TransactionFormState state) {
   bool isButtonLock = false;
-
   if (state.isSubmitting) {
     isButtonLock = true;
   }
   return isButtonLock;
-
 }
 
 Null _buildLockButton() => null;

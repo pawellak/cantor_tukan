@@ -1,12 +1,11 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: non_constant_identifier_names
-
 part of 'exchange_rate_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
+
 
 
 Map<String, dynamic> _$ExchangeRateDtoToJson(ExchangeRateDto instance) =>

@@ -10,6 +10,7 @@ import 'package:kantor_tukan/domain/auth/i_auth_facade.dart';
 import 'package:kantor_tukan/domain/auth/value_object.dart';
 import 'package:kantor_tukan/infrastructure/auth/firebase_user_mapper.dart';
 
+
 @prod
 @LazySingleton(as: IAuthFacade)
 class FirebaseAuthFacade implements IAuthFacade {

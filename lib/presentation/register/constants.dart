@@ -12,7 +12,7 @@ abstract class RegisterConstants {
   static const canceled = 'anuluwano operację';
   static const serverError = 'błąd servera';
   static const noInternet = 'brak internetu';
-  static const emailInUse = 'adres email w użyciu';
+  static const emailInUse = 'adres e-mail w użyciu';
   static const invalidEmailOrPassword = 'niepawidłowe dane logowania';
 
   static const logoSpace = 120.0;
