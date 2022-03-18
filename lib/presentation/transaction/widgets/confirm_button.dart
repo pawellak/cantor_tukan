@@ -21,9 +21,6 @@ class _ConfirmButtonState extends State<ConfirmButton> {
   }
 
   Widget _getBuilder(context, state) {
-
-
-
     return state.map(
         authenticated: (_) {
           return _buildAuthenticatedButton(context);

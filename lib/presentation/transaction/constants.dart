@@ -34,7 +34,7 @@ abstract class TransactionConstants {
   static const timerDurationInSec = 30;
 
   static const flexTimer = 1;
-  static const flexLogo = 5;
+  static const flexLogo = 10;
   static const flexTip = 2;
   static const flexRadioButtons = 3;
   static const flexTextInput = 4;

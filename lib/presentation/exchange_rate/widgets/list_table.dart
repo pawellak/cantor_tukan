@@ -39,7 +39,7 @@ class ListTable extends StatelessWidget {
     );
   }
 
-  double _getWidgetHeight(double _heightOfScreen) => _heightOfScreen / Constants.divisorOfTileRow;
+  double _getWidgetHeight(double _heightOfScreen) => _heightOfScreen / ExchangeRateConstants.divisorOfTileRow;
 
   SingleExchangeRate _buildSingleExchangeRate(int index, ExchangeRate exchangeRate) {
     return SingleExchangeRate(
@@ -51,5 +51,5 @@ class ListTable extends StatelessWidget {
 
   bool _isSingleCurrencyFailure(ExchangeRate exchangeRate) => exchangeRate.failureOption.isSome();
 
-  Center _buildInvalidCurrency() => const Center(child: Text(Constants.invalidCurrency));
+  Center _buildInvalidCurrency() => const Center(child: Text(ExchangeRateConstants.invalidCurrency));
 }

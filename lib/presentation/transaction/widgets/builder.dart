@@ -25,7 +25,6 @@ class TransactionBuilder {
         children: const [
           TransactionTimer(),
           Logo(),
-          Tip(),
           RadioButtons(),
           InputFormRate(),
           Calculation(),

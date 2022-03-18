@@ -26,7 +26,7 @@ class ExchangeRateAppBar extends StatelessWidget with PreferredSizeWidget {
   AppBar _isSubmitting() {
     return AppBar(
 
-      title: const Text(Constants.appBarLoading),
+      title: const Text(ExchangeRateConstants.appBarLoading),
       automaticallyImplyLeading: false,
     );
   }
@@ -38,15 +38,15 @@ class ExchangeRateAppBar extends StatelessWidget with PreferredSizeWidget {
 
   String _getDate(ExchangeRateState state) {
     final dateOfUpdate = state.exchangeDate.updateDate.value.fold((l) {
-      return DateTime(Constants.invalidDate);
+      return DateTime(ExchangeRateConstants.invalidDate);
     }, (r) => r);
     final dailyDateFold = ValueConverters().toDailyDateStringFromDateTime(dateOfUpdate);
-    final dailyDate = dailyDateFold.fold((l) => Constants.errorOccurred, (r) => r);
+    final dailyDate = dailyDateFold.fold((l) => ExchangeRateConstants.errorOccurred, (r) => r);
     return dailyDate;
   }
 
   FittedBox _buildTitle(String dailyDate) {
-    const description = Constants.dateOfUpdate;
+    const description = ExchangeRateConstants.dateOfUpdate;
     return FittedBox(child: Text("$description $dailyDate"));
   }
 }

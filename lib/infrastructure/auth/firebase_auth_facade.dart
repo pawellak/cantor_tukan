@@ -10,7 +10,6 @@ import 'package:kantor_tukan/domain/auth/i_auth_facade.dart';
 import 'package:kantor_tukan/domain/auth/value_object.dart';
 import 'package:kantor_tukan/infrastructure/auth/firebase_user_mapper.dart';
 
-
 @prod
 @LazySingleton(as: IAuthFacade)
 class FirebaseAuthFacade implements IAuthFacade {
@@ -91,7 +90,7 @@ class FirebaseAuthFacade implements IAuthFacade {
       await _firebaseAuth.signInWithCredential(authCredential);
 
       return const Right(unit);
-    } on PlatformException catch (_) {
+    } on PlatformException catch (e) {
       return (const Left(AuthFailure.serverError()));
     } catch (e) {
       return const Left(AuthFailure.serverError());

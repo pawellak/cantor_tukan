@@ -6,6 +6,7 @@ class CoreConstants {
 
   static const finishTimeTimer = 0;
   static const valueDecimalPlaces = 2;
+  static const valueDecimalPlacesTitle = 5;
 
   static const maxCurrencyPriceNumbers = 10.0;
   static const minCurrencyPriceNumbers = 0.0;

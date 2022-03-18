@@ -2,14 +2,25 @@ import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
-
-
 class ExchangeTitle {
-  Expanded buildFlag() => const Expanded(child: Text(Constants.flag, textAlign: TextAlign.center));
+  Expanded buildFlag() => _decorateText(ExchangeRateConstants.flag);
 
-  Expanded buildCurrency() => const Expanded(child: Text(Constants.currency, textAlign: TextAlign.center));
+  Expanded buildCurrency() => _decorateText(ExchangeRateConstants.currency);
 
-  Expanded buildCustomerSell() => const Expanded(child: Text(Constants.customerSell, textAlign: TextAlign.center));
+  Expanded buildCustomerSell() => _decorateText(ExchangeRateConstants.customerSell);
 
-  Expanded buildCustomerBuy() => const Expanded(child: Text(Constants.customerBuy, textAlign: TextAlign.center));
+  Expanded buildCustomerBuy() => _decorateText(ExchangeRateConstants.customerBuy);
+
+  Expanded _decorateText(String text) {
+    return Expanded(
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Text(
+          text,
+          textAlign: TextAlign.center,
+          style: const TextStyle(fontSize: ExchangeRateConstants.titleNameFontSize),
+        ),
+      ),
+    );
+  }
 }

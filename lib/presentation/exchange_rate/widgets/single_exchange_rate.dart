@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kantor_tukan/application/exchange_form/exchange_rate_bloc.dart';
+import 'package:kantor_tukan/domain/core/core_constants.dart';
 import 'package:kantor_tukan/domain/exchange_rate/exchange_rate.dart';
 import 'package:kantor_tukan/infrastructure/exchange_rate/links.dart';
 import 'package:kantor_tukan/domain/core/enums.dart';
@@ -56,24 +57,42 @@ class SingleExchangeRate extends StatelessWidget {
   Expanded _buildFlag() {
     final String nameOfCurrency = exchangeRate.currency.getOrCrash().toShortString();
     return Expanded(
-        child: Image.asset(
-      '${Links.flagsPath}$nameOfCurrency${Links.flagsExtension}',
-      height: Constants.heightOfFlag,
-    ));
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ClipRRect(
+          clipBehavior: Clip.antiAlias,
+          borderRadius: BorderRadius.circular(11), // Image border
+          child: Image.asset(
+            '${Links.flagsPath}$nameOfCurrency${Links.flagsExtension}',
+            fit: BoxFit.fitHeight,
+            height: ExchangeRateConstants.heightOfFlag,
+          ),
+        ),
+      ),
+    );
   }
 
   Expanded _buildNameOfCurrency() {
     final String nameOfCurrency = exchangeRate.currency.getOrCrash().toShortString();
-    return Expanded(child: Text(nameOfCurrency, textAlign: TextAlign.center));
+    return _decorateText(nameOfCurrency, ExchangeRateConstants.currencyPadding);
   }
 
   Expanded _buildBuyPrice() {
-    final String buyPrice = exchangeRate.priceBuy.getOrCrash().toString();
-    return Expanded(child: Text(buyPrice, textAlign: TextAlign.center));
+    final String buyPrice = exchangeRate.priceBuy.getOrCrash().toStringAsFixed(CoreConstants.valueDecimalPlacesTitle);
+    return _decorateText(buyPrice, ExchangeRateConstants.valuePadding);
   }
 
   Expanded _buildSellPrice() {
-    final String sellPrice = exchangeRate.priceSell.getOrCrash().toString();
-    return Expanded(child: Text(sellPrice, textAlign: TextAlign.center));
+    final String sellPrice = exchangeRate.priceSell.getOrCrash().toStringAsFixed(CoreConstants.valueDecimalPlacesTitle);
+    return _decorateText(sellPrice, ExchangeRateConstants.valuePadding);
+  }
+
+  Expanded _decorateText(String text, double padding) {
+    return Expanded(
+        child: FittedBox(
+            child: Padding(
+      padding: EdgeInsets.all(padding),
+      child: Text(text, textAlign: TextAlign.center),
+    )));
   }
 }

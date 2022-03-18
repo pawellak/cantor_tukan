@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kantor_tukan/presentation/exchange_rate/exchange_rate_page.dart';
 
 import '../information/information_page.dart';
 import '../transaction/constants.dart';
@@ -10,7 +11,7 @@ class AppLifeCycle
       case AppLifecycleState.inactive:
         break;
       case AppLifecycleState.resumed:
-        Navigator.of(context).popAndPushNamed(InformationPage.routeName, arguments: TransactionConstants.background);
+        Navigator.of(context).popAndPushNamed(ExchangeRatePage.routeName);
         break;
       case AppLifecycleState.paused:
         break;

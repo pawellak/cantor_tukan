@@ -28,7 +28,7 @@ class ExchangeRateFetched {
 
   Expanded _buildExchangeRateList(KtList<ExchangeRate> exchangeRateList) {
     return Expanded(
-      flex: Constants.exchangeRateListFlex,
+      flex: ExchangeRateConstants.exchangeRateListFlex,
       child: ListTable(items: exchangeRateList),
     );
   }

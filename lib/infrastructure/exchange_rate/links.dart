@@ -3,5 +3,5 @@ class Links {
   static const currencyUpdateTime = 'https://kantortukan.pl/baza/date.txt';
   static const logoExchange = 'assets/wymiana_calc.png';
   static const flagsPath = 'assets/flags/';
-  static const flagsExtension = '.gif';
+  static const flagsExtension = '.png';
 }
