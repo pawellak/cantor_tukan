@@ -55,12 +55,12 @@ flutter:
     - assets/flags/
 
 flutter_native_splash:
-  color: "#42a5f5"
+  color: "#f8f4f3"
   image: D:\Flutter\kantor_tukan\assets\logo_tukan.png
   android: true
   ios: false
   android12: true
-  android_gravity: fill
+  android_gravity: center
 
 
 flutter_icons:

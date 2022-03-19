@@ -8,7 +8,7 @@ class ExchangeRateConstants {
   static const exchangeRateListFlex = 10;
   static const invalidDate = 0;
   static const valuePadding = 8.0;
-  static const currencyPadding = 11.0;
+  static const currencyPadding = 15.0;
   static const titleNameFontSize = 22.0;
   static const flagPadding = 16.0;
   static const flagBorderRadius = 16.0;
