@@ -15,7 +15,12 @@ abstract class TransactionConstants {
   static const unexpected = 'wystąpił błąd, spróbuj ponownie później';
   static const noInternet = 'brak internetu';
   static const notFound = 'nie znaleziono rekordu';
-  static const reservationSuccess = 'rezerwacja wykonana poprawnie';
+  static const reservationSuccess =
+      'oczekuj potwierdzenia rezerwacji\n'
+      'przez pracownika kantoru\n'
+      'lub\n'
+      'zadzwoń pod numer telefonu:\n'
+      '+48 609 593 939';
   static const notSignIn = 'zaloguj się w celu \n rezerwacji waluty';
   static const background = 'sesja wygasła';
   static const comma = ',';
@@ -24,6 +29,7 @@ abstract class TransactionConstants {
   static const plnCurrency = 'PLN';
 
   static const padding = 20.0;
+  static const logoPadding = 20.0;
   static const smallPadding = 8.0;
   static const microPadding = 4.0;
 

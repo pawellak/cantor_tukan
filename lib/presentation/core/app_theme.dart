@@ -8,7 +8,7 @@ const surfaceColor = Colors.grey;
 const secondaryColor = Colors.black87;
 const googleColor = Colors.blue;
 const cancelColor = Colors.deepOrangeAccent;
-const confirmColor = Colors.lightGreen;
+const confirmColor = Colors.green;
 
 class AppTheme {
   buildLightTheme() {

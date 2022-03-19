@@ -58,13 +58,13 @@ class SingleExchangeRate extends StatelessWidget {
     final String nameOfCurrency = exchangeRate.currency.getOrCrash().toShortString();
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(ExchangeRateConstants.flagPadding),
         child: ClipRRect(
           clipBehavior: Clip.antiAlias,
-          borderRadius: BorderRadius.circular(11), // Image border
+          borderRadius: BorderRadius.circular(ExchangeRateConstants.flagBorderRadius), // Image border
           child: Image.asset(
             '${Links.flagsPath}$nameOfCurrency${Links.flagsExtension}',
-            fit: BoxFit.fitHeight,
+            fit: BoxFit.fill,
             height: ExchangeRateConstants.heightOfFlag,
           ),
         ),

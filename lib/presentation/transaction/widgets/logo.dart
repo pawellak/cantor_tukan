@@ -13,7 +13,10 @@ class Logo extends StatelessWidget {
   }
 
   Expanded _decorator(Image image) {
-    return Expanded(flex: TransactionConstants.flexLogo, child: image);
+    return Expanded(flex: TransactionConstants.flexLogo, child: Padding(
+      padding: const EdgeInsets.all(TransactionConstants.logoPadding),
+      child: image,
+    ));
   }
 
   Image _buildLogo() {

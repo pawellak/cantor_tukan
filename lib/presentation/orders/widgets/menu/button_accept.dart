@@ -17,5 +17,6 @@ class MenuButtonAccept extends StatelessWidget {
           context.read<TransactionWatcherBloc>().add(const TransactionWatcherEvent.watchAcceptedTransaction());
         },
         child: const FittedBox(child: Text(OrdersConstants.accepted)),
+        style: OutlinedButton.styleFrom(backgroundColor: Colors.lightGreen),
       );
 }

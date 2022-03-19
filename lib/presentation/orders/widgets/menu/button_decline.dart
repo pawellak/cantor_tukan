@@ -17,5 +17,6 @@ class MenuButtonDecline extends StatelessWidget {
           context.read<TransactionWatcherBloc>().add(const TransactionWatcherEvent.watchDeclineTransaction());
         },
         child: const FittedBox(child: Text(OrdersConstants.decline)),
+        style: OutlinedButton.styleFrom(backgroundColor: Colors.red),
       );
 }

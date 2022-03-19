@@ -11,6 +11,7 @@ class Description extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       description,
+      textAlign: TextAlign.center,
       style: _textStyle(),
     );
   }

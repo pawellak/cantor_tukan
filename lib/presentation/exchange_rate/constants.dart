@@ -10,6 +10,8 @@ class ExchangeRateConstants {
   static const valuePadding = 8.0;
   static const currencyPadding = 11.0;
   static const titleNameFontSize = 22.0;
+  static const flagPadding = 16.0;
+  static const flagBorderRadius = 16.0;
 
   static const flag = 'flaga';
   static const currency = 'waluta';
