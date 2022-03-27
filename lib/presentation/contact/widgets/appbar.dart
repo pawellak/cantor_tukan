@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kantor_tukan/presentation/about_me/constants.dart';
 import 'package:kantor_tukan/presentation/contact/constants.dart';
-import 'package:kantor_tukan/presentation/information/constants.dart';
 
 class ContactAppBar extends StatelessWidget with PreferredSizeWidget {
   const ContactAppBar({Key? key}) : super(key: key);

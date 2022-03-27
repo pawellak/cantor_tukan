@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:kantor_tukan/presentation/about_me/constants.dart';
-import 'package:kantor_tukan/presentation/information/constants.dart';
 
 class AboutMeAppBar extends StatelessWidget with PreferredSizeWidget {
   const AboutMeAppBar({Key? key}) : super(key: key);

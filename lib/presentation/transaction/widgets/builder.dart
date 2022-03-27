@@ -9,7 +9,6 @@ import 'package:kantor_tukan/presentation/transaction/widgets/logo.dart';
 import 'package:kantor_tukan/presentation/transaction/widgets/radio_buttons.dart';
 import 'package:kantor_tukan/presentation/transaction/widgets/submitting.dart';
 import 'package:kantor_tukan/presentation/transaction/widgets/timer.dart';
-import 'package:kantor_tukan/presentation/transaction/widgets/tip.dart';
 import '../../../application/transaction/transaction_form/transaction_form_bloc.dart';
 
 class TransactionBuilder {

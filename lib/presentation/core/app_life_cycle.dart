@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kantor_tukan/presentation/exchange_rate/exchange_rate_page.dart';
 
-import '../information/information_page.dart';
-import '../transaction/constants.dart';
-
 class AppLifeCycle
 {
   void call(BuildContext context,AppLifecycleState state) {

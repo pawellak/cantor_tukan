@@ -90,9 +90,9 @@ class FirebaseAuthFacade implements IAuthFacade {
       await _firebaseAuth.signInWithCredential(authCredential);
 
       return const Right(unit);
-    } on PlatformException catch (e) {
+    } on PlatformException catch (_) {
       return (const Left(AuthFailure.serverError()));
-    } catch (e) {
+    } catch (_) {
       return const Left(AuthFailure.serverError());
     }
   }
