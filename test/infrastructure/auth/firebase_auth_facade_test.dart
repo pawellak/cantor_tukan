@@ -63,7 +63,8 @@ void main() {
   test(
     'should call sign out method ',
     () async {
-      ///TODO: implement test with sign out implementation
+       // firebaseAuthFacade.signOutGoogleAndFirebase();
+       // verify(mockGoogleSignIn.signOut());
     },
   );
 }
