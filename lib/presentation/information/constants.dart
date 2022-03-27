@@ -1,4 +1,4 @@
-abstract class Constants {
+abstract class InformationConstants {
   static const backButtonDescription = 'powrót';
   static const appBarDescription = 'Kantor Tukan';
   static const emptyString = '';

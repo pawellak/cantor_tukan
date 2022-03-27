@@ -43,7 +43,7 @@ class InternetPage extends StatelessWidget {
     );
   }
 
-  AppBar _buildAppBar() => AppBar(automaticallyImplyLeading: false, title: const Text(Constants.tip));
+  AppBar _buildAppBar() => AppBar(automaticallyImplyLeading: false, title: const Text(InternetConstants.tip));
 
   Center _buildBody(BuildContext context) {
     return Center(
@@ -54,5 +54,5 @@ class InternetPage extends StatelessWidget {
     );
   }
 
-  EdgeInsets _getPadding() => const EdgeInsets.all(Constants.padding);
+  EdgeInsets _getPadding() => const EdgeInsets.all(InternetConstants.padding);
 }

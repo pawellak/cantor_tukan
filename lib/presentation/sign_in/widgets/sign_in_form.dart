@@ -57,7 +57,7 @@ class SignInForm extends StatelessWidget {
     );
   }
 
-  EdgeInsets _getPadding() => const EdgeInsets.all(Constants.padding);
+  EdgeInsets _getPadding() => const EdgeInsets.all(SignInConstants.padding);
 
   List<Widget> _buildBodySignIn(BuildContext context, SignInFormState state) {
     return <Widget>[
@@ -93,9 +93,9 @@ class SignInForm extends StatelessWidget {
     );
   }
 
-  SizedBox _emptyHeightSpace() => const SizedBox(height: Constants.emptySpace);
+  SizedBox _emptyHeightSpace() => const SizedBox(height: SignInConstants.emptySpace);
 
-  SizedBox _emptyWidthSpace() => const SizedBox(width: Constants.emptySpace);
+  SizedBox _emptyWidthSpace() => const SizedBox(width: SignInConstants.emptySpace);
 
   AutovalidateMode _isShowErrorMessageOn(SignInFormState state) {
     return state.showErrorMessages ? AutovalidateMode.always : AutovalidateMode.disabled;

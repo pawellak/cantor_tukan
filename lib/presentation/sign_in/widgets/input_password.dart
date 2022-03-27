@@ -22,7 +22,7 @@ class InputPassword extends StatelessWidget {
   InputDecoration _getDecoration(BuildContext context) {
     return InputDecoration(
       prefixIcon: Icon(Icons.lock, color: Theme.of(context).colorScheme.secondary),
-      labelText: Constants.password,
+      labelText: SignInConstants.password,
     );
   }
 
@@ -39,7 +39,7 @@ class InputPassword extends StatelessWidget {
 
   String? _buildPasswordNotValid(ValueFailure<String> f) {
     return f.maybeMap(
-      shortPassword: (_) => Constants.passwordNotValid,
+      shortPassword: (_) => SignInConstants.passwordNotValid,
       orElse: () => _buildPasswordValid(),
     );
   }

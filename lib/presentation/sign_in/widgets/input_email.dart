@@ -24,7 +24,7 @@ class InputEmail extends StatelessWidget {
         Icons.email,
         color: Theme.of(context).colorScheme.secondary,
       ),
-      labelText: Constants.email,
+      labelText: SignInConstants.email,
     );
   }
 
@@ -41,7 +41,7 @@ class InputEmail extends StatelessWidget {
 
   String? _getEmailNotValid(ValueFailure<String> f) {
     return f.maybeMap(
-      invalidEmail: (_) => Constants.emailNotValid,
+      invalidEmail: (_) => SignInConstants.emailNotValid,
       orElse: () => _getEmailValid(),
     );
   }

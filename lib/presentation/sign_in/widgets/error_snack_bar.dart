@@ -7,17 +7,17 @@ class ErrorSnackBar {
   void call(BuildContext context, AuthFailure failure) {
     FlushbarHelper.createError(
         message: failure.map(noInternet: (_){
-          return Constants.noInternet;
+          return SignInConstants.noInternet;
         },passwordsNotEqual: (_) {
-      return Constants.passwordsNotEqual;
+      return SignInConstants.passwordsNotEqual;
     }, cancelledByUser: (_) {
-      return Constants.canceled;
+      return SignInConstants.canceled;
     }, serverError: (_) {
-      return Constants.serverError;
+      return SignInConstants.serverError;
     }, emailAlreadyInUse: (_) {
-      return Constants.emailInUse;
+      return SignInConstants.emailInUse;
     }, invalidEmailAndPasswordCombination: (_) {
-      return Constants.invalidEmailOrPassword;
+      return SignInConstants.invalidEmailOrPassword;
     })).show(context);
   }
 }

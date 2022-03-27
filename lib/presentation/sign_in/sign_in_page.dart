@@ -30,7 +30,7 @@ class SignInPage extends StatelessWidget {
     return AppBar(
       actions: const [MenuAppBar()],
       automaticallyImplyLeading: false,
-      title: const Text(Constants.signIn),
+      title: const Text(SignInConstants.signIn),
     );
   }
 

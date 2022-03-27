@@ -20,5 +20,5 @@ class ButtonSignInEmail extends StatelessWidget {
     return context.read<SignInFormBloc>().add(const SignInFormEvent.signInWithEmailAndPasswordPressed());
   }
 
-  Text _getTextDescription() => const Text(Constants.signIn);
+  Text _getTextDescription() => const Text(SignInConstants.signIn);
 }

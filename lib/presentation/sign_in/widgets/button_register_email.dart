@@ -16,5 +16,5 @@ class ButtonRegisterEmail extends StatelessWidget {
     Navigator.of(context).popAndPushNamed(RegisterPage.routeName);
   }
 
-  Text _buildTextDescription() => const Text(Constants.register);
+  Text _buildTextDescription() => const Text(SignInConstants.register);
 }

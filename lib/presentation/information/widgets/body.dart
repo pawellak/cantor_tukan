@@ -21,7 +21,7 @@ class InformationBody extends StatelessWidget {
     if (arguments is String) {
       information = arguments;
     } else {
-      information = Constants.emptyString;
+      information = InformationConstants.emptyString;
     }
     return information;
   }
@@ -33,7 +33,7 @@ class InformationBody extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Description(description: information),
-        const SizedBox(height: Constants.heightTenPixel),
+        const SizedBox(height: InformationConstants.heightTenPixel),
         const ButtonBack(),
       ],
     );

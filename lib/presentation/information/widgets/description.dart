@@ -16,5 +16,5 @@ class Description extends StatelessWidget {
     );
   }
 
-  TextStyle _textStyle() => const TextStyle(fontSize: Constants.sizeOfText);
+  TextStyle _textStyle() => const TextStyle(fontSize: InformationConstants.sizeOfText);
 }

@@ -1,4 +1,4 @@
-class Constants {
+class CoreConstants {
   static const nameOfCantor = 'Kantor Tukan';
 
   static const menuOrders = 'zamówienia';

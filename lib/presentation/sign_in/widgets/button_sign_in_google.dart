@@ -21,7 +21,7 @@ class ButtonSignInWithGoogle extends StatelessWidget {
 
   Text _getButtonDescription() {
     return const Text(
-      Constants.signInWithGoogle,
+      SignInConstants.signInWithGoogle,
     );
   }
 }

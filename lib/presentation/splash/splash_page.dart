@@ -54,5 +54,5 @@ class SplashPage extends StatelessWidget {
 
   bool _isBackArrowShow() => false;
 
-  Text _buildAppBarDescription() => const Text(Constants.loading);
+  Text _buildAppBarDescription() => const Text(SplashConstants.loading);
 }

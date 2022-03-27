@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:kantor_tukan/presentation/about_me/constants.dart';
+import 'package:kantor_tukan/presentation/contact/constants.dart';
 import 'package:kantor_tukan/presentation/information/constants.dart';
 
-class InformationAppBar extends StatelessWidget with PreferredSizeWidget {
-  const InformationAppBar({Key? key}) : super(key: key);
+class ContactAppBar extends StatelessWidget with PreferredSizeWidget {
+  const ContactAppBar({Key? key}) : super(key: key);
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -14,8 +16,8 @@ class InformationAppBar extends StatelessWidget with PreferredSizeWidget {
 
   AppBar _buildAppBar() {
     return AppBar(
-      title: const Text(InformationConstants.appBarDescription),
       automaticallyImplyLeading: false,
+      title: const Text(ContactConstants.appBar),
     );
   }
 }

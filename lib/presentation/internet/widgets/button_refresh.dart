@@ -32,11 +32,11 @@ class ButtonRefresh extends StatelessWidget {
   }
 
   Padding _buildLoadingWidget() => const Padding(
-        padding: EdgeInsets.all(Constants.padding),
+        padding: EdgeInsets.all(InternetConstants.padding),
         child: CircularProgressIndicator(),
       );
 
-  Text _getButtonDescription() => const Text(Constants.tipButton);
+  Text _getButtonDescription() => const Text(InternetConstants.tipButton);
 
   ButtonStyle _getButtonStyle(BuildContext context) =>
       ElevatedButton.styleFrom(primary: Theme.of(context).primaryColor);

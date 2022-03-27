@@ -7,11 +7,11 @@ class LogoSignIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SizedBox(
-      height: Constants.logoSpace,
+      height: SignInConstants.logoSpace,
       child: Center(
         child: Text(
-          Constants.logo,
-          style: TextStyle(fontSize: Constants.logoSize),
+          SignInConstants.logo,
+          style: TextStyle(fontSize: SignInConstants.logoSize),
         ),
       ),
     );

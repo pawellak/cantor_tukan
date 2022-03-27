@@ -1,31 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kantor_tukan/presentation/about_me/about_me_page.dart';
 import 'package:kantor_tukan/presentation/core/constants.dart';
 import 'package:kantor_tukan/presentation/exchange_rate/exchange_rate_page.dart';
 
 import '../../../application/auth/app_auth_bloc.dart';
+import '../../contact/contact_page.dart';
 import '../../orders/orders_page.dart';
 import '../../sign_in/sign_in_page.dart';
 
 class MenuAppBarFunctions {
   void handleClick(BuildContext context, String option) {
     switch (option) {
-      case Constants.menuOrders:
+      case CoreConstants.menuOrders:
         _orders(context);
         break;
-      case Constants.menuCurrencies:
+      case CoreConstants.menuCurrencies:
         _currencies(context);
         break;
-      case Constants.menuSignOut:
+      case CoreConstants.menuSignOut:
         _signOut(context);
         break;
-      case Constants.menuSignIn:
+      case CoreConstants.menuSignIn:
         _signIn(context);
         break;
-      case Constants.menuContact:
+      case CoreConstants.menuContact:
         _contact(context);
         break;
-      case Constants.menuAboutMe:
+      case CoreConstants.menuAboutMe:
         _aboutMe(context);
         break;
     }
@@ -48,10 +50,10 @@ class MenuAppBarFunctions {
   }
 
   void _contact(BuildContext context) {
-    ///TODO: contact page
+    Navigator.of(context).popAndPushNamed(ContactPage.routeName);
   }
 
   void _aboutMe(BuildContext context) {
-    ///TODO: about me page
+    Navigator.of(context).popAndPushNamed(AboutMePage.routeName);
   }
 }

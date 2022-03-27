@@ -13,7 +13,7 @@ class ButtonBack extends StatelessWidget {
 
   Padding _decorator(ElevatedButton button) {
     return Padding(
-      padding: const EdgeInsets.all(Constants.padding),
+      padding: const EdgeInsets.all(InformationConstants.padding),
       child: Row(
         children: [Expanded(child: button)],
       ),
@@ -37,5 +37,5 @@ class ButtonBack extends StatelessWidget {
     Navigator.of(context).popAndPushNamed(ExchangeRatePage.routeName);
   }
 
-  Text _buildButtonDescription() => const Text(Constants.backButtonDescription);
+  Text _buildButtonDescription() => const Text(InformationConstants.backButtonDescription);
 }

@@ -1,4 +1,4 @@
-abstract class Constants {
+abstract class SignInConstants {
   static const signIn = 'ZALOGUJ';
   static const register = 'REJESTRACJA';
   static const signInWithGoogle = 'ZALOGUJ Z GOOGLE';

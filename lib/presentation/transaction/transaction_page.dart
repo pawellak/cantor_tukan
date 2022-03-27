@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kantor_tukan/application/transaction/transaction_form/transaction_form_bloc.dart';
 import 'package:kantor_tukan/presentation/transaction/widgets/appbar.dart';
 import 'package:kantor_tukan/presentation/transaction/widgets/body.dart';
-import 'package:kantor_tukan/presentation/transaction/widgets/settings.dart';
 
 import '../core/app_life_cycle.dart';
+import '../exchange_rate/exchange_rate_page.dart';
 
 class TransactionPage extends StatefulWidget {
   static const routeName = '/transaction';
@@ -20,7 +20,6 @@ class _TransactionPageState extends State<TransactionPage> with WidgetsBindingOb
   @override
   void initState() {
     super.initState();
-    Settings().allowOnlyForPortraitMode();
     WidgetsBinding.instance!.addObserver(this);
   }
 
@@ -39,14 +38,14 @@ class _TransactionPageState extends State<TransactionPage> with WidgetsBindingOb
     );
   }
 
-  Future<bool> _onWillPop(BuildContext context) {
-    return Settings().onWillPop(context);
+  Future<bool> _onWillPop(BuildContext context) async {
+    Navigator.of(context).popAndPushNamed(ExchangeRatePage.routeName);
+    return false;
   }
 
   void _restartTransactionPageState(BuildContext context) {
     context.read<TransactionFormBloc>().add(const TransactionFormEvent.reset());
   }
-
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
@@ -56,7 +55,6 @@ class _TransactionPageState extends State<TransactionPage> with WidgetsBindingOb
 
   @override
   dispose() {
-    Settings().allowForLandscapeAndPortraitMode();
     WidgetsBinding.instance!.removeObserver(this);
     super.dispose();
   }
