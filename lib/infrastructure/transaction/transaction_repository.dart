@@ -42,6 +42,7 @@ class TransactionRepository implements ITransactionRepository {
       final userDoc = await _firebaseFirestore.userDocument();
       final transactionDto = TransactionDto.fromDomain(transaction);
       await userDoc.transactionCollection.doc(transactionDto.uid).set(transactionDto.toJson());
+      await _firebaseFirestore.setQueue(transactionDto.uid);
       return right(unit);
     } on fs.FirebaseException catch (e) {
       return _transactionError(e);
@@ -63,18 +64,9 @@ class TransactionRepository implements ITransactionRepository {
   }
 
   Stream<Either<TransactionFailure, KtList<Transaction>>> _transactions() async* {
-    // DateTime _dateWithTimeZero =
-    // Converter().dateTimeWithTimeZero(DateTime.now());
-    //
-    // return await cantorCollectionOrders
-    //     .doc(FirebaseDB.users.toString())
-    //     .collection(uid)
-    //     .doc(_dateWithTimeZero.toIso8601String())
-    //     .collection(FirebaseDB.order.toString())
-    //     .get();
-
     final userDoc = await _userDoc();
     final collection = userDoc.transactionCollection;
+
     final Stream<Either<TransactionFailure, KtList<Transaction>>> stream = collection
         .orderBy(FirebaseConst.orderTransactionsBy, descending: true)
         .snapshots()

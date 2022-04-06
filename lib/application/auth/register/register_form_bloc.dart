@@ -23,6 +23,9 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
 
   RegisterFormBloc(this._authFacade, this._internetConnectionChecker) : super(RegisterFormState.initial()) {
     on<RegisterFormEvent>((event, emit) {
+
+
+
       event.map(
           emailChanged: _emailChanged,
           passwordChanged: _passwordChanged,
