@@ -4,6 +4,7 @@ import 'package:kantor_tukan/domain/transaction/transaction.dart';
 import 'package:kantor_tukan/presentation/orders/widgets/body_tile/acceptation.dart';
 import 'package:kantor_tukan/presentation/orders/widgets/body_tile/bill.dart';
 import 'package:kantor_tukan/presentation/orders/widgets/body_tile/buy.dart';
+import 'package:kantor_tukan/presentation/orders/widgets/body_tile/expiration.dart';
 import 'package:kantor_tukan/presentation/orders/widgets/body_tile/reservation.dart';
 import 'package:kantor_tukan/presentation/orders/widgets/body_tile/sell.dart';
 
@@ -23,6 +24,7 @@ class BodyTile extends StatelessWidget {
         TransactionBill().call(userTransaction),
         TransactionReservation().call(userTransaction),
         TransactionAcceptation().call(userTransaction),
+        TransactionExpiration().call(userTransaction),
         TransactionSell().call(userTransaction),
         TransactionBuy().call(userTransaction),
       ],

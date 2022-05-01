@@ -8,21 +8,17 @@ import '../list_point/list_point.dart';
 class TransactionReservation {
   Widget call(Transaction userTransaction) {
     String sReservationDate = _getReservationDate(userTransaction);
-
     return ListPoint(title: OrdersConstants.dateReservation, description: sReservationDate);
   }
 
   String _getReservationDate(Transaction userTransaction) {
-    String sReservationDate;
     DateTime reservationDate = userTransaction.dateReservation.getOrCrash();
-
-    sReservationDate = _toDailyDate(reservationDate);
-    return sReservationDate;
+    return _toDailyDate(reservationDate);
   }
 
-  String _toDailyDate(DateTime acceptationTime) {
+  String _toDailyDate(DateTime acceptationDate) {
     return ValueConverters()
-        .toDailyTimeStringFromDateTime(acceptationTime)
-        .getOrElse(() => OrdersConstants.transactionNotAccepted);
+        .toDailyTimeStringFromDateTime(acceptationDate)
+        .getOrElse(() => OrdersConstants.transactionDecline);
   }
 }

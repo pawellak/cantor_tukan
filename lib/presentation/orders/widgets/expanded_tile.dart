@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kantor_tukan/domain/core/currency_value.dart';
+import 'package:kantor_tukan/domain/core/enums.dart';
 import 'package:kantor_tukan/domain/transaction/transaction.dart';
 
 import '../constants.dart';
@@ -38,6 +40,7 @@ class _ExpandedTileState extends State<ExpandedTile> {
 
   ExpansionPanel _buildExpansionChildren() {
     return ExpansionPanel(
+      backgroundColor: _getBackgroundColor(widget.userTransaction),
       headerBuilder: (_, __) {
         return HeaderTile(userTransaction: widget.userTransaction);
       },
@@ -45,6 +48,19 @@ class _ExpandedTileState extends State<ExpandedTile> {
       isExpanded: _expanded,
       canTapOnHeader: true,
     );
+  }
+
+  Color? _getBackgroundColor(Transaction userTransaction) {
+    switch (userTransaction.transactionStatus.getOrCrash()) {
+      case EnumTransactionStatus.pending:
+        return Colors.yellow[100];
+      case EnumTransactionStatus.accepted:
+        return Colors.green[100];
+      case EnumTransactionStatus.decline:
+        return Colors.red[100];
+      case EnumTransactionStatus.undefined:
+        return Colors.red;
+    }
   }
 
   void _toggleExpandedTile(_, __) {

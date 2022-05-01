@@ -1,10 +1,12 @@
 class OrdersConstants {
   static const orders = 'zamówienia';
-  static const transactionNotAccepted = 'brak akceptacji';
+  static const transactionPending = 'oczekuje akceptacji';
+  static const transactionDecline = 'nie zaakceptowano';
   static const accepted = 'akceptowane';
   static const pending = 'oczekujące';
   static const decline = 'odrzucone';
   static const all = 'wszystkie';
+
   static const loadingFailure = 'błąd serwera, spróbuj ponownie później';
 
   static const buy = 'Zakup: ';
@@ -15,6 +17,7 @@ class OrdersConstants {
   static const currencyBill = 'wartość transakcji: ';
   static const dateReservation = 'data rezerwacji: ';
   static const dateAcceptation = 'data akceptacji: ';
+  static const dateExpiration = 'data ważności: ';
   static const typeTransaction = 'typ transackji: ';
 
   static const chooseCategory = 'wybierz rodzaj kategorii';
@@ -26,4 +29,5 @@ class OrdersConstants {
   static const bodyFlex = 5;
   static const menuFlex = 1;
   static const animationDuration = 200;
+  static const expirationTimeInHour = 2;
 }
