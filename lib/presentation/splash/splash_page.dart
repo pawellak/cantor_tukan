@@ -25,16 +25,8 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     loadFCM();
     listenFCM();
-    getToken();
     super.initState();
   }
-
-  void getToken() async {
-    var token = await FirebaseMessaging.instance.getToken();
-    print('Twój token: $token');
-  }
-
-
 
 
   void listenFCM() async {
