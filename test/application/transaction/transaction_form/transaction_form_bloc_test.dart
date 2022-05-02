@@ -55,7 +55,7 @@ void main() {
     blocTest<TransactionFormBloc, TransactionFormState>(
       'correct passed data, but server error',
       build: () {
-        when(mockTransRepo.create(transaction)).thenAnswer((_) async => left(const TransactionFailure.unexpected()));
+        when(mockTransRepo.createTransaction(transaction)).thenAnswer((_) async => left(const TransactionFailure.unexpected()));
         return transactionFormBloc;
       },
       act: (bloc) {
@@ -84,7 +84,7 @@ void main() {
     blocTest<TransactionFormBloc, TransactionFormState>(
       'correct passed data',
       build: () {
-        when(mockTransRepo.create(transaction)).thenAnswer((_) async => right(unit));
+        when(mockTransRepo.createTransaction(transaction)).thenAnswer((_) async => right(unit));
         when(mockInternetChecker.hasConnection()).thenAnswer((_) => Future.value(true));
         return transactionFormBloc;
       },
@@ -120,7 +120,7 @@ void main() {
     blocTest<TransactionFormBloc, TransactionFormState>(
       'wrong passed data',
       build: () {
-        when(mockTransRepo.create(transactionError)).thenAnswer((_) async => right(unit));
+        when(mockTransRepo.createTransaction(transactionError)).thenAnswer((_) async => right(unit));
         when(mockInternetChecker.hasConnection()).thenAnswer((_) => Future.value(true));
         return transactionFormBloc;
       },
@@ -153,7 +153,7 @@ void main() {
     blocTest<TransactionFormBloc, TransactionFormState>(
       'correct passed data, but server error',
       build: () {
-        when(mockTransRepo.create(transaction)).thenAnswer((_) async => const Left(TransactionFailure.unexpected()));
+        when(mockTransRepo.createTransaction(transaction)).thenAnswer((_) async => const Left(TransactionFailure.unexpected()));
         when(mockInternetChecker.hasConnection()).thenAnswer((_) => Future.value(true));
         return transactionFormBloc;
       },
@@ -217,7 +217,7 @@ void main() {
     blocTest<TransactionFormBloc, TransactionFormState>(
       'wrong passed data',
       build: () {
-        when(mockTransRepo.create(transactionError)).thenAnswer((_) async => right(unit));
+        when(mockTransRepo.createTransaction(transactionError)).thenAnswer((_) async => right(unit));
         when(mockInternetChecker.hasConnection()).thenAnswer((_) => Future.value(true));
         return transactionFormBloc;
       },
@@ -244,7 +244,7 @@ void main() {
     blocTest<TransactionFormBloc, TransactionFormState>(
       'correct passed data, but server error',
       build: () {
-        when(mockTransRepo.create(transaction)).thenAnswer((_) async => const Left(TransactionFailure.unexpected()));
+        when(mockTransRepo.createTransaction(transaction)).thenAnswer((_) async => const Left(TransactionFailure.unexpected()));
         when(mockInternetChecker.hasConnection()).thenAnswer((_) => Future.value(true));
         return transactionFormBloc;
       },

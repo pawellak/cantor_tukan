@@ -22,11 +22,12 @@ class _ConfirmButtonState extends State<ConfirmButton> {
 
   Widget _getBuilder(context, state) {
     return state.map(
-        authenticated: (_) {
-          return _buildAuthenticatedButton(context);
-        },
-        initial: _getUnauthenticatedState,
-        unauthenticated: _getUnauthenticatedState);
+      authenticated: (_) {
+        return _buildAuthenticatedButton(context);
+      },
+      initial: _getUnauthenticatedState,
+      unauthenticated: _getUnauthenticatedState,
+    );
   }
 
   _getUnauthenticatedState(_) {

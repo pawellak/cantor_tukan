@@ -69,7 +69,7 @@ class TransactionFormBloc extends Bloc<TransactionFormEvent, TransactionFormStat
 
     if (_transactionFailureOptions.isNone()) {
       final transaction = state.transaction;
-      _failureOrSuccess = await _iTransactionRepository.create(transaction);
+      _failureOrSuccess = await _iTransactionRepository.createTransaction(transaction);
 
       if (_failureOrSuccess.isRight()) {
         _showErrorMessage = false;

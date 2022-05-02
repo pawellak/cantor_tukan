@@ -68,7 +68,7 @@ class MockITransactionRepository extends _i1.Mock
                       _i6.KtList<_i7.Transaction>>>.empty()) as _i4.Stream<
               _i2.Either<_i5.TransactionFailure, _i6.KtList<_i7.Transaction>>>);
   @override
-  _i4.Future<_i2.Either<_i5.TransactionFailure, _i2.Unit>> create(
+  _i4.Future<_i2.Either<_i5.TransactionFailure, _i2.Unit>> createTransaction(
           _i7.Transaction? transaction) =>
       (super.noSuchMethod(Invocation.method(#create, [transaction]),
               returnValue:
@@ -76,7 +76,7 @@ class MockITransactionRepository extends _i1.Mock
                       _FakeEither_0<_i5.TransactionFailure, _i2.Unit>()))
           as _i4.Future<_i2.Either<_i5.TransactionFailure, _i2.Unit>>);
   @override
-  _i4.Future<_i2.Either<_i5.TransactionFailure, _i2.Unit>> delete(
+  _i4.Future<_i2.Either<_i5.TransactionFailure, _i2.Unit>> deleteTransaction(
           _i7.Transaction? transaction) =>
       (super.noSuchMethod(Invocation.method(#delete, [transaction]),
               returnValue:

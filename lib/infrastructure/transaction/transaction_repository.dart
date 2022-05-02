@@ -37,12 +37,19 @@ class TransactionRepository implements ITransactionRepository {
   }
 
   @override
-  Future<Either<TransactionFailure, Unit>> create(Transaction transaction) async {
+  Future<Either<TransactionFailure, Unit>> createUserToken() {
+    // TODO: implement createUserToken
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<TransactionFailure, Unit>> createTransaction(Transaction transaction) async {
     try {
       final userDoc = await _firebaseFirestore.userDocument();
       final transactionDto = TransactionDto.fromDomain(transaction);
       await userDoc.transactionCollection.doc(transactionDto.uid).set(transactionDto.toJson());
       await _firebaseFirestore.setQueue(transactionDto.uid);
+      await _firebaseFirestore.setCloudToken();
       return right(unit);
     } on fs.FirebaseException catch (e) {
       return _transactionError(e);
@@ -52,7 +59,7 @@ class TransactionRepository implements ITransactionRepository {
   }
 
   @override
-  Future<Either<TransactionFailure, Unit>> delete(Transaction transaction) async {
+  Future<Either<TransactionFailure, Unit>> deleteTransaction(Transaction transaction) async {
     try {
       final userDoc = await _firebaseFirestore.userDocument();
       final transactionId = transaction.uId.getOrCrash();
@@ -114,4 +121,6 @@ class TransactionRepository implements ITransactionRepository {
 
   bool _isErrorPermissionDenied(error) =>
       error is fs.FirebaseException && error.message!.contains(FirebaseConst.errorPermissionDenied);
+
+
 }

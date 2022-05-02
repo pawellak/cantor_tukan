@@ -26,7 +26,7 @@ class TransactionActorBloc extends Bloc<TransactionActorEvent, TransactionActorS
 
   void _deleted(_Deleted deleted) async {
     emit(const TransactionActorState.actionInProgress());
-    final possiblyFailure = await _transactionRepository.delete(deleted.transaction);
+    final possiblyFailure = await _transactionRepository.deleteTransaction(deleted.transaction);
     possiblyFailure.fold((f) => TransactionActorState.deleteFailure(f), (r) => TransactionActorState.deleteSuccess);
   }
 }
