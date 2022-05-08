@@ -63,8 +63,6 @@ class InputConverter {
     int lastElementInList = length - 1;
 
     _sc.removeAt(lastElementInList);
-    lastElementInList = lastElementInList-1;
-    _sc.removeAt(lastElementInList);
     _sc.removeAt(firstElementInList);
 
     return _sc;

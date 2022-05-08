@@ -3,7 +3,9 @@ class ExchangeRateConstants {
   static const appBarLoading = 'pobieranie danych walutowych...';
   static const errorOccurred = 'wystąpił wyjątek';
   static const dateOfUpdate = 'data aktualizacji: ';
-  static const invalidCurrency = 'waluta nieobsługiwana';
+  static const invalidCurrencyPartOne = 'waluta ';
+  static const invalidCurrencyPartTwo = ' jest obecnie niedostępna ';
+
   static const divisorOfTileRow = 10;
   static const exchangeRateListFlex = 10;
   static const invalidDate = 0;

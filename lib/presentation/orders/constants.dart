@@ -1,8 +1,8 @@
 class OrdersConstants {
   static const orders = 'zamówienia';
-  static const transactionPending = 'oczekuje akceptacji';
+  static const transactionPending = 'oczekuje zaakceptowania';
   static const transactionDecline = 'nie zaakceptowano';
-  static const accepted = 'akceptowane';
+  static const accepted = 'zakceptowane';
   static const pending = 'oczekujące';
   static const decline = 'odrzucone';
   static const all = 'wszystkie';
@@ -16,7 +16,7 @@ class OrdersConstants {
 
   static const currencyBill = 'wartość transakcji: ';
   static const dateReservation = 'data rezerwacji: ';
-  static const dateAcceptation = 'data akceptacji: ';
+  static const dateAcceptation = 'data zaakceptowania: ';
   static const dateExpiration = 'data ważności: ';
   static const typeTransaction = 'typ transackji: ';
 

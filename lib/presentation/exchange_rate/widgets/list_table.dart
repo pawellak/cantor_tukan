@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kantor_tukan/domain/core/enums.dart';
 import 'package:kantor_tukan/domain/exchange_rate/exchange_rate.dart';
 import 'package:kantor_tukan/presentation/exchange_rate/widgets/single_exchange_rate.dart';
 import 'package:kt_dart/collection.dart';
@@ -32,7 +33,7 @@ class ListTable extends StatelessWidget {
   int _getItemsLength() => items.size;
 
   _buildSingleCurrencyRow(int index, ExchangeRate exchangeRate, double _heightOfScreen) {
-    if (_isSingleCurrencyFailure(exchangeRate)) return _buildInvalidCurrency();
+    if (_isSingleCurrencyFailure(exchangeRate)) return _buildInvalidCurrency(exchangeRate.currency.getOrCrash());
     return SizedBox(
       height: _getWidgetHeight(_heightOfScreen),
       child: _buildSingleExchangeRate(index, exchangeRate),
@@ -51,5 +52,11 @@ class ListTable extends StatelessWidget {
 
   bool _isSingleCurrencyFailure(ExchangeRate exchangeRate) => exchangeRate.failureOption.isSome();
 
-  Center _buildInvalidCurrency() => const Center(child: Text(ExchangeRateConstants.invalidCurrency));
+  Padding _buildInvalidCurrency(EnumCurrency enumCurrency) {
+    String currencyName = enumCurrency.toShortString();
+    return Padding(
+      padding: const EdgeInsets.all(ExchangeRateConstants.valuePadding),
+      child: Center(child: Text('${ExchangeRateConstants.invalidCurrencyPartOne} $currencyName ${ExchangeRateConstants.invalidCurrencyPartTwo}')),
+    );
+  }
 }

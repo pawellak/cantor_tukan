@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kantor_tukan/application/auth/app_auth_bloc.dart';
+import 'package:kantor_tukan/presentation/contact/contact_page.dart';
 import 'package:kantor_tukan/presentation/exchange_rate/exchange_rate_page.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
@@ -28,25 +29,44 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
   }
 
+  void loadFCM() async {
+    if (!kIsWeb) {
+      channel = const AndroidNotificationChannel(
+          'high_importance_channel', // id
+          'High Importance Notifications', // title
+          importance: Importance.high,
+          enableVibration: true);
+
+      flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+
+
+      await flutterLocalNotificationsPlugin
+          .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
+          ?.createNotificationChannel(channel);
+
+      await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+        alert: true,
+        badge: true,
+        sound: true,
+      );
+    }
+  }
 
   void listenFCM() async {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      print('listen');
-      _notification(message);
+      _handleNotification(message);
     });
 
-    FirebaseMessaging.onBackgroundMessage((message) async {
-      print('background');
-      _notification(message);
+    FirebaseMessaging.onBackgroundMessage((RemoteMessage message) async {
+      _handleNotification(message);
     });
 
-    FirebaseMessaging.onMessageOpenedApp.listen((event) {
-      print('message');
-      _notification(event);
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      _handleNotification(message);
     });
   }
 
-  void _notification(RemoteMessage message) {
+  void _handleNotification(RemoteMessage message) {
     RemoteNotification? notification = message.notification;
     AndroidNotification? android = message.notification?.android;
     if (notification != null && android != null && !kIsWeb) {
@@ -61,34 +81,6 @@ class _SplashPageState extends State<SplashPage> {
             icon: 'launch_background',
           ),
         ),
-      );
-    }
-  }
-
-  void loadFCM() async {
-    if (!kIsWeb) {
-      channel = const AndroidNotificationChannel(
-          'high_importance_channel', // id
-          'High Importance Notifications', // title
-          importance: Importance.high,
-          enableVibration: true);
-
-      flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-
-      /// Create an Android Notification Channel.
-      ///
-      /// We use this channel in the `AndroidManifest.xml` file to override the
-      /// default FCM channel to enable heads up notifications.
-      await flutterLocalNotificationsPlugin
-          .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
-          ?.createNotificationChannel(channel);
-
-      /// Update the iOS foreground notification presentation options to allow
-      /// heads up notifications.
-      await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
-        alert: true,
-        badge: true,
-        sound: true,
       );
     }
   }
